@@ -1,7 +1,7 @@
 import cssNano from 'cssnano'
 
 
-export default function getPluginsForOnePostCSSInstance(shouldCompressCSS, shouldDiscardMostCommentsEvenIfNotCompressCSS) {
+export default function 为PostCss插件构建配置项集(shouldCompressCSS, shouldDiscardMostCommentsEvenIfNotCompressCSS) {
     const pluginsForPostCSS = [
         // autoprefixer({browsers: ['last 1 version']}),
     ]

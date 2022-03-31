@@ -5,8 +5,8 @@ import {
     createATaskCycle,
 } from '@wulechuan/gulp-classical-task-cycle'
 
-import getPluginsForOnePostCSSInstance
-    from '../辅助工具集/get-plugins-for-one-postcss-instance'
+import 为PostCss插件构建配置项集
+    from '../辅助工具集/为-postcss-构建器配置项集'
 
 
 
@@ -25,8 +25,8 @@ export function 构建一个任务闭环用以将一组独立于Vue文件的Styl
 
     const _shouldDiscardComments = !!shouldDiscardMostCommentsEvenIfNotCompressCSS
 
-    const compressorOptions1 = getPluginsForOnePostCSSInstance(false, _shouldDiscardComments)
-    const compressorOptions2 = getPluginsForOnePostCSSInstance(true)
+    const compressorOptions1 = 为PostCss插件构建配置项集(false, _shouldDiscardComments)
+    const compressorOptions2 = 为PostCss插件构建配置项集(true)
 
     const compressor1 = postCSS
     const compressor2 = postCSS
