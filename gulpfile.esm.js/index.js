@@ -1,14 +1,18 @@
 import {
     构建一个任务闭环用以处理和编译一组Vue文件,
-} from './各种任务闭环之构建器/任务闭环之处理和编译一组-vue-文件'
+} from './各种任务闭环之构建器/构建一个任务闭环以处理和编译一组-vue-文件'
 
 import {
     构建一个任务闭环用以将一组独立于Vue文件的Typescript文件各自转译成Javascript文件,
-} from './各种任务闭环之构建器/任务闭环之将一组独立于-vue-文件的-typescript-文件各自转译为-javascript-文件'
+} from './各种任务闭环之构建器/构建一个任务闭环以将一组独立于-vue-文件的-typescript-文件各自转译为-javascript-文件'
 
 import {
     构建一个任务闭环用以将一组独立于Vue文件的Stylus文件各自编译成Css文件,
-} from './各种任务闭环之构建器/任务闭环之将一组独立于-vue-文件的-stylus-文件各自编译成-css-文件'
+} from './各种任务闭环之构建器/构建一个任务闭环以将一组独立于-vue-文件的-stylus-文件各自编译成-css-文件'
+
+import {
+    构建一个任务闭环用以复制一组文件或文件夹,
+} from './各种任务闭环之构建器/构建一个任务闭环以将复制一批文件或文件夹'
 
 import {
     create3HighOrderTasksUponMultipleTaskCycles,
@@ -58,6 +62,35 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
 
 
 
+const 任务闭环之将所有独立于Vue文件的Typescript文件复制到发布文件夹内 = 构建一个任务闭环用以复制一组文件或文件夹({
+    descriptionOfCoreTask: '将所有独立的 .vue 文件中和 TypeScript 文件复制到发布文件夹中去',
+    descriptionOfInputsOfCoreTask: '独立的 .ts 文件',
+
+    sourceGlobs: {
+        rootFolderPath: './源代码/原始的源代码/typescript',
+
+        relativeGlobsSpecificallyForThisTaskCycle: [
+            '**/*.ts',
+            '**/*.vue',
+        ],
+        extraSourceGlobsToWatch: [
+        ],
+    },
+
+    outputFiles: {
+        rootFolderPath: './源代码/发布的源代码/typescript',
+
+        forBatchOutputFiles: {
+            relativeGlobsOfAllPossibleOutputs: [
+                '**/*.ts',
+                '**/*.vue',
+            ],
+        },
+    },
+})
+
+
+
 const 任务闭环之将所有独立于Vue文件的Typescript文件各自转译成Javascript文件 = 构建一个任务闭环用以将一组独立于Vue文件的Typescript文件各自转译成Javascript文件({
     descriptionOfCoreTask: '将所有独立的（即不在 .vue 文件中的）TypeScript 编译为 JavaScript',
     descriptionOfInputsOfCoreTask: '独立的 .ts 文件',
@@ -66,15 +99,14 @@ const 任务闭环之将所有独立于Vue文件的Typescript文件各自转译�
         rootFolderPath: './源代码/原始的源代码/typescript',
 
         relativeGlobsSpecificallyForThisTaskCycle: [
-            '*.ts',
+            '**/*.ts',
         ],
         extraSourceGlobsToWatch: [
-            './源代码/原始的源代码/typescript/**/*.ts',
         ],
     },
 
     outputFiles: {
-        rootFolderPath: './源代码/发布的源代码',
+        rootFolderPath: './源代码/发布的源代码/javascript',
 
         forBatchOutputFiles: {
             relativeGlobsOfAllPossibleOutputs: [
@@ -142,6 +174,7 @@ const {
     taskCyclesInPallarel: [
         任务闭环之处理和编译所有的Vue文件,
         任务闭环之将所有独立于Vue文件的Typescript文件各自转译成Javascript文件,
+        任务闭环之将所有独立于Vue文件的Typescript文件复制到发布文件夹内,
         任务闭环之将所有独立于Vue文件的Stylus文件各自编译成Css文件,
     ],
 })

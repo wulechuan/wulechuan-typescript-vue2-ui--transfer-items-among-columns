@@ -244,7 +244,7 @@ export default {
         },
         maxCountOfItemsToDisplayInEitherColumn: {
             type: Number,
-            default: 单列至多允许显示的条目数之默认值,
+            default: NaN,
         },
         hasNotTitleBar: {
             type: Boolean,
@@ -295,7 +295,7 @@ export default {
             if (v > 0) {
                 return v;
             }
-            return DEFAULT_MAX_COUNT_OF_ITEMS_TO_DISPLAY_IN_EITHER_COLUMN;
+            return 单列至多允许显示的条目数之默认值;
         },
         _leftColumnSubTitleText() {
             return this.leftColumnSubTitleText || '未选择的条目';
@@ -696,15 +696,14 @@ export default {
 
 
 
-<style source-language-was="scss">
-@charset "UTF-8";
+<style source-language-was="stylus">
 .wlc-dual-columns-exchange-items {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     height: 100%;
     /**
-  * 所有与颜色相关的定义如下。
+    * 所有与颜色相关的定义如下。
     */
 }
 .wlc-dual-columns-exchange-items > .footer-bar {
@@ -854,7 +853,8 @@ export default {
     display: flex;
     max-width: 15rem;
 }
-.wlc-dual-columns-exchange-items .column-of-list .counts-summary dt, .wlc-dual-columns-exchange-items .column-of-list .counts-summary dd {
+.wlc-dual-columns-exchange-items .column-of-list .counts-summary dt,
+.wlc-dual-columns-exchange-items .column-of-list .counts-summary dd {
     flex: 1 1;
     display: block;
     padding: 0.25rem;
@@ -925,23 +925,23 @@ export default {
     visibility: hidden;
 }
 .wlc-dual-columns-exchange-items {
-    color: black;
+    color: #000;
 }
 .wlc-dual-columns-exchange-items .heading-block {
     border-color: inherit;
 }
 .wlc-dual-columns-exchange-items .center-column .el-badge__content {
-    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.319);
+    box-shadow: 0 0 0.25rem rgba(0,0,0,0.319);
 }
 .wlc-dual-columns-exchange-items .column-title-bar {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.515);
+    color: #fff;
+    background-color: rgba(0,0,0,0.515);
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-tip {
     color: #bbb;
-    border-color: rgba(0, 0, 0, 0.19);
-    background-color: rgba(0, 0, 0, 0.75);
-    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.515);
+    border-color: rgba(0,0,0,0.19);
+    background-color: rgba(0,0,0,0.75);
+    box-shadow: 0 0 0.25rem rgba(0,0,0,0.515);
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-tip em {
     color: #5aec3d;
@@ -962,20 +962,20 @@ export default {
     border-color: inherit;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-filter-input input[disabled] {
-    border-color: rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.319);
+    border-color: rgba(0,0,0,0.1);
+    background-color: rgba(255,255,255,0.319);
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-check-all .el-checkbox:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0,0,0,0.1);
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-check-all .el-checkbox.is-disabled {
     background-color: transparent;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-check-all .el-checkbox__label {
-    color: black;
+    color: #000;
 }
 .wlc-dual-columns-exchange-items .column-of-list .counts-summary {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0,0,0,0.1);
 }
 .wlc-dual-columns-exchange-items .column-of-list .counts-summary dt,
 .wlc-dual-columns-exchange-items .column-of-list .counts-summary dd {
@@ -983,21 +983,21 @@ export default {
 }
 .wlc-dual-columns-exchange-items .column-of-list .counts-summary .all,
 .wlc-dual-columns-exchange-items .column-of-list .counts-summary .shown {
-    color: black;
-    text-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+    color: #000;
+    text-shadow: 0 0 1px rgba(0,0,0,0.25);
 }
 .wlc-dual-columns-exchange-items .column-of-list .counts-summary .checked .all .value {
     text-shadow: none;
-    color: white;
-    background-color: black;
+    color: #fff;
+    background-color: #000;
 }
 .wlc-dual-columns-exchange-items .column-of-list .counts-summary .checked .shown .value {
     text-shadow: none;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    background-color: rgba(0,0,0,0.5);
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-list-container {
-    box-shadow: inset 0 0 0.3rem rgba(0, 0, 0, 0.319);
+    box-shadow: inset 0 0 0.3rem rgba(0,0,0,0.319);
 }
 .wlc-dual-columns-exchange-items .column-of-list.left-column {
     border-color: #6e4f4f;
@@ -1008,6 +1008,30 @@ export default {
 .wlc-dual-columns-exchange-items .column-of-list.left-column .column-filter-input.emphasize-to-call-to-action input {
     border-color: #f00;
     animation-name: dual-list-transferer-input-box1-call-to-action;
+}
+@-moz-keyframes dual-list-transferer-input-box1-call-to-action {
+    0%, 100% {
+        border-color: #f00;
+    }
+    40%, 60% {
+        border-color: #fbb;
+    }
+}
+@-webkit-keyframes dual-list-transferer-input-box1-call-to-action {
+    0%, 100% {
+        border-color: #f00;
+    }
+    40%, 60% {
+        border-color: #fbb;
+    }
+}
+@-o-keyframes dual-list-transferer-input-box1-call-to-action {
+    0%, 100% {
+        border-color: #f00;
+    }
+    40%, 60% {
+        border-color: #fbb;
+    }
 }
 @keyframes dual-list-transferer-input-box1-call-to-action {
     0%, 100% {
@@ -1027,6 +1051,30 @@ export default {
     border-color: #090;
     animation-name: dual-list-transferer-input-box2-call-to-action;
 }
+@-moz-keyframes dual-list-transferer-input-box2-call-to-action {
+    0%, 100% {
+        border-color: #aea;
+    }
+    40%, 60% {
+        border-color: #090;
+    }
+}
+@-webkit-keyframes dual-list-transferer-input-box2-call-to-action {
+    0%, 100% {
+        border-color: #aea;
+    }
+    40%, 60% {
+        border-color: #090;
+    }
+}
+@-o-keyframes dual-list-transferer-input-box2-call-to-action {
+    0%, 100% {
+        border-color: #aea;
+    }
+    40%, 60% {
+        border-color: #090;
+    }
+}
 @keyframes dual-list-transferer-input-box2-call-to-action {
     0%, 100% {
         border-color: #aea;
@@ -1042,10 +1090,10 @@ export default {
     background-color: #dbeafa;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-list .column-list-item > label.is-checked {
-    background-color: #409EFF;
+    background-color: #409eff;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-list .column-list-item > label.is-checked .el-checkbox__label {
-    color: white;
+    color: #fff;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-list .column-list-item > label.is-disabled {
     color: #444;
