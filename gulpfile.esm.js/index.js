@@ -16,7 +16,7 @@ import {
 
 
 
-import tsconfig from '../tsconfig'
+import tsconfig from '../tsconfig.json'
 
 const outputFileIndentation = '    '
 

@@ -245,7 +245,7 @@ export default {
 
         maxCountOfItemsToDisplayInEitherColumn: {
             type: Number,
-            default: 单列至多允许显示的条目数之默认值,
+            default: NaN,
         },
 
         hasNotTitleBar: {
@@ -304,7 +304,7 @@ export default {
             const v = +this.maxCountOfItemsToDisplayInEitherColumn
             if (v > 0) { return v }
 
-            return DEFAULT_MAX_COUNT_OF_ITEMS_TO_DISPLAY_IN_EITHER_COLUMN
+            return 单列至多允许显示的条目数之默认值
         },
 
         _leftColumnSubTitleText () {

@@ -3,7 +3,6 @@
         "target": "ES2017"
     },
     "include": [
-        "./源代码/原始的源代码/typescript/**/*.vue",
-        "./源代码/原始的源代码/typescript/**/*.ts"
+        "./源代码/原始的源代码/typescript/**/*"
     ]
 }
