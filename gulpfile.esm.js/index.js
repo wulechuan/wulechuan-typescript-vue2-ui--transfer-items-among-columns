@@ -33,7 +33,7 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
             '*.vue',
         ],
         extraSourceGlobsToWatch: [
-            './源代码/原始的源代码/typescript/types/**/*.ts',
+            // './源代码/原始的源代码/typescript/**/*.ts',
         ],
     },
 
@@ -70,7 +70,7 @@ const 任务闭环之将所有独立于Vue文件的Typescript文件复制到发�
         rootFolderPath: './源代码/原始的源代码/typescript',
 
         relativeGlobsSpecificallyForThisTaskCycle: [
-            '**/*.ts',
+            '测试文件.ts',
             '**/*.vue',
         ],
         extraSourceGlobsToWatch: [

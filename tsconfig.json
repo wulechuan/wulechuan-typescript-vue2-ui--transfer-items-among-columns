@@ -1,11 +1,5 @@
 {
     "compilerOptions": {
         "target": "ES2017"
-    },
-    "include": [
-        "./源代码/原始的源代码/typescript/**/*"
-    ],
-    "exclude": [
-        "./源代码/发布的源代码/typescript/**/*"
-    ]
+    }
 }

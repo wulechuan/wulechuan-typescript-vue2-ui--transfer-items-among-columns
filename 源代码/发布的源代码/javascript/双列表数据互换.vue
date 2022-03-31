@@ -3,12 +3,12 @@
         <header v-if="!hasNotTitleBar" class="title-bar">
             <slot name="title-bar" ></slot>
         </header>
-        
+
         <div class="chief-part">
             <div class="column-of-list left-column">
                 <header class="heading-block">
                     <div class="column-title-bar">{{ _leftColumnSubTitleText }}</div>
-                    
+
                     <div class="column-filter">
                         <el-input
                             v-model="leftColumn.filteringKeyword"
@@ -17,42 +17,42 @@
                             class="column-filter-input"
                             :class="{ 'emphasize-to-call-to-action': leftNotShowingAllItems }"
                             :disabled="leftColumn.allItems.length < 1"
-                            ></el-input>
+                        ></el-input>
                         <i class="el-input__icon el-icon-search" ></i>
                     </div>
-                    
+
                     <div class="column-check-all">
                         <label
                             class="el-checkbox column-check-all--including-hidden"
                             :class="getStateOfColumnCheckAllIncludingHidden('left').labelElementCSSClassNames"
-                            ><span
-                                class="el-checkbox__input"
-                                :class="getStateOfColumnCheckAllIncludingHidden('left').psuedoCheckboxSpanCSSClassNames"
-                                ><span class="el-checkbox__inner" ></span><input
-                                    v-model="leftColumn.allAreChecked"
-                                    type="checkbox"
-                                    aria-hidden="false"
-                                    class="el-checkbox__original"
-                                    :disabled="getStateOfColumnCheckAllIncludingHidden('left').disabled"
-                                    @change="handleColumnCheckAllIncludingHiddenChange('left')"
-                                ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllIncludingHidden('left').labelText }}</span></label>
-                        
+                        ><span
+                            class="el-checkbox__input"
+                            :class="getStateOfColumnCheckAllIncludingHidden('left').psuedoCheckboxSpanCSSClassNames"
+                        ><span class="el-checkbox__inner" ></span><input
+                            v-model="leftColumn.allAreChecked"
+                            type="checkbox"
+                            aria-hidden="false"
+                            class="el-checkbox__original"
+                            :disabled="getStateOfColumnCheckAllIncludingHidden('left').disabled"
+                            @change="handleColumnCheckAllIncludingHiddenChange('left')"
+                        ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllIncludingHidden('left').labelText }}</span></label>
+
                         <label
                             class="el-checkbox column-check-all--visible-only"
                             :class="getStateOfColumnCheckAllVisible('left').labelElementCSSClassNames"
-                            ><span
-                                class="el-checkbox__input"
-                                :class="getStateOfColumnCheckAllVisible('left').psuedoCheckboxSpanCSSClassNames"
-                                ><span class="el-checkbox__inner" ></span><input
-                                    v-model="leftColumn.allVisibleAreChecked"
-                                    type="checkbox"
-                                    aria-hidden="false"
-                                    class="el-checkbox__original"
-                                    :disabled="getStateOfColumnCheckAllVisible('left').disabled"
-                                    @change="handleColumnCheckAllVisibleChange('left')"
-                                ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllVisible('left').labelText }}</span></label>
+                        ><span
+                            class="el-checkbox__input"
+                            :class="getStateOfColumnCheckAllVisible('left').psuedoCheckboxSpanCSSClassNames"
+                        ><span class="el-checkbox__inner" ></span><input
+                            v-model="leftColumn.allVisibleAreChecked"
+                            type="checkbox"
+                            aria-hidden="false"
+                            class="el-checkbox__original"
+                            :disabled="getStateOfColumnCheckAllVisible('left').disabled"
+                            @change="handleColumnCheckAllVisibleChange('left')"
+                        ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllVisible('left').labelText }}</span></label>
                     </div>
-                    
+
                     <dl class="counts-summary">
                         <div class="entry all">
                             <dt>总数</dt>
@@ -64,68 +64,68 @@
                         </div>
                     </dl>
                 </header>
-                
+
                 <div class="column-list-container">
                     <div
                         v-if="leftNotShowingAllItems"
                         class="column-tip"
-                        ><p>条目太多，达<em>{{ leftMatchedItems.length }}</em>条。为确保浏览器不致僵死，暂不显示。</p>
+                    ><p>条目太多，达<em>{{ leftMatchedItems.length }}</em>条。为确保浏览器不致僵死，暂不显示。</p>
                         <p><strong>请先输入筛选关键字，以减少须列示的条目。</strong></p></div>
-                    
+
                     <ol v-else class="column-list">
                         <li
                             v-for="(item) in leftShownItems"
                             :key="item.value"
                             class="column-list-item"
-                            ><label
-                                class="el-checkbox"
-                                :class="getCSSClassNamesOfItem(item).labelElement"
-                                ><span
-                                    class="el-checkbox__input"
-                                    :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
-                                    ><span class="el-checkbox__inner" ></span><input
-                                        v-model="item.isChecked"
-                                        type="checkbox"
-                                        aria-hidden="false"
-                                        class="el-checkbox__original"
-                                        :disabled="item.disabled"
-                                    ></span><span class="el-checkbox__label">{{ item.displayName }}</span></label></li>
+                        ><label
+                            class="el-checkbox"
+                            :class="getCSSClassNamesOfItem(item).labelElement"
+                        ><span
+                            class="el-checkbox__input"
+                            :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
+                        ><span class="el-checkbox__inner" ></span><input
+                            v-model="item.isChecked"
+                            type="checkbox"
+                            aria-hidden="false"
+                            class="el-checkbox__original"
+                            :disabled="item.disabled"
+                        ></span><span class="el-checkbox__label">{{ item.displayName }}</span></label></li>
                     </ol>
                 </div>
             </div>
-            
+
             <div class="center-column">
                 <el-badge
                     :value="leftCheckedItems.length || null"
                     type="danger"
                     class="badge-of-transfering-button-1"
-                    >
+                >
                     <el-button
                         :type="_elementUITypeOfTransferingButtons[0]"
                         :icon="_iconOfTransferingButtons[0]"
                         :disabled="shouldDisableTransferingButton0"
                         @click="handleClickOfButtonOfTransferingToRightColumn"
-                        >{{ _labelTextOfTransferingButtons[0] }}</el-button>
+                    >{{ _labelTextOfTransferingButtons[0] }}</el-button>
                 </el-badge>
-                
+
                 <el-badge
                     :value="rightCheckedItems.length || null"
                     type="success"
                     class="badge-of-transfering-button-2"
-                    >
+                >
                     <el-button
                         :type="_elementUITypeOfTransferingButtons[1]"
                         :icon="_iconOfTransferingButtons[1]"
                         :disabled="shouldDisableTransferingButton1"
                         @click="handleClickOfButtonOfTransferingToLeftColumn"
-                        >{{ _labelTextOfTransferingButtons[1] }}</el-button>
+                    >{{ _labelTextOfTransferingButtons[1] }}</el-button>
                 </el-badge>
             </div>
-            
+
             <div class="column-of-list right-column">
                 <header class="heading-block">
                     <div class="column-title-bar">{{ _rightColumnSubTitleText }}</div>
-                    
+
                     <div class="column-filter">
                         <el-input
                             v-model="rightColumn.filteringKeyword"
@@ -134,42 +134,42 @@
                             class="column-filter-input"
                             :class="{ 'emphasize-to-call-to-action': rightNotShowingAllItems, 'emphasize-without-animation': leftNotShowingAllItems }"
                             :disabled="rightColumn.allItems.length < 1"
-                            ></el-input>
+                        ></el-input>
                         <i class="el-input__icon el-icon-search" ></i>
                     </div>
-                    
+
                     <div class="column-check-all">
                         <label
                             class="el-checkbox"
                             :class="getStateOfColumnCheckAllIncludingHidden('right').labelElementCSSClassNames"
-                            ><span
-                                class="el-checkbox__input"
-                                :class="getStateOfColumnCheckAllIncludingHidden('right').psuedoCheckboxSpanCSSClassNames"
-                                ><span class="el-checkbox__inner" ></span><input
-                                    v-model="rightColumn.allAreChecked"
-                                    type="checkbox"
-                                    aria-hidden="false"
-                                    class="el-checkbox__original"
-                                    :disabled="getStateOfColumnCheckAllIncludingHidden('right').disabled"
-                                    @change="handleColumnCheckAllIncludingHiddenChange('right')"
-                                ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllIncludingHidden('right').labelText }}</span></label>
-                        
+                        ><span
+                            class="el-checkbox__input"
+                            :class="getStateOfColumnCheckAllIncludingHidden('right').psuedoCheckboxSpanCSSClassNames"
+                        ><span class="el-checkbox__inner" ></span><input
+                            v-model="rightColumn.allAreChecked"
+                            type="checkbox"
+                            aria-hidden="false"
+                            class="el-checkbox__original"
+                            :disabled="getStateOfColumnCheckAllIncludingHidden('right').disabled"
+                            @change="handleColumnCheckAllIncludingHiddenChange('right')"
+                        ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllIncludingHidden('right').labelText }}</span></label>
+
                         <label
                             class="el-checkbox"
                             :class="getStateOfColumnCheckAllVisible('right').labelElementCSSClassNames"
-                            ><span
-                                class="el-checkbox__input"
-                                :class="getStateOfColumnCheckAllVisible('right').psuedoCheckboxSpanCSSClassNames"
-                                ><span class="el-checkbox__inner" ></span><input
-                                    v-model="rightColumn.allVisibleAreChecked"
-                                    type="checkbox"
-                                    aria-hidden="false"
-                                    class="el-checkbox__original"
-                                    :disabled="getStateOfColumnCheckAllVisible('right').disabled"
-                                    @change="handleColumnCheckAllVisibleChange('right')"
-                                ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllVisible('right').labelText }}</span></label>
+                        ><span
+                            class="el-checkbox__input"
+                            :class="getStateOfColumnCheckAllVisible('right').psuedoCheckboxSpanCSSClassNames"
+                        ><span class="el-checkbox__inner" ></span><input
+                            v-model="rightColumn.allVisibleAreChecked"
+                            type="checkbox"
+                            aria-hidden="false"
+                            class="el-checkbox__original"
+                            :disabled="getStateOfColumnCheckAllVisible('right').disabled"
+                            @change="handleColumnCheckAllVisibleChange('right')"
+                        ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllVisible('right').labelText }}</span></label>
                     </div>
-                    
+
                     <dl class="counts-summary">
                         <div class="entry all">
                             <dt>总数</dt>
@@ -181,37 +181,37 @@
                         </div>
                     </dl>
                 </header>
-                
+
                 <div class="column-list-container">
                     <div
                         v-if="rightNotShowingAllItems"
                         class="column-tip"
-                        ><p>条目太多，达<em>{{ rightMatchedItems.length }}</em>条。为确保浏览器不致僵死，暂不显示。</p>
+                    ><p>条目太多，达<em>{{ rightMatchedItems.length }}</em>条。为确保浏览器不致僵死，暂不显示。</p>
                         <p><strong>请先输入筛选关键字，以减少须列示的条目。</strong></p></div>
-                    
+
                     <ol v-else class="column-list">
                         <li
                             v-for="item in rightShownItems"
                             :key="item.value"
                             class="column-list-item"
-                            ><label
-                                class="el-checkbox"
-                                :class="getCSSClassNamesOfItem(item).labelElement"
-                                ><span
-                                    class="el-checkbox__input"
-                                    :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
-                                    ><span class="el-checkbox__inner" ></span><input
-                                        v-model="item.isChecked"
-                                        type="checkbox"
-                                        aria-hidden="false"
-                                        class="el-checkbox__original"
-                                        :disabled="item.disabled"
-                                    ></span><span class="el-checkbox__label">{{ item.displayName }}</span></label></li>
+                        ><label
+                            class="el-checkbox"
+                            :class="getCSSClassNamesOfItem(item).labelElement"
+                        ><span
+                            class="el-checkbox__input"
+                            :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
+                        ><span class="el-checkbox__inner" ></span><input
+                            v-model="item.isChecked"
+                            type="checkbox"
+                            aria-hidden="false"
+                            class="el-checkbox__original"
+                            :disabled="item.disabled"
+                        ></span><span class="el-checkbox__label">{{ item.displayName }}</span></label></li>
                     </ol>
                 </div>
             </div>
         </div>
-        
+
         <footer v-if="hasFooterBar" class="footer-bar">
             <slot name="footer-bar"></slot>
         </footer>
@@ -223,7 +223,7 @@
 
 
 <script source-language-was="ts">
-const 单列至多允许显示的条目数之默认值 = 2000;
+const 单列至多允许显示的条目数之默认值 = 2000
 export default {
     name: 'WlcDualColumnsExchangeItems',
     model: {
@@ -287,225 +287,225 @@ export default {
                 allItems: [],
                 checkedItemsCache: [],
             },
-        };
+        }
     },
     computed: {
         _maxCountOfItemsToDisplayInEitherColumn() {
-            const v = +this.maxCountOfItemsToDisplayInEitherColumn;
+            const v = +this.maxCountOfItemsToDisplayInEitherColumn
             if (v > 0) {
-                return v;
+                return v
             }
-            return 单列至多允许显示的条目数之默认值;
+            return 单列至多允许显示的条目数之默认值
         },
         _leftColumnSubTitleText() {
-            return this.leftColumnSubTitleText || '未选择的条目';
+            return this.leftColumnSubTitleText || '未选择的条目'
         },
         _rightColumnSubTitleText() {
-            return this.rightColumnSubTitleText || '已选择的条目';
+            return this.rightColumnSubTitleText || '已选择的条目'
         },
         _labelTextOfTransferingButtons() {
-            const defaultValues = ['', ''];
-            return this.getValuePairOfTransferingButtons(this.labelTextOfTransferingButtons, defaultValues);
+            const defaultValues = ['', '']
+            return this.getValuePairOfTransferingButtons(this.labelTextOfTransferingButtons, defaultValues)
         },
         _elementUITypeOfTransferingButtons() {
-            const defaultValues = ['primary', 'primary'];
-            return this.getValuePairOfTransferingButtons(this.elementUITypeOfTransferingButtons, defaultValues);
+            const defaultValues = ['primary', 'primary']
+            return this.getValuePairOfTransferingButtons(this.elementUITypeOfTransferingButtons, defaultValues)
         },
         _iconOfTransferingButtons() {
-            const [labelLeft, labelRight] = this._labelTextOfTransferingButtons;
+            const [labelLeft, labelRight] = this._labelTextOfTransferingButtons
             return [
                 labelLeft ? null : 'el-icon-arrow-right',
                 labelRight ? null : 'el-icon-arrow-left',
-            ];
+            ]
         },
         leftEnabledItems() {
-            return this.leftColumn.allItems.filter(uxItem => !uxItem.disabled);
+            return this.leftColumn.allItems.filter(uxItem => !uxItem.disabled)
         },
         rightEnabledItems() {
-            return this.rightColumn.allItems.filter(uxItem => !uxItem.disabled);
+            return this.rightColumn.allItems.filter(uxItem => !uxItem.disabled)
         },
         leftMatchedItems() {
-            const { allItems, filteringKeyword, } = this.leftColumn;
-            let matchedItems = allItems;
+            const { allItems, filteringKeyword } = this.leftColumn
+            let matchedItems = allItems
             if (filteringKeyword) {
-                const regexp = new RegExp(`${filteringKeyword}`, 'i');
-                matchedItems = allItems.filter(i => regexp.test(i.displayName));
+                const regexp = new RegExp(`${filteringKeyword}`, 'i')
+                matchedItems = allItems.filter(i => regexp.test(i.displayName))
             }
-            return matchedItems;
+            return matchedItems
         },
         rightMatchedItems() {
-            const { allItems, filteringKeyword, } = this.rightColumn;
-            let matchedItems = allItems;
+            const { allItems, filteringKeyword } = this.rightColumn
+            let matchedItems = allItems
             if (filteringKeyword) {
-                const regexp = new RegExp(`${filteringKeyword}`, 'i');
-                matchedItems = allItems.filter(i => regexp.test(i.displayName));
+                const regexp = new RegExp(`${filteringKeyword}`, 'i')
+                matchedItems = allItems.filter(i => regexp.test(i.displayName))
             }
-            return matchedItems;
+            return matchedItems
         },
         leftShownItems() {
-            const { _maxCountOfItemsToDisplayInEitherColumn } = this;
-            const itemsToShow = this.leftMatchedItems;
-            const tooManyItemsToShow = itemsToShow.length > _maxCountOfItemsToDisplayInEitherColumn;
+            const { _maxCountOfItemsToDisplayInEitherColumn } = this
+            const itemsToShow = this.leftMatchedItems
+            const tooManyItemsToShow = itemsToShow.length > _maxCountOfItemsToDisplayInEitherColumn
             if (tooManyItemsToShow) {
-                return [];
+                return []
             }
-            return itemsToShow;
+            return itemsToShow
         },
         rightShownItems() {
-            const { _maxCountOfItemsToDisplayInEitherColumn } = this;
-            const itemsToShow = this.rightMatchedItems;
-            const tooManyItemsToShow = itemsToShow.length > _maxCountOfItemsToDisplayInEitherColumn;
+            const { _maxCountOfItemsToDisplayInEitherColumn } = this
+            const itemsToShow = this.rightMatchedItems
+            const tooManyItemsToShow = itemsToShow.length > _maxCountOfItemsToDisplayInEitherColumn
             if (tooManyItemsToShow) {
-                return [];
+                return []
             }
-            return itemsToShow;
+            return itemsToShow
         },
         leftNotShowingAllItems() {
-            return this.leftShownItems.length === 0 && this.leftMatchedItems.length > 0;
+            return this.leftShownItems.length === 0 && this.leftMatchedItems.length > 0
         },
         rightNotShowingAllItems() {
-            return this.rightShownItems.length === 0 && this.rightMatchedItems.length > 0;
+            return this.rightShownItems.length === 0 && this.rightMatchedItems.length > 0
         },
         leftCheckedItems() {
-            const checkedItems = this.leftColumn.allItems.filter(i => !i.disabled && !!i.isChecked);
+            const checkedItems = this.leftColumn.allItems.filter(i => !i.disabled && !!i.isChecked)
             this.leftColumn.checkedItemsCache = [...checkedItems]; // eslint-disable-line
-            return checkedItems;
+            return checkedItems
         },
         rightCheckedItems() {
-            const checkedItems = this.rightColumn.allItems.filter(i => !i.disabled && !!i.isChecked);
+            const checkedItems = this.rightColumn.allItems.filter(i => !i.disabled && !!i.isChecked)
             this.rightColumn.checkedItemsCache = [...checkedItems]; // eslint-disable-line
-            return checkedItems;
+            return checkedItems
         },
         leftShownCheckedItems() {
-            return this.leftShownItems.filter(i => !i.disabled && !!i.isChecked);
+            return this.leftShownItems.filter(i => !i.disabled && !!i.isChecked)
         },
         rightShownCheckedItems() {
-            return this.rightShownItems.filter(i => !i.disabled && !!i.isChecked);
+            return this.rightShownItems.filter(i => !i.disabled && !!i.isChecked)
         },
         shouldDisableTransferingButton0() {
-            return this.leftCheckedItems.length === 0;
+            return this.leftCheckedItems.length === 0
         },
         shouldDisableTransferingButton1() {
-            return this.rightCheckedItems.length === 0;
+            return this.rightCheckedItems.length === 0
         },
     },
     watch: {
         'value'() {
-            this.generateItemsOfBothColumns();
+            this.generateItemsOfBothColumns()
         },
         'allCandidatesOfBothColumns'() {
-            this.generateItemsOfBothColumns();
+            this.generateItemsOfBothColumns()
         },
     },
     mounted() {
-        this.generateItemsOfBothColumns();
+        this.generateItemsOfBothColumns()
     },
     methods: {
         columnFilterPlaceholderText(side) {
-            let candidates;
+            let candidates
             if (side === 'left') {
-                candidates = this.leftColumn.allItems;
+                candidates = this.leftColumn.allItems
             }
             else {
-                candidates = this.rightColumn.allItems;
+                candidates = this.rightColumn.allItems
             }
             if (candidates.length > 0) {
                 if (side === 'left') {
-                    return '筛选左侧条目';
+                    return '筛选左侧条目'
                 }
                 else {
-                    return '筛选右侧条目';
+                    return '筛选右侧条目'
                 }
             }
-            return '无条目可筛选';
+            return '无条目可筛选'
         },
         getValuePairOfTransferingButtons(providedValueArray, defaultValueArray) {
             if (!Array.isArray(defaultValueArray)) {
-                throw new Error('<wlc-dual-columns-exchange-items />: getValuePairOfTransferingButtons() defaultValueArray 无效。');
+                throw new Error('<wlc-dual-columns-exchange-items />: getValuePairOfTransferingButtons() defaultValueArray 无效。')
             }
             if (!Array.isArray(providedValueArray)) {
-                return defaultValueArray;
+                return defaultValueArray
             }
-            const usedValueArray = [...defaultValueArray];
-            const [valueOfLeft, valueOfRight] = providedValueArray;
+            const usedValueArray = [...defaultValueArray]
+            const [valueOfLeft, valueOfRight] = providedValueArray
             if (valueOfLeft || valueOfLeft === 0) {
-                usedValueArray[0] = valueOfLeft;
+                usedValueArray[0] = valueOfLeft
             }
             if (valueOfRight || valueOfRight === 0) {
-                usedValueArray[1] = valueOfRight;
+                usedValueArray[1] = valueOfRight
             }
-            return usedValueArray;
+            return usedValueArray
         },
         generateItemsOfBothColumns() {
-            let rightsideValues = this.value;
+            let rightsideValues = this.value
             if (!Array.isArray(rightsideValues)) {
-                rightsideValues = [];
+                rightsideValues = []
             }
-            let candidates = this.allCandidatesOfBothColumns;
+            let candidates = this.allCandidatesOfBothColumns
             if (!Array.isArray(candidates)) {
-                candidates = [];
+                candidates = []
             }
-            const leftCheckedItemsCache = this.leftColumn.checkedItemsCache;
-            const rightCheckedItemsCache = this.rightColumn.checkedItemsCache;
-            const itemsDeduplicatedDict = {};
-            const leftAllItems = [];
-            const rightAllItems = [];
+            const leftCheckedItemsCache = this.leftColumn.checkedItemsCache
+            const rightCheckedItemsCache = this.rightColumn.checkedItemsCache
+            const itemsDeduplicatedDict = {}
+            const leftAllItems = []
+            const rightAllItems = []
             candidates.forEach(c => {
                 if (!c) {
-                    return;
+                    return
                 }
-                const { value, disabled } = c;
+                const { value, disabled } = c
                 if (value in itemsDeduplicatedDict) {
-                    const dupCount = itemsDeduplicatedDict[value];
-                    itemsDeduplicatedDict[value]++;
-                    console.error(`<wlc-dual-columns-exchange-items>：发现 value （${value}）第${dupCount}个重复的条目。`);
-                    return;
+                    const dupCount = itemsDeduplicatedDict[value]
+                    itemsDeduplicatedDict[value]++
+                    console.error(`<wlc-dual-columns-exchange-items>：发现 value （${value}）第${dupCount}个重复的条目。`)
+                    return
                 }
-                itemsDeduplicatedDict[value] = 1;
-                const uxItem = Object.assign(Object.assign({}, c), { isChecked: false });
-                const valueShouldBeAtRightside = rightsideValues.some(v => v === value);
+                itemsDeduplicatedDict[value] = 1
+                const uxItem = Object.assign(Object.assign({}, c), { isChecked: false })
+                const valueShouldBeAtRightside = rightsideValues.some(v => v === value)
                 // if (valueShouldBeAtRightside) {
                 //   console.debug(`${value}`, valueShouldBeAtRightside)
                 // }
                 if (valueShouldBeAtRightside) {
                     if (!disabled) {
-                        const cachedUXItem = rightCheckedItemsCache.find(item => item.value === value);
+                        const cachedUXItem = rightCheckedItemsCache.find(item => item.value === value)
                         if (cachedUXItem) {
-                            uxItem.isChecked = cachedUXItem.isChecked;
+                            uxItem.isChecked = cachedUXItem.isChecked
                         }
                     }
-                    rightAllItems.push(uxItem);
+                    rightAllItems.push(uxItem)
                 }
                 else {
                     if (!disabled) {
-                        const cachedUXItem = leftCheckedItemsCache.find(item => item.value === value);
+                        const cachedUXItem = leftCheckedItemsCache.find(item => item.value === value)
                         if (cachedUXItem) {
-                            uxItem.isChecked = cachedUXItem.isChecked;
+                            uxItem.isChecked = cachedUXItem.isChecked
                         }
                     }
-                    leftAllItems.push(uxItem);
+                    leftAllItems.push(uxItem)
                 }
-            });
-            this.leftColumn.allItems = leftAllItems;
-            this.rightColumn.allItems = rightAllItems;
+            })
+            this.leftColumn.allItems = leftAllItems
+            this.rightColumn.allItems = rightAllItems
             // this.leftColumn.filteringKeyword = ''
             // this.rightColumn.filteringKeyword = ''
-            const dupKeys = Object.keys(itemsDeduplicatedDict).filter(key => itemsDeduplicatedDict[key] > 1);
+            const dupKeys = Object.keys(itemsDeduplicatedDict).filter(key => itemsDeduplicatedDict[key] > 1)
             if (dupKeys.length > 0) {
                 const totalDupCountOfAll = dupKeys.reduce((total, key) => {
-                    return total + itemsDeduplicatedDict[key] - 1;
-                }, 0);
-                const errorMessage = `总计有 ${dupKeys.length} 种候选项出现重复项。重复项累计 ${totalDupCountOfAll} 条。`;
-                console.error(errorMessage);
-                this.$message.error(errorMessage);
+                    return total + itemsDeduplicatedDict[key] - 1
+                }, 0)
+                const errorMessage = `总计有 ${dupKeys.length} 种候选项出现重复项。重复项累计 ${totalDupCountOfAll} 条。`
+                console.error(errorMessage)
+                this.$message.error(errorMessage)
             }
         },
         getCSSClassNamesOfItem(item) {
             if (!item) {
-                return null;
+                return null
             }
-            const isChecked = !!item.isChecked;
-            const disabled = !!item.disabled;
+            const isChecked = !!item.isChecked
+            const disabled = !!item.disabled
             return {
                 labelElement: {
                     'is-checked': isChecked,
@@ -515,42 +515,42 @@ export default {
                     'is-checked': isChecked,
                     'is-disabled': disabled,
                 },
-            };
+            }
         },
         getStateOfColumnCheckAllIncludingHidden(side) {
-            let allEnabledItems;
+            let allEnabledItems
             if (side === 'left') {
-                allEnabledItems = this.leftEnabledItems;
+                allEnabledItems = this.leftEnabledItems
             }
             else {
-                allEnabledItems = this.rightEnabledItems;
+                allEnabledItems = this.rightEnabledItems
             }
-            let labelElementCSSClassNames = null;
-            let psuedoCheckboxSpanCSSClassNames = null;
-            let labelText = '无可勾选项';
-            const disabled = allEnabledItems.length === 0;
+            let labelElementCSSClassNames = null
+            let psuedoCheckboxSpanCSSClassNames = null
+            let labelText = '无可勾选项'
+            const disabled = allEnabledItems.length === 0
             if (disabled) {
-                labelElementCSSClassNames = 'is-disabled';
-                psuedoCheckboxSpanCSSClassNames = 'is-disabled';
+                labelElementCSSClassNames = 'is-disabled'
+                psuedoCheckboxSpanCSSClassNames = 'is-disabled'
             }
             else {
-                const noneAreChecked = allEnabledItems.every(uxItem => !uxItem.isChecked);
+                const noneAreChecked = allEnabledItems.every(uxItem => !uxItem.isChecked)
                 if (noneAreChecked) {
-                    labelText = '全部勾选（含未列示条目）';
-                    labelElementCSSClassNames = '';
-                    psuedoCheckboxSpanCSSClassNames = '';
+                    labelText = '全部勾选（含未列示条目）'
+                    labelElementCSSClassNames = ''
+                    psuedoCheckboxSpanCSSClassNames = ''
                 }
                 else {
-                    const allAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked);
+                    const allAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked)
                     if (allAreChecked) {
-                        labelText = '全部去掉勾选（含未列示条目）';
-                        labelElementCSSClassNames = 'is-checked';
-                        psuedoCheckboxSpanCSSClassNames = 'is-checked';
+                        labelText = '全部去掉勾选（含未列示条目）'
+                        labelElementCSSClassNames = 'is-checked'
+                        psuedoCheckboxSpanCSSClassNames = 'is-checked'
                     }
                     else {
-                        labelText = '全部勾选（含未列示条目）';
-                        labelElementCSSClassNames = 'is-indeterminate';
-                        psuedoCheckboxSpanCSSClassNames = 'is-indeterminate';
+                        labelText = '全部勾选（含未列示条目）'
+                        labelElementCSSClassNames = 'is-indeterminate'
+                        psuedoCheckboxSpanCSSClassNames = 'is-indeterminate'
                     }
                 }
             }
@@ -559,42 +559,42 @@ export default {
                 psuedoCheckboxSpanCSSClassNames,
                 disabled,
                 labelText,
-            };
+            }
         },
         getStateOfColumnCheckAllVisible(side) {
-            let allEnabledItems;
+            let allEnabledItems
             if (side === 'left') {
-                allEnabledItems = this.leftShownItems;
+                allEnabledItems = this.leftShownItems
             }
             else {
-                allEnabledItems = this.rightShownItems;
+                allEnabledItems = this.rightShownItems
             }
-            let labelElementCSSClassNames = null;
-            let psuedoCheckboxSpanCSSClassNames = null;
-            let labelText = '无可勾选项';
-            const disabled = allEnabledItems.length === 0;
+            let labelElementCSSClassNames = null
+            let psuedoCheckboxSpanCSSClassNames = null
+            let labelText = '无可勾选项'
+            const disabled = allEnabledItems.length === 0
             if (disabled) {
-                labelElementCSSClassNames = 'is-disabled';
-                psuedoCheckboxSpanCSSClassNames = 'is-disabled';
+                labelElementCSSClassNames = 'is-disabled'
+                psuedoCheckboxSpanCSSClassNames = 'is-disabled'
             }
             else {
-                const noneVisibleAreChecked = allEnabledItems.every(uxItem => !uxItem.isChecked);
+                const noneVisibleAreChecked = allEnabledItems.every(uxItem => !uxItem.isChecked)
                 if (noneVisibleAreChecked) {
-                    labelText = '全部勾选（仅列示条目）';
-                    labelElementCSSClassNames = '';
-                    psuedoCheckboxSpanCSSClassNames = '';
+                    labelText = '全部勾选（仅列示条目）'
+                    labelElementCSSClassNames = ''
+                    psuedoCheckboxSpanCSSClassNames = ''
                 }
                 else {
-                    const allVisibleAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked);
+                    const allVisibleAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked)
                     if (allVisibleAreChecked) {
-                        labelText = '全部去掉勾选（仅列示条目）';
-                        labelElementCSSClassNames = 'is-checked';
-                        psuedoCheckboxSpanCSSClassNames = 'is-checked';
+                        labelText = '全部去掉勾选（仅列示条目）'
+                        labelElementCSSClassNames = 'is-checked'
+                        psuedoCheckboxSpanCSSClassNames = 'is-checked'
                     }
                     else {
-                        labelText = '全部勾选（仅列示条目）';
-                        labelElementCSSClassNames = 'is-indeterminate';
-                        psuedoCheckboxSpanCSSClassNames = 'is-indeterminate';
+                        labelText = '全部勾选（仅列示条目）'
+                        labelElementCSSClassNames = 'is-indeterminate'
+                        psuedoCheckboxSpanCSSClassNames = 'is-indeterminate'
                     }
                 }
             }
@@ -603,93 +603,93 @@ export default {
                 psuedoCheckboxSpanCSSClassNames,
                 disabled,
                 labelText,
-            };
+            }
         },
         handleColumnCheckAllIncludingHiddenChange(side) {
-            let allEnabledItems;
+            let allEnabledItems
             if (side === 'left') {
-                allEnabledItems = this.leftEnabledItems;
+                allEnabledItems = this.leftEnabledItems
             }
             else {
-                allEnabledItems = this.rightEnabledItems;
+                allEnabledItems = this.rightEnabledItems
             }
-            const allAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked);
-            const shouldCheckAll = !allAreChecked;
-            allEnabledItems.forEach(uxItem => { uxItem.isChecked = shouldCheckAll; });
+            const allAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked)
+            const shouldCheckAll = !allAreChecked
+            allEnabledItems.forEach(uxItem => { uxItem.isChecked = shouldCheckAll })
             if (side === 'left') {
-                this.leftColumn.allAreChecked = allAreChecked;
+                this.leftColumn.allAreChecked = allAreChecked
             }
             else {
-                this.rightColumn.allAreChecked = allAreChecked;
+                this.rightColumn.allAreChecked = allAreChecked
             }
         },
         handleColumnCheckAllVisibleChange(side) {
-            let allShownItems;
+            let allShownItems
             if (side === 'left') {
-                allShownItems = this.leftShownItems;
+                allShownItems = this.leftShownItems
             }
             else {
-                allShownItems = this.rightShownItems;
+                allShownItems = this.rightShownItems
             }
-            const allVisibleAreChecked = allShownItems.every(uxItem => uxItem.isChecked);
-            const shouldCheckAll = !allVisibleAreChecked;
+            const allVisibleAreChecked = allShownItems.every(uxItem => uxItem.isChecked)
+            const shouldCheckAll = !allVisibleAreChecked
             allShownItems.forEach(uxItem => {
                 if (uxItem.disabled) {
-                    return;
+                    return
                 }
-                uxItem.isChecked = shouldCheckAll;
-            });
+                uxItem.isChecked = shouldCheckAll
+            })
             if (side === 'left') {
-                this.leftColumn.allVisibleAreChecked = allVisibleAreChecked;
+                this.leftColumn.allVisibleAreChecked = allVisibleAreChecked
             }
             else {
-                this.rightColumn.allVisibleAreChecked = allVisibleAreChecked;
+                this.rightColumn.allVisibleAreChecked = allVisibleAreChecked
             }
         },
         handleClickOfButtonOfTransferingToRightColumn() {
-            this.transferLeftCheckedItemsToRight();
+            this.transferLeftCheckedItemsToRight()
         },
         handleClickOfButtonOfTransferingToLeftColumn() {
-            this.transferRighttColumnCheckedItemsToLeft();
+            this.transferRighttColumnCheckedItemsToLeft()
         },
         transferLeftCheckedItemsToRight() {
-            const restOfLeft = [];
-            const toMoveToRight = [];
+            const restOfLeft = []
+            const toMoveToRight = []
             this.leftColumn.allItems.forEach(uxItem => {
                 if (!uxItem.disabled && uxItem.isChecked) {
-                    toMoveToRight.push(uxItem);
-                    uxItem.isChecked = false;
+                    toMoveToRight.push(uxItem)
+                    uxItem.isChecked = false
                 }
                 else {
-                    restOfLeft.push(uxItem);
+                    restOfLeft.push(uxItem)
                 }
-            });
-            this.leftColumn.allItems = restOfLeft;
-            this.rightColumn.allItems = [...toMoveToRight, ...this.rightColumn.allItems];
-            this.emitChangeEvent();
+            })
+            this.leftColumn.allItems = restOfLeft
+            this.rightColumn.allItems = [...toMoveToRight, ...this.rightColumn.allItems]
+            this.emitChangeEvent()
         },
         transferRighttColumnCheckedItemsToLeft() {
-            const restOfRight = [];
-            const toMoveToLeft = [];
+            const restOfRight = []
+            const toMoveToLeft = []
             this.rightColumn.allItems.forEach(uxItem => {
                 if (!uxItem.disabled && uxItem.isChecked) {
-                    toMoveToLeft.push(uxItem);
-                    uxItem.isChecked = false;
+                    toMoveToLeft.push(uxItem)
+                    uxItem.isChecked = false
                 }
                 else {
-                    restOfRight.push(uxItem);
+                    restOfRight.push(uxItem)
                 }
-            });
-            this.rightColumn.allItems = restOfRight;
-            this.leftColumn.allItems = [...toMoveToLeft, ...this.leftColumn.allItems];
-            this.emitChangeEvent();
+            })
+            this.rightColumn.allItems = restOfRight
+            this.leftColumn.allItems = [...toMoveToLeft, ...this.leftColumn.allItems]
+            this.emitChangeEvent()
         },
         emitChangeEvent() {
-            const payload = this.rightColumn.allItems.map(uxItem => uxItem.value);
-            this.$emit('change', payload);
+            const payload = this.rightColumn.allItems.map(uxItem => uxItem.value)
+            this.$emit('change', payload)
         },
     },
-};
+}
 </script>
 
 
