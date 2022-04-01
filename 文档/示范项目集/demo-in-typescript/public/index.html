@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <style>
+        html {
+            font-size: 20px;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        html,
+        body,
+        #vue-应用根,
+        #vue-应用根占位-div {
+            height: 100%;
+        }
+
+        #vue-应用根占位-div {
+            font-family: Avenir, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <noscript>
+        <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> 需要浏览器开启 Javascript 之功能方可正常运转。</strong>
+    </noscript>
+    <div id="vue-应用根占位-div"></div>
+    <!-- built files will be auto injected -->
+</body>
+</html>
