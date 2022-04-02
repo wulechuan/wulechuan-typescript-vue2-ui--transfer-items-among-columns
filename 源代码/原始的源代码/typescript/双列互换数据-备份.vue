@@ -17,7 +17,6 @@
                             :class="{ 'emphasize-to-call-to-action': leftNotShowingAllItems }"
                             :disabled="左列之状态.allItems.length < 1"
                         >
-                        <i class="el-input__icon el-icon-search" ></i>
                     </div>
 
                     <div class="column-check-all">
@@ -148,7 +147,6 @@
                             :class="{ 'emphasize-to-call-to-action': rightNotShowingAllItems, 'emphasize-without-animation': leftNotShowingAllItems }"
                             :disabled="右列之状态.allItems.length < 1"
                         >
-                        <i class="el-input__icon el-icon-search" ></i>
                     </div>
 
                     <div class="column-check-all">
