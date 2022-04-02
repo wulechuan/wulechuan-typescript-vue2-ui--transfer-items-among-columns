@@ -271,7 +271,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
         return this.rightColumnSubTitleText || '已选择的条目';
     }
     get decided_labelTextOfTransferingButtons() {
-        const defaultValues = ['', ''];
+        const defaultValues = ['>', '<'];
         return this.getValuePairOfTransferingButtons(this.labelTextOfTransferingButtons, defaultValues);
     }
     get decided_elementUITypeOfTransferingButtons() {
@@ -425,7 +425,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
             if (!c) {
                 return;
             }
-            const { value, disabled } = c;
+            const { 数据: value, disabled } = c;
             if (value in itemsDeduplicatedDict) {
                 const dupCount = itemsDeduplicatedDict[value];
                 itemsDeduplicatedDict[value]++;
@@ -440,7 +440,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
             // }
             if (valueShouldBeAtRightside) {
                 if (!disabled) {
-                    const cachedUXItem = rightCheckedItemsCache.find(item => item.value === value);
+                    const cachedUXItem = rightCheckedItemsCache.find(item => item.数据 === value);
                     if (cachedUXItem) {
                         uxItem.isChecked = cachedUXItem.isChecked;
                     }
@@ -449,7 +449,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
             }
             else {
                 if (!disabled) {
-                    const cachedUXItem = leftCheckedItemsCache.find(item => item.value === value);
+                    const cachedUXItem = leftCheckedItemsCache.find(item => item.数据 === value);
                     if (cachedUXItem) {
                         uxItem.isChecked = cachedUXItem.isChecked;
                     }
@@ -656,7 +656,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
         this.emitChangeEvent();
     }
     emitChangeEvent() {
-        const payload = this.rightColumn.allItems.map(uxItem => uxItem.value);
+        const payload = this.rightColumn.allItems.map(uxItem => uxItem.数据);
         this.$emit('change', payload);
     }
 };

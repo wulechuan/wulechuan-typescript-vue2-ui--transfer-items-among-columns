@@ -219,35 +219,13 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-export interface 范_条目 {
-    displayName: string;
-    isChecked: boolean;
-    disabled: boolean;
-    [key: string]: any;
-}
-
-export type 范_条目之列表 = Array<范_条目>
-// export interface 范_条目之列表 extends Array<any> {
-//     [索引编号: number]: 范_条目;
-// }
-
-export type 范_列代号 = '左列' | '右列'
-
-type 范_单列配置项集<范_条目> = {
-    filteringKeyword: string;
-    allAreChecked: boolean;
-    allVisibleAreChecked: boolean;
-    allItems: 范_条目之列表;
-    checkedItemsCache: 范_条目之列表;
-}
-
 const 单列至多允许显示的条目数之默认值 = 2000
 
 @Component({})
 export default class wlc双列互换数据 extends Vue {
-    @Model('change', { type: Array }) public value?: 范_条目之列表
+    @Model('change', { type: Array }) public value?: wlc双列互换数据.范_条目之列表
 
-    @Prop() public allCandidatesOfBothColumns?: 范_条目之列表
+    @Prop() public allCandidatesOfBothColumns?: wlc双列互换数据.范_条目之列表
     @Prop() public maxCountOfItemsToDisplayInEitherColumn?: number
     @Prop() public hasNotTitleBar?: boolean
     @Prop() public hasFooterBar?: boolean
@@ -256,7 +234,7 @@ export default class wlc双列互换数据 extends Vue {
     @Prop() public labelTextOfTransferingButtons?: Array<string>
     @Prop() public elementUITypeOfTransferingButtons?: Array<any>
 
-    private leftColumn: 范_单列配置项集<范_条目> = {
+    private leftColumn: wlc双列互换数据.范_单列配置项集 = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -264,7 +242,7 @@ export default class wlc双列互换数据 extends Vue {
         checkedItemsCache: [],
     }
 
-    private rightColumn: 范_单列配置项集<范_条目> = {
+    private rightColumn: wlc双列互换数据.范_单列配置项集 = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -298,7 +276,7 @@ export default class wlc双列互换数据 extends Vue {
     }
 
     private get decided_labelTextOfTransferingButtons (): Array<string> {
-        const defaultValues = ['', '']
+        const defaultValues = ['>', '<']
         return this.getValuePairOfTransferingButtons(this.labelTextOfTransferingButtons, defaultValues)
     }
 
@@ -315,18 +293,18 @@ export default class wlc双列互换数据 extends Vue {
         ]
     }
 
-    private get leftEnabledItems (): 范_条目之列表 {
+    private get leftEnabledItems (): wlc双列互换数据.范_条目之列表 {
         return this.leftColumn.allItems.filter(uxItem => {
 
         })
         // return this.leftColumn.allItems.filter(uxItem => !uxItem.disabled)
     }
 
-    private get rightEnabledItems (): 范_条目之列表 {
+    private get rightEnabledItems (): wlc双列互换数据.范_条目之列表 {
         return this.rightColumn.allItems.filter(uxItem => !uxItem.disabled)
     }
 
-    private get leftMatchedItems (): 范_条目之列表 {
+    private get leftMatchedItems (): wlc双列互换数据.范_条目之列表 {
         const {
             allItems,
             filteringKeyword,
@@ -341,7 +319,7 @@ export default class wlc双列互换数据 extends Vue {
         return matchedItems
     }
 
-    private get rightMatchedItems (): 范_条目之列表 {
+    private get rightMatchedItems (): wlc双列互换数据.范_条目之列表 {
         const {
             allItems,
             filteringKeyword,
@@ -356,7 +334,7 @@ export default class wlc双列互换数据 extends Vue {
         return matchedItems
     }
 
-    private get leftShownItems (): 范_条目之列表 {
+    private get leftShownItems (): wlc双列互换数据.范_条目之列表 {
         const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.leftMatchedItems
@@ -366,7 +344,7 @@ export default class wlc双列互换数据 extends Vue {
         return itemsToShow
     }
 
-    private get rightShownItems (): 范_条目之列表 {
+    private get rightShownItems (): wlc双列互换数据.范_条目之列表 {
         const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.rightMatchedItems
@@ -384,23 +362,23 @@ export default class wlc双列互换数据 extends Vue {
         return this.rightShownItems.length === 0 && this.rightMatchedItems.length > 0
     }
 
-    private get leftCheckedItems (): 范_条目之列表 {
+    private get leftCheckedItems (): wlc双列互换数据.范_条目之列表 {
         const checkedItems = this.leftColumn.allItems.filter(i => !i.disabled && !!i.isChecked)
         this.leftColumn.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
-    private get rightCheckedItems (): 范_条目之列表 {
+    private get rightCheckedItems (): wlc双列互换数据.范_条目之列表 {
         const checkedItems = this.rightColumn.allItems.filter(i => !i.disabled && !!i.isChecked)
         this.rightColumn.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
-    private get leftShownCheckedItems (): 范_条目之列表 {
+    private get leftShownCheckedItems (): wlc双列互换数据.范_条目之列表 {
         return this.leftShownItems.filter(i => !i.disabled && !!i.isChecked)
     }
 
-    private get rightShownCheckedItems (): 范_条目之列表 {
+    private get rightShownCheckedItems (): wlc双列互换数据.范_条目之列表 {
         return this.rightShownItems.filter(i => !i.disabled && !!i.isChecked)
     }
 
@@ -426,7 +404,7 @@ export default class wlc双列互换数据 extends Vue {
         this.generateItemsOfBothColumns()
     }
 
-    private columnFilterPlaceholderText (side: 范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
+    private columnFilterPlaceholderText (side: wlc双列互换数据.范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
         let candidates
         if (side === '左列') {
             candidates = this.leftColumn.allItems
@@ -467,8 +445,8 @@ export default class wlc双列互换数据 extends Vue {
     }
 
     private generateItemsOfBothColumns () {
-        let rightsideValues: 范_条目之列表
-        let candidates: 范_条目之列表
+        let rightsideValues: wlc双列互换数据.范_条目之列表
+        let candidates: wlc双列互换数据.范_条目之列表
 
         if (Array.isArray(this.value)) {
             rightsideValues = this.value
@@ -489,12 +467,12 @@ export default class wlc双列互换数据 extends Vue {
             [value: string]: number;
         } = {}
 
-        const leftAllItems: 范_条目之列表 = []
-        const rightAllItems: 范_条目之列表 = []
+        const leftAllItems: wlc双列互换数据.范_条目之列表 = []
+        const rightAllItems: wlc双列互换数据.范_条目之列表 = []
 
         candidates.forEach(c => {
             if (!c) { return }
-            const { value, disabled } = c
+            const { 数据: value, disabled } = c
 
             if (value in itemsDeduplicatedDict) {
                 const dupCount = itemsDeduplicatedDict[value]
@@ -518,7 +496,7 @@ export default class wlc双列互换数据 extends Vue {
 
             if (valueShouldBeAtRightside) {
                 if (!disabled) {
-                    const cachedUXItem = rightCheckedItemsCache.find(item => item.value === value)
+                    const cachedUXItem = rightCheckedItemsCache.find(item => item.数据 === value)
                     if (cachedUXItem) {
                         uxItem.isChecked = cachedUXItem.isChecked
                     }
@@ -527,7 +505,7 @@ export default class wlc双列互换数据 extends Vue {
                 rightAllItems.push(uxItem)
             } else {
                 if (!disabled) {
-                    const cachedUXItem = leftCheckedItemsCache.find(item => item.value === value)
+                    const cachedUXItem = leftCheckedItemsCache.find(item => item.数据 === value)
                     if (cachedUXItem) {
                         uxItem.isChecked = cachedUXItem.isChecked
                     }
@@ -555,7 +533,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private getCSSClassNamesOfItem (item: 范_条目) {
+    private getCSSClassNamesOfItem (item: wlc双列互换数据.范_条目) {
         if (!item) { return null }
         const isChecked = !!item.isChecked
         const disabled = !!item.disabled
@@ -571,7 +549,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private getStateOfColumnCheckAllIncludingHidden (side: 范_列代号) {
+    private getStateOfColumnCheckAllIncludingHidden (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -617,7 +595,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private getStateOfColumnCheckAllVisible (side: 范_列代号) {
+    private getStateOfColumnCheckAllVisible (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftShownItems
@@ -662,7 +640,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private handleColumnCheckAllIncludingHiddenChange (side: 范_列代号) {
+    private handleColumnCheckAllIncludingHiddenChange (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -681,7 +659,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private handleColumnCheckAllVisibleChange (side: 范_列代号) {
+    private handleColumnCheckAllVisibleChange (side: wlc双列互换数据.范_列代号) {
         let allShownItems
         if (side === '左列') {
             allShownItems = this.leftShownItems
@@ -713,8 +691,8 @@ export default class wlc双列互换数据 extends Vue {
     }
 
     private transferLeftCheckedItemsToRight () {
-        const restOfLeft: 范_条目之列表 = []
-        const toMoveToRight: 范_条目之列表 = []
+        const restOfLeft: wlc双列互换数据.范_条目之列表 = []
+        const toMoveToRight: wlc双列互换数据.范_条目之列表 = []
 
         this.leftColumn.allItems.forEach(uxItem => {
             if (!uxItem.disabled && uxItem.isChecked) {
@@ -732,8 +710,8 @@ export default class wlc双列互换数据 extends Vue {
     }
 
     private transferRighttColumnCheckedItemsToLeft () {
-        const restOfRight: 范_条目之列表 = []
-        const toMoveToLeft: 范_条目之列表 = []
+        const restOfRight: wlc双列互换数据.范_条目之列表 = []
+        const toMoveToLeft: wlc双列互换数据.范_条目之列表 = []
 
         this.rightColumn.allItems.forEach(uxItem => {
             if (!uxItem.disabled && uxItem.isChecked) {
@@ -751,7 +729,7 @@ export default class wlc双列互换数据 extends Vue {
     }
 
     private emitChangeEvent () {
-        const payload = this.rightColumn.allItems.map(uxItem => uxItem.value)
+        const payload = this.rightColumn.allItems.map(uxItem => uxItem.数据)
         this.$emit('change', payload)
     }
 }
