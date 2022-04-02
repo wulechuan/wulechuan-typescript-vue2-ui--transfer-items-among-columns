@@ -7,17 +7,16 @@
         <div class="chief-part">
             <div class="column-of-list left-column">
                 <header class="heading-block">
-                    <div class="column-title-bar">{{ _leftColumnSubTitleText }}</div>
+                    <div class="column-title-bar">{{ decided_leftColumnSubTitleText }}</div>
 
                     <div class="column-filter">
-                        <el-input
+                        <input
                             v-model="leftColumn.filteringKeyword"
-                            clearable
                             :placeholder="columnFilterPlaceholderText('左列')"
                             class="column-filter-input"
                             :class="{ 'emphasize-to-call-to-action': leftNotShowingAllItems }"
                             :disabled="leftColumn.allItems.length < 1"
-                        ></el-input>
+                        >
                         <i class="el-input__icon el-icon-search" ></i>
                     </div>
 
@@ -95,46 +94,43 @@
             </div>
 
             <div class="center-column">
-                <el-badge
+                <button
+                    :type="decided_elementUITypeOfTransferingButtons[0]"
+                    :icon="decided_iconOfTransferingButtons[0]"
+                    :disabled="shouldDisableTransferingButton0"
+                    @click="handleClickOfButtonOfTransferingToRightColumn"
+                >{{ decided_labelTextOfTransferingButtons[0] }}</button>
+                <sup
                     :value="leftCheckedItems.length || null"
                     type="danger"
-                    class="badge-of-transfering-button-1"
-                >
-                    <el-button
-                        :type="_elementUITypeOfTransferingButtons[0]"
-                        :icon="_iconOfTransferingButtons[0]"
-                        :disabled="shouldDisableTransferingButton0"
-                        @click="handleClickOfButtonOfTransferingToRightColumn"
-                    >{{ _labelTextOfTransferingButtons[0] }}</el-button>
-                </el-badge>
+                    class="badge badge-of-transfering-button-1"
+                ></sup>
 
-                <el-badge
+                <button
+                    :type="decided_elementUITypeOfTransferingButtons[1]"
+                    :icon="decided_iconOfTransferingButtons[1]"
+                    :disabled="shouldDisableTransferingButton1"
+                    @click="handleClickOfButtonOfTransferingToLeftColumn"
+                >{{ decided_labelTextOfTransferingButtons[1] }}</button>
+                <sup
                     :value="rightCheckedItems.length || null"
                     type="success"
                     class="badge-of-transfering-button-2"
-                >
-                    <el-button
-                        :type="_elementUITypeOfTransferingButtons[1]"
-                        :icon="_iconOfTransferingButtons[1]"
-                        :disabled="shouldDisableTransferingButton1"
-                        @click="handleClickOfButtonOfTransferingToLeftColumn"
-                    >{{ _labelTextOfTransferingButtons[1] }}</el-button>
-                </el-badge>
+                ></sup>
             </div>
 
             <div class="column-of-list right-column">
                 <header class="heading-block">
-                    <div class="column-title-bar">{{ _rightColumnSubTitleText }}</div>
+                    <div class="column-title-bar">{{ decided_rightColumnSubTitleText }}</div>
 
                     <div class="column-filter">
-                        <el-input
+                        <input
                             v-model="rightColumn.filteringKeyword"
-                            clearable
                             :placeholder="columnFilterPlaceholderText('右列')"
                             class="column-filter-input"
                             :class="{ 'emphasize-to-call-to-action': rightNotShowingAllItems, 'emphasize-without-animation': leftNotShowingAllItems }"
                             :disabled="rightColumn.allItems.length < 1"
-                        ></el-input>
+                        >
                         <i class="el-input__icon el-icon-search" ></i>
                     </div>
 
@@ -244,18 +240,18 @@ const 单列至多允许显示的条目数之默认值 = 2000
 
 @Component({})
 export default class wlc双列互换数据<范_实际条目 extends wlc双列互换数据.范_条目> extends Vue {
-    @Model('change', { type: Array }) value?: Array<范_实际条目> = []
+    @Model('change', { type: Array }) public value?: Array<范_实际条目>
 
-    @Prop() allCandidatesOfBothColumns?: null | Array<范_实际条目> = null
-    @Prop() maxCountOfItemsToDisplayInEitherColumn?: number = NaN
-    @Prop() hasNotTitleBar?: boolean = false
-    @Prop() hasFooterBar?: boolean = false
-    @Prop() leftColumnSubTitleText?: null | string = null
-    @Prop() rightColumnSubTitleText?: null | string = null
-    @Prop() labelTextOfTransferingButtons?: null | Array<string> = null
-    @Prop() elementUITypeOfTransferingButtons?: null | Array<any> = null
+    @Prop() public allCandidatesOfBothColumns?: Array<范_实际条目>
+    @Prop() public maxCountOfItemsToDisplayInEitherColumn?: number
+    @Prop() public hasNotTitleBar?: boolean
+    @Prop() public hasFooterBar?: boolean
+    @Prop() public leftColumnSubTitleText?: string
+    @Prop() public rightColumnSubTitleText?: string
+    @Prop() public labelTextOfTransferingButtons?: Array<string>
+    @Prop() public elementUITypeOfTransferingButtons?: Array<any>
 
-    leftColumn: wlc双列互换数据.范_单列配置项集<范_实际条目> = {
+    private leftColumn: wlc双列互换数据.范_单列配置项集<范_实际条目> = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -263,7 +259,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         checkedItemsCache: [],
     }
 
-    rightColumn: wlc双列互换数据.范_单列配置项集<范_实际条目> = {
+    private rightColumn: wlc双列互换数据.范_单列配置项集<范_实际条目> = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -271,7 +267,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         checkedItemsCache: [],
     }
 
-    private get _maxCountOfItemsToDisplayInEitherColumn (): number {
+    private get decided_maxCountOfItemsToDisplayInEitherColumn (): number {
         const _v = this.maxCountOfItemsToDisplayInEitherColumn
 
         let v: number
@@ -288,26 +284,26 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         return 单列至多允许显示的条目数之默认值
     }
 
-    private get _leftColumnSubTitleText (): string {
+    private get decided_leftColumnSubTitleText (): string {
         return this.leftColumnSubTitleText || '未选择的条目'
     }
 
-    private get _rightColumnSubTitleText (): string {
+    private get decided_rightColumnSubTitleText (): string {
         return this.rightColumnSubTitleText || '已选择的条目'
     }
 
-    private get _labelTextOfTransferingButtons (): Array<string> {
+    private get decided_labelTextOfTransferingButtons (): Array<string> {
         const defaultValues = ['', '']
         return this.getValuePairOfTransferingButtons(this.labelTextOfTransferingButtons, defaultValues)
     }
 
-    private get _elementUITypeOfTransferingButtons (): Array<unknown> {
+    private get decided_elementUITypeOfTransferingButtons (): Array<unknown> {
         const defaultValues = ['primary', 'primary']
         return this.getValuePairOfTransferingButtons(this.elementUITypeOfTransferingButtons, defaultValues)
     }
 
-    private get _iconOfTransferingButtons (): Array<string | null> {
-        const [labelLeft, labelRight] = this._labelTextOfTransferingButtons
+    private get decided_iconOfTransferingButtons (): Array<string | null> {
+        const [labelLeft, labelRight] = this.decided_labelTextOfTransferingButtons
         return [
             labelLeft ? null : 'el-icon-arrow-right',
             labelRight ? null : 'el-icon-arrow-left',
@@ -356,20 +352,20 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
     }
 
     private get leftShownItems (): Array<范_实际条目> {
-        const { _maxCountOfItemsToDisplayInEitherColumn } = this
+        const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.leftMatchedItems
-        const tooManyItemsToShow = itemsToShow.length > _maxCountOfItemsToDisplayInEitherColumn
+        const tooManyItemsToShow = itemsToShow.length > decided_maxCountOfItemsToDisplayInEitherColumn
         if (tooManyItemsToShow) { return [] }
 
         return itemsToShow
     }
 
     private get rightShownItems (): Array<范_实际条目> {
-        const { _maxCountOfItemsToDisplayInEitherColumn } = this
+        const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.rightMatchedItems
-        const tooManyItemsToShow = itemsToShow.length > _maxCountOfItemsToDisplayInEitherColumn
+        const tooManyItemsToShow = itemsToShow.length > decided_maxCountOfItemsToDisplayInEitherColumn
         if (tooManyItemsToShow) { return [] }
 
         return itemsToShow
@@ -425,7 +421,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         this.generateItemsOfBothColumns()
     }
 
-    columnFilterPlaceholderText (side: wlc双列互换数据.范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
+    private columnFilterPlaceholderText (side: wlc双列互换数据.范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
         let candidates
         if (side === '左列') {
             candidates = this.leftColumn.allItems
@@ -444,7 +440,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         return '无条目可筛选'
     }
 
-    getValuePairOfTransferingButtons (providedValueArray: any, defaultValueArray: Array<string>): Array<string> {
+    private getValuePairOfTransferingButtons (providedValueArray: any, defaultValueArray: Array<string>): Array<string> {
         if (!Array.isArray(defaultValueArray)) {
             throw new Error('<wlc-dual-columns-exchange-items />: getValuePairOfTransferingButtons() defaultValueArray 无效。')
         }
@@ -465,7 +461,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         return usedValueArray
     }
 
-    generateItemsOfBothColumns () {
+    private generateItemsOfBothColumns () {
         let rightsideValues: Array<范_实际条目>
         let candidates: Array<范_实际条目>
 
@@ -554,7 +550,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    getCSSClassNamesOfItem (item: 范_实际条目) {
+    private getCSSClassNamesOfItem (item: 范_实际条目) {
         if (!item) { return null }
         const isChecked = !!item.isChecked
         const disabled = !!item.disabled
@@ -570,7 +566,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    getStateOfColumnCheckAllIncludingHidden (side: wlc双列互换数据.范_列代号) {
+    private getStateOfColumnCheckAllIncludingHidden (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -616,7 +612,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    getStateOfColumnCheckAllVisible (side: wlc双列互换数据.范_列代号) {
+    private getStateOfColumnCheckAllVisible (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftShownItems
@@ -661,7 +657,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    handleColumnCheckAllIncludingHiddenChange (side: wlc双列互换数据.范_列代号) {
+    private handleColumnCheckAllIncludingHiddenChange (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -680,7 +676,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    handleColumnCheckAllVisibleChange (side: wlc双列互换数据.范_列代号) {
+    private handleColumnCheckAllVisibleChange (side: wlc双列互换数据.范_列代号) {
         let allShownItems
         if (side === '左列') {
             allShownItems = this.leftShownItems
@@ -703,15 +699,15 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    handleClickOfButtonOfTransferingToRightColumn () {
+    private handleClickOfButtonOfTransferingToRightColumn () {
         this.transferLeftCheckedItemsToRight()
     }
 
-    handleClickOfButtonOfTransferingToLeftColumn () {
+    private handleClickOfButtonOfTransferingToLeftColumn () {
         this.transferRighttColumnCheckedItemsToLeft()
     }
 
-    transferLeftCheckedItemsToRight () {
+    private transferLeftCheckedItemsToRight () {
         const restOfLeft: Array<范_实际条目> = []
         const toMoveToRight: Array<范_实际条目> = []
 
@@ -730,7 +726,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         this.emitChangeEvent()
     }
 
-    transferRighttColumnCheckedItemsToLeft () {
+    private transferRighttColumnCheckedItemsToLeft () {
         const restOfRight: Array<范_实际条目> = []
         const toMoveToLeft: Array<范_实际条目> = []
 
@@ -749,7 +745,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         this.emitChangeEvent()
     }
 
-    emitChangeEvent () {
+    private emitChangeEvent () {
         const payload = this.rightColumn.allItems.map(uxItem => uxItem.value)
         this.$emit('change', payload)
     }

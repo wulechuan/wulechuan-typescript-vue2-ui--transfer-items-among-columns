@@ -7,17 +7,16 @@
         <div class="chief-part">
             <div class="column-of-list left-column">
                 <header class="heading-block">
-                    <div class="column-title-bar">{{ _leftColumnSubTitleText }}</div>
+                    <div class="column-title-bar">{{ decided_leftColumnSubTitleText }}</div>
                     
                     <div class="column-filter">
-                        <el-input
+                        <input
                             v-model="leftColumn.filteringKeyword"
-                            clearable
                             :placeholder="columnFilterPlaceholderText('左列')"
                             class="column-filter-input"
                             :class="{ 'emphasize-to-call-to-action': leftNotShowingAllItems }"
                             :disabled="leftColumn.allItems.length < 1"
-                            ></el-input>
+                        >
                         <i class="el-input__icon el-icon-search" ></i>
                     </div>
                     
@@ -95,46 +94,43 @@
             </div>
             
             <div class="center-column">
-                <el-badge
+                <button
+                    :type="decided_elementUITypeOfTransferingButtons[0]"
+                    :icon="decided_iconOfTransferingButtons[0]"
+                    :disabled="shouldDisableTransferingButton0"
+                    @click="handleClickOfButtonOfTransferingToRightColumn"
+                    >{{ decided_labelTextOfTransferingButtons[0] }}</button>
+                <sup
                     :value="leftCheckedItems.length || null"
                     type="danger"
-                    class="badge-of-transfering-button-1"
-                    >
-                    <el-button
-                        :type="_elementUITypeOfTransferingButtons[0]"
-                        :icon="_iconOfTransferingButtons[0]"
-                        :disabled="shouldDisableTransferingButton0"
-                        @click="handleClickOfButtonOfTransferingToRightColumn"
-                        >{{ _labelTextOfTransferingButtons[0] }}</el-button>
-                </el-badge>
+                    class="badge badge-of-transfering-button-1"
+                    ></sup>
                 
-                <el-badge
+                <button
+                    :type="decided_elementUITypeOfTransferingButtons[1]"
+                    :icon="decided_iconOfTransferingButtons[1]"
+                    :disabled="shouldDisableTransferingButton1"
+                    @click="handleClickOfButtonOfTransferingToLeftColumn"
+                    >{{ decided_labelTextOfTransferingButtons[1] }}</button>
+                <sup
                     :value="rightCheckedItems.length || null"
                     type="success"
                     class="badge-of-transfering-button-2"
-                    >
-                    <el-button
-                        :type="_elementUITypeOfTransferingButtons[1]"
-                        :icon="_iconOfTransferingButtons[1]"
-                        :disabled="shouldDisableTransferingButton1"
-                        @click="handleClickOfButtonOfTransferingToLeftColumn"
-                        >{{ _labelTextOfTransferingButtons[1] }}</el-button>
-                </el-badge>
+                    ></sup>
             </div>
             
             <div class="column-of-list right-column">
                 <header class="heading-block">
-                    <div class="column-title-bar">{{ _rightColumnSubTitleText }}</div>
+                    <div class="column-title-bar">{{ decided_rightColumnSubTitleText }}</div>
                     
                     <div class="column-filter">
-                        <el-input
+                        <input
                             v-model="rightColumn.filteringKeyword"
-                            clearable
                             :placeholder="columnFilterPlaceholderText('右列')"
                             class="column-filter-input"
                             :class="{ 'emphasize-to-call-to-action': rightNotShowingAllItems, 'emphasize-without-animation': leftNotShowingAllItems }"
                             :disabled="rightColumn.allItems.length < 1"
-                            ></el-input>
+                        >
                         <i class="el-input__icon el-icon-search" ></i>
                     </div>
                     
@@ -234,15 +230,6 @@ const 单列至多允许显示的条目数之默认值 = 2000;
 let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
     constructor() {
         super(...arguments);
-        this.value = [];
-        this.allCandidatesOfBothColumns = null;
-        this.maxCountOfItemsToDisplayInEitherColumn = NaN;
-        this.hasNotTitleBar = false;
-        this.hasFooterBar = false;
-        this.leftColumnSubTitleText = null;
-        this.rightColumnSubTitleText = null;
-        this.labelTextOfTransferingButtons = null;
-        this.elementUITypeOfTransferingButtons = null;
         this.leftColumn = {
             filteringKeyword: '',
             allAreChecked: false,
@@ -258,7 +245,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
             checkedItemsCache: [],
         };
     }
-    get _maxCountOfItemsToDisplayInEitherColumn() {
+    get decided_maxCountOfItemsToDisplayInEitherColumn() {
         const _v = this.maxCountOfItemsToDisplayInEitherColumn;
         let v;
         if (typeof _v !== 'number') {
@@ -275,22 +262,22 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
         }
         return 单列至多允许显示的条目数之默认值;
     }
-    get _leftColumnSubTitleText() {
+    get decided_leftColumnSubTitleText() {
         return this.leftColumnSubTitleText || '未选择的条目';
     }
-    get _rightColumnSubTitleText() {
+    get decided_rightColumnSubTitleText() {
         return this.rightColumnSubTitleText || '已选择的条目';
     }
-    get _labelTextOfTransferingButtons() {
+    get decided_labelTextOfTransferingButtons() {
         const defaultValues = ['', ''];
         return this.getValuePairOfTransferingButtons(this.labelTextOfTransferingButtons, defaultValues);
     }
-    get _elementUITypeOfTransferingButtons() {
+    get decided_elementUITypeOfTransferingButtons() {
         const defaultValues = ['primary', 'primary'];
         return this.getValuePairOfTransferingButtons(this.elementUITypeOfTransferingButtons, defaultValues);
     }
-    get _iconOfTransferingButtons() {
-        const [labelLeft, labelRight] = this._labelTextOfTransferingButtons;
+    get decided_iconOfTransferingButtons() {
+        const [labelLeft, labelRight] = this.decided_labelTextOfTransferingButtons;
         return [
             labelLeft ? null : 'el-icon-arrow-right',
             labelRight ? null : 'el-icon-arrow-left',
@@ -323,18 +310,18 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
         return matchedItems;
     }
     get leftShownItems() {
-        const { _maxCountOfItemsToDisplayInEitherColumn } = this;
+        const { decided_maxCountOfItemsToDisplayInEitherColumn } = this;
         const itemsToShow = this.leftMatchedItems;
-        const tooManyItemsToShow = itemsToShow.length > _maxCountOfItemsToDisplayInEitherColumn;
+        const tooManyItemsToShow = itemsToShow.length > decided_maxCountOfItemsToDisplayInEitherColumn;
         if (tooManyItemsToShow) {
             return [];
         }
         return itemsToShow;
     }
     get rightShownItems() {
-        const { _maxCountOfItemsToDisplayInEitherColumn } = this;
+        const { decided_maxCountOfItemsToDisplayInEitherColumn } = this;
         const itemsToShow = this.rightMatchedItems;
-        const tooManyItemsToShow = itemsToShow.length > _maxCountOfItemsToDisplayInEitherColumn;
+        const tooManyItemsToShow = itemsToShow.length > decided_maxCountOfItemsToDisplayInEitherColumn;
         if (tooManyItemsToShow) {
             return [];
         }
