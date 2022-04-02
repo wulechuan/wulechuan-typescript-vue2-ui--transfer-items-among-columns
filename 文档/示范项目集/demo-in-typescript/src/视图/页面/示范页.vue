@@ -92,6 +92,13 @@ export default class Page示范页 extends Vue {
                 已选中: false,
                 数据: '小奶龙',
             },
+            {
+                唯一标识: '潜艇小黄',
+                在界面展示时的称谓: '潜艇小黄',
+                已禁止交互: false,
+                已选中: false,
+                数据: '潜艇小黄',
+            },
         ],
     }
 }
