@@ -17,7 +17,6 @@
                             :class="{ 'emphasize-to-call-to-action': leftNotShowingAllItems }"
                             :disabled="左列之状态.allItems.length < 1"
                         >
-                        <i class="el-input__icon el-icon-search" ></i>
                     </div>
                     
                     <div class="column-check-all">
@@ -148,7 +147,6 @@
                             :class="{ 'emphasize-to-call-to-action': rightNotShowingAllItems, 'emphasize-without-animation': leftNotShowingAllItems }"
                             :disabled="右列之状态.allItems.length < 1"
                         >
-                        <i class="el-input__icon el-icon-search" ></i>
                     </div>
                     
                     <div class="column-check-all">
@@ -260,7 +258,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator';
-const 单列允许列示的条目数之上限_默认值 = 500;
+const 单列允许列示的条目数之上限_默认值 = 4;
 let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
     constructor() {
         super(...arguments);
@@ -800,12 +798,12 @@ export default wlc双列互换数据;
     top: auto;
     bottom: 0;
 }
-.wlc-dual-columns-exchange-items > .chief-part > .center-column .el-button {
+.wlc-dual-columns-exchange-items > .chief-part > .center-column button {
     box-sizing: border-box;
     display: block;
     max-width: 100%;
 }
-.wlc-dual-columns-exchange-items > .chief-part > .center-column .el-button i ~ span {
+.wlc-dual-columns-exchange-items > .chief-part > .center-column button i ~ span {
     margin: -0.05rem;
 }
 .wlc-dual-columns-exchange-items .column-of-list {
@@ -835,10 +833,10 @@ export default wlc双列互换数据;
     text-align: center;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-filter {
+    flex: 0 0 2rem;
     padding: 0.5rem 0.75rem;
     position: relative;
-    margin-bottom: -0.25rem;
-    display: flex;
+    display: block;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-filter .el-icon-search {
     position: absolute;
@@ -851,19 +849,15 @@ export default wlc双列互换数据;
     pointer-events: none;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-filter-input {
-    flex: 1 1;
-}
-.wlc-dual-columns-exchange-items .column-of-list .column-filter-input input {
-    padding-left: 1.6rem;
+    box-sizing: border-box;
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+    padding-left: 1.25rem;
     border-radius: 10rem;
+    border-style: solid;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-filter-input.emphasize-to-call-to-action {
-    margin: -2px;
-}
-.wlc-dual-columns-exchange-items .column-of-list .column-filter-input.emphasize-to-call-to-action input {
-    height: 36px;
-    line-height: 36px;
-    border-width: 3px;
     animation-iteration-count: infinite;
     animation-duration: 2s;
 }
@@ -1007,10 +1001,7 @@ export default wlc双列互换数据;
 .wlc-dual-columns-exchange-items .column-of-list .column-filter-input {
     border-color: inherit;
 }
-.wlc-dual-columns-exchange-items .column-of-list .column-filter-input input {
-    border-color: inherit;
-}
-.wlc-dual-columns-exchange-items .column-of-list .column-filter-input input[disabled] {
+.wlc-dual-columns-exchange-items .column-of-list .column-filter-input[disabled] {
     border-color: rgba(0,0,0,0.1);
     background-color: rgba(255,255,255,0.319);
 }
@@ -1054,7 +1045,7 @@ export default wlc双列互换数据;
 .wlc-dual-columns-exchange-items .column-of-list.left-column .heading-block {
     background-color: #ffdfdf;
 }
-.wlc-dual-columns-exchange-items .column-of-list.left-column .column-filter-input.emphasize-to-call-to-action input {
+.wlc-dual-columns-exchange-items .column-of-list.left-column .column-filter-input.emphasize-to-call-to-action {
     border-color: #f00;
     animation-name: dual-list-transferer-input-box1-call-to-action;
 }
@@ -1096,9 +1087,12 @@ export default wlc双列互换数据;
 .wlc-dual-columns-exchange-items .column-of-list.right-column .heading-block {
     background-color: #ddfce5;
 }
-.wlc-dual-columns-exchange-items .column-of-list.right-column .column-filter-input.emphasize-to-call-to-action input {
+.wlc-dual-columns-exchange-items .column-of-list.right-column .column-filter-input.emphasize-to-call-to-action {
     border-color: #090;
     animation-name: dual-list-transferer-input-box2-call-to-action;
+}
+.wlc-dual-columns-exchange-items .column-of-list.right-column .column-filter-input.emphasize-to-call-to-action.emphasize-without-animation {
+    animation-name: none;
 }
 @-moz-keyframes dual-list-transferer-input-box2-call-to-action {
     0%, 100% {
@@ -1131,9 +1125,6 @@ export default wlc双列互换数据;
     40%, 60% {
         border-color: #090;
     }
-}
-.wlc-dual-columns-exchange-items .column-of-list.right-column .column-filter-input.emphasize-to-call-to-action.emphasize-without-animation input {
-    animation-name: none;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-list .column-list-item > label:hover {
     background-color: #eee;

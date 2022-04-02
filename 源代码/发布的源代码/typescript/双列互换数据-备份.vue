@@ -255,7 +255,7 @@ type 范_条目 = wlc双列互换数据.范_条目
 type 范_条目之列表 = wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识 = 范_条目['唯一标识']
 
-const 单列允许列示的条目数之上限_默认值 = 500
+const 单列允许列示的条目数之上限_默认值 = 4
 
 @Component({})
 export default class wlc双列互换数据 extends Vue {
@@ -852,7 +852,7 @@ export default class wlc双列互换数据 extends Vue {
                 bottom: 0;
             }
 
-            .el-button {
+            button {
                 box-sizing: border-box;
                 display: block;
                 max-width: 100%;
@@ -896,10 +896,11 @@ export default class wlc双列互换数据 extends Vue {
         }
 
         .column-filter {
+            flex: 0 0 2rem;
             padding: 0.5rem 0.75rem;
             position: relative;
-            margin-bottom: -0.25rem;
-            display: flex;
+            // margin-bottom: -0.25rem;
+            display: block;
 
             .el-icon-search {
                 position: absolute;
@@ -914,24 +915,17 @@ export default class wlc双列互换数据 extends Vue {
         }
 
         .column-filter-input {
-            flex: 1 1;
-
-            input {
-                padding-left: 1.6rem;
-                border-radius: 10rem;
-            }
+            box-sizing: border-box;
+            width: 100%;
+            height: 2rem;
+            font-size: 1rem;
+            padding-left: 1.25rem;
+            border-radius: 10rem;
+            border-style: solid;
 
             &.emphasize-to-call-to-action {
-                margin: -2px;
-
-                input {
-                    height: 36px;
-                    line-height: 36px;
-                    border-width: 3px;
-
-                    animation-iteration-count: infinite;
-                    animation-duration: 2s;
-                }
+                animation-iteration-count: infinite;
+                animation-duration: 2s;
             }
         }
 
@@ -1126,14 +1120,11 @@ export default class wlc双列互换数据 extends Vue {
             .column-filter-input {
                 border-color: inherit;
 
-                input {
-                    // border-color: rgba(black, 0.75);
-                    border-color: inherit;
+                // border-color: rgba(black, 0.75);
 
-                    &[disabled] {
-                        border-color: rgba(black, 0.1);
-                        background-color: rgba(white, 0.319);
-                    }
+                &[disabled] {
+                    border-color: rgba(black, 0.1);
+                    background-color: rgba(white, 0.319);
                 }
             }
 
@@ -1205,14 +1196,11 @@ export default class wlc双列互换数据 extends Vue {
                     // }
 
                     &.emphasize-to-call-to-action {
-
-                        input {
-                            border-color: #f00;
-                            animation-name: dual-list-transferer-input-box1-call-to-action;
-                            @keyframes dual-list-transferer-input-box1-call-to-action {
-                                0%, 100% { border-color: #f00; }
-                                40%, 60% { border-color: #fbb; }
-                            }
+                        border-color: #f00;
+                        animation-name: dual-list-transferer-input-box1-call-to-action;
+                        @keyframes dual-list-transferer-input-box1-call-to-action {
+                            0%, 100% { border-color: #f00; }
+                            40%, 60% { border-color: #fbb; }
                         }
                     }
                 }
@@ -1237,21 +1225,15 @@ export default class wlc双列互换数据 extends Vue {
                     // }
 
                     &.emphasize-to-call-to-action {
-
-                        input {
-                            border-color: #090;
-                            animation-name: dual-list-transferer-input-box2-call-to-action;
-                            @keyframes dual-list-transferer-input-box2-call-to-action {
-                                0%, 100% { border-color: #aea; }
-                                40%, 60% { border-color: #090; }
-                            }
+                        border-color: #090;
+                        animation-name: dual-list-transferer-input-box2-call-to-action;
+                        @keyframes dual-list-transferer-input-box2-call-to-action {
+                            0%, 100% { border-color: #aea; }
+                            40%, 60% { border-color: #090; }
                         }
 
                         &.emphasize-without-animation {
-
-                            input {
-                                animation-name: none;
-                            }
+                            animation-name: none;
                         }
                     }
                 }
