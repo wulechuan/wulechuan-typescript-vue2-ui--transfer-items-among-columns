@@ -14,9 +14,6 @@ import { Component, Vue } from 'vue-property-decorator'
 import wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/双列互换数据.vue'
 
 interface 范_双列互换数据_实际条目 extends wlc双列互换数据.范_条目 {
-    displayName: string;
-    isChecked: boolean;
-    disabled: boolean;
     数据: string;
 }
 
@@ -33,33 +30,38 @@ export default class Page示范页 extends Vue {
     } = {
         候选列表: [
             {
-                displayName: '吴乐川',
-                disabled: false,
-                isChecked: false,
+                唯一标识: '吴乐川',
+                在界面展示时的称谓: '吴乐川',
+                已禁止交互: false,
+                已选中: false,
                 数据: '吴乐川',
             },
             {
-                displayName: '吴淙渊',
-                disabled: false,
-                isChecked: false,
+                唯一标识: '吴淙渊',
+                在界面展示时的称谓: '吴淙渊',
+                已禁止交互: false,
+                已选中: false,
                 数据: '吴淙渊',
             },
             {
-                displayName: '肥肥熊',
-                disabled: false,
-                isChecked: false,
+                唯一标识: '肥肥熊',
+                在界面展示时的称谓: '肥肥熊',
+                已禁止交互: false,
+                已选中: false,
                 数据: '肥肥熊',
             },
             {
-                displayName: '大嘴鸭',
-                disabled: false,
-                isChecked: false,
+                唯一标识: '大嘴鸭',
+                在界面展示时的称谓: '大嘴鸭',
+                已禁止交互: false,
+                已选中: false,
                 数据: '大嘴鸭',
             },
             {
-                displayName: '小树懒',
-                disabled: true,
-                isChecked: false,
+                唯一标识: '小树懒',
+                在界面展示时的称谓: '小树懒',
+                已禁止交互: true,
+                已选中: false,
                 数据: '小树懒',
             },
         ],

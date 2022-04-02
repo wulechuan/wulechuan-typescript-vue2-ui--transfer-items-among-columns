@@ -1,10 +1,10 @@
 declare namespace wlc双列互换数据 {
     interface 范_条目 {
-        displayName: string;
-        isChecked: boolean;
-        disabled: boolean;
-        数据: any;
-        // [key: string]: any;
+        唯一标识: number | string;
+        在界面展示时的称谓: string;
+        已选中: boolean;
+        已禁止交互: boolean;
+        数据?: any;
     }
 
     type 范_条目之列表 = Array<范_条目>

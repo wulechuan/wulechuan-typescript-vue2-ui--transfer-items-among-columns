@@ -11,11 +11,11 @@
 
                     <div class="column-filter">
                         <input
-                            v-model="leftColumn.filteringKeyword"
+                            v-model="左列之状态.filteringKeyword"
                             :placeholder="columnFilterPlaceholderText('左列')"
                             class="column-filter-input"
                             :class="{ 'emphasize-to-call-to-action': leftNotShowingAllItems }"
-                            :disabled="leftColumn.allItems.length < 1"
+                            :disabled="左列之状态.allItems.length < 1"
                         >
                         <i class="el-input__icon el-icon-search" ></i>
                     </div>
@@ -28,7 +28,7 @@
                             class="el-checkbox__input"
                             :class="getStateOfColumnCheckAllIncludingHidden('左列').psuedoCheckboxSpanCSSClassNames"
                         ><span class="el-checkbox__inner" ></span><input
-                            v-model="leftColumn.allAreChecked"
+                            v-model="左列之状态.allAreChecked"
                             type="checkbox"
                             aria-hidden="false"
                             class="el-checkbox__original"
@@ -43,7 +43,7 @@
                             class="el-checkbox__input"
                             :class="getStateOfColumnCheckAllVisible('左列').psuedoCheckboxSpanCSSClassNames"
                         ><span class="el-checkbox__inner" ></span><input
-                            v-model="leftColumn.allVisibleAreChecked"
+                            v-model="左列之状态.allVisibleAreChecked"
                             type="checkbox"
                             aria-hidden="false"
                             class="el-checkbox__original"
@@ -55,11 +55,27 @@
                     <dl class="counts-summary">
                         <div class="entry all">
                             <dt>总数</dt>
-                            <dd><span class="all"><span class="value">{{ leftColumn.allItems.length }}</span></span><span class="prefix">（已列示</span><span class="shown"><span class="value">{{ leftShownItems.length }}</span></span>）</dd>
+                            <dd>
+                                <span class="all"><span class="value">{{ 左列之状态.allItems.length }}</span></span>
+
+                                <span class="shown">
+                                    <span class="prefix">（已列示</span>
+                                    <span class="value">{{ leftShownItems.length }}</span>
+                                    <span class="suffix">）</span>
+                                </span>
+                            </dd>
                         </div>
                         <div class="entry checked">
                             <dt>已勾选</dt>
-                            <dd><span class="all"><span class="value">{{ leftCheckedItems.length }}</span></span><span class="prefix">（已列示</span><span class="shown"><span class="value">{{ leftShownCheckedItems.length }}</span></span>）</dd>
+                            <dd>
+                                <span class="all"><span class="value">{{ leftCheckedItems.length }}</span></span>
+
+                                <span class="shown">
+                                    <span class="prefix">（已列示</span>
+                                    <span class="value">{{ leftShownCheckedItems.length }}</span>
+                                    <span class="suffix">）</span>
+                                </span>
+                            </dd>
                         </div>
                     </dl>
                 </header>
@@ -68,28 +84,28 @@
                     <div
                         v-if="leftNotShowingAllItems"
                         class="column-tip"
-                    ><p>条目太多，达<em>{{ leftMatchedItems.length }}</em>条。为确保浏览器不致僵死，暂不显示。</p>
+                    ><p>符合条件的条目太多，达<em>{{ leftMatchedItems.length }}</em>条。为确保程序不致僵死，暂不列示任何条目。</p>
                         <p><strong>请先输入筛选关键字，以减少须列示的条目。</strong></p></div>
 
                     <ol v-else class="column-list">
                         <li
-                            v-for="(item) in leftShownItems"
-                            :key="item.value"
+                            v-for="条目 in leftShownItems"
+                            :key="条目.唯一标识"
                             class="column-list-item"
                         ><label
                             class="el-checkbox"
-                            :class="getCSSClassNamesOfItem(item).labelElement"
+                            :class="getCSSClassNamesOfItem(条目).labelElement"
                         ><span
                             style="display: none"
                             class="el-checkbox__input"
-                            :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
+                            :class="getCSSClassNamesOfItem(条目).psuedoCheckboxSpan"
                         ><span class="el-checkbox__inner" ></span><input
-                            v-model="item.isChecked"
+                            v-model="条目.已选中"
                             type="checkbox"
                             aria-hidden="false"
                             class="el-checkbox__original"
-                            :disabled="item.disabled"
-                        ></span><span class="el-checkbox__label">{{ item.displayName }}</span></label></li>
+                            :disabled="条目.已禁止交互"
+                        ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
                     </ol>
                 </div>
             </div>
@@ -126,11 +142,11 @@
 
                     <div class="column-filter">
                         <input
-                            v-model="rightColumn.filteringKeyword"
+                            v-model="右列之状态.filteringKeyword"
                             :placeholder="columnFilterPlaceholderText('右列')"
                             class="column-filter-input"
                             :class="{ 'emphasize-to-call-to-action': rightNotShowingAllItems, 'emphasize-without-animation': leftNotShowingAllItems }"
-                            :disabled="rightColumn.allItems.length < 1"
+                            :disabled="右列之状态.allItems.length < 1"
                         >
                         <i class="el-input__icon el-icon-search" ></i>
                     </div>
@@ -143,7 +159,7 @@
                             class="el-checkbox__input"
                             :class="getStateOfColumnCheckAllIncludingHidden('右列').psuedoCheckboxSpanCSSClassNames"
                         ><span class="el-checkbox__inner" ></span><input
-                            v-model="rightColumn.allAreChecked"
+                            v-model="右列之状态.allAreChecked"
                             type="checkbox"
                             aria-hidden="false"
                             class="el-checkbox__original"
@@ -158,7 +174,7 @@
                             class="el-checkbox__input"
                             :class="getStateOfColumnCheckAllVisible('右列').psuedoCheckboxSpanCSSClassNames"
                         ><span class="el-checkbox__inner" ></span><input
-                            v-model="rightColumn.allVisibleAreChecked"
+                            v-model="右列之状态.allVisibleAreChecked"
                             type="checkbox"
                             aria-hidden="false"
                             class="el-checkbox__original"
@@ -170,11 +186,27 @@
                     <dl class="counts-summary">
                         <div class="entry all">
                             <dt>总数</dt>
-                            <dd><span class="all"><span class="value">{{ rightColumn.allItems.length }}</span></span><span class="prefix">（已列示</span><span class="shown"><span class="value">{{ rightShownItems.length }}</span></span>）</dd>
+                            <dd>
+                                <span class="all"><span class="value">{{ 右列之状态.allItems.length }}</span></span>
+
+                                <span class="shown">
+                                    <span class="prefix">（ 已列示</span>
+                                    <span class="value">{{ rightShownItems.length }}</span>
+                                    <span class="suffix">）</span>
+                                </span>
+                            </dd>
                         </div>
                         <div class="entry checked">
                             <dt>已勾选</dt>
-                            <dd><span class="all"><span class="value">{{ rightCheckedItems.length }}</span></span><span class="prefix">（已列示</span><span class="shown"><span class="value">{{ rightShownCheckedItems.length }}</span></span>）</dd>
+                            <dd>
+                                <span class="all"><span class="value">{{ rightCheckedItems.length }}</span></span>
+
+                                <span class="shown">
+                                    <span class="prefix">（ 已列示</span>
+                                    <span class="value">{{ rightShownCheckedItems.length }}</span>
+                                    <span class="suffix">）</span>
+                                </span>
+                            </dd>
                         </div>
                     </dl>
                 </header>
@@ -183,28 +215,28 @@
                     <div
                         v-if="rightNotShowingAllItems"
                         class="column-tip"
-                    ><p>条目太多，达<em>{{ rightMatchedItems.length }}</em>条。为确保浏览器不致僵死，暂不显示。</p>
+                    ><p>符合条件的条目太多，达<em>{{ rightMatchedItems.length }}</em>条。为确保程序不致僵死，暂不列示任何条目。</p>
                         <p><strong>请先输入筛选关键字，以减少须列示的条目。</strong></p></div>
 
                     <ol v-else class="column-list">
                         <li
-                            v-for="item in rightShownItems"
-                            :key="item.value"
+                            v-for="条目 in rightShownItems"
+                            :key="条目.唯一标识"
                             class="column-list-item"
                         ><label
                             class="el-checkbox"
-                            :class="getCSSClassNamesOfItem(item).labelElement"
+                            :class="getCSSClassNamesOfItem(条目).labelElement"
                         ><span
                             style="display: none"
                             class="el-checkbox__input"
-                            :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
+                            :class="getCSSClassNamesOfItem(条目).psuedoCheckboxSpan"
                         ><span class="el-checkbox__inner" ></span><input
-                            v-model="item.isChecked"
+                            v-model="条目.已选中"
                             type="checkbox"
                             aria-hidden="false"
                             class="el-checkbox__original"
-                            :disabled="item.disabled"
-                        ></span><span class="el-checkbox__label">{{ item.displayName }}</span></label></li>
+                            :disabled="条目.已禁止交互"
+                        ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
                     </ol>
                 </div>
             </div>
@@ -219,13 +251,17 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-const 单列至多允许显示的条目数之默认值 = 2000
+type 范_条目 = wlc双列互换数据.范_条目
+type 范_条目之列表 = wlc双列互换数据.范_条目之列表
+type 范_条目之唯一标识 = 范_条目['唯一标识']
+
+const 单列允许列示的条目数之上限_默认值 = 500
 
 @Component({})
 export default class wlc双列互换数据 extends Vue {
-    @Model('change', { type: Array }) public value?: wlc双列互换数据.范_条目之列表
+    @Model('change', { type: Array }) public value?: Array<范_条目之唯一标识>
 
-    @Prop() public allCandidatesOfBothColumns?: wlc双列互换数据.范_条目之列表
+    @Prop() public allCandidatesOfBothColumns?: 范_条目之列表
     @Prop() public maxCountOfItemsToDisplayInEitherColumn?: number
     @Prop() public hasNotTitleBar?: boolean
     @Prop() public hasFooterBar?: boolean
@@ -234,7 +270,7 @@ export default class wlc双列互换数据 extends Vue {
     @Prop() public labelTextOfTransferingButtons?: Array<string>
     @Prop() public elementUITypeOfTransferingButtons?: Array<any>
 
-    private leftColumn: wlc双列互换数据.范_单列配置项集 = {
+    private 左列之状态: wlc双列互换数据.范_单列配置项集 = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -242,7 +278,7 @@ export default class wlc双列互换数据 extends Vue {
         checkedItemsCache: [],
     }
 
-    private rightColumn: wlc双列互换数据.范_单列配置项集 = {
+    private 右列之状态: wlc双列互换数据.范_单列配置项集 = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -264,7 +300,7 @@ export default class wlc双列互换数据 extends Vue {
 
         if (v > 0) { return v }
 
-        return 单列至多允许显示的条目数之默认值
+        return 单列允许列示的条目数之上限_默认值
     }
 
     private get decided_leftColumnSubTitleText (): string {
@@ -293,48 +329,48 @@ export default class wlc双列互换数据 extends Vue {
         ]
     }
 
-    private get leftEnabledItems (): wlc双列互换数据.范_条目之列表 {
-        return this.leftColumn.allItems.filter(uxItem => {
+    private get leftEnabledItems (): 范_条目之列表 {
+        return this.左列之状态.allItems.filter(条目 => {
 
         })
-        // return this.leftColumn.allItems.filter(uxItem => !uxItem.disabled)
+        // return this.左列之状态.allItems.filter(条目 => !条目.已禁止交互)
     }
 
-    private get rightEnabledItems (): wlc双列互换数据.范_条目之列表 {
-        return this.rightColumn.allItems.filter(uxItem => !uxItem.disabled)
+    private get rightEnabledItems (): 范_条目之列表 {
+        return this.右列之状态.allItems.filter(条目 => !条目.已禁止交互)
     }
 
-    private get leftMatchedItems (): wlc双列互换数据.范_条目之列表 {
+    private get leftMatchedItems (): 范_条目之列表 {
         const {
             allItems,
             filteringKeyword,
-        } = this.leftColumn
+        } = this.左列之状态
 
-        let matchedItems = allItems
+        let 所有匹配的条目 = allItems
         if (filteringKeyword) {
-            const regexp = new RegExp(`${filteringKeyword}`, 'i')
-            matchedItems = allItems.filter(i => regexp.test(i.displayName))
+            const 用以匹配条目的正则表达式 = new RegExp(`${filteringKeyword}`, 'i')
+            所有匹配的条目 = allItems.filter(条目 => 用以匹配条目的正则表达式.test(条目.在界面展示时的称谓))
         }
 
-        return matchedItems
+        return 所有匹配的条目
     }
 
-    private get rightMatchedItems (): wlc双列互换数据.范_条目之列表 {
+    private get rightMatchedItems (): 范_条目之列表 {
         const {
             allItems,
             filteringKeyword,
-        } = this.rightColumn
+        } = this.右列之状态
 
-        let matchedItems = allItems
+        let 所有匹配的条目 = allItems
         if (filteringKeyword) {
-            const regexp = new RegExp(`${filteringKeyword}`, 'i')
-            matchedItems = allItems.filter(i => regexp.test(i.displayName))
+            const 用以匹配条目的正则表达式 = new RegExp(`${filteringKeyword}`, 'i')
+            所有匹配的条目 = allItems.filter(条目 => 用以匹配条目的正则表达式.test(条目.在界面展示时的称谓))
         }
 
-        return matchedItems
+        return 所有匹配的条目
     }
 
-    private get leftShownItems (): wlc双列互换数据.范_条目之列表 {
+    private get leftShownItems (): 范_条目之列表 {
         const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.leftMatchedItems
@@ -344,7 +380,7 @@ export default class wlc双列互换数据 extends Vue {
         return itemsToShow
     }
 
-    private get rightShownItems (): wlc双列互换数据.范_条目之列表 {
+    private get rightShownItems (): 范_条目之列表 {
         const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.rightMatchedItems
@@ -362,24 +398,24 @@ export default class wlc双列互换数据 extends Vue {
         return this.rightShownItems.length === 0 && this.rightMatchedItems.length > 0
     }
 
-    private get leftCheckedItems (): wlc双列互换数据.范_条目之列表 {
-        const checkedItems = this.leftColumn.allItems.filter(i => !i.disabled && !!i.isChecked)
-        this.leftColumn.checkedItemsCache = [...checkedItems] // eslint-disable-line
+    private get leftCheckedItems (): 范_条目之列表 {
+        const checkedItems = this.左列之状态.allItems.filter(条目 => !条目.已禁止交互 && !!条目.已选中)
+        this.左列之状态.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
-    private get rightCheckedItems (): wlc双列互换数据.范_条目之列表 {
-        const checkedItems = this.rightColumn.allItems.filter(i => !i.disabled && !!i.isChecked)
-        this.rightColumn.checkedItemsCache = [...checkedItems] // eslint-disable-line
+    private get rightCheckedItems (): 范_条目之列表 {
+        const checkedItems = this.右列之状态.allItems.filter(条目 => !条目.已禁止交互 && !!条目.已选中)
+        this.右列之状态.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
-    private get leftShownCheckedItems (): wlc双列互换数据.范_条目之列表 {
-        return this.leftShownItems.filter(i => !i.disabled && !!i.isChecked)
+    private get leftShownCheckedItems (): 范_条目之列表 {
+        return this.leftShownItems.filter(条目 => !条目.已禁止交互 && !!条目.已选中)
     }
 
-    private get rightShownCheckedItems (): wlc双列互换数据.范_条目之列表 {
-        return this.rightShownItems.filter(i => !i.disabled && !!i.isChecked)
+    private get rightShownCheckedItems (): 范_条目之列表 {
+        return this.rightShownItems.filter(条目 => !条目.已禁止交互 && !!条目.已选中)
     }
 
     private get shouldDisableTransferingButton0 (): boolean {
@@ -407,9 +443,9 @@ export default class wlc双列互换数据 extends Vue {
     private columnFilterPlaceholderText (side: wlc双列互换数据.范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
         let candidates
         if (side === '左列') {
-            candidates = this.leftColumn.allItems
+            candidates = this.左列之状态.allItems
         } else {
-            candidates = this.rightColumn.allItems
+            candidates = this.右列之状态.allItems
         }
 
         if (candidates.length > 0) {
@@ -445,8 +481,8 @@ export default class wlc双列互换数据 extends Vue {
     }
 
     private generateItemsOfBothColumns () {
-        let rightsideValues: wlc双列互换数据.范_条目之列表
-        let candidates: wlc双列互换数据.范_条目之列表
+        let rightsideValues: Array<范_条目之唯一标识>
+        let candidates: 范_条目之列表
 
         if (Array.isArray(this.value)) {
             rightsideValues = this.value
@@ -460,66 +496,70 @@ export default class wlc双列互换数据 extends Vue {
             candidates = []
         }
 
-        const leftCheckedItemsCache = this.leftColumn.checkedItemsCache
-        const rightCheckedItemsCache = this.rightColumn.checkedItemsCache
+        const leftCheckedItemsCache = this.左列之状态.checkedItemsCache
+        const rightCheckedItemsCache = this.右列之状态.checkedItemsCache
 
         const itemsDeduplicatedDict: {
             [value: string]: number;
         } = {}
 
-        const leftAllItems: wlc双列互换数据.范_条目之列表 = []
-        const rightAllItems: wlc双列互换数据.范_条目之列表 = []
+        const leftAllItems: 范_条目之列表 = []
+        const rightAllItems: 范_条目之列表 = []
 
-        candidates.forEach(c => {
-            if (!c) { return }
-            const { 数据: value, disabled } = c
+        candidates.forEach(原始条目 => {
+            if (!原始条目) { return }
+            const {
+                唯一标识: 该条目之唯一标识,
+                已禁止交互: 该条目已禁止交互,
+            } = 原始条目
 
-            if (value in itemsDeduplicatedDict) {
-                const dupCount = itemsDeduplicatedDict[value]
-                itemsDeduplicatedDict[value]++
-                console.error(`<wlc-dual-columns-exchange-items>：发现 value （${value}）第${dupCount}个重复的条目。`)
+            if (该条目之唯一标识 in itemsDeduplicatedDict) {
+                const dupCount = itemsDeduplicatedDict[该条目之唯一标识]
+                itemsDeduplicatedDict[该条目之唯一标识]++
+                console.error(`<wlc-dual-columns-exchange-items>：发现 唯一标识 （${该条目之唯一标识}）第${dupCount}个重复的条目。`)
                 return
             }
 
-            itemsDeduplicatedDict[value] = 1
+            itemsDeduplicatedDict[该条目之唯一标识] = 1
 
-            const uxItem = {
-                ...c,
-                isChecked: false,
+            const 条目 = {
+                ...原始条目,
+
+                已选中: false,
             }
 
-            const valueShouldBeAtRightside: boolean = rightsideValues.some(v => v === value)
+            const 该条目应位于右列中: boolean = rightsideValues.includes(该条目之唯一标识)
 
-            // if (valueShouldBeAtRightside) {
-            //   console.debug(`${value}`, valueShouldBeAtRightside)
+            // if (该条目应位于右列中) {
+            //   console.debug(`${value}`, 该条目应位于右列中)
             // }
 
-            if (valueShouldBeAtRightside) {
-                if (!disabled) {
-                    const cachedUXItem = rightCheckedItemsCache.find(item => item.数据 === value)
+            if (该条目应位于右列中) {
+                if (!该条目已禁止交互) {
+                    const cachedUXItem = rightCheckedItemsCache.find(条目 => 条目.唯一标识 === 该条目之唯一标识)
                     if (cachedUXItem) {
-                        uxItem.isChecked = cachedUXItem.isChecked
+                        条目.已选中 = cachedUXItem.已选中
                     }
                 }
 
-                rightAllItems.push(uxItem)
+                rightAllItems.push(条目)
             } else {
-                if (!disabled) {
-                    const cachedUXItem = leftCheckedItemsCache.find(item => item.数据 === value)
+                if (!该条目已禁止交互) {
+                    const cachedUXItem = leftCheckedItemsCache.find(条目 => 条目.唯一标识 === 该条目之唯一标识)
                     if (cachedUXItem) {
-                        uxItem.isChecked = cachedUXItem.isChecked
+                        条目.已选中 = cachedUXItem.已选中
                     }
                 }
 
-                leftAllItems.push(uxItem)
+                leftAllItems.push(条目)
             }
         })
 
-        this.leftColumn.allItems = leftAllItems
-        this.rightColumn.allItems = rightAllItems
+        this.左列之状态.allItems = leftAllItems
+        this.右列之状态.allItems = rightAllItems
 
-        // this.leftColumn.filteringKeyword = ''
-        // this.rightColumn.filteringKeyword = ''
+        // this.左列之状态.filteringKeyword = ''
+        // this.右列之状态.filteringKeyword = ''
 
         const dupKeys = Object.keys(itemsDeduplicatedDict).filter(key => itemsDeduplicatedDict[key] > 1)
         if (dupKeys.length > 0) {
@@ -533,18 +573,20 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private getCSSClassNamesOfItem (item: wlc双列互换数据.范_条目) {
-        if (!item) { return null }
-        const isChecked = !!item.isChecked
-        const disabled = !!item.disabled
+    private getCSSClassNamesOfItem (条目: 范_条目) {
+        if (!条目) { return null }
+
+        const 已选中 = !!条目.已选中
+        const 已禁止交互 = !!条目.已禁止交互
+
         return {
             labelElement: {
-                'is-checked': isChecked,
-                'is-disabled': disabled,
+                'is-checked': 已选中,
+                'is-disabled': 已禁止交互,
             },
             psuedoCheckboxSpan: {
-                'is-checked': isChecked,
-                'is-disabled': disabled,
+                'is-checked': 已选中,
+                'is-disabled': 已禁止交互,
             },
         }
     }
@@ -566,14 +608,14 @@ export default class wlc双列互换数据 extends Vue {
             labelElementCSSClassNames = 'is-disabled'
             psuedoCheckboxSpanCSSClassNames = 'is-disabled'
         } else {
-            const noneAreChecked = allEnabledItems.every(uxItem => !uxItem.isChecked)
+            const noneAreChecked = allEnabledItems.every(条目 => !条目.已选中)
 
             if (noneAreChecked) {
                 labelText = '全部勾选（含未列示条目）'
                 labelElementCSSClassNames = ''
                 psuedoCheckboxSpanCSSClassNames = ''
             } else {
-                const allAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked)
+                const allAreChecked = allEnabledItems.every(条目 => 条目.已选中)
 
                 if (allAreChecked) {
                     labelText = '全部去掉勾选（含未列示条目）'
@@ -612,14 +654,14 @@ export default class wlc双列互换数据 extends Vue {
             labelElementCSSClassNames = 'is-disabled'
             psuedoCheckboxSpanCSSClassNames = 'is-disabled'
         } else {
-            const noneVisibleAreChecked = allEnabledItems.every(uxItem => !uxItem.isChecked)
+            const noneVisibleAreChecked = allEnabledItems.every(条目 => !条目.已选中)
 
             if (noneVisibleAreChecked) {
                 labelText = '全部勾选（仅列示条目）'
                 labelElementCSSClassNames = ''
                 psuedoCheckboxSpanCSSClassNames = ''
             } else {
-                const allVisibleAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked)
+                const allVisibleAreChecked = allEnabledItems.every(条目 => 条目.已选中)
                 if (allVisibleAreChecked) {
                     labelText = '全部去掉勾选（仅列示条目）'
                     labelElementCSSClassNames = 'is-checked'
@@ -648,14 +690,14 @@ export default class wlc双列互换数据 extends Vue {
             allEnabledItems = this.rightEnabledItems
         }
 
-        const allAreChecked = allEnabledItems.every(uxItem => uxItem.isChecked)
+        const allAreChecked = allEnabledItems.every(条目 => 条目.已选中)
         const shouldCheckAll = !allAreChecked
 
-        allEnabledItems.forEach(uxItem => { uxItem.isChecked = shouldCheckAll })
+        allEnabledItems.forEach(条目 => { 条目.已选中 = shouldCheckAll })
         if (side === '左列') {
-            this.leftColumn.allAreChecked = allAreChecked
+            this.左列之状态.allAreChecked = allAreChecked
         } else {
-            this.rightColumn.allAreChecked = allAreChecked
+            this.右列之状态.allAreChecked = allAreChecked
         }
     }
 
@@ -667,18 +709,18 @@ export default class wlc双列互换数据 extends Vue {
             allShownItems = this.rightShownItems
         }
 
-        const allVisibleAreChecked = allShownItems.every(uxItem => uxItem.isChecked)
+        const allVisibleAreChecked = allShownItems.every(条目 => 条目.已选中)
         const shouldCheckAll = !allVisibleAreChecked
 
-        allShownItems.forEach(uxItem => {
-            if (uxItem.disabled) { return }
-            uxItem.isChecked = shouldCheckAll
+        allShownItems.forEach(条目 => {
+            if (条目.disabled) { return }
+            条目.已选中 = shouldCheckAll
         })
 
         if (side === '左列') {
-            this.leftColumn.allVisibleAreChecked = allVisibleAreChecked
+            this.左列之状态.allVisibleAreChecked = allVisibleAreChecked
         } else {
-            this.rightColumn.allVisibleAreChecked = allVisibleAreChecked
+            this.右列之状态.allVisibleAreChecked = allVisibleAreChecked
         }
     }
 
@@ -691,45 +733,45 @@ export default class wlc双列互换数据 extends Vue {
     }
 
     private transferLeftCheckedItemsToRight () {
-        const restOfLeft: wlc双列互换数据.范_条目之列表 = []
-        const toMoveToRight: wlc双列互换数据.范_条目之列表 = []
+        const restOfLeft: 范_条目之列表 = []
+        const toMoveToRight: 范_条目之列表 = []
 
-        this.leftColumn.allItems.forEach(uxItem => {
-            if (!uxItem.disabled && uxItem.isChecked) {
-                toMoveToRight.push(uxItem)
-                uxItem.isChecked = false
+        this.左列之状态.allItems.forEach(条目 => {
+            if (!条目.已禁止交互 && 条目.已选中) {
+                toMoveToRight.push(条目)
+                条目.已选中 = false
             } else {
-                restOfLeft.push(uxItem)
+                restOfLeft.push(条目)
             }
         })
 
-        this.leftColumn.allItems = restOfLeft
-        this.rightColumn.allItems = [...toMoveToRight, ...this.rightColumn.allItems]
+        this.左列之状态.allItems = restOfLeft
+        this.右列之状态.allItems = [...toMoveToRight, ...this.右列之状态.allItems]
 
         this.emitChangeEvent()
     }
 
     private transferRighttColumnCheckedItemsToLeft () {
-        const restOfRight: wlc双列互换数据.范_条目之列表 = []
-        const toMoveToLeft: wlc双列互换数据.范_条目之列表 = []
+        const restOfRight: 范_条目之列表 = []
+        const toMoveToLeft: 范_条目之列表 = []
 
-        this.rightColumn.allItems.forEach(uxItem => {
-            if (!uxItem.disabled && uxItem.isChecked) {
-                toMoveToLeft.push(uxItem)
-                uxItem.isChecked = false
+        this.右列之状态.allItems.forEach(条目 => {
+            if (!条目.已禁止交互 && 条目.已选中) {
+                toMoveToLeft.push(条目)
+                条目.已选中 = false
             } else {
-                restOfRight.push(uxItem)
+                restOfRight.push(条目)
             }
         })
 
-        this.rightColumn.allItems = restOfRight
-        this.leftColumn.allItems = [...toMoveToLeft, ...this.leftColumn.allItems]
+        this.右列之状态.allItems = restOfRight
+        this.左列之状态.allItems = [...toMoveToLeft, ...this.左列之状态.allItems]
 
         this.emitChangeEvent()
     }
 
     private emitChangeEvent () {
-        const payload = this.rightColumn.allItems.map(uxItem => uxItem.数据)
+        const payload = this.右列之状态.allItems.map(uxItem => uxItem.唯一标识)
         this.$emit('change', payload)
     }
 }
@@ -917,57 +959,62 @@ export default class wlc双列互换数据 extends Vue {
         }
 
         .counts-summary {
+            margin: 0;
             padding: 0.25rem 0.75rem 0.3rem 0.75rem;
 
             .entry {
                 display: flex;
-                max-width: 15rem;
+                max-width: 30rem;
             }
 
-            dt, dd {
-                flex: 1 1;
-                display: block;
+            dt,
+            dd {
                 padding: 0.25rem;
                 margin: 0;
             }
 
             dt {
-                min-width: 25%;
-                max-width: 25%;
+                flex: 0 0 20%;
+                display: block;
             }
 
             dd {
-                min-width: 75%;
-                max-width: 75%;
+                flex: 1 1 auto;
                 display: flex;
 
-                span {
+                > span {
                     flex: 1 1;
-                    display: block;
+                    display: flex;
                     text-align: right;
+                    justify-content: flex-end;
 
                     .value {
-                        display: inline-block;
+                        display: block;
                         padding: 0.1rem 0.25rem;
-                        margin: -0.1rem 0;
+                        margin: -0.1rem 0.33rem -0.1rem 0.5rem;
                         border-radius: 0.2rem;
                     }
 
-                    // &.all {
-                    //     min-width: 33%;
-                    //     max-width: 33%;
-                    // }
+                    &.all {
+                        flex: 1 1 31%
 
-                    // &.shown {
-                    //     min-width: 67%;
-                    //     max-width: 67%;
-                    // }
+                        .value {
+                            flex: 0 0 4rem
+                        }
+                    }
 
-                    &.prefix {
-                        flex: 0 0;
-                        min-width: 3rem;
-                        max-width: 3rem;
-                        margin-left: 0.5rem;
+                    &.shown {
+                        flex: 2 2 69%
+                        margin-left: 1.5rem
+
+                        .value {
+                            flex: 0 0 4rem
+                        }
+                    }
+
+                    .prefix,
+                    .suffix {
+                        flex: 0 0 auto;
                     }
                 }
             }
@@ -1011,7 +1058,7 @@ export default class wlc双列互换数据 extends Vue {
                         cursor: not-allowed;
 
                         .el-checkbox__input {
-                        visibility: hidden;
+                            visibility: hidden;
                         }
                     }
                 }
@@ -1224,7 +1271,7 @@ export default class wlc双列互换数据 extends Vue {
                         background-color: #777;
 
                         .el-checkbox__label {
-                        color: white;
+                            color: white;
                         }
                     }
 

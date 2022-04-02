@@ -70,7 +70,7 @@ const 任务闭环之将所有独立于Vue文件的Typescript文件复制到发�
         rootFolderPath: './源代码/原始的源代码/typescript',
 
         relativeGlobsSpecificallyForThisTaskCycle: [
-            '测试文件.ts',
+            '**/*.ts',
             '**/*.vue',
         ],
         extraSourceGlobsToWatch: [
