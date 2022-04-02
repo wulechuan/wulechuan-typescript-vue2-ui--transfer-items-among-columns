@@ -34,7 +34,8 @@
         "src/**/*.tsx",
         "src/**/*.vue",
         "tests/**/*.ts",
-        "tests/**/*.tsx"
+        "tests/**/*.tsx",
+        "node_modules/@wulechuan/vue2-ui--two-columns-exchange-items/**/*.ts",
     ],
     "exclude": [
         "node_modules"

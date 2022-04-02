@@ -80,6 +80,7 @@
                             class="el-checkbox"
                             :class="getCSSClassNamesOfItem(item).labelElement"
                         ><span
+                            style="display: none"
                             class="el-checkbox__input"
                             :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
                         ><span class="el-checkbox__inner" ></span><input
@@ -194,6 +195,7 @@
                             class="el-checkbox"
                             :class="getCSSClassNamesOfItem(item).labelElement"
                         ><span
+                            style="display: none"
                             class="el-checkbox__input"
                             :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
                         ><span class="el-checkbox__inner" ></span><input
@@ -217,32 +219,35 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-declare namespace wlc双列互换数据 {
-    interface 范_条目 {
-        displayName: string;
-        isChecked: boolean;
-        disabled: boolean;
-        value: any;
-    }
+export interface 范_条目 {
+    displayName: string;
+    isChecked: boolean;
+    disabled: boolean;
+    [key: string]: any;
+}
 
-    type 范_单列配置项集<范_实际条目> = {
-        filteringKeyword: string;
-        allAreChecked: boolean;
-        allVisibleAreChecked: boolean;
-        allItems: Array<范_实际条目>;
-        checkedItemsCache: Array<范_实际条目>;
-    };
+export type 范_条目之列表 = Array<范_条目>
+// export interface 范_条目之列表 extends Array<any> {
+//     [索引编号: number]: 范_条目;
+// }
 
-    type 范_列代号 = '左列' | '右列'
+export type 范_列代号 = '左列' | '右列'
+
+type 范_单列配置项集<范_条目> = {
+    filteringKeyword: string;
+    allAreChecked: boolean;
+    allVisibleAreChecked: boolean;
+    allItems: 范_条目之列表;
+    checkedItemsCache: 范_条目之列表;
 }
 
 const 单列至多允许显示的条目数之默认值 = 2000
 
 @Component({})
-export default class wlc双列互换数据<范_实际条目 extends wlc双列互换数据.范_条目> extends Vue {
-    @Model('change', { type: Array }) public value?: Array<范_实际条目>
+export default class wlc双列互换数据 extends Vue {
+    @Model('change', { type: Array }) public value?: 范_条目之列表
 
-    @Prop() public allCandidatesOfBothColumns?: Array<范_实际条目>
+    @Prop() public allCandidatesOfBothColumns?: 范_条目之列表
     @Prop() public maxCountOfItemsToDisplayInEitherColumn?: number
     @Prop() public hasNotTitleBar?: boolean
     @Prop() public hasFooterBar?: boolean
@@ -251,7 +256,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
     @Prop() public labelTextOfTransferingButtons?: Array<string>
     @Prop() public elementUITypeOfTransferingButtons?: Array<any>
 
-    private leftColumn: wlc双列互换数据.范_单列配置项集<范_实际条目> = {
+    private leftColumn: 范_单列配置项集<范_条目> = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -259,7 +264,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         checkedItemsCache: [],
     }
 
-    private rightColumn: wlc双列互换数据.范_单列配置项集<范_实际条目> = {
+    private rightColumn: 范_单列配置项集<范_条目> = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -310,18 +315,18 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         ]
     }
 
-    private get leftEnabledItems (): Array<范_实际条目> {
+    private get leftEnabledItems (): 范_条目之列表 {
         return this.leftColumn.allItems.filter(uxItem => {
 
         })
         // return this.leftColumn.allItems.filter(uxItem => !uxItem.disabled)
     }
 
-    private get rightEnabledItems (): Array<范_实际条目> {
+    private get rightEnabledItems (): 范_条目之列表 {
         return this.rightColumn.allItems.filter(uxItem => !uxItem.disabled)
     }
 
-    private get leftMatchedItems (): Array<范_实际条目> {
+    private get leftMatchedItems (): 范_条目之列表 {
         const {
             allItems,
             filteringKeyword,
@@ -336,7 +341,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         return matchedItems
     }
 
-    private get rightMatchedItems (): Array<范_实际条目> {
+    private get rightMatchedItems (): 范_条目之列表 {
         const {
             allItems,
             filteringKeyword,
@@ -351,7 +356,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         return matchedItems
     }
 
-    private get leftShownItems (): Array<范_实际条目> {
+    private get leftShownItems (): 范_条目之列表 {
         const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.leftMatchedItems
@@ -361,7 +366,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         return itemsToShow
     }
 
-    private get rightShownItems (): Array<范_实际条目> {
+    private get rightShownItems (): 范_条目之列表 {
         const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.rightMatchedItems
@@ -379,23 +384,23 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         return this.rightShownItems.length === 0 && this.rightMatchedItems.length > 0
     }
 
-    private get leftCheckedItems (): Array<范_实际条目> {
+    private get leftCheckedItems (): 范_条目之列表 {
         const checkedItems = this.leftColumn.allItems.filter(i => !i.disabled && !!i.isChecked)
         this.leftColumn.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
-    private get rightCheckedItems (): Array<范_实际条目> {
+    private get rightCheckedItems (): 范_条目之列表 {
         const checkedItems = this.rightColumn.allItems.filter(i => !i.disabled && !!i.isChecked)
         this.rightColumn.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
-    private get leftShownCheckedItems (): Array<范_实际条目> {
+    private get leftShownCheckedItems (): 范_条目之列表 {
         return this.leftShownItems.filter(i => !i.disabled && !!i.isChecked)
     }
 
-    private get rightShownCheckedItems (): Array<范_实际条目> {
+    private get rightShownCheckedItems (): 范_条目之列表 {
         return this.rightShownItems.filter(i => !i.disabled && !!i.isChecked)
     }
 
@@ -421,7 +426,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         this.generateItemsOfBothColumns()
     }
 
-    private columnFilterPlaceholderText (side: wlc双列互换数据.范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
+    private columnFilterPlaceholderText (side: 范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
         let candidates
         if (side === '左列') {
             candidates = this.leftColumn.allItems
@@ -462,8 +467,8 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
     }
 
     private generateItemsOfBothColumns () {
-        let rightsideValues: Array<范_实际条目>
-        let candidates: Array<范_实际条目>
+        let rightsideValues: 范_条目之列表
+        let candidates: 范_条目之列表
 
         if (Array.isArray(this.value)) {
             rightsideValues = this.value
@@ -484,8 +489,8 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
             [value: string]: number;
         } = {}
 
-        const leftAllItems: Array<范_实际条目> = []
-        const rightAllItems: Array<范_实际条目> = []
+        const leftAllItems: 范_条目之列表 = []
+        const rightAllItems: 范_条目之列表 = []
 
         candidates.forEach(c => {
             if (!c) { return }
@@ -550,7 +555,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    private getCSSClassNamesOfItem (item: 范_实际条目) {
+    private getCSSClassNamesOfItem (item: 范_条目) {
         if (!item) { return null }
         const isChecked = !!item.isChecked
         const disabled = !!item.disabled
@@ -566,7 +571,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    private getStateOfColumnCheckAllIncludingHidden (side: wlc双列互换数据.范_列代号) {
+    private getStateOfColumnCheckAllIncludingHidden (side: 范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -612,7 +617,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    private getStateOfColumnCheckAllVisible (side: wlc双列互换数据.范_列代号) {
+    private getStateOfColumnCheckAllVisible (side: 范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftShownItems
@@ -657,7 +662,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    private handleColumnCheckAllIncludingHiddenChange (side: wlc双列互换数据.范_列代号) {
+    private handleColumnCheckAllIncludingHiddenChange (side: 范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -676,7 +681,7 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
         }
     }
 
-    private handleColumnCheckAllVisibleChange (side: wlc双列互换数据.范_列代号) {
+    private handleColumnCheckAllVisibleChange (side: 范_列代号) {
         let allShownItems
         if (side === '左列') {
             allShownItems = this.leftShownItems
@@ -708,8 +713,8 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
     }
 
     private transferLeftCheckedItemsToRight () {
-        const restOfLeft: Array<范_实际条目> = []
-        const toMoveToRight: Array<范_实际条目> = []
+        const restOfLeft: 范_条目之列表 = []
+        const toMoveToRight: 范_条目之列表 = []
 
         this.leftColumn.allItems.forEach(uxItem => {
             if (!uxItem.disabled && uxItem.isChecked) {
@@ -727,8 +732,8 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
     }
 
     private transferRighttColumnCheckedItemsToLeft () {
-        const restOfRight: Array<范_实际条目> = []
-        const toMoveToLeft: Array<范_实际条目> = []
+        const restOfRight: 范_条目之列表 = []
+        const toMoveToLeft: 范_条目之列表 = []
 
         this.rightColumn.allItems.forEach(uxItem => {
             if (!uxItem.disabled && uxItem.isChecked) {
@@ -1232,11 +1237,13 @@ export default class wlc双列互换数据<范_实际条目 extends wlc双列互
                 .column-list-item > label {
 
                     &:hover {
-                        background-color: #dbeafa;
+                        // background-color: #dbeafa;
+                        background-color: #eee;
                     }
 
                     &.is-checked {
-                        background-color: #409EFF;
+                        // background-color: #409EFF;
+                        background-color: #777;
 
                         .el-checkbox__label {
                         color: white;

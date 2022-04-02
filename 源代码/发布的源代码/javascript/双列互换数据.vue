@@ -80,6 +80,7 @@
                                 class="el-checkbox"
                                 :class="getCSSClassNamesOfItem(item).labelElement"
                                 ><span
+                                    style="display: none"
                                     class="el-checkbox__input"
                                     :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
                                     ><span class="el-checkbox__inner" ></span><input
@@ -194,6 +195,7 @@
                                 class="el-checkbox"
                                 :class="getCSSClassNamesOfItem(item).labelElement"
                                 ><span
+                                    style="display: none"
                                     class="el-checkbox__input"
                                     :class="getCSSClassNamesOfItem(item).psuedoCheckboxSpan"
                                     ><span class="el-checkbox__inner" ></span><input
@@ -1092,10 +1094,10 @@ export default wlc双列互换数据;
     animation-name: none;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-list .column-list-item > label:hover {
-    background-color: #dbeafa;
+    background-color: #eee;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-list .column-list-item > label.is-checked {
-    background-color: #409eff;
+    background-color: #777;
 }
 .wlc-dual-columns-exchange-items .column-of-list .column-list .column-list-item > label.is-checked .el-checkbox__label {
     color: #fff;
