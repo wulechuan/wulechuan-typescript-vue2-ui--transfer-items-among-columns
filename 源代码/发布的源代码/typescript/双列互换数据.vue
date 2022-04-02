@@ -221,7 +221,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-declare namespace wlc双列表数据互换 {
+declare namespace wlc双列互换数据 {
     interface 范_条目 {
         displayName: string;
         isChecked: boolean;
@@ -243,19 +243,19 @@ declare namespace wlc双列表数据互换 {
 const 单列至多允许显示的条目数之默认值 = 2000
 
 @Component({})
-export default class wlc双列表数据互换<范_实际条目 extends wlc双列表数据互换.范_条目> extends Vue {
+export default class wlc双列互换数据<范_实际条目 extends wlc双列互换数据.范_条目> extends Vue {
     @Model('change', { type: Array }) value?: Array<范_实际条目> = []
 
-    @Prop() allCandidatesOfBothColumns?: Array<范_实际条目> = null
+    @Prop() allCandidatesOfBothColumns?: null | Array<范_实际条目> = null
     @Prop() maxCountOfItemsToDisplayInEitherColumn?: number = NaN
     @Prop() hasNotTitleBar?: boolean = false
     @Prop() hasFooterBar?: boolean = false
-    @Prop() leftColumnSubTitleText?: string = null
-    @Prop() rightColumnSubTitleText?: string = null
-    @Prop() labelTextOfTransferingButtons?: Array<string> = null
-    @Prop() elementUITypeOfTransferingButtons?: Array<any> = null
+    @Prop() leftColumnSubTitleText?: null | string = null
+    @Prop() rightColumnSubTitleText?: null | string = null
+    @Prop() labelTextOfTransferingButtons?: null | Array<string> = null
+    @Prop() elementUITypeOfTransferingButtons?: null | Array<any> = null
 
-    leftColumn: wlc双列表数据互换.范_单列配置项集<范_实际条目> = {
+    leftColumn: wlc双列互换数据.范_单列配置项集<范_实际条目> = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -263,7 +263,7 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         checkedItemsCache: [],
     }
 
-    rightColumn: wlc双列表数据互换.范_单列配置项集<范_实际条目> = {
+    rightColumn: wlc双列互换数据.范_单列配置项集<范_实际条目> = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -272,7 +272,17 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
     }
 
     private get _maxCountOfItemsToDisplayInEitherColumn (): number {
-        const v = +this.maxCountOfItemsToDisplayInEitherColumn
+        const _v = this.maxCountOfItemsToDisplayInEitherColumn
+
+        let v: number
+        if (typeof _v !== 'number') {
+            v = NaN
+        } else if (typeof _v === 'string') {
+            v = +_v
+        } else {
+            v = _v
+        }
+
         if (v > 0) { return v }
 
         return 单列至多允许显示的条目数之默认值
@@ -291,12 +301,12 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         return this.getValuePairOfTransferingButtons(this.labelTextOfTransferingButtons, defaultValues)
     }
 
-    private get _elementUITypeOfTransferingButtons (): Array<any> {
+    private get _elementUITypeOfTransferingButtons (): Array<unknown> {
         const defaultValues = ['primary', 'primary']
         return this.getValuePairOfTransferingButtons(this.elementUITypeOfTransferingButtons, defaultValues)
     }
 
-    private get _iconOfTransferingButtons (): Array<string> {
+    private get _iconOfTransferingButtons (): Array<string | null> {
         const [labelLeft, labelRight] = this._labelTextOfTransferingButtons
         return [
             labelLeft ? null : 'el-icon-arrow-right',
@@ -415,7 +425,7 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         this.generateItemsOfBothColumns()
     }
 
-    columnFilterPlaceholderText (side: wlc双列表数据互换.范_列代号): string {
+    columnFilterPlaceholderText (side: wlc双列互换数据.范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
         let candidates
         if (side === '左列') {
             candidates = this.leftColumn.allItems
@@ -434,7 +444,7 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         return '无条目可筛选'
     }
 
-    getValuePairOfTransferingButtons (providedValueArray, defaultValueArray) {
+    getValuePairOfTransferingButtons (providedValueArray: any, defaultValueArray: Array<string>): Array<string> {
         if (!Array.isArray(defaultValueArray)) {
             throw new Error('<wlc-dual-columns-exchange-items />: getValuePairOfTransferingButtons() defaultValueArray 无效。')
         }
@@ -444,30 +454,42 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         const usedValueArray = [...defaultValueArray]
         const [valueOfLeft, valueOfRight] = providedValueArray
 
-        if (valueOfLeft || valueOfLeft === 0) {
-            usedValueArray[0] = valueOfLeft
+        if (typeof valueOfLeft === 'string') {
+            usedValueArray[0] = valueOfLeft // .trim()
         }
 
-        if (valueOfRight || valueOfRight === 0) {
-            usedValueArray[1] = valueOfRight
+        if (typeof valueOfRight === 'string') {
+            usedValueArray[1] = valueOfRight // .trim()
         }
 
         return usedValueArray
     }
 
     generateItemsOfBothColumns () {
-        let rightsideValues = this.value
-        if (!Array.isArray(rightsideValues)) { rightsideValues = [] }
+        let rightsideValues: Array<范_实际条目>
+        let candidates: Array<范_实际条目>
 
-        let candidates = this.allCandidatesOfBothColumns
-        if (!Array.isArray(candidates)) { candidates = [] }
+        if (Array.isArray(this.value)) {
+            rightsideValues = this.value
+        } else {
+            rightsideValues = []
+        }
+
+        if (Array.isArray(this.allCandidatesOfBothColumns)) {
+            candidates = this.allCandidatesOfBothColumns
+        } else {
+            candidates = []
+        }
 
         const leftCheckedItemsCache = this.leftColumn.checkedItemsCache
         const rightCheckedItemsCache = this.rightColumn.checkedItemsCache
 
-        const itemsDeduplicatedDict = {}
-        const leftAllItems = []
-        const rightAllItems = []
+        const itemsDeduplicatedDict: {
+            [value: string]: number;
+        } = {}
+
+        const leftAllItems: Array<范_实际条目> = []
+        const rightAllItems: Array<范_实际条目> = []
 
         candidates.forEach(c => {
             if (!c) { return }
@@ -487,7 +509,7 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
                 isChecked: false,
             }
 
-            const valueShouldBeAtRightside = rightsideValues.some(v => v === value)
+            const valueShouldBeAtRightside: boolean = rightsideValues.some(v => v === value)
 
             // if (valueShouldBeAtRightside) {
             //   console.debug(`${value}`, valueShouldBeAtRightside)
@@ -528,11 +550,11 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
 
             const errorMessage = `总计有 ${dupKeys.length} 种候选项出现重复项。重复项累计 ${totalDupCountOfAll} 条。`
             console.error(errorMessage)
-            this.$message.error(errorMessage)
+            // this.$message.error(errorMessage)
         }
     }
 
-    getCSSClassNamesOfItem (item) {
+    getCSSClassNamesOfItem (item: 范_实际条目) {
         if (!item) { return null }
         const isChecked = !!item.isChecked
         const disabled = !!item.disabled
@@ -548,7 +570,7 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         }
     }
 
-    getStateOfColumnCheckAllIncludingHidden (side: wlc双列表数据互换.范_列代号) {
+    getStateOfColumnCheckAllIncludingHidden (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -594,7 +616,7 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         }
     }
 
-    getStateOfColumnCheckAllVisible (side: wlc双列表数据互换.范_列代号) {
+    getStateOfColumnCheckAllVisible (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftShownItems
@@ -639,7 +661,7 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         }
     }
 
-    handleColumnCheckAllIncludingHiddenChange (side: wlc双列表数据互换.范_列代号) {
+    handleColumnCheckAllIncludingHiddenChange (side: wlc双列互换数据.范_列代号) {
         let allEnabledItems
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -658,7 +680,7 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
         }
     }
 
-    handleColumnCheckAllVisibleChange (side: wlc双列表数据互换.范_列代号) {
+    handleColumnCheckAllVisibleChange (side: wlc双列互换数据.范_列代号) {
         let allShownItems
         if (side === '左列') {
             allShownItems = this.leftShownItems
@@ -690,8 +712,8 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
     }
 
     transferLeftCheckedItemsToRight () {
-        const restOfLeft = []
-        const toMoveToRight = []
+        const restOfLeft: Array<范_实际条目> = []
+        const toMoveToRight: Array<范_实际条目> = []
 
         this.leftColumn.allItems.forEach(uxItem => {
             if (!uxItem.disabled && uxItem.isChecked) {
@@ -709,8 +731,8 @@ export default class wlc双列表数据互换<范_实际条目 extends wlc双列
     }
 
     transferRighttColumnCheckedItemsToLeft () {
-        const restOfRight = []
-        const toMoveToLeft = []
+        const restOfRight: Array<范_实际条目> = []
+        const toMoveToLeft: Array<范_实际条目> = []
 
         this.rightColumn.allItems.forEach(uxItem => {
             if (!uxItem.disabled && uxItem.isChecked) {
