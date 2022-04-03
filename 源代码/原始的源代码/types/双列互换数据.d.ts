@@ -1,4 +1,8 @@
 declare namespace Wlc双列互换数据 {
+    type 范_界面元素之样式类名之配置 = null | string | Array<string> | {
+        [cssClassName: string]: boolean | null | undefined;
+    };
+
     type 范_列之内部代号 = '左列' | '右列'
 
     type 范_条目之唯一标识 = number | string;

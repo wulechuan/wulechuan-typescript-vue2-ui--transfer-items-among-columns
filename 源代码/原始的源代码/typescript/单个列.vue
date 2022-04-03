@@ -1,5 +1,5 @@
 <template>
-    <div class="column-of-list left-column">
+    <div class="column-of-list" :class="本列之特征样式类名之配置">
         <header class="heading-block">
             <div class="column-title-bar"><slot name="皿-标题栏">{{ 本列之标题栏之文字 }}</slot></div>
 
@@ -110,6 +110,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
+type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置
 type 范_条目 = Wlc双列互换数据.范_条目
 type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识 = Wlc双列互换数据.范_条目之唯一标识
@@ -122,6 +123,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     @Model('当选中的条目变动后') public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
     @Prop() public readonly 本列之称谓?: string
+    @Prop() public readonly 本列之特征样式类名之配置?: 范_界面元素之样式类名之配置
     @Prop() public readonly 允许列示的条目数之上限?: number | string
     @Prop() public readonly 所有条目之列表?: 范_条目之列表
 
@@ -146,7 +148,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     }
 
     private get 本列之标题栏之文字 (): string {
-        return `${this.本列之称谓_最终采纳值}之条目`
+        return this.本列之称谓_最终采纳值
     }
 
     private get 允许列示的条目数之上限_最终采纳值 (): number {
@@ -167,7 +169,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     }
 
     private get 条目过滤器之文本输入框之空框状态提示措辞 (): string {
-        return this.所有条目之总数 > 0 ? `筛选${this.本列之称谓_最终采纳值}之条目` : '无条目可筛选'
+        return this.所有条目之总数 > 0 ? `筛选【${this.本列之称谓_最终采纳值}】` : '无条目可筛选'
     }
 
     private get 所有未禁止交互之条目 (): 范_条目之列表 {
