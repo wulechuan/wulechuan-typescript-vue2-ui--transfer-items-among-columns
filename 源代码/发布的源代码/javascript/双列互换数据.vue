@@ -635,7 +635,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
         const allVisibleAreChecked = allShownItems.every(条目 => 条目.已选中);
         const shouldCheckAll = !allVisibleAreChecked;
         allShownItems.forEach(条目 => {
-            if (条目.disabled) {
+            if (条目.已禁止交互) {
                 return;
             }
             条目.已选中 = shouldCheckAll;
