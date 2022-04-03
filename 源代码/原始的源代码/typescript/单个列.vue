@@ -107,16 +107,19 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Model, Watch, Emit } from 'vue-property-decorator'
 
 type 范_条目 = wlc双列互换数据.范_条目
 type 范_条目之列表 = wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识 = 范_条目['唯一标识']
+type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>
 
 const 单列允许列示的条目数之上限_默认值 = 500
 
 @Component({})
 export default class wlc双列互换数据之单列 extends Vue {
+    @Model('选中的条目变动后') public 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
+
     @Prop() public 本列之称谓?: string
     @Prop() public 允许列示的条目数之上限?: number | string
     @Prop() public 所有条目之列表?: 范_条目之列表
@@ -125,7 +128,6 @@ export default class wlc双列互换数据之单列 extends Vue {
     private 当下恰已选中所有条目_含隐藏之条目: boolean = false
     private 当下恰已选中所有条目_仅列示之条目: boolean = false
     private 所有条目之列表_最终采纳值: 范_条目之列表 = []
-    private 当下选中的所有条目之唯一标识之列表: Array<范_条目之唯一标识> = []
 
 
 
@@ -221,7 +223,12 @@ export default class wlc双列互换数据之单列 extends Vue {
 
     @Watch('所有条目之列表', { immediate: true })
     private 在外界给出的所有条目之列表变动后 () {
-        this.根据外界给出的条目总表以及当前缓存之情况构建实用的条目总表()
+        this.根据外界给出的条件构建实用的条目总表()
+    }
+
+    @Watch('当下选中的所有条目之唯一标识之列表', { immediate: true })
+    private 在外界给出的当下选中的所有条目之唯一标识之列表变动后 () {
+        this.根据外界给出的条件构建实用的条目总表()
     }
 
     @Watch('当下已选中的所有条目之列表_含隐藏之条目', { immediate: true })
@@ -235,17 +242,19 @@ export default class wlc双列互换数据之单列 extends Vue {
 
 
 
-    private 根据外界给出的条目总表以及当前缓存之情况构建实用的条目总表 () {
-        let 外界给出值: 范_条目之列表 = this.所有条目之列表
-        if (!Array.isArray(外界给出值)) {
-            外界给出值 = []
+    private 根据外界给出的条件构建实用的条目总表 () {
+        let 给出的所有条目之列表: 范_条目之列表 = this.所有条目之列表
+        let 选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表 = this.当下选中的所有条目之唯一标识之列表
+        if (!Array.isArray(给出的所有条目之列表)) {
+            给出的所有条目之列表 = []
+        }
+        if (!Array.isArray(选中的所有条目之唯一标识之列表)) {
+            选中的所有条目之唯一标识之列表 = []
         }
 
-        const { 当下选中的所有条目之唯一标识之列表 } = this
+        const 所有条目之列表_最终采纳值: 范_条目之列表 = []
 
-        const 最终采纳值: 范_条目之列表 = []
-
-        外界给出值.forEach(原始条目 => {
+        给出的所有条目之列表.forEach(原始条目 => {
             if (!原始条目) { return }
 
             const {
@@ -256,13 +265,13 @@ export default class wlc双列互换数据之单列 extends Vue {
             const 条目 = {
                 ...原始条目,
 
-                已选中: !该条目已禁止交互 && 当下选中的所有条目之唯一标识之列表.includes(该条目之唯一标识),
+                已选中: !该条目已禁止交互 && 选中的所有条目之唯一标识之列表.includes(该条目之唯一标识),
             }
 
-            最终采纳值.push(条目)
+            所有条目之列表_最终采纳值.push(条目)
         })
 
-        this.所有条目之列表_最终采纳值 = 最终采纳值
+        this.所有条目之列表_最终采纳值 = 所有条目之列表_最终采纳值
     }
 
     private 求某条目之样式类名集_其根元素 (条目: 范_条目) {
@@ -336,517 +345,15 @@ export default class wlc双列互换数据之单列 extends Vue {
     }
 
     private emitChangeEvent () {
-        const payload = this.所有条目之列表_最终采纳值.map(uxItem => uxItem.数据)
-        this.$emit('change', payload)
+        this.$emit('选中的条目变动后1')
+    }
+
+
+
+    @Emit()
+    选中的条目变动后 () {
+        const 事件记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值.map(条目 => 条目.数据)
+        return 事件记载
     }
 }
 </script>
-
-<style lang="stylus">
-.wlc-dual-columns-exchange-items {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-
-    // > .title-bar {
-    //     flex: 0 0;
-    //     min-height: 3.5rem;
-    //     max-height: 3.5rem;
-    // }
-
-    > .footer-bar {
-        flex: 0 0;
-        min-height: 2.5rem;
-        max-height: 2.5rem;
-    }
-
-    > .chief-part {
-        flex: 1 1;
-        overflow: hidden;
-        display: flex;
-        align-items: stretch;
-
-        > .center-column {
-            flex: 0 0;
-            min-width: 3.5rem;
-            max-width: 3.5rem;
-            box-sizing: border-box;
-        }
-
-        > .column-of-list {
-            flex: 1 1;
-            width: 50%;
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        > .center-column {
-            padding: 11rem 0.5rem 0.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-
-            .el-badge {
-                display: block;
-                max-width: 100%;
-                margin: 0.25rem auto;
-
-                .el-badge__content {
-                    transform: translateX(-50%);
-                    left: 50%;
-                    right: auto;
-                    margin: -0.9rem auto;
-                    width: auto;
-                    min-width: 1.1rem;
-                    height: 1.1rem;
-                    line-height: 1rem;
-                    padding: 0 0.25rem 0 0.3rem;
-                    border-radius: 0.55rem;
-                }
-            }
-
-            .badge-of-transfering-button-1 .el-badge__content {
-                top: 0;
-                bottom: auto;
-            }
-
-            .badge-of-transfering-button-2 .el-badge__content {
-                top: auto;
-                bottom: 0;
-            }
-
-            .el-button {
-                box-sizing: border-box;
-                display: block;
-                max-width: 100%;
-
-                i ~ span {
-                    margin: -0.05rem;
-                }
-            }
-        }
-    }
-
-    .column-of-list {
-        display: flex;
-        flex-direction: column;
-        border-width: 1px;
-        border-style: solid;
-
-        .column-tip {
-            padding: 0.25rem 0.75rem;
-            margin: 0.75rem 0.25rem;
-            line-height: 1.5;
-
-            p {
-                margin: 0.25rem 0;
-            }
-
-            em {
-                font-style: normal;
-                margin: 0 0.2rem;
-            }
-
-            strong {
-                font-style: normal;
-                font-weight: normal;
-            }
-        }
-
-        .column-title-bar {
-            padding: 0.5rem 0.75rem;
-            text-align: center;
-        }
-
-        .column-filter {
-            padding: 0.5rem 0.75rem;
-            position: relative;
-            margin-bottom: -0.25rem;
-            display: flex;
-
-            .el-icon-search {
-                position: absolute;
-                top: 0.5rem;
-                left: 0.75rem;
-                height: 32px;
-                line-height: 32px;
-                width: 1.8rem;
-                text-align: center;
-                pointer-events: none;
-            }
-        }
-
-        .column-filter-input {
-            flex: 1 1;
-
-            input {
-                padding-left: 1.6rem;
-                border-radius: 10rem;
-            }
-
-            &.emphasize-to-call-to-action {
-                margin: -2px;
-
-                input {
-                    height: 36px;
-                    line-height: 36px;
-                    border-width: 3px;
-
-                    animation-iteration-count: infinite;
-                    animation-duration: 2s;
-                }
-            }
-        }
-
-        .column-check-all {
-            padding: 0rem 0.5rem 0.25rem 0.5rem;
-
-            .el-checkbox {
-                display: block;
-                padding: 0.2rem 0.25rem 0.2rem 0.5rem;
-                margin: 0;
-                border-radius: 0.2rem;
-
-                &.is-disabled {
-                    cursor: not-allowed;
-                }
-            }
-
-            .el-checkbox__input {
-                margin-top: -0.1rem;
-
-                &.is-disabled {
-                    visibility: hidden;
-                }
-            }
-        }
-
-        .counts-summary {
-            margin: 0;
-            padding: 0.25rem 0.75rem 0.3rem 0.75rem;
-
-            .entry {
-                display: flex;
-                max-width: 30rem;
-            }
-
-            dt,
-            dd {
-                padding: 0.25rem;
-                margin: 0;
-            }
-
-            dt {
-                flex: 0 0 20%;
-                display: block;
-            }
-
-            dd {
-                flex: 1 1 auto;
-                display: flex;
-
-                > span {
-                    flex: 1 1;
-                    display: flex;
-                    text-align: right;
-                    justify-content: flex-end;
-
-                    .value {
-                        display: block;
-                        padding: 0.1rem 0.25rem;
-                        margin: -0.1rem 0.33rem -0.1rem 0.5rem;
-                        border-radius: 0.2rem;
-                    }
-
-                    &.all {
-                        flex: 1 1 31%
-
-                        .value {
-                            flex: 0 0 4rem
-                        }
-                    }
-
-                    &.shown {
-                        flex: 2 2 69%
-                        margin-left: 1.5rem
-
-                        .value {
-                            flex: 0 0 4rem
-                        }
-                    }
-
-                    .prefix,
-                    .suffix {
-                        flex: 0 0 auto;
-                    }
-                }
-            }
-        }
-
-        .column-list-container {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            flex: 1 1;
-            height: 100%;
-            padding: 0.25rem;
-
-            border-width: inherit;
-            border-left-width: 0;
-            border-right-width: 0;
-            border-bottom-width: 0;
-            border-style: inherit;
-            border-color: inherit;
-        }
-
-        .column-list {
-            list-style: none;
-            padding: 0;
-            flex: 1 1;
-            height: 100%;
-            overflow: auto;
-            overflow-y: scroll;
-            padding: 0;
-            margin: 0;
-
-            .column-list-item {
-                padding: 0 0.25rem;
-
-                > label {
-                    display: block;
-                    padding: 0.2rem 0.25rem 0.2rem 0.5rem;
-                    overflow: hidden;
-
-                    &.is-disabled {
-                        cursor: not-allowed;
-
-                        .el-checkbox__input {
-                            visibility: hidden;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-    * 所有与颜色相关的定义如下。
-    */
-    & {
-        color: black;
-
-        .heading-block {
-            border-color: inherit;
-        }
-
-        .center-column {
-
-            .el-badge__content {
-                box-shadow: 0 0 0.25rem rgba(black, 0.319);
-            }
-        }
-
-        .column-title-bar {
-            color: white;
-            background-color: rgba(black, 0.515);
-        }
-
-        .column-of-list {
-            // border-color: black;
-
-            .column-tip {
-                color: #bbb;
-                border-color: rgba(black, 0.19);
-                background-color: rgba(black, 0.75);
-                box-shadow: 0 0 0.25rem rgba(black, 0.515);
-
-                em {
-                    color: rgb(90, 236, 61);
-                }
-
-                strong {
-                    color: #faa;
-
-                    // animation-name: dual-list-transferer-tip-text-flashing;
-                    // animation-iteration-count: infinite;
-                    // animation-duration: 4.5s;
-
-                    // @keyframes dual-list-transferer-tip-text-flashing {
-                    //   0%, 100% { color: #faa; }
-                    //   50% { color: #f88; }
-                    // }
-                }
-            }
-
-            .column-filter {
-                border-color: inherit;
-
-                .el-input__icon {
-                    color: #999;
-                }
-            }
-
-            .column-filter-input {
-                border-color: inherit;
-
-                input {
-                    // border-color: rgba(black, 0.75);
-                    border-color: inherit;
-
-                    &[disabled] {
-                        border-color: rgba(black, 0.1);
-                        background-color: rgba(white, 0.319);
-                    }
-                }
-            }
-
-            .column-check-all {
-
-                .el-checkbox {
-
-                    &:hover {
-                        background-color: rgba(black, 0.1);
-                    }
-
-                    &.is-disabled {
-                        background-color: transparent;
-                    }
-                }
-
-                .el-checkbox__label {
-                    color: black;
-                }
-            }
-
-            .counts-summary {
-                background-color: rgba(black, 0.1);
-
-                dt,
-                dd {
-                    color: #666;
-                }
-
-                .all,
-                .shown {
-                    color: black;
-                    text-shadow: 0 0 1px rgba(black, 0.25);
-                }
-
-                .checked .all .value {
-                    text-shadow: none;
-                    color: white;
-                    background-color: black;
-                }
-
-                .checked .shown .value {
-                    text-shadow: none;
-                    color: white;
-                    background-color: rgba(black, 0.5);
-                }
-            }
-
-            .column-list-container {
-                box-shadow: inset 0 0 0.3rem rgba(black, 0.319);
-            }
-
-            &.left-column {
-                border-color: #6e4f4f;
-
-                .heading-block {
-                    background-color: #ffdfdf;
-                }
-
-                .column-filter-input {
-
-                    // input {
-                    //     border-color: rgba(black, 0.75);
-
-                    //     &[disabled] {
-                    //         border-color: rgba(black, 0.1);
-                    //         background-color: rgba(white, 0.319);
-                    //     }
-                    // }
-
-                    &.emphasize-to-call-to-action {
-
-                        input {
-                            border-color: #f00;
-                            animation-name: dual-list-transferer-input-box1-call-to-action;
-                            @keyframes dual-list-transferer-input-box1-call-to-action {
-                                0%, 100% { border-color: #f00; }
-                                40%, 60% { border-color: #fbb; }
-                            }
-                        }
-                    }
-                }
-            }
-
-            &.right-column {
-                border-color: #304735;
-
-                .heading-block {
-                    background-color: #ddfce5;
-                }
-
-                .column-filter-input {
-
-                    // input {
-                    //     border-color: rgba(black, 0.75);
-
-                    //     &[disabled] {
-                    //         border-color: rgba(black, 0.1);
-                    //         background-color: rgba(white, 0.319);
-                    //     }
-                    // }
-
-                    &.emphasize-to-call-to-action {
-
-                        input {
-                            border-color: #090;
-                            animation-name: dual-list-transferer-input-box2-call-to-action;
-                            @keyframes dual-list-transferer-input-box2-call-to-action {
-                                0%, 100% { border-color: #aea; }
-                                40%, 60% { border-color: #090; }
-                            }
-                        }
-
-                        &.emphasize-without-animation {
-
-                            input {
-                                animation-name: none;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .column-list {
-
-                .column-list-item > label {
-
-                    &:hover {
-                        // background-color: #dbeafa;
-                        background-color: #eee;
-                    }
-
-                    &.is-checked {
-                        // background-color: #409EFF;
-                        background-color: #777;
-
-                        .el-checkbox__label {
-                            color: white;
-                        }
-                    }
-
-                    &.is-disabled {
-                        color: #444;
-                        background-color: #e4e4e4;
-                    }
-                }
-            }
-        }
-    }
-}
-</style>

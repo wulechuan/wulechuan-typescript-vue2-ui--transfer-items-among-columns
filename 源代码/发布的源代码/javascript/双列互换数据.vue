@@ -691,7 +691,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
     }
 };
 __decorate([
-    Model('change', { type: Array })
+    Model('change')
 ], wlc双列互换数据.prototype, "value", void 0);
 __decorate([
     Prop()
