@@ -6,11 +6,11 @@
 
         <div class="chief-part">
             <Wlc双列互换数据之单列
-                v-model="左列之状态.当下选中的所有条目之唯一标识之列表"
+                v-model="甲列之数据集.当下选中的所有条目之唯一标识之列表"
                 本列之特征样式类名之配置="left-column"
-                :本列之称谓="左列之称谓_最终采纳值"
+                :本列之称谓="甲列之称谓_最终采纳值"
                 :允许列示的条目数之上限="单列允许列示的条目数之上限"
-                :所有条目之列表="左列之状态.所有条目"
+                :所有条目之列表="甲列之数据集.所有条目"
             ></Wlc双列互换数据之单列>
 
             <div class="center-column">
@@ -21,7 +21,7 @@
                     @click="handleClickOfButtonOfTransferingToRightColumn"
                 >{{ decided_labelTextOfTransferingButtons[0] }}</button>
                 <sup
-                    :value="左列之状态.当下选中的所有条目之唯一标识之列表.length || null"
+                    :value="甲列之数据集.当下选中的所有条目之唯一标识之列表.length || null"
                     type="danger"
                     class="badge badge-of-transfering-button-1"
                 ></sup>
@@ -33,18 +33,18 @@
                     @click="handleClickOfButtonOfTransferingToLeftColumn"
                 >{{ decided_labelTextOfTransferingButtons[1] }}</button>
                 <sup
-                    :value="右列之状态.当下选中的所有条目之唯一标识之列表.length || null"
+                    :value="乙列之数据集.当下选中的所有条目之唯一标识之列表.length || null"
                     type="success"
                     class="badge badge-of-transfering-button-2"
                 ></sup>
             </div>
 
             <Wlc双列互换数据之单列
-                v-model="右列之状态.当下选中的所有条目之唯一标识之列表"
+                v-model="乙列之数据集.当下选中的所有条目之唯一标识之列表"
                 本列之特征样式类名之配置="right-column"
-                :本列之称谓="右列之称谓_最终采纳值"
+                :本列之称谓="乙列之称谓_最终采纳值"
                 :允许列示的条目数之上限="单列允许列示的条目数之上限"
-                :所有条目之列表="右列之状态.所有条目"
+                :所有条目之列表="乙列之数据集.所有条目"
             ></Wlc双列互换数据之单列>
         </div>
 
@@ -71,29 +71,29 @@ type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯
     },
 })
 export default class Wlc双列互换数据 extends Vue {
-    @Model('change') public readonly 右列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    @Model('change') public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
     @Prop() public readonly 所有候选条目之列表?: 范_条目之列表
     @Prop() public readonly 单列允许列示的条目数之上限?: number
     @Prop() public readonly hasNotTitleBar?: boolean
     @Prop() public readonly hasFooterBar?: boolean
-    @Prop() public readonly 左列之称谓?: string
-    @Prop() public readonly 右列之称谓?: string
+    @Prop() public readonly 甲列之称谓?: string
+    @Prop() public readonly 乙列之称谓?: string
     @Prop() public readonly labelTextOfTransferingButtons?: Array<string>
     @Prop() public readonly elementUITypeOfTransferingButtons?: Array<any>
 
-    private 左列之状态: Wlc双列互换数据.范_单列配置项集 = {
+    private 甲列之数据集: Wlc双列互换数据.范_单列配置项集 = {
         所有条目: [],
         当下选中的所有条目之唯一标识之列表: [],
     }
 
-    private 右列之状态: Wlc双列互换数据.范_单列配置项集 = {
+    private 乙列之数据集: Wlc双列互换数据.范_单列配置项集 = {
         所有条目: [],
         当下选中的所有条目之唯一标识之列表: [],
     }
 
-    private get 左列之称谓_最终采纳值 (): string {
-        const 外界给出值 = this.左列之称谓
+    private get 甲列之称谓_最终采纳值 (): string {
+        const 外界给出值 = this.甲列之称谓
 
         let 拟采纳值 = ''
         if (typeof 外界给出值 === 'string') {
@@ -103,8 +103,8 @@ export default class Wlc双列互换数据 extends Vue {
         return 拟采纳值 || '未选择的条目' // || '甲列'
     }
 
-    private get 右列之称谓_最终采纳值 (): string {
-        const 外界给出值 = this.右列之称谓
+    private get 乙列之称谓_最终采纳值 (): string {
+        const 外界给出值 = this.乙列之称谓
 
         let 拟采纳值 = ''
         if (typeof 外界给出值 === 'string') {
@@ -133,19 +133,19 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private get shouldDisableTransferingButton0 (): boolean {
-        return this.左列之状态.当下选中的所有条目之唯一标识之列表.length === 0
+        return this.甲列之数据集.当下选中的所有条目之唯一标识之列表.length === 0
     }
 
     private get shouldDisableTransferingButton1 (): boolean {
-        return this.右列之状态.当下选中的所有条目之唯一标识之列表.length === 0
+        return this.乙列之数据集.当下选中的所有条目之唯一标识之列表.length === 0
     }
 
 
 
 
 
-    @Watch('右列所有条目之唯一标识之列表')
-    在右列所有条目之唯一标识之列表变动后 () {
+    @Watch('乙列所有条目之唯一标识之列表')
+    在乙列所有条目之唯一标识之列表变动后 () {
         this.将所有候选条目分配到左右两列()
     }
 
@@ -180,13 +180,13 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private 将所有候选条目分配到左右两列 () {
-        let 右列所有条目之唯一标识之列表: Array<范_条目之唯一标识>
+        let 乙列所有条目之唯一标识之列表: Array<范_条目之唯一标识>
         let 所有候选条目之列表: 范_条目之列表
 
-        if (Array.isArray(this.右列所有条目之唯一标识之列表)) {
-            右列所有条目之唯一标识之列表 = this.右列所有条目之唯一标识之列表
+        if (Array.isArray(this.乙列所有条目之唯一标识之列表)) {
+            乙列所有条目之唯一标识之列表 = this.乙列所有条目之唯一标识之列表
         } else {
-            右列所有条目之唯一标识之列表 = []
+            乙列所有条目之唯一标识之列表 = []
         }
 
         if (Array.isArray(this.所有候选条目之列表)) {
@@ -199,8 +199,8 @@ export default class Wlc双列互换数据 extends Vue {
             [唯一标识: string]: number;
         } = {}
 
-        const 应位于左列之条目之列表: 范_条目之列表 = []
-        const 应位于右列之条目之列表: 范_条目之列表 = []
+        const 应位于甲列之条目之列表: 范_条目之列表 = []
+        const 应位于乙列之条目之列表: 范_条目之列表 = []
 
         所有候选条目之列表.forEach(原始条目 => {
             if (!原始条目) { return }
@@ -224,17 +224,17 @@ export default class Wlc双列互换数据 extends Vue {
             //     已选中: false,
             // }
 
-            const 该条目应位于右列中: boolean = 右列所有条目之唯一标识之列表.includes(该条目之唯一标识)
+            const 该条目应位于乙列中: boolean = 乙列所有条目之唯一标识之列表.includes(该条目之唯一标识)
 
-            if (该条目应位于右列中) {
-                应位于右列之条目之列表.push(原始条目)
+            if (该条目应位于乙列中) {
+                应位于乙列之条目之列表.push(原始条目)
             } else {
-                应位于左列之条目之列表.push(原始条目)
+                应位于甲列之条目之列表.push(原始条目)
             }
         })
 
-        this.左列之状态.所有条目 = 应位于左列之条目之列表
-        this.右列之状态.所有条目 = 应位于右列之条目之列表
+        this.甲列之数据集.所有条目 = 应位于甲列之条目之列表
+        this.乙列之数据集.所有条目 = 应位于乙列之条目之列表
 
         const 所有重复出现过的唯一标识之列表 = Object.keys(一切条目之唯一标识之计数字典).filter(key => 一切条目之唯一标识之计数字典[key] > 1)
         if (所有重复出现过的唯一标识之列表.length > 0) {
@@ -252,7 +252,7 @@ export default class Wlc双列互换数据 extends Vue {
         const restOfLeft: 范_条目之列表 = []
         const toMoveToRight: 范_条目之列表 = []
 
-        this.左列之状态.所有条目.forEach(条目 => {
+        this.甲列之数据集.所有条目.forEach(条目 => {
             if (!条目.已禁止交互 && 条目.已选中) {
                 toMoveToRight.push(条目)
                 条目.已选中 = false
@@ -261,8 +261,8 @@ export default class Wlc双列互换数据 extends Vue {
             }
         })
 
-        this.左列之状态.所有条目 = restOfLeft
-        this.右列之状态.所有条目 = [...toMoveToRight, ...this.右列之状态.所有条目]
+        this.甲列之数据集.所有条目 = restOfLeft
+        this.乙列之数据集.所有条目 = [...toMoveToRight, ...this.乙列之数据集.所有条目]
 
         this.emitChangeEvent()
     }
@@ -271,7 +271,7 @@ export default class Wlc双列互换数据 extends Vue {
         const restOfRight: 范_条目之列表 = []
         const toMoveToLeft: 范_条目之列表 = []
 
-        this.右列之状态.所有条目.forEach(条目 => {
+        this.乙列之数据集.所有条目.forEach(条目 => {
             if (!条目.已禁止交互 && 条目.已选中) {
                 toMoveToLeft.push(条目)
                 条目.已选中 = false
@@ -280,8 +280,8 @@ export default class Wlc双列互换数据 extends Vue {
             }
         })
 
-        this.右列之状态.所有条目 = restOfRight
-        this.左列之状态.所有条目 = [...toMoveToLeft, ...this.左列之状态.所有条目]
+        this.乙列之数据集.所有条目 = restOfRight
+        this.甲列之数据集.所有条目 = [...toMoveToLeft, ...this.甲列之数据集.所有条目]
 
         this.emitChangeEvent()
     }
@@ -291,15 +291,15 @@ export default class Wlc双列互换数据 extends Vue {
 
 
     private emitChangeEvent () {
-        // const 左列所有条目之唯一标识之列表 = this.左列之状态.所有条目.map(条目 => 条目.唯一标识)
-        const 右列所有条目之唯一标识之列表 = this.右列之状态.所有条目.map(条目 => 条目.唯一标识)
+        // const 甲列所有条目之唯一标识之列表 = this.甲列之数据集.所有条目.map(条目 => 条目.唯一标识)
+        const 乙列所有条目之唯一标识之列表 = this.乙列之数据集.所有条目.map(条目 => 条目.唯一标识)
 
         // const 事件记载 = {
-        //     左列: 左列所有条目之唯一标识之列表,
-        //     右列: 右列所有条目之唯一标识之列表,
+        //     甲列: 甲列所有条目之唯一标识之列表,
+        //     乙列: 乙列所有条目之唯一标识之列表,
         // }
 
-        const 事件记载 = 右列所有条目之唯一标识之列表
+        const 事件记载 = 乙列所有条目之唯一标识之列表
 
         this.$emit('change', 事件记载)
     }

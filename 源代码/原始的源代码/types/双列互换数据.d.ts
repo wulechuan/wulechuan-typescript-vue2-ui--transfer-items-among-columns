@@ -3,7 +3,7 @@ declare namespace Wlc双列互换数据 {
         [cssClassName: string]: boolean | null | undefined;
     };
 
-    type 范_列之内部代号 = '左列' | '右列'
+    type 范_列之内部代号 = '甲列' | '乙列'
 
     type 范_条目之唯一标识 = number | string;
     type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>;
