@@ -108,22 +108,22 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Model, Watch, Emit } from 'vue-property-decorator'
+import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
 type 范_条目 = Wlc双列互换数据.范_条目
 type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
-type 范_条目之唯一标识 = 范_条目['唯一标识']
-type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>
+type 范_条目之唯一标识 = Wlc双列互换数据.范_条目之唯一标识
+type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表
 
 const 单列允许列示的条目数之上限_默认值 = 500
 
 @Component({})
 export default class Wlc双列互换数据之单列 extends Vue {
-    @Model('当选中的条目变动后') public 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    @Model('当选中的条目变动后') public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
-    @Prop() public 本列之称谓?: string
-    @Prop() public 允许列示的条目数之上限?: number | string
-    @Prop() public 所有条目之列表?: 范_条目之列表
+    @Prop() public readonly 本列之称谓?: string
+    @Prop() public readonly 允许列示的条目数之上限?: number | string
+    @Prop() public readonly 所有条目之列表?: 范_条目之列表
 
     private 用以过滤条目之关键词: string = ''
     private 当下恰已选中所有条目_含隐藏之条目: boolean = false
@@ -330,7 +330,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
         this.当下恰已选中所有条目_含隐藏之条目 = 动作之目的应为选择所有应考察之条目
 
-        this.$emit('当选中的条目变动后')
+        this.当选中的条目变动后()
     }
 
     private 当选择所有条目之交互项动作时_仅列示之条目 () {
@@ -345,24 +345,23 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
         this.当下恰已选中所有条目_仅列示之条目 = 动作之目的应为选择所有应考察之条目
 
-        this.$emit('当选中的条目变动后')
+        this.当选中的条目变动后()
     }
 
     private 当某条目之选中状态变动后 (选中状态变动之条目: 范_条目) {
-        console.log({ ...选中状态变动之条目 })
-        this.$emit('当选中的条目变动后')
+        // console.log({ ...选中状态变动之条目 })
+        this.当选中的条目变动后()
     }
 
 
 
 
-
-    @Emit('当选中的条目变动后') private 当选中的条目变动后 () {
+    private 当选中的条目变动后 () {
         const 事件记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值
             .filter(条目 => !!条目.已选中)
             .map(条目 => 条目.唯一标识)
-        console.log('事件记载', 事件记载)
-        return 事件记载
+
+        this.$emit('当选中的条目变动后', 事件记载)
     }
 }
 </script>

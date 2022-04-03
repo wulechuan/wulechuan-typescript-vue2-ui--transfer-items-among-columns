@@ -249,15 +249,15 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-type 范_列代号 = wlc双列互换数据.范_列代号
-type 范_条目 = wlc双列互换数据.范_条目
-type 范_条目之列表 = wlc双列互换数据.范_条目之列表
+type 范_列之内部代号 = Wlc双列互换数据.范_列之内部代号
+type 范_条目 = Wlc双列互换数据.范_条目
+type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识 = 范_条目['唯一标识']
 
 const 单列允许列示的条目数之上限_默认值 = 9
 
 @Component({})
-export default class wlc双列互换数据 extends Vue {
+export default class Wlc双列互换数据 extends Vue {
     @Model('change') public value?: Array<范_条目之唯一标识>
 
     @Prop() public allCandidatesOfBothColumns?: 范_条目之列表
@@ -269,7 +269,7 @@ export default class wlc双列互换数据 extends Vue {
     @Prop() public labelTextOfTransferingButtons?: Array<string>
     @Prop() public elementUITypeOfTransferingButtons?: Array<any>
 
-    private 左列之状态: wlc双列互换数据.范_单列配置项集 = {
+    private 左列之状态: Wlc双列互换数据.范_单列配置项集 = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -277,7 +277,7 @@ export default class wlc双列互换数据 extends Vue {
         checkedItemsCache: [],
     }
 
-    private 右列之状态: wlc双列互换数据.范_单列配置项集 = {
+    private 右列之状态: Wlc双列互换数据.范_单列配置项集 = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -439,7 +439,7 @@ export default class wlc双列互换数据 extends Vue {
         this.generateItemsOfBothColumns()
     }
 
-    private columnFilterPlaceholderText (side: 范_列代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
+    private columnFilterPlaceholderText (side: 范_列之内部代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
         let candidates: 范_条目之列表
         if (side === '左列') {
             candidates = this.左列之状态.allItems
@@ -590,7 +590,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private getStateOfColumnCheckAllIncludingHidden (side: 范_列代号) {
+    private getStateOfColumnCheckAllIncludingHidden (side: 范_列之内部代号) {
         let allEnabledItems: 范_条目之列表
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -636,7 +636,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private getStateOfColumnCheckAllVisible (side: 范_列代号) {
+    private getStateOfColumnCheckAllVisible (side: 范_列之内部代号) {
         let allEnabledItems: 范_条目之列表
         if (side === '左列') {
             allEnabledItems = this.leftShownItems
@@ -681,7 +681,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private handleColumnCheckAllIncludingHiddenChange (side: 范_列代号) {
+    private handleColumnCheckAllIncludingHiddenChange (side: 范_列之内部代号) {
         let allEnabledItems: 范_条目之列表
         if (side === '左列') {
             allEnabledItems = this.leftEnabledItems
@@ -700,7 +700,7 @@ export default class wlc双列互换数据 extends Vue {
         }
     }
 
-    private handleColumnCheckAllVisibleChange (side: 范_列代号) {
+    private handleColumnCheckAllVisibleChange (side: 范_列之内部代号) {
         let allShownItems: 范_条目之列表
         if (side === '左列') {
             allShownItems = this.leftShownItems
