@@ -100,6 +100,7 @@
                     aria-hidden="false"
                     class="el-checkbox__original"
                     :disabled="条目.已禁止交互"
+                    @change="当某条目之选中状态变动后(条目)"
                 ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
             </ol>
         </div>
@@ -231,13 +232,6 @@ export default class wlc双列互换数据之单列 extends Vue {
         this.根据外界给出的条件构建实用的条目总表()
     }
 
-    @Watch('当下已选中的所有条目之列表_含隐藏之条目', { immediate: true })
-    private 在当下已选中的所有条目之列表变动后 () {
-        this.当下选中的所有条目之唯一标识之列表 = this.所有条目之列表_最终采纳值
-            .filter(条目 => !!条目.已选中)
-            .map(条目 => 条目.唯一标识)
-    }
-
 
 
 
@@ -329,6 +323,8 @@ export default class wlc双列互换数据之单列 extends Vue {
         所有应考察之条目.forEach(条目 => { 条目.已选中 = 动作之目的应为选择所有应考察之条目 })
 
         this.当下恰已选中所有条目_含隐藏之条目 = 动作之目的应为选择所有应考察之条目
+
+        this.$emit('选中的条目变动后1')
     }
 
     private 当选择所有条目之交互项动作时_仅列示之条目 () {
@@ -342,17 +338,23 @@ export default class wlc双列互换数据之单列 extends Vue {
         })
 
         this.当下恰已选中所有条目_仅列示之条目 = 动作之目的应为选择所有应考察之条目
+
+        this.$emit('选中的条目变动后1')
     }
 
-    private emitChangeEvent () {
+    private 当某条目之选中状态变动后 (选中状态变动之条目: 范_条目) {
         this.$emit('选中的条目变动后1')
     }
 
 
 
+
+
     @Emit()
     选中的条目变动后 () {
-        const 事件记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值.map(条目 => 条目.数据)
+        const 事件记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值
+            .filter(条目 => !!条目.已选中)
+            .map(条目 => 条目.唯一标识)
         return 事件记载
     }
 }

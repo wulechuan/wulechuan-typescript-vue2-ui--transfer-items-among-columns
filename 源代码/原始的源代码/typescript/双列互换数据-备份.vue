@@ -258,7 +258,7 @@ const 单列允许列示的条目数之上限_默认值 = 9
 
 @Component({})
 export default class wlc双列互换数据 extends Vue {
-    @Model('change', { type: Array }) public value?: Array<范_条目之唯一标识>
+    @Model('change') public value?: Array<范_条目之唯一标识>
 
     @Prop() public allCandidatesOfBothColumns?: 范_条目之列表
     @Prop() public maxCountOfItemsToDisplayInEitherColumn?: number
