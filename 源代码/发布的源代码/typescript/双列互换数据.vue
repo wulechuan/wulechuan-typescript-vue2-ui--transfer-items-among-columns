@@ -58,7 +58,7 @@
                                 <span class="all"><span class="value">{{ 左列之状态.allItems.length }}</span></span>
 
                                 <span class="shown">
-                                    <span class="prefix">（已列示</span>
+                                    <span class="prefix">（ 已列示</span>
                                     <span class="value">{{ leftShownItems.length }}</span>
                                     <span class="suffix">）</span>
                                 </span>
@@ -70,7 +70,7 @@
                                 <span class="all"><span class="value">{{ leftCheckedItems.length }}</span></span>
 
                                 <span class="shown">
-                                    <span class="prefix">（已列示</span>
+                                    <span class="prefix">（ 已列示</span>
                                     <span class="value">{{ leftShownCheckedItems.length }}</span>
                                     <span class="suffix">）</span>
                                 </span>
@@ -254,7 +254,7 @@ type 范_条目 = wlc双列互换数据.范_条目
 type 范_条目之列表 = wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识 = 范_条目['唯一标识']
 
-const 单列允许列示的条目数之上限_默认值 = 4
+const 单列允许列示的条目数之上限_默认值 = 9
 
 @Component({})
 export default class wlc双列互换数据 extends Vue {

@@ -58,7 +58,7 @@
                                 <span class="all"><span class="value">{{ 左列之状态.allItems.length }}</span></span>
                                 
                                 <span class="shown">
-                                    <span class="prefix">（已列示</span>
+                                    <span class="prefix">（ 已列示</span>
                                     <span class="value">{{ leftShownItems.length }}</span>
                                     <span class="suffix">）</span>
                                 </span>
@@ -70,7 +70,7 @@
                                 <span class="all"><span class="value">{{ leftCheckedItems.length }}</span></span>
                                 
                                 <span class="shown">
-                                    <span class="prefix">（已列示</span>
+                                    <span class="prefix">（ 已列示</span>
                                     <span class="value">{{ leftShownCheckedItems.length }}</span>
                                     <span class="suffix">）</span>
                                 </span>
@@ -258,7 +258,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator';
-const 单列允许列示的条目数之上限_默认值 = 4;
+const 单列允许列示的条目数之上限_默认值 = 9;
 let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
     constructor() {
         super(...arguments);
@@ -635,7 +635,7 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
         const allVisibleAreChecked = allShownItems.every(条目 => 条目.已选中);
         const shouldCheckAll = !allVisibleAreChecked;
         allShownItems.forEach(条目 => {
-            if (条目.disabled) {
+            if (条目.已禁止交互) {
                 return;
             }
             条目.已选中 = shouldCheckAll;
