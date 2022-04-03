@@ -131,7 +131,7 @@
                 <sup
                     :value="rightCheckedItems.length || null"
                     type="success"
-                    class="badge-of-transfering-button-2"
+                    class="badge badge-of-transfering-button-2"
                 ></sup>
             </div>
 

@@ -34,7 +34,7 @@
                 <sup
                     :value="右列之状态.当下选中的所有条目之唯一标识之列表.length || null"
                     type="success"
-                    class="badge-of-transfering-button-2"
+                    class="badge badge-of-transfering-button-2"
                 ></sup>
             </div>
 
