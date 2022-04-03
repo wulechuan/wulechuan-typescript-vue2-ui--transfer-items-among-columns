@@ -6,10 +6,10 @@
                 :所有候选条目之列表="双列互换数据功能.候选列表"
                 :单列允许列示的条目数之上限="-1"
                 左列之称谓="可以买到的神兽"
-                右列之称谓="准备煮着吃的神兽"
+                右列之称谓="准备烤着吃的神兽"
             >
                 <template slot="皿-总标题栏">
-                    大家好
+                    <h3>大家好，这是中华神兽烤肉采购列表</h3>
                 </template>
             </WlcDualColumns>
         </div>
@@ -197,6 +197,11 @@ export default class Page示范页 extends Vue {
         width 80%
         max-width 1200px
         height 80%
+    }
+
+    h3 {
+        font-size: 2rem
+        text-align: center
     }
 }
 </style>

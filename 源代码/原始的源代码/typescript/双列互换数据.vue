@@ -49,7 +49,7 @@
         </div>
 
         <footer v-if="hasFooterBar" class="footer-bar">
-            <slot name="footer-bar"></slot>
+            <slot name="皿-底部内容栏"></slot>
         </footer>
     </div>
 </template>
