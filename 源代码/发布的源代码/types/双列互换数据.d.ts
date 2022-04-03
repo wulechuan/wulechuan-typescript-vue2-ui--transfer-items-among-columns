@@ -1,4 +1,4 @@
-declare namespace wlc双列互换数据 {
+declare namespace Wlc双列互换数据 {
     interface 范_条目 {
         唯一标识: number | string;
         在界面展示时的称谓: string;

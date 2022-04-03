@@ -5,245 +5,149 @@
         </header>
         
         <div class="chief-part">
-            <div class="column-of-list left-column">
-                <header class="heading-block">
-                    <div class="column-title-bar">{{ decided_leftColumnSubTitleText }}</div>
-                    
-                    <div class="column-filter">
-                        <input
-                            v-model="左列之状态.filteringKeyword"
-                            :placeholder="columnFilterPlaceholderText('左列')"
-                            class="column-filter-input"
-                            :class="{ 'emphasize-to-call-to-action': leftNotShowingAllItems }"
-                            :disabled="左列之状态.allItems.length < 1"
-                        >
-                    </div>
-                    
-                    <div class="column-check-all">
-                        <label
-                            class="el-checkbox column-check-all--including-hidden"
-                            :class="getStateOfColumnCheckAllIncludingHidden('左列').labelElementCSSClassNames"
-                            ><span
-                                class="el-checkbox__input"
-                                :class="getStateOfColumnCheckAllIncludingHidden('左列').psuedoCheckboxSpanCSSClassNames"
-                                ><span class="el-checkbox__inner" ></span><input
-                                    v-model="左列之状态.allAreChecked"
-                                    type="checkbox"
-                                    aria-hidden="false"
-                                    class="el-checkbox__original"
-                                    :disabled="getStateOfColumnCheckAllIncludingHidden('左列').disabled"
-                                    @change="handleColumnCheckAllIncludingHiddenChange('左列')"
-                                ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllIncludingHidden('左列').labelText }}</span></label>
-                        
-                        <label
-                            class="el-checkbox column-check-all--visible-only"
-                            :class="getStateOfColumnCheckAllVisible('左列').labelElementCSSClassNames"
-                            ><span
-                                class="el-checkbox__input"
-                                :class="getStateOfColumnCheckAllVisible('左列').psuedoCheckboxSpanCSSClassNames"
-                                ><span class="el-checkbox__inner" ></span><input
-                                    v-model="左列之状态.allVisibleAreChecked"
-                                    type="checkbox"
-                                    aria-hidden="false"
-                                    class="el-checkbox__original"
-                                    :disabled="getStateOfColumnCheckAllVisible('左列').disabled"
-                                    @change="handleColumnCheckAllVisibleChange('左列')"
-                                ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllVisible('左列').labelText }}</span></label>
-                    </div>
-                    
-                    <dl class="counts-summary">
-                        <div class="entry all">
-                            <dt>总数</dt>
-                            <dd>
-                                <span class="all"><span class="value">{{ 左列之状态.allItems.length }}</span></span>
-                                
-                                <span class="shown">
-                                    <span class="prefix">（ 已列示</span>
-                                    <span class="value">{{ leftShownItems.length }}</span>
-                                    <span class="suffix">）</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="entry checked">
-                            <dt>已勾选</dt>
-                            <dd>
-                                <span class="all"><span class="value">{{ leftCheckedItems.length }}</span></span>
-                                
-                                <span class="shown">
-                                    <span class="prefix">（ 已列示</span>
-                                    <span class="value">{{ leftShownCheckedItems.length }}</span>
-                                    <span class="suffix">）</span>
-                                </span>
-                            </dd>
-                        </div>
-                    </dl>
-                </header>
+            <Wlc双列互换数据之单列
+                v-model="左列之状态.checkedItemsCache"
+                本列之称谓="甲列"
+                :允许列示的条目数之上限="NaN"
+                :所有条目之列表="左列之状态.allItems"
+                ></Wlc双列互换数据之单列>
                 
-                <div class="column-list-container">
-                    <div
-                        v-if="leftNotShowingAllItems"
-                        class="column-tip"
-                        ><p>符合条件的条目太多，达<em>{{ leftMatchedItems.length }}</em>条。为确保程序不致僵死，暂不列示任何条目。</p>
-                        <p><strong>请先输入筛选关键字，以减少须列示的条目。</strong></p></div>
+                <div class="center-column">
+                    <button
+                        :type="decided_elementUITypeOfTransferingButtons[0]"
+                        :icon="decided_iconOfTransferingButtons[0]"
+                        :disabled="shouldDisableTransferingButton0"
+                        @click="handleClickOfButtonOfTransferingToRightColumn"
+                        >{{ decided_labelTextOfTransferingButtons[0] }}</button>
+                    <sup
+                        :value="leftCheckedItems.length || null"
+                        type="danger"
+                        class="badge badge-of-transfering-button-1"
+                        ></sup>
                     
-                    <ol v-else class="column-list">
-                        <li
-                            v-for="条目 in leftShownItems"
-                            :key="条目.唯一标识"
-                            class="column-list-item"
-                            ><label
+                    <button
+                        :type="decided_elementUITypeOfTransferingButtons[1]"
+                        :icon="decided_iconOfTransferingButtons[1]"
+                        :disabled="shouldDisableTransferingButton1"
+                        @click="handleClickOfButtonOfTransferingToLeftColumn"
+                        >{{ decided_labelTextOfTransferingButtons[1] }}</button>
+                    <sup
+                        :value="rightCheckedItems.length || null"
+                        type="success"
+                        class="badge-of-transfering-button-2"
+                        ></sup>
+                </div>
+                
+                <div class="column-of-list right-column">
+                    <header class="heading-block">
+                        <div class="column-title-bar">{{ decided_rightColumnSubTitleText }}</div>
+                        
+                        <div class="column-filter">
+                            <input
+                                v-model="右列之状态.filteringKeyword"
+                                :placeholder="columnFilterPlaceholderText('右列')"
+                                class="column-filter-input"
+                                :class="{ 'emphasize-to-call-to-action': rightNotShowingAllItems, 'emphasize-without-animation': leftNotShowingAllItems }"
+                                :disabled="右列之状态.allItems.length < 1"
+                            >
+                        </div>
+                        
+                        <div class="column-check-all">
+                            <label
                                 class="el-checkbox"
-                                :class="getCSSClassNamesOfItem(条目).labelElement"
+                                :class="getStateOfColumnCheckAllIncludingHidden('右列').labelElementCSSClassNames"
                                 ><span
-                                    style="display: none"
                                     class="el-checkbox__input"
-                                    :class="getCSSClassNamesOfItem(条目).psuedoCheckboxSpan"
+                                    :class="getStateOfColumnCheckAllIncludingHidden('右列').psuedoCheckboxSpanCSSClassNames"
                                     ><span class="el-checkbox__inner" ></span><input
-                                        v-model="条目.已选中"
+                                        v-model="右列之状态.allAreChecked"
                                         type="checkbox"
                                         aria-hidden="false"
                                         class="el-checkbox__original"
-                                        :disabled="条目.已禁止交互"
-                                    ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
-                    </ol>
-                </div>
-            </div>
-            
-            <div class="center-column">
-                <button
-                    :type="decided_elementUITypeOfTransferingButtons[0]"
-                    :icon="decided_iconOfTransferingButtons[0]"
-                    :disabled="shouldDisableTransferingButton0"
-                    @click="handleClickOfButtonOfTransferingToRightColumn"
-                    >{{ decided_labelTextOfTransferingButtons[0] }}</button>
-                <sup
-                    :value="leftCheckedItems.length || null"
-                    type="danger"
-                    class="badge badge-of-transfering-button-1"
-                    ></sup>
-                
-                <button
-                    :type="decided_elementUITypeOfTransferingButtons[1]"
-                    :icon="decided_iconOfTransferingButtons[1]"
-                    :disabled="shouldDisableTransferingButton1"
-                    @click="handleClickOfButtonOfTransferingToLeftColumn"
-                    >{{ decided_labelTextOfTransferingButtons[1] }}</button>
-                <sup
-                    :value="rightCheckedItems.length || null"
-                    type="success"
-                    class="badge-of-transfering-button-2"
-                    ></sup>
-            </div>
-            
-            <div class="column-of-list right-column">
-                <header class="heading-block">
-                    <div class="column-title-bar">{{ decided_rightColumnSubTitleText }}</div>
-                    
-                    <div class="column-filter">
-                        <input
-                            v-model="右列之状态.filteringKeyword"
-                            :placeholder="columnFilterPlaceholderText('右列')"
-                            class="column-filter-input"
-                            :class="{ 'emphasize-to-call-to-action': rightNotShowingAllItems, 'emphasize-without-animation': leftNotShowingAllItems }"
-                            :disabled="右列之状态.allItems.length < 1"
-                        >
-                    </div>
-                    
-                    <div class="column-check-all">
-                        <label
-                            class="el-checkbox"
-                            :class="getStateOfColumnCheckAllIncludingHidden('右列').labelElementCSSClassNames"
-                            ><span
-                                class="el-checkbox__input"
-                                :class="getStateOfColumnCheckAllIncludingHidden('右列').psuedoCheckboxSpanCSSClassNames"
-                                ><span class="el-checkbox__inner" ></span><input
-                                    v-model="右列之状态.allAreChecked"
-                                    type="checkbox"
-                                    aria-hidden="false"
-                                    class="el-checkbox__original"
-                                    :disabled="getStateOfColumnCheckAllIncludingHidden('右列').disabled"
-                                    @change="handleColumnCheckAllIncludingHiddenChange('右列')"
-                                ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllIncludingHidden('右列').labelText }}</span></label>
-                        
-                        <label
-                            class="el-checkbox"
-                            :class="getStateOfColumnCheckAllVisible('右列').labelElementCSSClassNames"
-                            ><span
-                                class="el-checkbox__input"
-                                :class="getStateOfColumnCheckAllVisible('右列').psuedoCheckboxSpanCSSClassNames"
-                                ><span class="el-checkbox__inner" ></span><input
-                                    v-model="右列之状态.allVisibleAreChecked"
-                                    type="checkbox"
-                                    aria-hidden="false"
-                                    class="el-checkbox__original"
-                                    :disabled="getStateOfColumnCheckAllVisible('右列').disabled"
-                                    @change="handleColumnCheckAllVisibleChange('右列')"
-                                ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllVisible('右列').labelText }}</span></label>
-                    </div>
-                    
-                    <dl class="counts-summary">
-                        <div class="entry all">
-                            <dt>总数</dt>
-                            <dd>
-                                <span class="all"><span class="value">{{ 右列之状态.allItems.length }}</span></span>
-                                
-                                <span class="shown">
-                                    <span class="prefix">（ 已列示</span>
-                                    <span class="value">{{ rightShownItems.length }}</span>
-                                    <span class="suffix">）</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="entry checked">
-                            <dt>已勾选</dt>
-                            <dd>
-                                <span class="all"><span class="value">{{ rightCheckedItems.length }}</span></span>
-                                
-                                <span class="shown">
-                                    <span class="prefix">（ 已列示</span>
-                                    <span class="value">{{ rightShownCheckedItems.length }}</span>
-                                    <span class="suffix">）</span>
-                                </span>
-                            </dd>
-                        </div>
-                    </dl>
-                </header>
-                
-                <div class="column-list-container">
-                    <div
-                        v-if="rightNotShowingAllItems"
-                        class="column-tip"
-                        ><p>符合条件的条目太多，达<em>{{ rightMatchedItems.length }}</em>条。为确保程序不致僵死，暂不列示任何条目。</p>
-                        <p><strong>请先输入筛选关键字，以减少须列示的条目。</strong></p></div>
-                    
-                    <ol v-else class="column-list">
-                        <li
-                            v-for="条目 in rightShownItems"
-                            :key="条目.唯一标识"
-                            class="column-list-item"
-                            ><label
+                                        :disabled="getStateOfColumnCheckAllIncludingHidden('右列').disabled"
+                                        @change="handleColumnCheckAllIncludingHiddenChange('右列')"
+                                    ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllIncludingHidden('右列').labelText }}</span></label>
+                            
+                            <label
                                 class="el-checkbox"
-                                :class="getCSSClassNamesOfItem(条目).labelElement"
+                                :class="getStateOfColumnCheckAllVisible('右列').labelElementCSSClassNames"
                                 ><span
-                                    style="display: none"
                                     class="el-checkbox__input"
-                                    :class="getCSSClassNamesOfItem(条目).psuedoCheckboxSpan"
+                                    :class="getStateOfColumnCheckAllVisible('右列').psuedoCheckboxSpanCSSClassNames"
                                     ><span class="el-checkbox__inner" ></span><input
-                                        v-model="条目.已选中"
+                                        v-model="右列之状态.allVisibleAreChecked"
                                         type="checkbox"
                                         aria-hidden="false"
                                         class="el-checkbox__original"
-                                        :disabled="条目.已禁止交互"
-                                    ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
-                    </ol>
+                                        :disabled="getStateOfColumnCheckAllVisible('右列').disabled"
+                                        @change="handleColumnCheckAllVisibleChange('右列')"
+                                    ></span><span class="el-checkbox__label">{{ getStateOfColumnCheckAllVisible('右列').labelText }}</span></label>
+                        </div>
+                        
+                        <dl class="counts-summary">
+                            <div class="entry all">
+                                <dt>总数</dt>
+                                <dd>
+                                    <span class="all"><span class="value">{{ 右列之状态.allItems.length }}</span></span>
+                                    
+                                    <span class="shown">
+                                        <span class="prefix">（ 已列示</span>
+                                        <span class="value">{{ rightShownItems.length }}</span>
+                                        <span class="suffix">）</span>
+                                    </span>
+                                </dd>
+                            </div>
+                            <div class="entry checked">
+                                <dt>已勾选</dt>
+                                <dd>
+                                    <span class="all"><span class="value">{{ rightCheckedItems.length }}</span></span>
+                                    
+                                    <span class="shown">
+                                        <span class="prefix">（ 已列示</span>
+                                        <span class="value">{{ rightShownCheckedItems.length }}</span>
+                                        <span class="suffix">）</span>
+                                    </span>
+                                </dd>
+                            </div>
+                        </dl>
+                    </header>
+                    
+                    <div class="column-list-container">
+                        <div
+                            v-if="rightNotShowingAllItems"
+                            class="column-tip"
+                            ><p>符合条件的条目太多，达<em>{{ rightMatchedItems.length }}</em>条。为确保程序不致僵死，暂不列示任何条目。</p>
+                            <p><strong>请先输入筛选关键字，以减少须列示的条目。</strong></p></div>
+                        
+                        <ol v-else class="column-list">
+                            <li
+                                v-for="条目 in rightShownItems"
+                                :key="条目.唯一标识"
+                                class="column-list-item"
+                                ><label
+                                    class="el-checkbox"
+                                    :class="getCSSClassNamesOfItem(条目).labelElement"
+                                    ><span
+                                        style="display: none"
+                                        class="el-checkbox__input"
+                                        :class="getCSSClassNamesOfItem(条目).psuedoCheckboxSpan"
+                                        ><span class="el-checkbox__inner" ></span><input
+                                            v-model="条目.已选中"
+                                            type="checkbox"
+                                            aria-hidden="false"
+                                            class="el-checkbox__original"
+                                            :disabled="条目.已禁止交互"
+                                        ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
+                        </ol>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <footer v-if="hasFooterBar" class="footer-bar">
-            <slot name="footer-bar"></slot>
-        </footer>
-    </div>
+                </div>
+                
+                <footer v-if="hasFooterBar" class="footer-bar">
+                    <slot name="footer-bar"></slot>
+                </footer>
+                </div>
+                
 </template>
 
 
@@ -258,8 +162,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator';
+import Wlc双列互换数据之单列 from './单个列.vue';
 const 单列允许列示的条目数之上限_默认值 = 9;
-let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
+let Wlc双列互换数据 = class Wlc双列互换数据 extends Vue {
     constructor() {
         super(...arguments);
         this.左列之状态 = {
@@ -692,41 +597,45 @@ let wlc双列互换数据 = class wlc双列互换数据 extends Vue {
 };
 __decorate([
     Model('change')
-], wlc双列互换数据.prototype, "value", void 0);
+], Wlc双列互换数据.prototype, "value", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据.prototype, "allCandidatesOfBothColumns", void 0);
+], Wlc双列互换数据.prototype, "allCandidatesOfBothColumns", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据.prototype, "maxCountOfItemsToDisplayInEitherColumn", void 0);
+], Wlc双列互换数据.prototype, "maxCountOfItemsToDisplayInEitherColumn", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据.prototype, "hasNotTitleBar", void 0);
+], Wlc双列互换数据.prototype, "hasNotTitleBar", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据.prototype, "hasFooterBar", void 0);
+], Wlc双列互换数据.prototype, "hasFooterBar", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据.prototype, "leftColumnSubTitleText", void 0);
+], Wlc双列互换数据.prototype, "leftColumnSubTitleText", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据.prototype, "rightColumnSubTitleText", void 0);
+], Wlc双列互换数据.prototype, "rightColumnSubTitleText", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据.prototype, "labelTextOfTransferingButtons", void 0);
+], Wlc双列互换数据.prototype, "labelTextOfTransferingButtons", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据.prototype, "elementUITypeOfTransferingButtons", void 0);
+], Wlc双列互换数据.prototype, "elementUITypeOfTransferingButtons", void 0);
 __decorate([
     Watch('value')
-], wlc双列互换数据.prototype, "onValueChanged", null);
+], Wlc双列互换数据.prototype, "onValueChanged", null);
 __decorate([
     Watch('allCandidatesOfBothColumns')
-], wlc双列互换数据.prototype, "onCandidatesChanged", null);
-wlc双列互换数据 = __decorate([
-    Component({})
-], wlc双列互换数据);
-export default wlc双列互换数据;
+], Wlc双列互换数据.prototype, "onCandidatesChanged", null);
+Wlc双列互换数据 = __decorate([
+    Component({
+        components: {
+            Wlc双列互换数据之单列,
+        },
+    })
+], Wlc双列互换数据);
+export default Wlc双列互换数据;
 </script>
 
 

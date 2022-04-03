@@ -120,7 +120,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { Vue, Component, Prop, Model, Watch, Emit } from 'vue-property-decorator';
 const 单列允许列示的条目数之上限_默认值 = 500;
-let wlc双列互换数据之单列 = class wlc双列互换数据之单列 extends Vue {
+let Wlc双列互换数据之单列 = class Wlc双列互换数据之单列 extends Vue {
     constructor() {
         super(...arguments);
         this.用以过滤条目之关键词 = '';
@@ -201,12 +201,18 @@ let wlc双列互换数据之单列 = class wlc双列互换数据之单列 extend
         this.根据外界给出的条件构建实用的条目总表();
     }
     根据外界给出的条件构建实用的条目总表() {
-        let 给出的所有条目之列表 = this.所有条目之列表;
-        let 选中的所有条目之唯一标识之列表 = this.当下选中的所有条目之唯一标识之列表;
-        if (!Array.isArray(给出的所有条目之列表)) {
+        let 给出的所有条目之列表;
+        let 选中的所有条目之唯一标识之列表;
+        if (Array.isArray(this.所有条目之列表)) {
+            给出的所有条目之列表 = this.所有条目之列表;
+        }
+        else {
             给出的所有条目之列表 = [];
         }
-        if (!Array.isArray(选中的所有条目之唯一标识之列表)) {
+        if (Array.isArray(this.当下选中的所有条目之唯一标识之列表)) {
+            选中的所有条目之唯一标识之列表 = this.当下选中的所有条目之唯一标识之列表;
+        }
+        else {
             选中的所有条目之唯一标识之列表 = [];
         }
         const 所有条目之列表_最终采纳值 = [];
@@ -270,7 +276,7 @@ let wlc双列互换数据之单列 = class wlc双列互换数据之单列 extend
         const 动作之目的应为选择所有应考察之条目 = !动作之前所有应考察之条目均已选中;
         所有应考察之条目.forEach(条目 => { 条目.已选中 = 动作之目的应为选择所有应考察之条目; });
         this.当下恰已选中所有条目_含隐藏之条目 = 动作之目的应为选择所有应考察之条目;
-        this.$emit('选中的条目变动后1');
+        this.$emit('选中的条目变动后');
     }
     当选择所有条目之交互项动作时_仅列示之条目() {
         const 所有应考察之条目 = this.当下列示着的所有条目之列表;
@@ -282,10 +288,10 @@ let wlc双列互换数据之单列 = class wlc双列互换数据之单列 extend
             }
         });
         this.当下恰已选中所有条目_仅列示之条目 = 动作之目的应为选择所有应考察之条目;
-        this.$emit('选中的条目变动后1');
+        this.$emit('选中的条目变动后');
     }
     当某条目之选中状态变动后(选中状态变动之条目) {
-        this.$emit('选中的条目变动后1');
+        this.$emit('选中的条目变动后');
     }
     选中的条目变动后() {
         const 事件记载 = this.所有条目之列表_最终采纳值
@@ -296,27 +302,27 @@ let wlc双列互换数据之单列 = class wlc双列互换数据之单列 extend
 };
 __decorate([
     Model('选中的条目变动后')
-], wlc双列互换数据之单列.prototype, "\u5F53\u4E0B\u9009\u4E2D\u7684\u6240\u6709\u6761\u76EE\u4E4B\u552F\u4E00\u6807\u8BC6\u4E4B\u5217\u8868", void 0);
+], Wlc双列互换数据之单列.prototype, "\u5F53\u4E0B\u9009\u4E2D\u7684\u6240\u6709\u6761\u76EE\u4E4B\u552F\u4E00\u6807\u8BC6\u4E4B\u5217\u8868", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据之单列.prototype, "\u672C\u5217\u4E4B\u79F0\u8C13", void 0);
+], Wlc双列互换数据之单列.prototype, "\u672C\u5217\u4E4B\u79F0\u8C13", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据之单列.prototype, "\u5141\u8BB8\u5217\u793A\u7684\u6761\u76EE\u6570\u4E4B\u4E0A\u9650", void 0);
+], Wlc双列互换数据之单列.prototype, "\u5141\u8BB8\u5217\u793A\u7684\u6761\u76EE\u6570\u4E4B\u4E0A\u9650", void 0);
 __decorate([
     Prop()
-], wlc双列互换数据之单列.prototype, "\u6240\u6709\u6761\u76EE\u4E4B\u5217\u8868", void 0);
+], Wlc双列互换数据之单列.prototype, "\u6240\u6709\u6761\u76EE\u4E4B\u5217\u8868", void 0);
 __decorate([
     Watch('所有条目之列表', { immediate: true })
-], wlc双列互换数据之单列.prototype, "\u5728\u5916\u754C\u7ED9\u51FA\u7684\u6240\u6709\u6761\u76EE\u4E4B\u5217\u8868\u53D8\u52A8\u540E", null);
+], Wlc双列互换数据之单列.prototype, "\u5728\u5916\u754C\u7ED9\u51FA\u7684\u6240\u6709\u6761\u76EE\u4E4B\u5217\u8868\u53D8\u52A8\u540E", null);
 __decorate([
     Watch('当下选中的所有条目之唯一标识之列表', { immediate: true })
-], wlc双列互换数据之单列.prototype, "\u5728\u5916\u754C\u7ED9\u51FA\u7684\u5F53\u4E0B\u9009\u4E2D\u7684\u6240\u6709\u6761\u76EE\u4E4B\u552F\u4E00\u6807\u8BC6\u4E4B\u5217\u8868\u53D8\u52A8\u540E", null);
+], Wlc双列互换数据之单列.prototype, "\u5728\u5916\u754C\u7ED9\u51FA\u7684\u5F53\u4E0B\u9009\u4E2D\u7684\u6240\u6709\u6761\u76EE\u4E4B\u552F\u4E00\u6807\u8BC6\u4E4B\u5217\u8868\u53D8\u52A8\u540E", null);
 __decorate([
     Emit()
-], wlc双列互换数据之单列.prototype, "\u9009\u4E2D\u7684\u6761\u76EE\u53D8\u52A8\u540E", null);
-wlc双列互换数据之单列 = __decorate([
+], Wlc双列互换数据之单列.prototype, "\u9009\u4E2D\u7684\u6761\u76EE\u53D8\u52A8\u540E", null);
+Wlc双列互换数据之单列 = __decorate([
     Component({})
-], wlc双列互换数据之单列);
-export default wlc双列互换数据之单列;
+], Wlc双列互换数据之单列);
+export default Wlc双列互换数据之单列;
 </script>

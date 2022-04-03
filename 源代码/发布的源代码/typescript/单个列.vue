@@ -110,15 +110,15 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch, Emit } from 'vue-property-decorator'
 
-type 范_条目 = wlc双列互换数据.范_条目
-type 范_条目之列表 = wlc双列互换数据.范_条目之列表
+type 范_条目 = Wlc双列互换数据.范_条目
+type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识 = 范_条目['唯一标识']
 type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>
 
 const 单列允许列示的条目数之上限_默认值 = 500
 
 @Component({})
-export default class wlc双列互换数据之单列 extends Vue {
+export default class Wlc双列互换数据之单列 extends Vue {
     @Model('选中的条目变动后') public 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
     @Prop() public 本列之称谓?: string
@@ -237,12 +237,18 @@ export default class wlc双列互换数据之单列 extends Vue {
 
 
     private 根据外界给出的条件构建实用的条目总表 () {
-        let 给出的所有条目之列表: 范_条目之列表 = this.所有条目之列表
-        let 选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表 = this.当下选中的所有条目之唯一标识之列表
-        if (!Array.isArray(给出的所有条目之列表)) {
+        let 给出的所有条目之列表: 范_条目之列表
+        let 选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表
+
+        if (Array.isArray(this.所有条目之列表)) {
+            给出的所有条目之列表 = this.所有条目之列表
+        } else {
             给出的所有条目之列表 = []
         }
-        if (!Array.isArray(选中的所有条目之唯一标识之列表)) {
+
+        if (Array.isArray(this.当下选中的所有条目之唯一标识之列表)) {
+            选中的所有条目之唯一标识之列表 = this.当下选中的所有条目之唯一标识之列表
+        } else {
             选中的所有条目之唯一标识之列表 = []
         }
 
@@ -324,7 +330,7 @@ export default class wlc双列互换数据之单列 extends Vue {
 
         this.当下恰已选中所有条目_含隐藏之条目 = 动作之目的应为选择所有应考察之条目
 
-        this.$emit('选中的条目变动后1')
+        this.$emit('选中的条目变动后')
     }
 
     private 当选择所有条目之交互项动作时_仅列示之条目 () {
@@ -339,11 +345,11 @@ export default class wlc双列互换数据之单列 extends Vue {
 
         this.当下恰已选中所有条目_仅列示之条目 = 动作之目的应为选择所有应考察之条目
 
-        this.$emit('选中的条目变动后1')
+        this.$emit('选中的条目变动后')
     }
 
     private 当某条目之选中状态变动后 (选中状态变动之条目: 范_条目) {
-        this.$emit('选中的条目变动后1')
+        this.$emit('选中的条目变动后')
     }
 
 

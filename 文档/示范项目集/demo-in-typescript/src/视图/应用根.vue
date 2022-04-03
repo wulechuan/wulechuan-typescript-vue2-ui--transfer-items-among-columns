@@ -1,6 +1,6 @@
 <template>
     <div id="vue-应用根">
-        <page示范页 msg="Welcome to Your Vue.js + TypeScript App"></page示范页>
+        <page示范页></page示范页>
     </div>
 </template>
 
