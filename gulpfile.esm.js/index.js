@@ -62,9 +62,9 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
 
 
 
-const 任务闭环之将所有独立于Vue文件的Typescript文件复制到发布文件夹内 = 构建一个任务闭环用以复制一组文件或文件夹({
+const 任务闭环之将所有Vue文件和所有独立于Vue文件的Typescript文件复制到发布文件夹内 = 构建一个任务闭环用以复制一组文件或文件夹({
     descriptionOfCoreTask: '将所有独立的 .vue 文件中和 TypeScript 文件复制到发布文件夹中去',
-    descriptionOfInputsOfCoreTask: '独立的 .ts 文件',
+    descriptionOfInputsOfCoreTask: '.vue 、 .ts 文件',
 
     sourceGlobs: {
         rootFolderPath: './源代码/原始的源代码/typescript',
@@ -123,6 +123,33 @@ const 任务闭环之将所有独立于Vue文件的Typescript文件各自转译�
 
 
 
+const 任务闭环之将所有独立于Vue文件的Stylus文件复制到发布文件夹内 = 构建一个任务闭环用以复制一组文件或文件夹({
+    descriptionOfCoreTask: '将所有独立于 .vue 文件的 Stylus 文件复制到发布文件夹中去',
+    descriptionOfInputsOfCoreTask: '独立的 .styl 文件',
+
+    sourceGlobs: {
+        rootFolderPath: './源代码/原始的源代码/stylus',
+
+        relativeGlobsSpecificallyForThisTaskCycle: [
+            '**/*.styl',
+        ],
+        extraSourceGlobsToWatch: [
+        ],
+    },
+
+    outputFiles: {
+        rootFolderPath: './源代码/发布的源代码/stylus',
+
+        forBatchOutputFiles: {
+            relativeGlobsOfAllPossibleOutputs: [
+                '**/*.styl',
+            ],
+        },
+    },
+})
+
+
+
 const 任务闭环之将所有独立于Vue文件的Stylus文件各自编译成Css文件 = 构建一个任务闭环用以将一组独立于Vue文件的Stylus文件各自编译成Css文件({
     descriptionOfCoreTask: '将所有独立的（即不在 .vue 文件中的）Stylus 编译为 CSS',
     descriptionOfInputsOfCoreTask: '独立的 .styl 文件',
@@ -172,9 +199,11 @@ const {
     watchEverything,
 } = create3HighOrderTasksUponMultipleTaskCycles({
     taskCyclesInPallarel: [
+        任务闭环之将所有Vue文件和所有独立于Vue文件的Typescript文件复制到发布文件夹内,
         任务闭环之处理和编译所有的Vue文件,
         任务闭环之将所有独立于Vue文件的Typescript文件各自转译成Javascript文件,
-        任务闭环之将所有独立于Vue文件的Typescript文件复制到发布文件夹内,
+
+        任务闭环之将所有独立于Vue文件的Stylus文件复制到发布文件夹内,
         任务闭环之将所有独立于Vue文件的Stylus文件各自编译成Css文件,
     ],
 })

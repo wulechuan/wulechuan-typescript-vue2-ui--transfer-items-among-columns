@@ -1,9 +1,9 @@
 <template>
     <div class="page page--示范页">
         <div class="中央内容块">
-            <Wlc双列互换数据
+            <WlcDualColumns
                 :all-candidates-of-both-columns="双列互换数据功能.候选列表"
-            ></Wlc双列互换数据>
+            ></WlcDualColumns>
         </div>
     </div>
 </template>
@@ -11,7 +11,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
-import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/双列互换数据.vue'
+import WlcDualColumns from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/双列互换数据.vue'
+import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/双列互换数据.vue'
 
 interface 范_双列互换数据_实际条目 extends Wlc双列互换数据.范_条目 {
     数据: string;
@@ -21,7 +22,7 @@ type 范_双列互换数据_实际条目之列表 = Array<范_双列互换数据
 
 @Component({
     components: {
-        Wlc双列互换数据,
+        WlcDualColumns,
     },
 })
 export default class Page示范页 extends Vue {
