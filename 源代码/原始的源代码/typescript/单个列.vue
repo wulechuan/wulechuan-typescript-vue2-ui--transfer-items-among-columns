@@ -359,11 +359,11 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
     private 当选中的条目变动后 () {
-        const 事件记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值
+        const 事件之记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值
             .filter(条目 => !!条目.已选中)
             .map(条目 => 条目.唯一标识)
 
-        this.$emit('当选中的条目变动后', 事件记载)
+        this.$emit('当选中的条目变动后', 事件之记载)
     }
 }
 </script>

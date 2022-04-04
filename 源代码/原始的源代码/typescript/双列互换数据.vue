@@ -64,6 +64,7 @@ type 范_条目 = Wlc双列互换数据.范_条目
 type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识 = Wlc双列互换数据.范_条目之唯一标识
 type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表
+type 范_单列配置项集 = Wlc双列互换数据.范_单列配置项集
 
 @Component({
     components: {
@@ -82,12 +83,18 @@ export default class Wlc双列互换数据 extends Vue {
     @Prop() public readonly labelTextOfTransferingButtons?: Array<string>
     @Prop() public readonly elementUITypeOfTransferingButtons?: Array<any>
 
-    private 甲列之数据集: Wlc双列互换数据.范_单列配置项集 = {
+
+
+
+
+    private 日志前缀: string = 'Vue 部件 <Wlc双列互换数据> ：'
+
+    private 甲列之数据集: 范_单列配置项集 = {
         所有条目: [],
         当下选中的所有条目之唯一标识之列表: [],
     }
 
-    private 乙列之数据集: Wlc双列互换数据.范_单列配置项集 = {
+    private 乙列之数据集: 范_单列配置项集 = {
         所有条目: [],
         当下选中的所有条目之唯一标识之列表: [],
     }
@@ -180,13 +187,17 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private 将所有候选条目分配到左右两列 () {
-        let 乙列所有条目之唯一标识之列表: Array<范_条目之唯一标识>
+        const { 日志前缀 } = this
+
+        let 乙列所有条目之唯一标识之列表_采纳值: Array<范_条目之唯一标识>
         let 所有候选条目之列表: 范_条目之列表
 
-        if (Array.isArray(this.乙列所有条目之唯一标识之列表)) {
-            乙列所有条目之唯一标识之列表 = this.乙列所有条目之唯一标识之列表
+        const 乙列所有条目之唯一标识之列表_给出值 = this.乙列所有条目之唯一标识之列表
+
+        if (Array.isArray(乙列所有条目之唯一标识之列表_给出值)) {
+            乙列所有条目之唯一标识之列表_采纳值 = 乙列所有条目之唯一标识之列表_给出值
         } else {
-            乙列所有条目之唯一标识之列表 = []
+            乙列所有条目之唯一标识之列表_采纳值 = []
         }
 
         if (Array.isArray(this.所有候选条目之列表)) {
@@ -210,9 +221,11 @@ export default class Wlc双列互换数据 extends Vue {
             } = 原始条目
 
             if (该条目之唯一标识 in 一切条目之唯一标识之计数字典) {
-                const dupCount = 一切条目之唯一标识之计数字典[该条目之唯一标识]
+                const 该条目之唯一标识之已遭遇次数 = 一切条目之唯一标识之计数字典[该条目之唯一标识]
                 一切条目之唯一标识之计数字典[该条目之唯一标识]++
-                console.error(`<wlc-dual-columns-exchange-items>：发现 唯一标识 （${该条目之唯一标识}）第${dupCount}个重复的条目。`)
+                const 出错提示之报文 = `${日志前缀} 发现唯一标识 “ ${该条目之唯一标识} ” 的第 ${该条目之唯一标识之已遭遇次数} 个重复的条目。`
+                console.error(出错提示之报文)
+                // this.发布事件_遭遇错误(new Error(出错提示之报文))
                 return
             }
 
@@ -224,7 +237,7 @@ export default class Wlc双列互换数据 extends Vue {
             //     已选中: false,
             // }
 
-            const 该条目应位于乙列中: boolean = 乙列所有条目之唯一标识之列表.includes(该条目之唯一标识)
+            const 该条目应位于乙列中: boolean = 乙列所有条目之唯一标识之列表_采纳值.includes(该条目之唯一标识)
 
             if (该条目应位于乙列中) {
                 应位于乙列之条目之列表.push(原始条目)
@@ -237,75 +250,83 @@ export default class Wlc双列互换数据 extends Vue {
         this.乙列之数据集.所有条目 = 应位于乙列之条目之列表
 
         const 所有重复出现过的唯一标识之列表 = Object.keys(一切条目之唯一标识之计数字典).filter(key => 一切条目之唯一标识之计数字典[key] > 1)
-        if (所有重复出现过的唯一标识之列表.length > 0) {
+        const 所有重复项之种类之总数 = 所有重复出现过的唯一标识之列表.length
+        if (所有重复项之种类之总数 > 0) {
             const 异常唯一标识之总数 = 所有重复出现过的唯一标识之列表.reduce((总数, 条目之唯一标识) => {
                 return 总数 + 一切条目之唯一标识之计数字典[条目之唯一标识] - 1
             }, 0)
 
-            const 出错提示之报文 = `总计有 ${所有重复出现过的唯一标识之列表.length} 种候选项出现重复项。重复项累计 ${异常唯一标识之总数} 条。`
-            console.error(出错提示之报文)
-            // this.$message.error(出错提示之报文)
+            const 出错提示之报文 = `${日志前缀} 总计有 ${所有重复项之种类之总数} 种候选条目出现重复项。重复条目累计 ${异常唯一标识之总数} 条。`
+            this.发布事件_遭遇错误(出错提示之报文)
         }
     }
 
-    private transferLeftColumnCheckedItemsToRight () {
-        const restOfLeft: 范_条目之列表 = []
-        const toMoveToRight: 范_条目之列表 = []
+    public 将甲列选中的条目迁移至乙列 () {
+        this.将某列选中的条目迁移至对方列(this.甲列之数据集)
+    }
 
-        this.甲列之数据集.所有条目.forEach(条目 => {
+    public 将乙列选中的条目迁移至甲列 () {
+        this.将某列选中的条目迁移至对方列(this.乙列之数据集)
+    }
+
+    private 将某列选中的条目迁移至对方列 (起列?: 范_单列配置项集) {
+        const { 甲列之数据集, 乙列之数据集 } = this
+
+        let 迄列: 范_单列配置项集
+
+        if (起列 === 甲列之数据集) {
+            迄列 = 乙列之数据集
+        } else if (起列 === 乙列之数据集) {
+            迄列 = 甲列之数据集
+        } else {
+            return
+        }
+
+        const 应停留在起列之条目之列表: 范_条目之列表 = []
+        const 应迁移至迄列之条目之列表: 范_条目之列表 = []
+
+        起列.所有条目.forEach(条目 => {
             if (!条目.已禁止交互 && 条目.已选中) {
-                toMoveToRight.push(条目)
                 条目.已选中 = false
+                应迁移至迄列之条目之列表.push(条目)
             } else {
-                restOfLeft.push(条目)
+                应停留在起列之条目之列表.push(条目)
             }
         })
 
-        this.甲列之数据集.所有条目 = restOfLeft
-        this.乙列之数据集.所有条目 = [...toMoveToRight, ...this.乙列之数据集.所有条目]
+        起列.所有条目 = 应停留在起列之条目之列表
+        迄列.所有条目 = [...应迁移至迄列之条目之列表, ...迄列.所有条目 ]
 
-        this.emitChangeEvent()
-    }
-
-    private transferRightColumnCheckedItemsToLeft () {
-        const restOfRight: 范_条目之列表 = []
-        const toMoveToLeft: 范_条目之列表 = []
-
-        this.乙列之数据集.所有条目.forEach(条目 => {
-            if (!条目.已禁止交互 && 条目.已选中) {
-                toMoveToLeft.push(条目)
-                条目.已选中 = false
-            } else {
-                restOfRight.push(条目)
-            }
-        })
-
-        this.乙列之数据集.所有条目 = restOfRight
-        this.甲列之数据集.所有条目 = [...toMoveToLeft, ...this.甲列之数据集.所有条目]
-
-        this.emitChangeEvent()
+        this.发布事件_条目之分布有变动()
     }
 
 
 
 
 
-    private emitChangeEvent () {
+    private 发布事件_遭遇错误 (错误之记载或报文: Error | string) {
+        if (错误之记载或报文 instanceof Error) {
+            console.error(错误之记载或报文)
+            this.$emit('error', 错误之记载或报文)
+        } else if (typeof 错误之记载或报文 === 'string') {
+            const 出错提示之报文 = 错误之记载或报文.trim()
+            console.error(出错提示之报文)
+            this.$emit('出错', new Error(出错提示之报文))
+        }
+    }
+
+    private 发布事件_条目之分布有变动 () {
         // const 甲列所有条目之唯一标识之列表 = this.甲列之数据集.所有条目.map(条目 => 条目.唯一标识)
         const 乙列所有条目之唯一标识之列表 = this.乙列之数据集.所有条目.map(条目 => 条目.唯一标识)
 
-        // const 事件记载 = {
+        // const 事件之记载 = {
         //     甲列: 甲列所有条目之唯一标识之列表,
         //     乙列: 乙列所有条目之唯一标识之列表,
         // }
 
-        const 事件记载 = 乙列所有条目之唯一标识之列表
+        const 事件之记载 = 乙列所有条目之唯一标识之列表
 
-        this.$emit('change', 事件记载)
-    }
-
-    private 当选中的条目变动后 (列代号: 范_列之内部代号, 选中的条目之列表: any) {
-        console.log(列代号, '选中的条目之列表', [...选中的条目之列表])
+        this.$emit('change', 事件之记载)
     }
 
 
@@ -313,11 +334,11 @@ export default class Wlc双列互换数据 extends Vue {
 
 
     private handleClickOfButtonOfTransferingToRightColumn () {
-        this.transferLeftColumnCheckedItemsToRight()
+        this.将甲列选中的条目迁移至乙列()
     }
 
     private handleClickOfButtonOfTransferingToLeftColumn () {
-        this.transferRightColumnCheckedItemsToLeft()
+        this.将乙列选中的条目迁移至甲列()
     }
 
 
