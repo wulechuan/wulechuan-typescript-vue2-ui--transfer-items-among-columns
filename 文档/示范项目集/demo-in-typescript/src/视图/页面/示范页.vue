@@ -2,6 +2,7 @@
     <div class="page page--示范页">
         <div class="中央内容块">
             <WlcDualColumns
+                ref="双列互换数据控件-1"
                 v-model="双列互换数据功能.选中的条目之唯一标识之列表"
                 :所有候选条目之列表="双列互换数据功能.候选列表"
                 :单列允许列示的条目数之上限="-1"
@@ -11,6 +12,18 @@
             >
                 <template slot="皿-总标题栏">
                     <h3>大家好，这是中华神兽烤肉采购列表</h3>
+                </template>
+
+                <template slot="皿-中央列" scope="状态汇总数据">
+                    <button
+                        :disabled="状态汇总数据.甲列当下没有条目拟迁移至乙列"
+                        @click="当点击用以将甲列选中之条目迁移至乙列之按钮后()"
+                    >买入</button>
+
+                    <button
+                        :disabled="状态汇总数据.乙列当下没有条目拟迁移至甲列"
+                        @click="当点击用以将乙列选中之条目迁移至甲列之按钮后()"
+                    >退货</button>
                 </template>
             </WlcDualColumns>
         </div>
@@ -219,6 +232,17 @@ export default class Page示范页 extends Vue {
     private 当双列互换数据功能出错时 (错误之记载: Error) {
         console.log(错误之记载)
     }
+
+    private 当点击用以将甲列选中之条目迁移至乙列之按钮后 () {
+        const 部件实例 = this.$refs['双列互换数据控件-1'] as Wlc双列互换数据
+        部件实例.将甲列选中的条目迁移至乙列(this)
+    }
+
+    private 当点击用以将乙列选中之条目迁移至甲列之按钮后 () {
+        const 部件实例 = this.$refs['双列互换数据控件-1'] as Wlc双列互换数据
+        console.log('部件实例', 部件实例)
+        部件实例.将乙列选中的条目迁移至甲列(this)
+    }
 }
 </script>
 
@@ -240,6 +264,8 @@ export default class Page示范页 extends Vue {
     h3 {
         font-size: 2rem
         text-align: center
+        margin: 0
+        padding 1rem
     }
 }
 </style>

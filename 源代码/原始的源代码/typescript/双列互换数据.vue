@@ -1,7 +1,7 @@
 <template>
     <div class="wlc-dual-columns-exchange-items">
-        <header v-if="!hasNotTitleBar" class="title-bar">
-            <slot name="皿-总标题栏" ></slot>
+        <header class="title-bar">
+            <slot name="皿-总标题栏" v-bind="用于各皿之状态汇总数据"></slot>
         </header>
 
         <div class="chief-part">
@@ -14,29 +14,27 @@
             ></Wlc双列互换数据之单列>
 
             <div class="center-column">
-                <button
-                    :type="decided_elementUITypeOfTransferingButtons[0]"
-                    :icon="decided_iconOfTransferingButtons[0]"
-                    :disabled="shouldDisableTransferingButton0"
-                    @click="handleClickOfButtonOfTransferingToRightColumn"
-                >{{ decided_labelTextOfTransferingButtons[0] }}</button>
-                <sup
-                    :value="甲列之数据集.当下选中的所有条目之唯一标识之列表.length || null"
-                    type="danger"
-                    class="badge badge-of-transfering-button-1"
-                ></sup>
+                <slot name="皿-中央列" v-bind="用于各皿之状态汇总数据">
+                    <button
+                        :disabled="用于各皿之状态汇总数据.甲列当下没有条目拟迁移至乙列"
+                        @click="当点击用以将甲列选中之条目迁移至乙列之按钮后"
+                    >&gt;</button>
+                    <sup
+                        :value="用于各皿之状态汇总数据.甲列当下选中的条目之总数"
+                        type="danger"
+                        class="badge badge-of-transfering-button-1"
+                    ></sup>
 
-                <button
-                    :type="decided_elementUITypeOfTransferingButtons[1]"
-                    :icon="decided_iconOfTransferingButtons[1]"
-                    :disabled="shouldDisableTransferingButton1"
-                    @click="handleClickOfButtonOfTransferingToLeftColumn"
-                >{{ decided_labelTextOfTransferingButtons[1] }}</button>
-                <sup
-                    :value="乙列之数据集.当下选中的所有条目之唯一标识之列表.length || null"
-                    type="success"
-                    class="badge badge-of-transfering-button-2"
-                ></sup>
+                    <button
+                        :disabled="用于各皿之状态汇总数据.乙列当下没有条目拟迁移至甲列"
+                        @click="当点击用以将乙列选中之条目迁移至甲列之按钮后"
+                    >&lt;</button>
+                    <sup
+                        :value="用于各皿之状态汇总数据.乙列当下选中的条目之总数"
+                        type="success"
+                        class="badge badge-of-transfering-button-2"
+                    ></sup>
+                </slot>
             </div>
 
             <Wlc双列互换数据之单列
@@ -48,8 +46,8 @@
             ></Wlc双列互换数据之单列>
         </div>
 
-        <footer v-if="hasFooterBar" class="footer-bar">
-            <slot name="皿-底部内容栏"></slot>
+        <footer class="footer-bar">
+            <slot name="皿-底部内容栏" v-bind="用于各皿之状态汇总数据"></slot>
         </footer>
     </div>
 </template>
@@ -59,12 +57,12 @@ import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
 import Wlc双列互换数据之单列 from './单个列.vue'
 
-type 范_列之内部代号 = Wlc双列互换数据.范_列之内部代号
-type 范_条目 = Wlc双列互换数据.范_条目
+// type 范_条目 = Wlc双列互换数据.范_条目
 type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识 = Wlc双列互换数据.范_条目之唯一标识
 type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表
 type 范_单列配置项集 = Wlc双列互换数据.范_单列配置项集
+type 范_状态汇总数据 = Wlc双列互换数据.范_状态汇总数据
 
 @Component({
     components: {
@@ -76,8 +74,6 @@ export default class Wlc双列互换数据 extends Vue {
 
     @Prop() public readonly 所有候选条目之列表?: 范_条目之列表
     @Prop() public readonly 单列允许列示的条目数之上限?: number
-    @Prop() public readonly hasNotTitleBar?: boolean
-    @Prop() public readonly hasFooterBar?: boolean
     @Prop() public readonly 甲列之称谓?: string
     @Prop() public readonly 乙列之称谓?: string
     @Prop() public readonly labelTextOfTransferingButtons?: Array<string>
@@ -121,30 +117,16 @@ export default class Wlc双列互换数据 extends Vue {
         return 拟采纳值 || '已选择的条目' // || '乙列'
     }
 
-    private get decided_labelTextOfTransferingButtons (): Array<string> {
-        const defaultValues = ['>', '<']
-        return this.getValuePairOfTransferingButtons(this.labelTextOfTransferingButtons, defaultValues)
-    }
-
-    private get decided_elementUITypeOfTransferingButtons (): Array<unknown> {
-        const defaultValues = ['primary', 'primary']
-        return this.getValuePairOfTransferingButtons(this.elementUITypeOfTransferingButtons, defaultValues)
-    }
-
-    private get decided_iconOfTransferingButtons (): Array<string | null> {
-        const [labelLeft, labelRight] = this.decided_labelTextOfTransferingButtons
-        return [
-            labelLeft ? null : 'el-icon-arrow-right',
-            labelRight ? null : 'el-icon-arrow-left',
-        ]
-    }
-
-    private get shouldDisableTransferingButton0 (): boolean {
-        return this.甲列之数据集.当下选中的所有条目之唯一标识之列表.length === 0
-    }
-
-    private get shouldDisableTransferingButton1 (): boolean {
-        return this.乙列之数据集.当下选中的所有条目之唯一标识之列表.length === 0
+    private get 用于各皿之状态汇总数据 (): 范_状态汇总数据 {
+        const { 甲列之数据集, 乙列之数据集 } = this
+        const 甲列当下选中的条目之总数 = 甲列之数据集.当下选中的所有条目之唯一标识之列表.length
+        const 乙列当下选中的条目之总数 = 乙列之数据集.当下选中的所有条目之唯一标识之列表.length
+        return {
+            甲列当下选中的条目之总数,
+            乙列当下选中的条目之总数,
+            甲列当下没有条目拟迁移至乙列: 甲列当下选中的条目之总数 < 1,
+            乙列当下没有条目拟迁移至甲列: 乙列当下选中的条目之总数 < 1,
+        }
     }
 
 
@@ -164,27 +146,6 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-
-    private getValuePairOfTransferingButtons (providedValueArray: any, defaultValueArray: Array<string>): Array<string> {
-        if (!Array.isArray(defaultValueArray)) {
-            throw new Error('<wlc-dual-columns-exchange-items />: getValuePairOfTransferingButtons() defaultValueArray 无效。')
-        }
-
-        if (!Array.isArray(providedValueArray)) { return defaultValueArray }
-
-        const usedValueArray = [...defaultValueArray]
-        const [valueOfLeft, valueOfRight] = providedValueArray
-
-        if (typeof valueOfLeft === 'string') {
-            usedValueArray[0] = valueOfLeft // .trim()
-        }
-
-        if (typeof valueOfRight === 'string') {
-            usedValueArray[1] = valueOfRight // .trim()
-        }
-
-        return usedValueArray
-    }
 
     private 将所有候选条目分配到左右两列 () {
         const { 日志前缀 } = this
@@ -261,11 +222,13 @@ export default class Wlc双列互换数据 extends Vue {
         }
     }
 
-    public 将甲列选中的条目迁移至乙列 () {
+    public 将甲列选中的条目迁移至乙列 (调用者: Vue) {
+        console.log('调用者', 调用者)
         this.将某列选中的条目迁移至对方列(this.甲列之数据集)
     }
 
-    public 将乙列选中的条目迁移至甲列 () {
+    public 将乙列选中的条目迁移至甲列 (调用者: Vue) {
+        console.log('调用者', 调用者)
         this.将某列选中的条目迁移至对方列(this.乙列之数据集)
     }
 
@@ -333,12 +296,12 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    private handleClickOfButtonOfTransferingToRightColumn () {
-        this.将甲列选中的条目迁移至乙列()
+    private 当点击用以将甲列选中之条目迁移至乙列之按钮后 () {
+        this.将甲列选中的条目迁移至乙列(this)
     }
 
-    private handleClickOfButtonOfTransferingToLeftColumn () {
-        this.将乙列选中的条目迁移至甲列()
+    private 当点击用以将乙列选中之条目迁移至甲列之按钮后 () {
+        this.将乙列选中的条目迁移至甲列(this)
     }
 
 
