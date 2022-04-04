@@ -14,7 +14,7 @@ declare namespace Wlc双列互换数据 {
     }
     type 范_条目之列表 = Array<范_条目>
 
-    type 范_单列配置项集 = {
+    type 范_单列之内部数据集 = {
         所有条目: 范_条目之列表;
         当下选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表;
     }
@@ -40,8 +40,8 @@ declare class Wlc双列互换数据 extends Vue {
     // -----------------------------------------------------
 
     private 日志前缀: string
-    private 甲列之数据集: Wlc双列互换数据.范_单列配置项集
-    private 乙列之数据集: Wlc双列互换数据.范_单列配置项集
+    private 甲列之数据集: Wlc双列互换数据.范_单列之内部数据集
+    private 乙列之数据集: Wlc双列互换数据.范_单列之内部数据集
 
     private get 甲列之称谓_最终采纳值 (): string
     private get 乙列之称谓_最终采纳值 (): string
@@ -51,7 +51,7 @@ declare class Wlc双列互换数据 extends Vue {
     private 在所有候选条目之列表变动后 (): void
 
     private 将所有候选条目分配到左右两列 (): void
-    private 将某列选中的条目迁移至对方列 (起列?: Wlc双列互换数据.范_单列配置项集): void
+    private 将某列选中的条目迁移至对方列 (起列?: Wlc双列互换数据.范_单列之内部数据集): void
     private 发布事件_遭遇错误 (错误之记载或报文: Error | string): void
     private 发布事件_条目之分布有变动 (): void
 

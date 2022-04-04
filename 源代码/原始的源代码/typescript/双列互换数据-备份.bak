@@ -269,7 +269,7 @@ export default class Wlc双列互换数据 extends Vue {
     @Prop() public labelTextOfTransferingButtons?: Array<string>
     @Prop() public elementUITypeOfTransferingButtons?: Array<any>
 
-    private 甲列之状态: Wlc双列互换数据.范_单列配置项集 = {
+    private 甲列之状态: Wlc双列互换数据.范_单列之内部数据集 = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,
@@ -277,7 +277,7 @@ export default class Wlc双列互换数据 extends Vue {
         checkedItemsCache: [],
     }
 
-    private 乙列之状态: Wlc双列互换数据.范_单列配置项集 = {
+    private 乙列之状态: Wlc双列互换数据.范_单列之内部数据集 = {
         filteringKeyword: '',
         allAreChecked: false,
         allVisibleAreChecked: false,

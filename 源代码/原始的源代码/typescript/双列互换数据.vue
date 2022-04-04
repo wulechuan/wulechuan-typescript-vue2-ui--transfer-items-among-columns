@@ -59,7 +59,7 @@ import Wlc双列互换数据之单列 from './单个列.vue'
 
 type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表
-type 范_单列配置项集 = Wlc双列互换数据.范_单列配置项集
+type 范_单列之内部数据集 = Wlc双列互换数据.范_单列之内部数据集
 type 范_状态汇总数据 = Wlc双列互换数据.范_状态汇总数据
 
 @Component({
@@ -81,12 +81,12 @@ export default class Wlc双列互换数据 extends Vue {
 
     private 日志前缀: string = 'Vue 部件 <Wlc双列互换数据> ：'
 
-    private 甲列之数据集: 范_单列配置项集 = {
+    private 甲列之数据集: 范_单列之内部数据集 = {
         所有条目: [],
         当下选中的所有条目之唯一标识之列表: [],
     }
 
-    private 乙列之数据集: 范_单列配置项集 = {
+    private 乙列之数据集: 范_单列之内部数据集 = {
         所有条目: [],
         当下选中的所有条目之唯一标识之列表: [],
     }
@@ -131,12 +131,12 @@ export default class Wlc双列互换数据 extends Vue {
 
     @Watch('乙列所有条目之唯一标识之列表')
     private 在乙列所有条目之唯一标识之列表变动后 (): void {
-        this.将所有候选条目分配到左右两列()
+        this.将所有候选条目分配到左右两列('变动了：乙列所有条目之唯一标识之列表')
     }
 
     @Watch('所有候选条目之列表')
     private 在所有候选条目之列表变动后 (): void {
-        this.将所有候选条目分配到左右两列()
+        this.将所有候选条目分配到左右两列('变动了：所有候选条目之列表')
     }
 
 
@@ -155,8 +155,10 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    private 将所有候选条目分配到左右两列 (): void {
+    private 将所有候选条目分配到左右两列 (原因?: string): void {
         const { 日志前缀 } = this
+
+        console.log(`${日志前缀} 将所有候选条目分配到左右两列()。因为`, 原因, this.乙列所有条目之唯一标识之列表 && [ ...this.乙列所有条目之唯一标识之列表 ])
 
         let 所有候选条目之列表: 范_条目之列表
 
@@ -195,7 +197,6 @@ export default class Wlc双列互换数据 extends Vue {
                     一切条目之唯一标识之计数字典[该条目之唯一标识]++
                     const 出错提示之报文 = `${日志前缀} 发现唯一标识 “ ${该条目之唯一标识} ” 的第 ${该条目之唯一标识之已遭遇次数} 个重复的条目。`
                     console.error(出错提示之报文)
-                    // this.发布事件_遭遇错误(new Error(出错提示之报文))
                     return
                 }
 
@@ -232,10 +233,10 @@ export default class Wlc双列互换数据 extends Vue {
         this.乙列之数据集.所有条目 = 应位于乙列之条目之列表
     }
 
-    private 将某列选中的条目迁移至对方列 (起列?: 范_单列配置项集): void {
+    private 将某列选中的条目迁移至对方列 (起列?: 范_单列之内部数据集): void {
         const { 甲列之数据集, 乙列之数据集 } = this
 
-        let 迄列: 范_单列配置项集
+        let 迄列: 范_单列之内部数据集
 
         if (起列 === 甲列之数据集) {
             迄列 = 乙列之数据集
@@ -268,26 +269,21 @@ export default class Wlc双列互换数据 extends Vue {
 
 
     private 发布事件_遭遇错误 (错误之记载或报文: Error | string): void {
-        if (错误之记载或报文 instanceof Error) {
-            console.error(错误之记载或报文)
-            this.$emit('error', 错误之记载或报文)
-        } else if (typeof 错误之记载或报文 === 'string') {
-            const 出错提示之报文 = 错误之记载或报文.trim()
-            console.error(出错提示之报文)
-            this.$emit('出错', new Error(出错提示之报文))
-        }
+        // if (错误之记载或报文 instanceof Error) {
+        //     console.error(错误之记载或报文)
+        //     this.$emit('error', 错误之记载或报文)
+        // } else if (typeof 错误之记载或报文 === 'string') {
+        //     const 出错提示之报文 = 错误之记载或报文.trim()
+        //     console.error(出错提示之报文)
+        //     this.$emit('出错', new Error(出错提示之报文))
+        // }
     }
 
     private 发布事件_条目之分布有变动 (): void {
-        // const 甲列所有条目之唯一标识之列表 = this.甲列之数据集.所有条目.map(条目 => 条目.唯一标识)
         const 乙列所有条目之唯一标识之列表 = this.乙列之数据集.所有条目.map(条目 => 条目.唯一标识)
 
-        // const 事件之记载 = {
-        //     甲列: 甲列所有条目之唯一标识之列表,
-        //     乙列: 乙列所有条目之唯一标识之列表,
-        // }
-
         const 事件之记载 = 乙列所有条目之唯一标识之列表
+        console.log(this.日志前缀, '发布事件_条目之分布有变动', 事件之记载)
 
         this.$emit('change', 事件之记载)
     }
@@ -309,7 +305,7 @@ export default class Wlc双列互换数据 extends Vue {
 
 
     private mounted (): void {
-        this.将所有候选条目分配到左右两列()
+        this.将所有候选条目分配到左右两列('正在初始化')
     }
 }
 </script>
