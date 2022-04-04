@@ -17,7 +17,7 @@
                 <slot name="内容皿-中央列" v-bind="用于各界面内容皿之状态汇总数据">
                     <button
                         :disabled="用于各界面内容皿之状态汇总数据.甲列当下没有条目拟迁移至乙列"
-                        @click="当点击用以将甲列选中之条目迁移至乙列之按钮后()"
+                        @click="每当点击用以将甲列选中之条目迁移至乙列之按钮后()"
                     >&gt;</button>
                     <sup
                         :value="用于各界面内容皿之状态汇总数据.甲列当下选中的条目之总数"
@@ -27,7 +27,7 @@
 
                     <button
                         :disabled="用于各界面内容皿之状态汇总数据.乙列当下没有条目拟迁移至甲列"
-                        @click="当点击用以将乙列选中之条目迁移至甲列之按钮后()"
+                        @click="每当点击用以将乙列选中之条目迁移至甲列之按钮后()"
                     >&lt;</button>
                     <sup
                         :value="用于各界面内容皿之状态汇总数据.乙列当下选中的条目之总数"
@@ -74,6 +74,20 @@ export default class Wlc双列互换数据 extends Vue {
     @Prop() public readonly 单列允许列示的条目数之上限?: number
     @Prop() public readonly 甲列之称谓?: string
     @Prop() public readonly 乙列之称谓?: string
+
+
+
+
+
+    public 将甲列选中的条目迁移至乙列 (调用者?: Vue): void {
+        // console.log('调用者', 调用者)
+        this.将某列选中的条目迁移至对方列(this.甲列之数据集)
+    }
+
+    public 将乙列选中的条目迁移至甲列 (调用者?: Vue): void {
+        // console.log('调用者', 调用者)
+        this.将某列选中的条目迁移至对方列(this.乙列之数据集)
+    }
 
 
 
@@ -130,28 +144,16 @@ export default class Wlc双列互换数据 extends Vue {
 
 
     @Watch('乙列所有条目之唯一标识之列表')
-    private 在乙列所有条目之唯一标识之列表变动后 (): void {
+    private 每当乙列所有条目之唯一标识之列表变动后 (): void {
         this.将所有候选条目分配到左右两列('变动了：乙列所有条目之唯一标识之列表')
     }
 
     @Watch('所有候选条目之列表')
-    private 在所有候选条目之列表变动后 (): void {
+    private 每当所有候选条目之列表变动后 (): void {
         this.将所有候选条目分配到左右两列('变动了：所有候选条目之列表')
     }
 
 
-
-
-
-    public 将甲列选中的条目迁移至乙列 (调用者?: Vue): void {
-        // console.log('调用者', 调用者)
-        this.将某列选中的条目迁移至对方列(this.甲列之数据集)
-    }
-
-    public 将乙列选中的条目迁移至甲列 (调用者?: Vue): void {
-        // console.log('调用者', 调用者)
-        this.将某列选中的条目迁移至对方列(this.乙列之数据集)
-    }
 
 
 
@@ -285,7 +287,7 @@ export default class Wlc双列互换数据 extends Vue {
 
         const 乙列之条目之唯一标识之列表: 范_条目之唯一标识之列表 = 乙列拟变成的列表.map(条目 => 条目.唯一标识)
 
-        this.发布事件_条目之分布有变动(乙列之条目之唯一标识之列表)
+        this.发布事件_条目之分布已变动(乙列之条目之唯一标识之列表)
     }
 
 
@@ -303,9 +305,9 @@ export default class Wlc双列互换数据 extends Vue {
         }
     }
 
-    private 发布事件_条目之分布有变动 (应迁移至迄列之条目之唯一标识之列表: 范_条目之唯一标识之列表): void {
+    private 发布事件_条目之分布已变动 (应迁移至迄列之条目之唯一标识之列表: 范_条目之唯一标识之列表): void {
         const 事件之记载 = 应迁移至迄列之条目之唯一标识之列表
-        // console.debug(this.日志前缀, '发布事件_条目之分布有变动', 事件之记载)
+        // console.debug(this.日志前缀, '发布事件_条目之分布已变动', 事件之记载)
 
         this.$emit('change', 事件之记载)
     }
@@ -314,11 +316,11 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    private 当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void {
+    private 每当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void {
         this.将甲列选中的条目迁移至乙列()
     }
 
-    private 当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void {
+    private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void {
         this.将乙列选中的条目迁移至甲列()
     }
 

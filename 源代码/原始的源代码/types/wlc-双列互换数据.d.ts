@@ -48,16 +48,16 @@ declare module Wlc双列互换数据 {
         private get 乙列之称谓_最终采纳值 (): string
         private get 用于各界面内容皿之状态汇总数据 (): Wlc双列互换数据.范_状态汇总数据
 
-        private 在乙列所有条目之唯一标识之列表变动后 (): void
-        private 在所有候选条目之列表变动后 (): void
+        private 每当乙列所有条目之唯一标识之列表变动后 (): void
+        private 每当所有候选条目之列表变动后 (): void
 
         private 将所有候选条目分配到左右两列 (): void
         private 将某列选中的条目迁移至对方列 (起列?: Wlc双列互换数据.范_单列之内部数据集): void
         private 发布事件_遭遇错误 (错误之记载或报文: Error | string): void
-        private 发布事件_条目之分布有变动 (): void
+        private 发布事件_条目之分布已变动 (): void
 
-        private 当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void
-        private 当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void
+        private 每当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void
+        private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void
 
         private mounted (): void
     };

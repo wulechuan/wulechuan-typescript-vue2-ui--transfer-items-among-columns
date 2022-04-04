@@ -119,7 +119,7 @@ const 单列允许列示的条目数之上限_默认值 = 500
 
 @Component({})
 export default class Wlc双列互换数据之单列 extends Vue {
-    @Model('当选中的条目变动后') public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    @Model('选中的条目已变动') public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
     @Prop() public readonly 本列之称谓?: string
     @Prop() public readonly 本列之特征样式类名之配置?: 范_界面元素之样式类名之配置
@@ -323,6 +323,22 @@ export default class Wlc双列互换数据之单列 extends Vue {
         }
     }
 
+
+
+
+
+    private 发布事件_选中的条目已变动 () {
+        const 事件之记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值
+            .filter(条目 => !!条目.已选中)
+            .map(条目 => 条目.唯一标识)
+
+        this.$emit('选中的条目已变动', 事件之记载)
+    }
+
+
+
+
+
     private 当选择所有条目之交互项动作时_含隐藏之条目 () {
         const 所有应考察之条目 = this.所有未禁止交互之条目
 
@@ -333,7 +349,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
         this.当下恰已选中所有条目_含隐藏之条目 = 动作之目的应为选择所有应考察之条目
 
-        this.当选中的条目变动后()
+        this.发布事件_选中的条目已变动()
     }
 
     private 当选择所有条目之交互项动作时_仅列示之条目 () {
@@ -348,23 +364,12 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
         this.当下恰已选中所有条目_仅列示之条目 = 动作之目的应为选择所有应考察之条目
 
-        this.当选中的条目变动后()
+        this.发布事件_选中的条目已变动()
     }
 
     private 当某条目之选中状态变动后 (选中状态变动之条目: 范_条目) {
         // console.log(日志前缀, { ...选中状态变动之条目 })
-        this.当选中的条目变动后()
-    }
-
-
-
-
-    private 当选中的条目变动后 () {
-        const 事件之记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值
-            .filter(条目 => !!条目.已选中)
-            .map(条目 => 条目.唯一标识)
-
-        this.$emit('当选中的条目变动后', 事件之记载)
+        this.发布事件_选中的条目已变动()
     }
 }
 </script>
