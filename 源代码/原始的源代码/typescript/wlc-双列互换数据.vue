@@ -68,7 +68,7 @@ type 范_状态汇总数据 = Wlc双列互换数据.范_状态汇总数据
     },
 })
 export default class Wlc双列互换数据 extends Vue {
-    @Model('change') public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    @Model('条目之分布已变动') public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
     @Prop() public readonly 所有候选条目之列表?: 范_条目之列表
     @Prop() public readonly 单列允许列示的条目数之上限?: number
@@ -233,7 +233,7 @@ export default class Wlc双列互换数据 extends Vue {
                 }, 0)
 
                 const 出错提示之报文 = `${日志前缀} 总计有 ${所有重复项之种类之总数} 种候选条目出现重复项。重复条目累计 ${异常唯一标识之总数} 条。`
-                this.发布事件_遭遇错误(出错提示之报文)
+                this.发布事件_已出错(出错提示之报文)
             }
         }
 
@@ -294,14 +294,14 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    private 发布事件_遭遇错误 (错误之记载或报文: Error | string): void {
+    private 发布事件_已出错 (错误之记载或报文: Error | string): void {
         if (错误之记载或报文 instanceof Error) {
             console.error(错误之记载或报文)
-            this.$emit('error', 错误之记载或报文)
+            this.$emit('已出错', 错误之记载或报文)
         } else if (typeof 错误之记载或报文 === 'string') {
             const 出错提示之报文 = 错误之记载或报文.trim()
             console.error(出错提示之报文)
-            this.$emit('出错', new Error(出错提示之报文))
+            this.$emit('已出错', new Error(出错提示之报文))
         }
     }
 
@@ -309,7 +309,7 @@ export default class Wlc双列互换数据 extends Vue {
         const 事件之记载 = 应迁移至迄列之条目之唯一标识之列表
         // console.debug(this.日志前缀, '发布事件_条目之分布已变动', 事件之记载)
 
-        this.$emit('change', 事件之记载)
+        this.$emit('条目之分布已变动', 事件之记载)
     }
 
 
