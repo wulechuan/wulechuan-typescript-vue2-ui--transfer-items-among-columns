@@ -10,11 +10,11 @@
                 :单列允许列示的条目数之上限="双列互换数据功能.单列允许列示的条目数之上限"
                 @出错="当双列互换数据功能出错时($event)"
             >
-                <template slot="皿-总标题栏">
+                <template slot="内容皿-总标题栏">
                     <h3>大家好，这是中华神兽烤肉采购列表</h3>
                 </template>
 
-                <template slot="皿-中央列" slot-scope="状态汇总数据">
+                <template slot="内容皿-中央列" slot-scope="状态汇总数据">
                     <button
                         :disabled="状态汇总数据.甲列当下没有条目拟迁移至乙列"
                         @click="当点击用以将甲列选中之条目迁移至乙列之按钮后()"
@@ -26,7 +26,7 @@
                     >退货</button>
                 </template>
 
-                <template slot="皿-底部内容栏" slot-scope="状态汇总数据">
+                <template slot="内容皿-底部内容栏" slot-scope="状态汇总数据">
                     <button
                         :disabled="状态汇总数据.甲列当下没有条目拟迁移至乙列"
                         @click="当点击用以将甲列选中之条目迁移至乙列之按钮后()"
@@ -45,7 +45,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
-import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/双列互换数据.vue'
+import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
 
 interface 范_双列互换数据_实际条目 extends Wlc双列互换数据.范_条目 {
     数据: string;

@@ -1,7 +1,7 @@
 <template>
     <div class="wlc-dual-columns-exchange-items">
         <header class="title-bar">
-            <slot name="皿-总标题栏" v-bind="用于各皿之状态汇总数据"></slot>
+            <slot name="内容皿-总标题栏" v-bind="用于各界面内容皿之状态汇总数据"></slot>
         </header>
 
         <div class="chief-part">
@@ -14,23 +14,23 @@
             ></Wlc双列互换数据之单列>
 
             <div class="center-column">
-                <slot name="皿-中央列" v-bind="用于各皿之状态汇总数据">
+                <slot name="内容皿-中央列" v-bind="用于各界面内容皿之状态汇总数据">
                     <button
-                        :disabled="用于各皿之状态汇总数据.甲列当下没有条目拟迁移至乙列"
+                        :disabled="用于各界面内容皿之状态汇总数据.甲列当下没有条目拟迁移至乙列"
                         @click="当点击用以将甲列选中之条目迁移至乙列之按钮后()"
                     >&gt;</button>
                     <sup
-                        :value="用于各皿之状态汇总数据.甲列当下选中的条目之总数"
+                        :value="用于各界面内容皿之状态汇总数据.甲列当下选中的条目之总数"
                         type="danger"
                         class="badge badge-of-transfering-button-1"
                     ></sup>
 
                     <button
-                        :disabled="用于各皿之状态汇总数据.乙列当下没有条目拟迁移至甲列"
+                        :disabled="用于各界面内容皿之状态汇总数据.乙列当下没有条目拟迁移至甲列"
                         @click="当点击用以将乙列选中之条目迁移至甲列之按钮后()"
                     >&lt;</button>
                     <sup
-                        :value="用于各皿之状态汇总数据.乙列当下选中的条目之总数"
+                        :value="用于各界面内容皿之状态汇总数据.乙列当下选中的条目之总数"
                         type="success"
                         class="badge badge-of-transfering-button-2"
                     ></sup>
@@ -47,7 +47,7 @@
         </div>
 
         <footer class="footer-bar">
-            <slot name="皿-底部内容栏" v-bind="用于各皿之状态汇总数据"></slot>
+            <slot name="内容皿-底部内容栏" v-bind="用于各界面内容皿之状态汇总数据"></slot>
         </footer>
     </div>
 </template>
@@ -55,7 +55,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-import Wlc双列互换数据之单列 from './单个列.vue'
+import Wlc双列互换数据之单列 from './wlc-双列互换数据之单列.vue'
 
 type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
 type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表
@@ -113,7 +113,7 @@ export default class Wlc双列互换数据 extends Vue {
         return 拟采纳值 || '已选择的条目' // || '乙列'
     }
 
-    private get 用于各皿之状态汇总数据 (): 范_状态汇总数据 {
+    private get 用于各界面内容皿之状态汇总数据 (): 范_状态汇总数据 {
         const { 甲列之数据集, 乙列之数据集 } = this
         const 甲列当下选中的条目之总数 = 甲列之数据集.当下选中的所有条目之唯一标识之列表.length
         const 乙列当下选中的条目之总数 = 乙列之数据集.当下选中的所有条目之唯一标识之列表.length

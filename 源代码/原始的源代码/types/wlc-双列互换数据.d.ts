@@ -45,7 +45,7 @@ declare class Wlc双列互换数据 extends Vue {
 
     private get 甲列之称谓_最终采纳值 (): string
     private get 乙列之称谓_最终采纳值 (): string
-    private get 用于各皿之状态汇总数据 (): Wlc双列互换数据.范_状态汇总数据
+    private get 用于各界面内容皿之状态汇总数据 (): Wlc双列互换数据.范_状态汇总数据
 
     private 在乙列所有条目之唯一标识之列表变动后 (): void
     private 在所有候选条目之列表变动后 (): void
