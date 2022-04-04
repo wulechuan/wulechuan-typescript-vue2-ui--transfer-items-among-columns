@@ -34,8 +34,8 @@ declare class Wlc双列互换数据 extends Vue {
     public readonly 甲列之称谓?: string
     public readonly 乙列之称谓?: string
 
-    public 将甲列选中的条目迁移至乙列 (调用者: Vue): void
-    public 将乙列选中的条目迁移至甲列 (调用者: Vue): void
+    public 将甲列选中的条目迁移至乙列 (调用者?: Vue): void
+    public 将乙列选中的条目迁移至甲列 (调用者?: Vue): void
 
     // -----------------------------------------------------
 

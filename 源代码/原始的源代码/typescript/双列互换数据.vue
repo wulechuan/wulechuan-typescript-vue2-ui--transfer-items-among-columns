@@ -17,7 +17,7 @@
                 <slot name="皿-中央列" v-bind="用于各皿之状态汇总数据">
                     <button
                         :disabled="用于各皿之状态汇总数据.甲列当下没有条目拟迁移至乙列"
-                        @click="当点击用以将甲列选中之条目迁移至乙列之按钮后"
+                        @click="当点击用以将甲列选中之条目迁移至乙列之按钮后()"
                     >&gt;</button>
                     <sup
                         :value="用于各皿之状态汇总数据.甲列当下选中的条目之总数"
@@ -27,7 +27,7 @@
 
                     <button
                         :disabled="用于各皿之状态汇总数据.乙列当下没有条目拟迁移至甲列"
-                        @click="当点击用以将乙列选中之条目迁移至甲列之按钮后"
+                        @click="当点击用以将乙列选中之条目迁移至甲列之按钮后()"
                     >&lt;</button>
                     <sup
                         :value="用于各皿之状态汇总数据.乙列当下选中的条目之总数"
@@ -143,12 +143,12 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    public 将甲列选中的条目迁移至乙列 (调用者: Vue): void {
+    public 将甲列选中的条目迁移至乙列 (调用者?: Vue): void {
         // console.log('调用者', 调用者)
         this.将某列选中的条目迁移至对方列(this.甲列之数据集)
     }
 
-    public 将乙列选中的条目迁移至甲列 (调用者: Vue): void {
+    public 将乙列选中的条目迁移至甲列 (调用者?: Vue): void {
         // console.log('调用者', 调用者)
         this.将某列选中的条目迁移至对方列(this.乙列之数据集)
     }
@@ -297,11 +297,11 @@ export default class Wlc双列互换数据 extends Vue {
 
 
     private 当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void {
-        this.将甲列选中的条目迁移至乙列(this)
+        this.将甲列选中的条目迁移至乙列()
     }
 
     private 当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void {
-        this.将乙列选中的条目迁移至甲列(this)
+        this.将乙列选中的条目迁移至甲列()
     }
 
 
