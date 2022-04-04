@@ -135,6 +135,8 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
 
+    private 日志前缀: string = 'Vue 部件 <Wlc双列互换数据之单列> ：'
+
     private get 本列之称谓_最终采纳值 (): string {
         const 外界给出值 = this.本列之称谓
 
@@ -255,19 +257,15 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
         const 所有条目之列表_最终采纳值: 范_条目之列表 = []
 
-        给出的所有条目之列表.forEach(原始条目 => {
-            if (!原始条目) { return }
+        给出的所有条目之列表.forEach(条目 => {
+            if (!条目) { return }
 
             const {
                 唯一标识: 该条目之唯一标识,
                 已禁止交互: 该条目已禁止交互,
-            } = 原始条目
+            } = 条目
 
-            const 条目 = {
-                ...原始条目,
-
-                已选中: !该条目已禁止交互 && 选中的所有条目之唯一标识之列表.includes(该条目之唯一标识),
-            }
+            条目.已选中 = !该条目已禁止交互 && 选中的所有条目之唯一标识之列表.includes(该条目之唯一标识)
 
             所有条目之列表_最终采纳值.push(条目)
         })
@@ -350,7 +348,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     }
 
     private 当某条目之选中状态变动后 (选中状态变动之条目: 范_条目) {
-        // console.log({ ...选中状态变动之条目 })
+        // console.log(日志前缀, { ...选中状态变动之条目 })
         this.当选中的条目变动后()
     }
 
