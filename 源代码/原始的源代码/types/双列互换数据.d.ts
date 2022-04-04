@@ -34,6 +34,11 @@ declare class Wlc双列互换数据 extends Vue {
     public readonly 甲列之称谓?: string
     public readonly 乙列之称谓?: string
 
+    public 将甲列选中的条目迁移至乙列 (调用者: Vue): void
+    public 将乙列选中的条目迁移至甲列 (调用者: Vue): void
+
+    // -----------------------------------------------------
+
     private 日志前缀: string
     private 甲列之数据集: Wlc双列互换数据.范_单列配置项集
     private 乙列之数据集: Wlc双列互换数据.范_单列配置项集
@@ -44,9 +49,6 @@ declare class Wlc双列互换数据 extends Vue {
 
     private 在乙列所有条目之唯一标识之列表变动后 (): void
     private 在所有候选条目之列表变动后 (): void
-
-    public 将甲列选中的条目迁移至乙列 (调用者: Vue): void
-    public 将乙列选中的条目迁移至甲列 (调用者: Vue): void
 
     private 将所有候选条目分配到左右两列 (): void
     private 将某列选中的条目迁移至对方列 (起列?: Wlc双列互换数据.范_单列配置项集): void
