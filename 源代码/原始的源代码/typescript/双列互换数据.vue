@@ -146,12 +146,12 @@ export default class Wlc双列互换数据 extends Vue {
 
 
     public 将甲列选中的条目迁移至乙列 (调用者: Vue) {
-        console.log('调用者', 调用者)
+        // console.log('调用者', 调用者)
         this.将某列选中的条目迁移至对方列(this.甲列之数据集)
     }
 
     public 将乙列选中的条目迁移至甲列 (调用者: Vue) {
-        console.log('调用者', 调用者)
+        // console.log('调用者', 调用者)
         this.将某列选中的条目迁移至对方列(this.乙列之数据集)
     }
 
