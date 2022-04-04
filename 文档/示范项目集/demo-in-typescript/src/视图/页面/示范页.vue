@@ -25,6 +25,18 @@
                         @click="当点击用以将乙列选中之条目迁移至甲列之按钮后()"
                     >退货</button>
                 </template>
+
+                <template slot="皿-底部内容栏" scope="状态汇总数据">
+                    <button
+                        :disabled="状态汇总数据.甲列当下没有条目拟迁移至乙列"
+                        @click="当点击用以将甲列选中之条目迁移至乙列之按钮后()"
+                    >买入</button>
+
+                    <button
+                        :disabled="状态汇总数据.乙列当下没有条目拟迁移至甲列"
+                        @click="当点击用以将乙列选中之条目迁移至甲列之按钮后()"
+                    >退货</button>
+                </template>
             </WlcDualColumns>
         </div>
     </div>

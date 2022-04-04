@@ -113,7 +113,6 @@ import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置
 type 范_条目 = Wlc双列互换数据.范_条目
 type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
-type 范_条目之唯一标识 = Wlc双列互换数据.范_条目之唯一标识
 type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表
 
 const 单列允许列示的条目数之上限_默认值 = 500

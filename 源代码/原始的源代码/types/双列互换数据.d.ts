@@ -1,4 +1,4 @@
-declare namespace Wlc双列互换数据 {
+declare module Wlc双列互换数据 {
     type 范_界面元素之样式类名之配置 = null | string | Array<string> | {
         [cssClassName: string]: boolean | null | undefined;
     };
@@ -25,9 +25,4 @@ declare namespace Wlc双列互换数据 {
         甲列当下没有条目拟迁移至乙列: boolean;
         乙列当下没有条目拟迁移至甲列: boolean;
     }
-}
-
-declare class Wlc双列互换数据  {
-    public 将甲列选中的条目迁移至乙列 (): void;
-    public 将乙列选中的条目迁移至甲列 (): void;
 }
