@@ -7,7 +7,7 @@ declare module Wlc双列互换数据 {
     type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>;
     interface 范_条目 {
         唯一标识: 范_条目之唯一标识;
-        在界面展示时的称谓: string;
+        在界面中的称谓: string;
         已选中: boolean;
         已禁止交互: boolean;
         数据?: any;

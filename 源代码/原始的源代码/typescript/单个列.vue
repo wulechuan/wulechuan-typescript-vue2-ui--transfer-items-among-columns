@@ -101,7 +101,7 @@
                     class="el-checkbox__original"
                     :disabled="条目.已禁止交互"
                     @change="当某条目之选中状态变动后(条目)"
-                ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
+                ></span><span class="el-checkbox__label">{{ 条目.在界面中的称谓 }}</span></label></li>
             </ol>
         </div>
     </div>
@@ -181,7 +181,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         let 所有匹配的条目 = 所有条目之列表_最终采纳值
         if (用以过滤条目之关键词) {
             const 用以匹配条目的正则表达式 = new RegExp(`${用以过滤条目之关键词}`, 'i')
-            所有匹配的条目 = 所有条目之列表_最终采纳值.filter(条目 => 用以匹配条目的正则表达式.test(条目.在界面展示时的称谓))
+            所有匹配的条目 = 所有条目之列表_最终采纳值.filter(条目 => 用以匹配条目的正则表达式.test(条目.在界面中的称谓))
         }
 
         return 所有匹配的条目

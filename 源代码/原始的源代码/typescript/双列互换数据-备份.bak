@@ -104,7 +104,7 @@
                             aria-hidden="false"
                             class="el-checkbox__original"
                             :disabled="条目.已禁止交互"
-                        ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
+                        ></span><span class="el-checkbox__label">{{ 条目.在界面中的称谓 }}</span></label></li>
                     </ol>
                 </div>
             </div>
@@ -234,7 +234,7 @@
                             aria-hidden="false"
                             class="el-checkbox__original"
                             :disabled="条目.已禁止交互"
-                        ></span><span class="el-checkbox__label">{{ 条目.在界面展示时的称谓 }}</span></label></li>
+                        ></span><span class="el-checkbox__label">{{ 条目.在界面中的称谓 }}</span></label></li>
                     </ol>
                 </div>
             </div>
@@ -348,7 +348,7 @@ export default class Wlc双列互换数据 extends Vue {
         let 所有匹配的条目 = allItems
         if (filteringKeyword) {
             const 用以匹配条目的正则表达式 = new RegExp(`${filteringKeyword}`, 'i')
-            所有匹配的条目 = allItems.filter(条目 => 用以匹配条目的正则表达式.test(条目.在界面展示时的称谓))
+            所有匹配的条目 = allItems.filter(条目 => 用以匹配条目的正则表达式.test(条目.在界面中的称谓))
         }
 
         return 所有匹配的条目
@@ -363,7 +363,7 @@ export default class Wlc双列互换数据 extends Vue {
         let 所有匹配的条目 = allItems
         if (filteringKeyword) {
             const 用以匹配条目的正则表达式 = new RegExp(`${filteringKeyword}`, 'i')
-            所有匹配的条目 = allItems.filter(条目 => 用以匹配条目的正则表达式.test(条目.在界面展示时的称谓))
+            所有匹配的条目 = allItems.filter(条目 => 用以匹配条目的正则表达式.test(条目.在界面中的称谓))
         }
 
         return 所有匹配的条目
