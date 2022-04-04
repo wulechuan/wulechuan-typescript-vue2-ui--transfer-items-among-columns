@@ -135,8 +135,6 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
 
-    private 日志前缀: string = 'Vue 部件 <Wlc双列互换数据之单列> ：'
-
     private get 本列之称谓_最终采纳值 (): string {
         const 外界给出值 = this.本列之称谓
 
@@ -145,7 +143,11 @@ export default class Wlc双列互换数据之单列 extends Vue {
             拟采纳值 = 外界给出值.trim()
         }
 
-        return 拟采纳值 || '该列'
+        return 拟采纳值 || '无名列'
+    }
+
+    private get 日志前缀 (): string {
+        return `Vue 部件 <Wlc双列互换数据之单列> “ ${this.本列之称谓_最终采纳值} ” ：`
     }
 
     private get 本列之标题栏之文字 (): string {
@@ -254,6 +256,8 @@ export default class Wlc双列互换数据之单列 extends Vue {
         } else {
             选中的所有条目之唯一标识之列表 = []
         }
+
+        console.log(this.日志前缀, '选中的所有条目之唯一标识之列表', [ ...选中的所有条目之唯一标识之列表 ])
 
         const 所有条目之列表_最终采纳值: 范_条目之列表 = []
 
