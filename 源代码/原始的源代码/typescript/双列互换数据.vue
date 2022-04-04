@@ -147,6 +147,18 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
+    public 将甲列选中的条目迁移至乙列 (调用者: Vue) {
+        console.log('调用者', 调用者)
+        this.将某列选中的条目迁移至对方列(this.甲列之数据集)
+    }
+
+    public 将乙列选中的条目迁移至甲列 (调用者: Vue) {
+        console.log('调用者', 调用者)
+        this.将某列选中的条目迁移至对方列(this.乙列之数据集)
+    }
+
+
+
     private 将所有候选条目分配到左右两列 () {
         const { 日志前缀 } = this
 
@@ -220,16 +232,6 @@ export default class Wlc双列互换数据 extends Vue {
             const 出错提示之报文 = `${日志前缀} 总计有 ${所有重复项之种类之总数} 种候选条目出现重复项。重复条目累计 ${异常唯一标识之总数} 条。`
             this.发布事件_遭遇错误(出错提示之报文)
         }
-    }
-
-    public 将甲列选中的条目迁移至乙列 (调用者: Vue) {
-        console.log('调用者', 调用者)
-        this.将某列选中的条目迁移至对方列(this.甲列之数据集)
-    }
-
-    public 将乙列选中的条目迁移至甲列 (调用者: Vue) {
-        console.log('调用者', 调用者)
-        this.将某列选中的条目迁移至对方列(this.乙列之数据集)
     }
 
     private 将某列选中的条目迁移至对方列 (起列?: 范_单列配置项集) {
