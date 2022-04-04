@@ -74,8 +74,6 @@ export default class Wlc双列互换数据 extends Vue {
     @Prop() public readonly 单列允许列示的条目数之上限?: number
     @Prop() public readonly 甲列之称谓?: string
     @Prop() public readonly 乙列之称谓?: string
-    @Prop() public readonly labelTextOfTransferingButtons?: Array<string>
-    @Prop() public readonly elementUITypeOfTransferingButtons?: Array<any>
 
 
 
@@ -132,12 +130,12 @@ export default class Wlc双列互换数据 extends Vue {
 
 
     @Watch('乙列所有条目之唯一标识之列表')
-    在乙列所有条目之唯一标识之列表变动后 () {
+    private 在乙列所有条目之唯一标识之列表变动后 (): void {
         this.将所有候选条目分配到左右两列()
     }
 
     @Watch('所有候选条目之列表')
-    在所有候选条目之列表变动后 () {
+    private 在所有候选条目之列表变动后 (): void {
         this.将所有候选条目分配到左右两列()
     }
 
@@ -145,19 +143,19 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    public 将甲列选中的条目迁移至乙列 (调用者: Vue) {
+    public 将甲列选中的条目迁移至乙列 (调用者: Vue): void {
         // console.log('调用者', 调用者)
         this.将某列选中的条目迁移至对方列(this.甲列之数据集)
     }
 
-    public 将乙列选中的条目迁移至甲列 (调用者: Vue) {
+    public 将乙列选中的条目迁移至甲列 (调用者: Vue): void {
         // console.log('调用者', 调用者)
         this.将某列选中的条目迁移至对方列(this.乙列之数据集)
     }
 
 
 
-    private 将所有候选条目分配到左右两列 () {
+    private 将所有候选条目分配到左右两列 (): void {
         const { 日志前缀 } = this
 
         let 所有候选条目之列表: 范_条目之列表
@@ -234,7 +232,7 @@ export default class Wlc双列互换数据 extends Vue {
         this.乙列之数据集.所有条目 = 应位于乙列之条目之列表
     }
 
-    private 将某列选中的条目迁移至对方列 (起列?: 范_单列配置项集) {
+    private 将某列选中的条目迁移至对方列 (起列?: 范_单列配置项集): void {
         const { 甲列之数据集, 乙列之数据集 } = this
 
         let 迄列: 范_单列配置项集
@@ -269,7 +267,7 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    private 发布事件_遭遇错误 (错误之记载或报文: Error | string) {
+    private 发布事件_遭遇错误 (错误之记载或报文: Error | string): void {
         if (错误之记载或报文 instanceof Error) {
             console.error(错误之记载或报文)
             this.$emit('error', 错误之记载或报文)
@@ -280,7 +278,7 @@ export default class Wlc双列互换数据 extends Vue {
         }
     }
 
-    private 发布事件_条目之分布有变动 () {
+    private 发布事件_条目之分布有变动 (): void {
         // const 甲列所有条目之唯一标识之列表 = this.甲列之数据集.所有条目.map(条目 => 条目.唯一标识)
         const 乙列所有条目之唯一标识之列表 = this.乙列之数据集.所有条目.map(条目 => 条目.唯一标识)
 
@@ -298,11 +296,11 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    private 当点击用以将甲列选中之条目迁移至乙列之按钮后 () {
+    private 当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void {
         this.将甲列选中的条目迁移至乙列(this)
     }
 
-    private 当点击用以将乙列选中之条目迁移至甲列之按钮后 () {
+    private 当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void {
         this.将乙列选中的条目迁移至甲列(this)
     }
 
@@ -310,7 +308,7 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    mounted () {
+    private mounted (): void {
         this.将所有候选条目分配到左右两列()
     }
 }

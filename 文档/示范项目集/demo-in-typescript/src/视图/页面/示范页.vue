@@ -258,7 +258,6 @@ export default class Page示范页 extends Vue {
 
     private 当点击用以将乙列选中之条目迁移至甲列之按钮后 () {
         const 部件实例 = this.$refs['双列互换数据控件-1'] as Wlc双列互换数据
-        console.log('部件实例', 部件实例)
         部件实例.将乙列选中的条目迁移至甲列(this)
     }
 }
