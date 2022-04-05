@@ -150,14 +150,14 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    @Watch('乙列所有条目之唯一标识之列表', { immediate: true })
-    private 每当乙列所有条目之唯一标识之列表变动后 (): void {
-        this.将所有候选条目分配到左右两列('【乙列所有条目之唯一标识之列表】变动了')
-    }
-
     @Watch('所有候选条目之列表', { immediate: true })
     private 每当所有候选条目之列表变动后 (): void {
         this.将所有候选条目分配到左右两列('【所有候选条目之列表】变动了')
+    }
+
+    @Watch('乙列所有条目之唯一标识之列表', { immediate: true })
+    private 每当乙列所有条目之唯一标识之列表变动后 (): void {
+        this.将所有候选条目分配到左右两列('【乙列所有条目之唯一标识之列表】变动了')
     }
 
 
