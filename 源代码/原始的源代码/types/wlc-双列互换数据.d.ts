@@ -3,6 +3,12 @@ declare module Wlc双列互换数据 {
         [cssClassName: string]: boolean | null | undefined;
     };
 
+    type 范_三态勾选框之状态值 = (
+        | '已勾选'
+        | '部分勾选'
+        | '未勾选'
+    );
+
     type 范_条目之唯一标识 = number | string;
     type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>;
 
