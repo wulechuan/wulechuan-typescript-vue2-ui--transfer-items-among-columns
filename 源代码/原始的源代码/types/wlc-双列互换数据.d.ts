@@ -67,6 +67,7 @@ declare module Wlc双列互换数据 {
 
         // -------- 私有数据 --------------------------------
         private 日志前缀: string
+        private 所有条目之列表之去重后的缓存版本: null | 范_条目之列表
         private 甲列之数据集: 范_单列之内部数据集
         private 乙列之数据集: 范_单列之内部数据集
         private 将所有候选条目分配到左右两列_之期待: null | Promise<void>
