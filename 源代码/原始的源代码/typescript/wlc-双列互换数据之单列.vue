@@ -243,7 +243,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
 
-    private 根据外界给出的条件构建实用的条目总表 (本次原因: string = '不明原因') {
+    private 根据外界给出的条件构建实用的条目总表 (本次原因: string = '不明原因'): Promise<void> {
         const { 日志前缀 } = this
 
         const _构建实用的条目总表 = () => {
@@ -302,10 +302,10 @@ export default class Wlc双列互换数据之单列 extends Vue {
                 })
             })
         } else {
-            console.debug(`${日志前缀}\n\t仍在等待因`,
-                this.所有条目之列表_最终采纳值_求解之期待之原因, '而起的处理任务。本次任务不处理。',
-                '\n\t本次原因：', 本次原因, '。'
-            )
+            // console.debug(`${日志前缀}\n\t根据外界给出的条件构建实用的条目总表() 不执行。\n\t因仍在进行因`,
+            //     this.所有条目之列表_最终采纳值_求解之期待之原因, '而起的任务。',
+            //     '\n\t附本次原因：', 本次原因, '。'
+            // )
         }
 
         return this.所有条目之列表_最终采纳值_求解之期待

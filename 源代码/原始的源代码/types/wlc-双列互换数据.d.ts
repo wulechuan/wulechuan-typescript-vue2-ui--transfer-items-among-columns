@@ -53,6 +53,8 @@ declare module Wlc双列互换数据 {
         private 日志前缀: string
         private 甲列之数据集: Wlc双列互换数据.范_单列之内部数据集
         private 乙列之数据集: Wlc双列互换数据.范_单列之内部数据集
+        private 将所有候选条目分配到左右两列_之期待: null | Promise<void>
+        private 将所有候选条目分配到左右两列_之期待之原因: string
 
         // -------- 衍生数据 --------------------------------
         private get 甲列之称谓_最终采纳值 (): string
@@ -64,7 +66,7 @@ declare module Wlc双列互换数据 {
         private 每当所有候选条目之列表变动后 (): void
 
         // -------- 私有行为 -------------------------------
-        private 将所有候选条目分配到左右两列 (): void
+        private 将所有候选条目分配到左右两列 (本次原因: string): Promise<void>
         private 将某列选中的条目迁移至对方列 (起列?: Wlc双列互换数据.范_单列之内部数据集): void
         private 发布事件_遭遇错误 (错误之记载或报文: Error | string): void
         private 发布事件_条目之分布已变动 (): void
