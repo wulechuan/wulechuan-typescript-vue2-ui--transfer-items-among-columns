@@ -84,7 +84,7 @@ export default class Page示范页 extends Vue {
         候选列表: 一切可能的条目之列表,
         左列之称谓: '可以买到的神兽',
         右列之称谓: '准备烤着吃的神兽',
-        单列允许列示的条目数之上限: 9,
+        单列允许列示的条目数之上限: 16,
         // 各列新增条目之插入规则: '总是追加在首部',
         各列条目排序之函数: (甲, 乙) => 乙.在界面中的称谓.length - 甲.在界面中的称谓.length,
     }
@@ -119,7 +119,7 @@ export default class Page示范页 extends Vue {
 
     .中央内容块 {
         margin 0
-        width 80%
+        width 90%
         max-width 1200px
         height 80%
     }
