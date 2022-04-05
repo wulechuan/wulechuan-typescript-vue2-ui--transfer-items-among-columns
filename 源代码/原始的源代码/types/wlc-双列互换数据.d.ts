@@ -1,5 +1,5 @@
 declare module Wlc双列互换数据 {
-    type 范_界面元素之样式类名之配置 = null | string | Array<string> | {
+    type 范_界面元素之样式类名之配置<类名枚举 = string> = null | 类名枚举 | Array<类名枚举> | {
         [cssClassName: string]: boolean | null | undefined;
     };
 
@@ -17,7 +17,7 @@ declare module Wlc双列互换数据 {
     type 范_条目之列表 = Array<范_条目>;
 
     type 范_单列之内部数据集 = {
-        所有条目: 范_条目之列表;
+        所有条目之列表: 范_条目之列表;
         当下选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表;
     }
 
