@@ -112,7 +112,6 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-
     private get 甲列之称谓_最终采纳值 (): string {
         const 外界给出值 = this.甲列之称谓
 
@@ -329,6 +328,13 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
+    private 发布事件_条目之分布已变动 (应迁移至迄列之条目之唯一标识之列表: 范_条目之唯一标识之列表): void {
+        const 事件之记载 = 应迁移至迄列之条目之唯一标识之列表
+        // console.debug(this.日志前缀, '发布事件_条目之分布已变动', 事件之记载)
+
+        this.$emit('条目之分布已变动', 事件之记载)
+    }
+
     private 发布事件_已出错 (错误之记载或报文: Error | string): void {
         if (错误之记载或报文 instanceof Error) {
             console.error(错误之记载或报文)
@@ -338,13 +344,6 @@ export default class Wlc双列互换数据 extends Vue {
             console.error(出错提示之报文)
             this.$emit('已出错', new Error(出错提示之报文))
         }
-    }
-
-    private 发布事件_条目之分布已变动 (应迁移至迄列之条目之唯一标识之列表: 范_条目之唯一标识之列表): void {
-        const 事件之记载 = 应迁移至迄列之条目之唯一标识之列表
-        // console.debug(this.日志前缀, '发布事件_条目之分布已变动', 事件之记载)
-
-        this.$emit('条目之分布已变动', 事件之记载)
     }
 
 
