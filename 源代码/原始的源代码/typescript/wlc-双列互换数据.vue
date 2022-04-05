@@ -22,20 +22,18 @@
                         @click="每当点击用以将甲列选中之条目迁移至乙列之按钮后()"
                     >&gt;</button>
                     <sup
-                        :value="用于各界面内容皿之状态汇总数据.甲列当下选中的条目之总数"
                         type="danger"
                         class="badge badge-of-transfering-button-1"
-                    ></sup>
+                    >{{ 用于各界面内容皿之状态汇总数据.甲列当下选中的条目之总数 }}</sup>
 
                     <button
                         :disabled="用于各界面内容皿之状态汇总数据.乙列当下没有条目拟迁移至甲列"
                         @click="每当点击用以将乙列选中之条目迁移至甲列之按钮后()"
                     >&lt;</button>
                     <sup
-                        :value="用于各界面内容皿之状态汇总数据.乙列当下选中的条目之总数"
                         type="success"
                         class="badge badge-of-transfering-button-2"
-                    ></sup>
+                    >{{ 用于各界面内容皿之状态汇总数据.乙列当下选中的条目之总数 }}</sup>
                 </slot>
             </div>
 
@@ -148,6 +146,8 @@ export default class Wlc双列互换数据 extends Vue {
 
     private get 用于各界面内容皿之状态汇总数据 (): 范_状态汇总数据 {
         const { 甲列之数据集, 乙列之数据集 } = this
+        console.log('甲列之数据集', 甲列之数据集.当下选中的所有条目之唯一标识之列表.join('、'))
+        console.log('乙列之数据集', 乙列之数据集.当下选中的所有条目之唯一标识之列表.join('、'))
         const 甲列当下选中的条目之总数 = 甲列之数据集.当下选中的所有条目之唯一标识之列表.length
         const 乙列当下选中的条目之总数 = 乙列之数据集.当下选中的所有条目之唯一标识之列表.length
         return {
@@ -278,9 +278,8 @@ export default class Wlc双列互换数据 extends Vue {
 
         if (!this.将所有候选条目分配到左右两列_之期待) {
             this.将所有候选条目分配到左右两列_之期待之原因 = 本次原因
-            this.将所有候选条目分配到左右两列_之期待 = new Promise((令期待落实, 令期待落空) => {
+            this.将所有候选条目分配到左右两列_之期待 = new Promise<void>((令期待落实, 令期待落空) => {
                 _分配条目()
-
                 this.$nextTick(() => {
                     令期待落实()
                     this.将所有候选条目分配到左右两列_之期待 = null
@@ -321,8 +320,12 @@ export default class Wlc双列互换数据 extends Vue {
             ...迄列之所有条目之列表的旧模样,
         ]
 
+        console.log('----- 将某列选中的条目迁移至对方列 迄列系乙列', 迄列系乙列)
+
         起列之所有条目之列表的旧模样.forEach(条目 => {
             if (!条目.已禁止交互 && 条目.已选中) {
+                // 条目.已选中 = false
+                console.log('----- 起列中该条目已选中', 条目.唯一标识, 条目.已选中)
                 迄列之所有条目之列表拟变成的新模样.push(条目)
             } else {
                 起列之所有条目之列表拟变成的新模样.push(条目)
