@@ -157,7 +157,7 @@ export default class Wlc双列互换数据 extends Vue {
 
 
 
-    private 将所有候选条目分配到左右两列 (原因?: string): void {
+    private 将所有候选条目分配到左右两列 (原因: string = '不明原因'): void {
         const { 日志前缀 } = this
 
         // console.debug(`${日志前缀}\n\t 将所有候选条目分配到左右两列()。因为`, 原因, '\n\t', this.乙列所有条目之唯一标识之列表 && [ ...this.乙列所有条目之唯一标识之列表 ])
