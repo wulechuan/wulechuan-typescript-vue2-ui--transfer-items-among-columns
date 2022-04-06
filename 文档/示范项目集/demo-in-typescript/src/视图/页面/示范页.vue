@@ -1,6 +1,6 @@
 <template>
     <div class="page page--示范页">
-        <div class="中央内容块">
+        <div class="页面中央内容块">
             <WlcDualColumns
                 ref="双列互换数据控件-1"
                 v-model="双列互换数据功能.选中的条目之唯一标识之列表"
@@ -32,7 +32,7 @@
                     >退货</button>
                 </template>
 
-                <template slot="内容皿-底部内容栏11" slot-scope="状态汇总数据">
+                <template slot="内容皿-底部内容栏" slot-scope="状态汇总数据">
                     <button
                         :disabled="状态汇总数据.甲列当下没有条目拟迁移至乙列"
                         @click="每当点击用以将甲列选中之条目迁移至乙列之按钮后()"
@@ -94,7 +94,7 @@ export default class Page示范页 extends Vue {
         // 各列新增条目之插入规则: '总是追加在首部',
         各列条目排序之函数: (甲, 乙) => 乙.在界面中的称谓.length - 甲.在界面中的称谓.length,
         甲列初始的用以过滤条目之配置: '', // '牛',
-        乙列初始的用以过滤条目之配置: '', // '/.{4,}/',
+        乙列初始的用以过滤条目之配置: '', // /.{4,}/,
         甲列初始选中的条目之唯一标识之列表: [ '穷奇', '騊駼' ],
         乙列初始选中的条目之唯一标识之列表: [ '九尾狐' ],
     }
@@ -127,11 +127,11 @@ export default class Page示范页 extends Vue {
     justify-content center
     align-items center
 
-    .中央内容块 {
+    .页面中央内容块 {
         margin 0
         width 90%
-        max-width 1200px
-        height 80%
+        max-width 1500px
+        height 90%
     }
 
     h3 {

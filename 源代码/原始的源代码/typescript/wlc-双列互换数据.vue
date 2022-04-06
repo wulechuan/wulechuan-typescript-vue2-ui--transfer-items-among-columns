@@ -1,16 +1,14 @@
 <template>
-    <div
-        class="wlc-dual-columns-exchange-items"
-        @keyup="每当键盘按键松开时($event)"
-    >
-        <header class="title-bar">
+    <div class="吴乐川-双列互换数据">
+        <header class="总标题栏">
             <slot name="内容皿-总标题栏" v-bind="用于各界面内容皿之状态汇总数据"></slot>
         </header>
 
-        <div class="chief-part">
+        <div class="容纳着双列的中央主体">
             <Wlc双列互换数据之单列
                 v-model="甲列之数据集.当下选中的所有条目之唯一标识之列表"
-                本列之特征样式类名之配置="left-column"
+                class="甲列"
+                本列之特征样式类名之配置=""
                 :本列之称谓="甲列之称谓_最终采纳值"
                 :允许列示的条目数之上限="单列允许列示的条目数之上限"
                 :所有条目之列表="甲列之数据集.所有条目之列表"
@@ -19,7 +17,9 @@
                 :本列初始的用以过滤条目之配置="甲列初始的用以过滤条目之配置"
             ></Wlc双列互换数据之单列>
 
-            <div class="center-column">
+            <div class="甲乙两列之间之竖栏">
+                <hr class="仅用于样式表缺失之情形">
+
                 <slot name="内容皿-中央列" v-bind="用于各界面内容皿之状态汇总数据">
                     <button
                         :disabled="用于各界面内容皿之状态汇总数据.甲列当下没有条目拟迁移至乙列"
@@ -39,11 +39,14 @@
                         class="badge badge-of-transfering-button-2"
                     >{{ 用于各界面内容皿之状态汇总数据.乙列当下选中的条目之总数 }}</sup>
                 </slot>
+
+                <hr class="仅用于样式表缺失之情形">
             </div>
 
             <Wlc双列互换数据之单列
                 v-model="乙列之数据集.当下选中的所有条目之唯一标识之列表"
-                本列之特征样式类名之配置="right-column"
+                class="乙列"
+                本列之特征样式类名之配置=""
                 :本列之称谓="乙列之称谓_最终采纳值"
                 :允许列示的条目数之上限="单列允许列示的条目数之上限"
                 :所有条目之列表="乙列之数据集.所有条目之列表"
@@ -53,7 +56,7 @@
             ></Wlc双列互换数据之单列>
         </div>
 
-        <footer class="footer-bar">
+        <footer class="底部内容栏">
             <slot name="内容皿-底部内容栏" v-bind="用于各界面内容皿之状态汇总数据"></slot>
         </footer>
     </div>
@@ -379,15 +382,15 @@ export default class Wlc双列互换数据 extends Vue {
         this.将乙列选中的条目迁移至甲列()
     }
 
-    private 每当键盘按键松开时 (键盘事件之记载: KeyboardEvent): void {
-        const { key } = 键盘事件之记载
+    // private 每当键盘按键松开时 (键盘事件之记载: KeyboardEvent): void {
+    //     const { key } = 键盘事件之记载
 
-        if (key === 'ArrowRight') {
-            this.将甲列选中的条目迁移至乙列()
-        } else if (key === 'ArrowLeft') {
-            this.将乙列选中的条目迁移至甲列()
-        }
-    }
+    //     if (key === 'ArrowRight') {
+    //         this.将甲列选中的条目迁移至乙列()
+    //     } else if (key === 'ArrowLeft') {
+    //         this.将乙列选中的条目迁移至甲列()
+    //     }
+    // }
 
 
 

@@ -1,7 +1,7 @@
 <template>
-    <div class="column-of-list" :class="本列之特征样式类名之配置">
+    <div class="吴乐川-双列互换数据-单列" :class="本列之特征样式类名之配置">
         <header class="heading-block">
-            <div class="column-title-bar"><slot name="皿-标题栏">{{ 本列之标题栏之文字 }}</slot></div>
+            <div class="column-title-bar"><slot name="皿-标题栏"><h5>{{ 本列之标题栏之文字 }}</h5></slot></div>
 
             <div class="column-filter">
                 <input

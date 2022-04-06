@@ -99,6 +99,7 @@ declare module Wlc双列互换数据 {
         // -------- 界面元素事件之处理程序 -------------------
         private 每当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void
         private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void
+        // private 每当键盘按键松开时 (键盘事件之记载: KeyboardEvent): void
 
         // -------- 生命周期钩子 ----------------------------
         private mounted (): void
