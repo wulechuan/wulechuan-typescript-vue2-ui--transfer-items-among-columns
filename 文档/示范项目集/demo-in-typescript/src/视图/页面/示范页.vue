@@ -1,5 +1,5 @@
 <template>
-    <div class="page page--示范页">
+    <div class="页面 页面--示范页">
         <div class="页面中央内容块">
             <WlcDualColumns
                 ref="双列互换数据控件-1"
@@ -120,7 +120,7 @@ export default class Page示范页 extends Vue {
 </script>
 
 <style lang="stylus">
-.page--示范页 {
+.页面--示范页 {
     height 100%
     display flex
     flex-direction column
