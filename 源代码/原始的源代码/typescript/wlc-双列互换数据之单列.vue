@@ -28,7 +28,7 @@
                     type="checkbox"
                     class="el-checkbox__original"
                     :disabled="与选中所有条目_含隐藏之条目_之交互相关的汇总数据.应禁止交互"
-                    @change="当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时($event)"
+                    @change="每当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时($event)"
                 ></span><span class="el-checkbox__label">{{ 与选中所有条目_含隐藏之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
 
                 <label
@@ -41,35 +41,34 @@
                     type="checkbox"
                     class="el-checkbox__original"
                     :disabled="与选中所有条目_仅列示之条目_之交互相关的汇总数据.应禁止交互"
-                    @change="当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时($event)"
+                    @change="每当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时($event)"
                 ></span><span class="el-checkbox__label">{{ 与选中所有条目_仅列示之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
             </div>
 
             <dl class="counts-summary">
-                <div class="entry all">
+                <div class="entry 栏目--所有条目之统计">
                     <dt>总数</dt>
 
                     <dd>
-                        <span class="all"><span class="value">{{ 所有条目之总数 }}</span></span>
+                        <span class="值 值--总数">{{ 所有条目之总数 }}</span>
 
-                        <span class="shown">
-                            <span class="prefix">（已列示</span>
-                            <span class="value">{{ 当下列示着的所有条目之列表.length }}</span>
-                            <span class="suffix">）</span>
-                        </span>
+                        <span class="括弧 括弧--左">（</span>
+                        <span class="值-前缀 值-前缀--列示数">已列示</span>
+                        <span class="值 值--列示数">{{ 当下列示着的所有条目之列表.length }}</span>
+                        <span class="括弧 括弧--右">）</span>
                     </dd>
                 </div>
-                <div class="entry checked">
+
+                <div class="entry 栏目--已选中条目之统计">
                     <dt>已选中</dt>
 
                     <dd>
-                        <span class="all"><span class="value">{{ 当下已选中的所有条目_含隐藏之条目_之列表.length }}</span></span>
+                        <span class="值 值--总数">{{ 当下已选中的所有条目_含隐藏之条目_之列表.length }}</span>
 
-                        <span class="shown">
-                            <span class="prefix">（已列示</span>
-                            <span class="value">{{ 当下已选中的所有条目_仅列示的条目_之列表.length }}</span>
-                            <span class="suffix">）</span>
-                        </span>
+                        <span class="括弧 括弧--左">（</span>
+                        <span class="值-前缀 值-前缀--列示数">已列示</span>
+                        <span class="值 值--列示数">{{ 当下已选中的所有条目_仅列示的条目_之列表.length }}</span>
+                        <span class="括弧 括弧--右">）</span>
                     </dd>
                 </div>
             </dl>
@@ -93,20 +92,11 @@
                     v-for="条目 in 当下列示着的所有条目之列表"
                     :key="条目.唯一标识"
                     class="column-list-item"
-                ><label
+                ><span
                     class="el-checkbox"
                     :class="求某条目之样式类名集_其根元素(条目)"
-                ><span
-                    style="display: none"
-                    class="el-checkbox__input"
-                ><span class="el-checkbox__inner" ></span><input
-                    v-model="条目.已选中"
-                    type="checkbox"
-                    aria-hidden="false"
-                    class="el-checkbox__original"
-                    :disabled="条目.已禁止交互"
-                    @change="当某条目之选中状态变动后(条目)"
-                ></span><span class="el-checkbox__label">{{ 条目.在界面中的称谓 }}</span></label></li>
+                    @click="每当点击某条目后(条目, $event)"
+                ><span class="el-checkbox__label">{{ 条目.在界面中的称谓 }}</span></span></li>
             </ol>
         </div>
     </div>
@@ -157,7 +147,8 @@ export default class Wlc双列互换数据之单列 extends Vue {
     private 所有条目之列表_最终采纳值_求解之期待之原因: string = ''
     private 三态勾选框_所有条目_含隐藏之条目_之勾选状态统计_之状态值: 范_三态勾选框之状态值 = '未勾选'
     private 三态勾选框_所有条目_仅列示之条目_之勾选状态统计_之状态值: 范_三态勾选框之状态值 = '未勾选'
-
+    private 最末经由交互动作改变其选中之状态之条目: 范_条目 | null = null
+    private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null = null
 
 
 
@@ -213,7 +204,8 @@ export default class Wlc双列互换数据之单列 extends Vue {
     }
 
     private get 条目过滤器之文本输入框之空框状态提示措辞 (): string {
-        return this.所有条目之总数 > 0 ? `筛选【${this.本列之称谓_最终采纳值}】` : '无条目可筛选'
+        return this.所有条目之总数 > 0 ? '筛选条目（可用正则表达式）' : '无条目可筛选'
+        // return this.所有条目之总数 > 0 ? `筛选【${this.本列之称谓_最终采纳值}】（可用正则表达式）` : '无条目可筛选'
     }
 
     private get 所有未禁止交互之条目之列表 (): 范_条目之列表 {
@@ -499,6 +491,50 @@ export default class Wlc双列互换数据之单列 extends Vue {
         return 汇总数据
     }
 
+    private 选中或取消选中一系列列示着的条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
+        this.选中后取消选中一系列条目(this.当下列示着的所有条目之列表, 本次目的是选中这一系列条目, 条目甲, 条目乙)
+    }
+
+    private 选中或取消选中一系列条目_含隐藏之条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
+        this.选中后取消选中一系列条目(this.所有条目之列表_最终采纳值, 本次目的是选中这一系列条目, 条目甲, 条目乙)
+    }
+
+    private 选中后取消选中一系列条目 (应考察的所有条目之列表?: 范_条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
+        if (!Array.isArray(应考察的所有条目之列表)) { return }
+        if (!条目甲 || !条目乙) { return }
+
+        const 条目甲之列表编号: number = 应考察的所有条目之列表.indexOf(条目甲)
+        const 条目乙之列表编号: number = 应考察的所有条目之列表.indexOf(条目乙)
+
+        if (条目甲之列表编号 < 0 || 条目乙之列表编号 < 0 || 条目甲之列表编号 === 条目乙之列表编号) {
+            return
+        }
+
+        const 起始条目之列表编号: number = Math.min(条目甲之列表编号, 条目乙之列表编号)
+        const 结束条目之列表编号: number = Math.max(条目甲之列表编号, 条目乙之列表编号)
+
+        let 条目选中之情况有变动: boolean = false
+        应考察的所有条目之列表.forEach((条目, 该条目之列表编号) => {
+            if (条目.已禁止交互) { return }
+
+            const 条目原本已选中: boolean = !!条目.已选中
+            const 条目参与本集体动作: boolean = 起始条目之列表编号 <= 该条目之列表编号 && 该条目之列表编号 <= 结束条目之列表编号
+            if (条目参与本集体动作) {
+                if (本次目的是选中这一系列条目) {
+                    条目.已选中 = true
+                    if (!条目原本已选中) { 条目选中之情况有变动 = true }
+                } else {
+                    条目.已选中 = false
+                    if (条目原本已选中) { 条目选中之情况有变动 = true }
+                }
+            }
+        })
+
+        if (条目选中之情况有变动) {
+            this.每当有任何条目之选中状态变动时()
+        }
+    }
+
     /**
      * 最终决定不厌其烦的在 4 处各自调用该动作。
      *
@@ -553,28 +589,60 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
 
-    private 当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent) {
+    private 每当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent) {
         if (!界面表单元素变动事件之记载.target) { return }
         const 界面表单元素 = 界面表单元素变动事件之记载.target as HTMLInputElement
         this.所有未禁止交互之条目之列表.forEach(条目 => { 条目.已选中 = 界面表单元素.checked })
         this.每当有任何条目之选中状态变动时()
     }
 
-    private 当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent) {
+    private 每当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent) {
         if (!界面表单元素变动事件之记载.target) { return }
         const 界面表单元素 = 界面表单元素变动事件之记载.target as HTMLInputElement
         this.当下列示着的所有未禁止交互之条目之列表.forEach(条目 => { 条目.已选中 = 界面表单元素.checked })
         this.每当有任何条目之选中状态变动时()
     }
 
-    private 当某条目之选中状态变动后 (选中状态变动之条目: 范_条目) {
-        // console.log(日志前缀, { ...选中状态变动之条目 })
-        this.每当有任何条目之选中状态变动时()
+    private 每当点击某条目后 (被点击之条目: 范_条目, 事件之记载: PointerEvent) {
+        if (被点击之条目 && 事件之记载) {
+            const {
+                最末经由交互动作改变其选中之状态之条目,
+                最末经由交互动作改变其选中之状态之条目_系选中之,
+            } = this
+
+            const {
+                shiftKey: 点击该条目时按住了_shift_键,
+                ctrlKey: 点击该条目时也按住了_ctrl_键,
+            } = 事件之记载
+
+            if (!!最末经由交互动作改变其选中之状态之条目 && 点击该条目时按住了_shift_键) {
+                const 序列动作之意图是选择序列中的所有条目而非取消选中它们: boolean = (最末经由交互动作改变其选中之状态之条目_系选中之 as boolean)
+
+                if (点击该条目时也按住了_ctrl_键) {
+                    this.选中或取消选中一系列条目_含隐藏之条目(
+                        序列动作之意图是选择序列中的所有条目而非取消选中它们, 最末经由交互动作改变其选中之状态之条目, 被点击之条目
+                    )
+                } else {
+                    this.选中或取消选中一系列列示着的条目(
+                        序列动作之意图是选择序列中的所有条目而非取消选中它们, 最末经由交互动作改变其选中之状态之条目, 被点击之条目
+                    )
+                }
+
+                this.最末经由交互动作改变其选中之状态之条目 = null
+                this.最末经由交互动作改变其选中之状态之条目_系选中之 = null
+            } else {
+                const 被点击的条目即将被选中: boolean = !被点击之条目.已选中
+
+                被点击之条目.已选中 = 被点击的条目即将被选中
+
+                this.最末经由交互动作改变其选中之状态之条目 = 被点击之条目
+                this.最末经由交互动作改变其选中之状态之条目_系选中之 = 被点击的条目即将被选中
+
+                this.每当有任何条目之选中状态变动时()
+            }
+        }
     }
 
-    private 当操作者在某个条目上松开键盘某按键时 (键盘事件之记载: KeyboardEvent): void {
-        console.log(键盘事件之记载)
-    }
 
 
 

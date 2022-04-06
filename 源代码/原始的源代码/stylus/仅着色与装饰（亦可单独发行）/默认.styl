@@ -94,22 +94,21 @@
 
             dt,
             dd {
-                color: #666;
+                color: #777;
             }
 
-            .all,
-            .shown {
+            span {
                 color: black;
                 text-shadow: 0 0 1px rgba(black, 0.25);
             }
 
-            .checked .all .value {
+            .栏目--已选中条目之统计 .值.值--总数 {
                 text-shadow: none;
                 color: white;
                 background-color: black;
             }
 
-            .checked .shown .value {
+            .栏目--已选中条目之统计 .值.值--列示数 {
                 text-shadow: none;
                 color: white;
                 background-color: rgba(black, 0.5);
@@ -184,7 +183,7 @@
 
         .column-list {
 
-            .column-list-item > label {
+            .column-list-item > .el-checkbox {
 
                 &:hover {
                     // background-color: #dbeafa;
