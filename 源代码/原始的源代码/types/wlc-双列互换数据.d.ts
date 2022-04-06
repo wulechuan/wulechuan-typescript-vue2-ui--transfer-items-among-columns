@@ -66,6 +66,10 @@ declare module Wlc双列互换数据 {
         public readonly 乙列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
         public readonly 各列新增条目之插入规则?: 范_各列新增条目之插入规则
         public readonly 各列条目排序之函数?: 范_各列条目排序之函数
+        public readonly 按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列?: string
+        public readonly 按钮上的措辞_中央竖栏默认内容_将条目从乙列迁移至甲列?: string
+        public readonly 按钮上的措辞_底部内容栏默认内容_将条目从甲列迁移至乙列?: string
+        public readonly 按钮上的措辞_底部内容栏默认内容_将条目从乙列迁移至甲列?: string
 
         // -------- 公开行为 --------------------------------
         public 将甲列选中的条目迁移至乙列 (调用者?: Vue): void
@@ -85,6 +89,12 @@ declare module Wlc双列互换数据 {
         private get 甲列之称谓_最终采纳值 (): string
         private get 乙列之称谓_最终采纳值 (): string
         private get 用于各界面内容皿之状态汇总数据 (): 范_状态汇总数据
+        private get 按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列_最终采纳值 (): string
+        private get 按钮上的措辞_中央竖栏默认内容_将条目从乙列迁移至甲列_最终采纳值 (): string
+        private get 按钮上的措辞_底部内容栏默认内容_将条目从甲列迁移至乙列_最终采纳值 (): string
+        private get 按钮上的措辞_底部内容栏默认内容_将条目从乙列迁移至甲列_最终采纳值 (): string
+        private get 中央竖栏默认内容_将条目从甲列迁移至乙列_界面元素之样式类名之配置 (): 范_界面元素之样式类名之配置
+        private get 中央竖栏默认内容_将条目从乙列迁移至甲列_界面元素之样式类名之配置 (): 范_界面元素之样式类名之配置
 
         // -------- @Watch 数据变动之处理程序 ----------------
         private 每当所有候选条目之列表变动后 (): void

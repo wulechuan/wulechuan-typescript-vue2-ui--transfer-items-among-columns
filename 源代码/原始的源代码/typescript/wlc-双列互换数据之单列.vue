@@ -106,6 +106,7 @@
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
 import {
+    求可靠的文本,
     尽可能将用户输入的文本视为正则表达式并用以过滤列表,
 } from './工具集'
 
@@ -154,14 +155,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
     private get 本列之称谓_最终采纳值 (): string {
-        const 外界给出值 = this.本列之称谓
-
-        let 拟采纳值 = ''
-        if (typeof 外界给出值 === 'string') {
-            拟采纳值 = 外界给出值.trim()
-        }
-
-        return 拟采纳值 || '无名列'
+        return 求可靠的文本(this.本列之称谓, '无名列', false)
     }
 
     private get 日志前缀 (): string {

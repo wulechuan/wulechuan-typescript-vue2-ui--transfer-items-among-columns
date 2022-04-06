@@ -24,6 +24,31 @@
         color: white;
         background-color: rgba(black, 0.515);
     }
+
+    .甲乙两列之间之竖栏-默认内容,
+    .底部内容栏-默认内容 {
+
+        .功能单体-主体为按钮 {
+
+            .迁移条目之按钮 {
+                border-radius 1000px
+
+                &:disabled {
+                }
+            }
+
+            .角标 {
+                border-radius 1000px
+                background-color red
+                color white
+            }
+        }
+    }
+
+    .底部内容栏-默认内容 {
+        // margin-top -2px // “吃掉”中央左右两列底部的边线
+        // background-color #eee
+    }
 }
 
 {identifiable_selector__sub_component_single_column} {
@@ -67,7 +92,6 @@
 
     .column-filter-input {
         border-color: inherit;
-
         // border-color: rgba(black, 0.75);
 
         &[disabled] {

@@ -1,3 +1,25 @@
+export function 求可靠的文本 (原始值: any, 默认值: string, 原始值为空白字符串视为有效?: boolean): string {
+    let 拟采纳值: string
+
+    if (typeof 原始值 !== 'string') {
+        拟采纳值 = ''
+    } else {
+        if (原始值为空白字符串视为有效) {
+            拟采纳值 = 原始值
+        } else {
+            拟采纳值 = 原始值.trim()
+        }
+    }
+
+    if (拟采纳值) { return 拟采纳值 }
+
+    return 默认值
+}
+
+
+
+
+
 export function 尽可能将用户输入的文本视为正则表达式并用以过滤列表<范_列表之条目 = any> (
     原始列表: 范_列表之条目[],
     用户输入的匹配词: string,
