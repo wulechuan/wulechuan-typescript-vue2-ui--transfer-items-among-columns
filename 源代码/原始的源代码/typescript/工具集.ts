@@ -30,7 +30,7 @@ export function 尽可能将用户输入的文本视为正则表达式并用以�
 
         if (关键词像是正则表达式) {
             const 正则表达式主体内容: string = _用以过滤条目之文本.trim().slice(1, -1)
-            console.debug('正则表达式主体内容', 正则表达式主体内容)
+            // console.debug('正则表达式主体内容', 正则表达式主体内容)
             try {
                 用以匹配条目的正则表达式 = new RegExp(正则表达式主体内容, 'i')
             } catch (正则表达式格式非法) {
