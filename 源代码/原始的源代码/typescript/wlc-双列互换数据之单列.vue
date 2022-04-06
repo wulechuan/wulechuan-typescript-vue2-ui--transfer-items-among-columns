@@ -1,15 +1,21 @@
 <template>
     <div class="吴乐川-双列互换数据-单列" :class="本列之特征样式类名之配置">
-        <header class="heading-block">
-            <div class="column-title-bar"><slot name="皿-标题栏"><h5>{{ 本列之标题栏之文字 }}</h5></slot></div>
+        <header class="列首">
+            <div class="列标题栏">
+                <slot name="皿-标题栏">
+                    <div class="列标题栏之默认内容">
+                        <h5>{{ 本列之标题栏之文字 }}</h5>
+                    </div>
+                </slot>
+            </div>
 
-            <div class="column-filter">
+            <div class="功能块-条目过滤器">
                 <input
                     v-model="用以过滤条目之关键词"
                     :placeholder="条目过滤器之文本输入框之空框状态提示措辞"
-                    class="column-filter-input"
-                    :class="{ 'emphasize-to-call-to-action': 当下期望列示的条目过多故暂不列示任何条目 }"
-                    :disabled="所有条目之总数 < 1"
+                    class="条目过滤器-文本输入框"
+                    :class="条目过滤器文本输入框元素之样式类名配置"
+                    :disabled="所有未禁止交互之条目之列表.length < 1"
                     @keydown.stop
                     @keyup.stop
                     @keypress.stop
@@ -77,9 +83,9 @@
         <div class="column-list-container">
             <div
                 v-if="当下期望列示的条目过多故暂不列示任何条目"
-                class="column-tip"
+                class="列提示语皿"
             >
-                <p>符合条件的条目太多，<span class="尽量不换行之短语">达<em>{{
+                <p>符合条件的条目太多，<span class="尽量不换行之短语">达<em class="期望列示之条目总数">{{
                     匹配当下过滤配置之所有条目之列表.length
                 }}</em>条，</span>已逾<span class="尽量不换行之短语"><em class="条目总数之限制数">{{
                     允许列示的条目数之上限_最终采纳值
@@ -137,6 +143,8 @@ export default class Wlc双列互换数据之单列 extends Vue {
     @Prop() public readonly 新增条目之插入规则?: 范_各列新增条目之插入规则
     @Prop() public readonly 条目排序之函数?: 范_各列条目排序之函数
     @Prop() public readonly 本列初始的用以过滤条目之配置?: string | RegExp
+    @Prop() public readonly 对列当下正以视觉强调引导用户操作之?: boolean
+    @Prop() public readonly 在对列以视觉强调引导用户操作之时_本列之强调不应有动画?: boolean
 
 
 
@@ -198,8 +206,8 @@ export default class Wlc双列互换数据之单列 extends Vue {
     }
 
     private get 条目过滤器之文本输入框之空框状态提示措辞 (): string {
-        return this.所有条目之总数 > 0 ? '筛选条目（可用正则表达式）' : '无条目可筛选'
-        // return this.所有条目之总数 > 0 ? `筛选【${this.本列之称谓_最终采纳值}】（可用正则表达式）` : '无条目可筛选'
+        return this.所有未禁止交互之条目之列表.length > 0 ? '筛选条目（可用正则表达式）' : '无条目可筛选'
+        // return this.所有未禁止交互之条目之列表.length > 0 ? `筛选【${this.本列之称谓_最终采纳值}】（可用正则表达式）` : '无条目可筛选'
     }
 
     private get 所有未禁止交互之条目之列表 (): 范_条目之列表 {
@@ -242,6 +250,35 @@ export default class Wlc双列互换数据之单列 extends Vue {
         return this.当下列示着的所有未禁止交互之条目之列表.filter(条目 => !!条目.已选中)
     }
 
+    private get 条目过滤器文本输入框元素之样式类名配置 (): 范_界面元素之样式类名之配置 {
+        const {
+            对列当下正以视觉强调引导用户操作之,
+            在对列以视觉强调引导用户操作之时_本列之强调不应有动画,
+            当下期望列示的条目过多故暂不列示任何条目,
+        } = this
+
+        const 应给予视觉强调以引导用户来此: boolean = 当下期望列示的条目过多故暂不列示任何条目
+
+        const 给予的视觉强调不应为动画: boolean = !!(
+            应给予视觉强调以引导用户来此 &&
+            对列当下正以视觉强调引导用户操作之 &&
+            在对列以视觉强调引导用户操作之时_本列之强调不应有动画
+        )
+
+        return {
+            '应给予视觉强调以引导用户来此': 当下期望列示的条目过多故暂不列示任何条目,
+            '给予的视觉强调不应为动画': 给予的视觉强调不应为动画,
+        }
+    }
+
+    private get 当下有否视觉强调动画之结论 (): boolean {
+        const 结论: boolean = !!(
+            this.当下期望列示的条目过多故暂不列示任何条目
+        )
+
+        return 结论
+    }
+
     private get 与选中所有条目_含隐藏之条目_之交互相关的汇总数据 () {
         return this.求与选中所有条目之交互相关的汇总数据(true)
     }
@@ -262,6 +299,11 @@ export default class Wlc双列互换数据之单列 extends Vue {
     @Watch('当下选中的所有条目之唯一标识之列表', { immediate: true })
     private 在外界给出的当下选中的所有条目之唯一标识之列表变动后 () {
         this.根据外界给出的条件构建实用的条目总表('【当下选中的所有条目之唯一标识之列表】变动')
+    }
+
+    @Watch('当下有否视觉强调动画之结论', { immediate: true })
+    private 在外界给出的当下有否视觉强调动画之结论变动后 (结论: boolean) {
+        this.发布事件_视觉强调之状态已变动(结论)
     }
 
 
@@ -577,6 +619,11 @@ export default class Wlc双列互换数据之单列 extends Vue {
             .map(条目 => 条目.唯一标识)
 
         this.$emit('选中的条目已变动', 事件之记载)
+    }
+
+    private 发布事件_视觉强调之状态已变动 (当下有否视觉强调动画之结论?: boolean) {
+        const 事件之记载: boolean = !!当下有否视觉强调动画之结论
+        this.$emit('视觉强调之状态已变动', 事件之记载)
     }
 
 

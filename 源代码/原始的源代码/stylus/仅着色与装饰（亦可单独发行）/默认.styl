@@ -3,26 +3,21 @@
 // Stylus 语言的变量名不允许采用汉字！
 
 {identifiable_selector__component_root} {
-    color: black;
+    color black
 
     .总标题栏 {
-        border-color: inherit;
+        border-color inherit
     }
 
     .底部内容栏 {
-        // border-color: inherit;
+        // border-color inherit
     }
 
     .甲乙两列之间之竖栏 {
 
         .el-badge__content {
-            box-shadow: 0 0 0.25rem rgba(black, 0.319);
+            box-shadow 0 0 0.25rem rgba(black, 0.319)
         }
-    }
-
-    .column-title-bar {
-        color: white;
-        background-color: rgba(black, 0.515);
     }
 
     .甲乙两列之间之竖栏-默认内容,
@@ -33,7 +28,7 @@
             .迁移条目之按钮 {
                 border-radius 1000px
 
-                &:disabled {
+                &disabled {
                 }
             }
 
@@ -52,51 +47,37 @@
 }
 
 {identifiable_selector__sub_component_single_column} {
-    // border-color: black;
+    // border-color black
 
-    .column-tip {
-        color: #bbb;
-        border-color: rgba(black, 0.19);
-        background-color: rgba(black, 0.75);
-        box-shadow: 0 0 0.25rem rgba(black, 0.515);
-
-        em {
-            color: rgb(90, 236, 61);
-        }
-
-        .条目总数之限制数 {
-            color: #ff8;
-        }
-
-        strong {
-            color: #faa;
-
-            // animation-name: dual-list-transferer-tip-text-flashing;
-            // animation-iteration-count: infinite;
-            // animation-duration: 4.5s;
-
-            // @keyframes dual-list-transferer-tip-text-flashing {
-            //   0%, 100% { color: #faa; }
-            //   50% { color: #f88; }
-            // }
-        }
+    .列首 {
+        border-color inherit
     }
 
-    .column-filter {
-        border-color: inherit;
+    .列标题栏之默认内容 {
+        color white
+        background-color rgba(black, 0.6)
+    }
+    .功能块-条目过滤器 {
+        border-color inherit
 
         .el-input__icon {
-            color: #999;
+            color #999
         }
     }
 
-    .column-filter-input {
-        border-color: inherit;
-        // border-color: rgba(black, 0.75);
+    .条目过滤器-文本输入框 {
+        border-color inherit
+        border-radius 1000px
+
+        &.应给予视觉强调以引导用户来此 {
+            animation-iteration-count infinite
+            animation-duration 1.5s
+        }
 
         &[disabled] {
-            border-color: rgba(black, 0.1);
-            background-color: rgba(white, 0.319);
+            animation-name none
+            border-color rgba(black, 0.079)
+            background-color rgba(white, 0.319)
         }
     }
 
@@ -104,72 +85,131 @@
 
         .el-checkbox {
 
-            &:hover {
-                background-color: rgba(black, 0.1);
+            &hover {
+                background-color rgba(black, 0.1)
             }
 
             &.is-disabled {
-                background-color: transparent;
+                background-color transparent
             }
         }
 
         .el-checkbox__label {
-            color: black;
+            color black
         }
     }
 
     .counts-summary {
-        background-color: rgba(black, 0.1);
+        background-color rgba(black, 0.1)
 
         dt,
         dd {
-            color: #777;
+            color #777
         }
 
         span {
-            color: black;
-            text-shadow: 0 0 1px rgba(black, 0.25);
+            color black
+            text-shadow 0 0 1px rgba(black, 0.25)
         }
 
         .栏目--已选中条目之统计 .值.值--总数 {
-            text-shadow: none;
-            color: white;
-            background-color: black;
+            text-shadow none
+            color white
+            background-color black
         }
 
         .栏目--已选中条目之统计 .值.值--列示数 {
-            text-shadow: none;
-            color: white;
-            background-color: rgba(black, 0.5);
+            text-shadow none
+            color white
+            background-color rgba(black, 0.5)
         }
     }
 
     .column-list-container {
-        box-shadow: inset 0 0 0.3rem rgba(black, 0.319);
+        box-shadow inset 0 0 0.3rem rgba(black, 0.319)
+    }
+
+    .列提示语皿 {
+        color #bbb
+        border-color rgba(black, 0.19)
+        background-color rgba(black, 0.75)
+        box-shadow 0 0 0.2em rgba(black, 0.515)
+
+        // em {
+        //     color red
+        // }
+
+        .期望列示之条目总数 {
+            color #ff8
+        }
+
+        .条目总数之限制数 {
+            color rgb(90, 236, 61)
+        }
+
+        strong {
+            color #faa
+
+            // animation-name dual-list-transferer-tip-text-flashing
+            // animation-iteration-count infinite
+            // animation-duration 4.5s
+
+            // @keyframes dual-list-transferer-tip-text-flashing {
+            //   0%, 100% { color #faa }
+            //   50% { color #f88 }
+            // }
+        }
+    }
+
+    .column-list {
+
+        .column-list-item > .el-checkbox {
+
+            &hover {
+                // background-color #dbeafa
+                background-color #eee
+            }
+
+            &.is-checked {
+                // background-color #409EFF
+                background-color #777
+
+                .el-checkbox__label {
+                    color white
+                }
+            }
+
+            &.is-disabled {
+                color #444
+                background-color #e4e4e4
+            }
+        }
     }
 
     &.甲列 {
-        border-color: #6e4f4f;
+        border-color #6e4f4f
 
-        .heading-block {
-            background-color: #ffdfdf;
+        .列首 {
+            background-color #ffdfdf
         }
 
-        .column-filter-input {
+        .条目过滤器-文本输入框 {
 
             // input {
-            //     border-color: rgba(black, 0.75);
+            //     border-color rgba(black, 0.75)
 
             //     &[disabled] {
-            //         border-color: rgba(black, 0.1);
-            //         background-color: rgba(white, 0.319);
+            //         border-color rgba(black, 0.1)
+            //         background-color rgba(white, 0.319)
             //     }
             // }
 
-            &.emphasize-to-call-to-action {
-                border-color: #f00;
-                animation-name: dual-list-transferer-input-box1-call-to-action;
-                @keyframes dual-list-transferer-input-box1-call-to-action {
+            &.应给予视觉强调以引导用户来此 {
+                border-color #f00
+
+                // Stylus 语言的关键帧动画名称不允许采用汉字！
+                animation-name wulechuan-dual-columns-exchange-data-list-items-filtering-input-box1-emphasizing
+                @keyframes wulechuan-dual-columns-exchange-data-list-items-filtering-input-box1-emphasizing {
                     0%, 100% { border-color: #f00; }
                     40%, 60% { border-color: #fbb; }
                 }
@@ -178,59 +218,36 @@
     }
 
     &.乙列 {
-        border-color: #304735;
+        border-color #304735
 
-        .heading-block {
-            background-color: #ddfce5;
+        .列首 {
+            background-color #ddfce5
         }
 
-        .column-filter-input {
+        .条目过滤器-文本输入框 {
 
             // input {
-            //     border-color: rgba(black, 0.75);
+            //     border-color rgba(black, 0.75)
 
             //     &[disabled] {
-            //         border-color: rgba(black, 0.1);
-            //         background-color: rgba(white, 0.319);
+            //         border-color rgba(black, 0.1)
+            //         background-color rgba(white, 0.319)
             //     }
             // }
 
-            &.emphasize-to-call-to-action {
-                border-color: #090;
-                animation-name: dual-list-transferer-input-box2-call-to-action;
-                @keyframes dual-list-transferer-input-box2-call-to-action {
+            &.应给予视觉强调以引导用户来此 {
+                border-color #090
+
+                // Stylus 语言的关键帧动画名称不允许采用汉字！
+                animation-name wulechuan-dual-columns-exchange-data-list-items-filtering-input-box2-emphasizing
+                @keyframes wulechuan-dual-columns-exchange-data-list-items-filtering-input-box2-emphasizing {
                     0%, 100% { border-color: #aea; }
                     40%, 60% { border-color: #090; }
                 }
 
-                &.emphasize-without-animation {
-                    animation-name: none;
+                &.给予的视觉强调不应为动画 {
+                    animation-name none
                 }
-            }
-        }
-    }
-
-    .column-list {
-
-        .column-list-item > .el-checkbox {
-
-            &:hover {
-                // background-color: #dbeafa;
-                background-color: #eee;
-            }
-
-            &.is-checked {
-                // background-color: #409EFF;
-                background-color: #777;
-
-                .el-checkbox__label {
-                    color: white;
-                }
-            }
-
-            &.is-disabled {
-                color: #444;
-                background-color: #e4e4e4;
             }
         }
     }

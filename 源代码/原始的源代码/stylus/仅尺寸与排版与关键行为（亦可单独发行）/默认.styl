@@ -3,11 +3,11 @@
 // Stylus 语言的变量名不允许采用汉字！
 
 {identifiable_selector__component_root} {
-    font-size 16px
+    font-size 20px
 
-    box-sizing border-box
     display flex
     flex-direction column
+    box-sizing border-box
     height 100%
 
     .尽量不换行之短语 {
@@ -50,7 +50,7 @@
 
     .甲乙两列之间之竖栏 {
         box-sizing border-box
-        padding 19em 0.5em 3em
+        padding 17em 0.25em 3em
 
         hr.仅用于样式表缺失之情形 {
             display none
@@ -96,6 +96,22 @@
 
                 position absolute
             }
+            
+            .角标--将条目从甲列迁移至乙列之按钮 {
+                top 0
+                left 0
+                right auto
+                bottom auto
+                transform translateX(-50%)
+            }
+
+            .角标--将条目从乙列迁移至甲列之按钮 {
+                top 0
+                left auto
+                right 0
+                bottom auto
+                transform translateX(50%)
+            }
         }
     }
 
@@ -128,22 +144,8 @@
                 padding-left 0.25em
             }
 
-            .角标--将条目从甲列迁移至乙列之按钮 {
-                top 0
-                left 0
-                right auto
-                bottom 0
+            .角标 {
                 margin -0.5em 0
-                transform translateX(-50%)
-            }
-
-            .角标--将条目从乙列迁移至甲列之按钮 {
-                top 0
-                left auto
-                right 0
-                bottom 0
-                margin -0.5em 0
-                transform translateX(50%)
             }
         }
     }
@@ -185,22 +187,8 @@
                 margin 0
             }
 
-            .角标--将条目从甲列迁移至乙列之按钮 {
-                top 0
-                left 0
-                right auto
-                bottom 0
+            .角标 {
                 margin -0.25em 0.25em
-                transform translateX(-50%)
-            }
-
-            .角标--将条目从乙列迁移至甲列之按钮 {
-                top 0
-                left auto
-                right 0
-                bottom 0
-                margin -0.25em 0.25em
-                transform translateX(50%)
             }
         }
     }
@@ -214,32 +202,32 @@
     border-width 2px
     border-style solid
 
-    .column-tip {
-        padding 0.25rem 0.75rem
-        margin 0.75rem 0.25rem
-        line-height 1.5
-
-        p {
-            margin 0.25rem 0
-        }
-
-        em {
-            font-style normal
-            margin 0 0.2rem
-        }
-
-        strong {
-            font-style normal
-            font-weight normal
-        }
+    .列首 {
+        margin 0
+        padding 0
+        border-width 0
     }
 
-    .column-title-bar {
-        padding 0.5rem 0.75rem
+    .列标题栏 {
+        position relative
+        padding 0.5em 1em
         text-align center
     }
+    
+    .列标题栏之默认内容 {
+        margin -0.5em -1em
+        padding 0.8em 1em
 
-    .column-filter {
+        h5 {
+            font-size 1.25em
+            font-weight 600
+            margin 0
+            letter-spacing 0.1em
+            // padding-left 0.1em
+        }
+    }
+
+    .功能块-条目过滤器 {
         flex 0 0 2rem
         padding 0.5rem 0.75rem
         position relative
@@ -258,19 +246,16 @@
         }
     }
 
-    .column-filter-input {
+    .条目过滤器-文本输入框 {
+        font-size inherit
+        display block
         box-sizing border-box
         width 100%
-        height 2rem
-        font-size 1rem
-        padding-left 1.25rem
-        border-radius 10rem
+        height 2.2em
+        border-width 2px
+        padding 0.25em 1.2em
+        line-height normal
         border-style solid
-
-        &.emphasize-to-call-to-action {
-            animation-iteration-count infinite
-            animation-duration 2s
-        }
     }
 
     .column-check-all {
@@ -401,7 +386,7 @@
         overflow hidden
         flex 1 1
         height 100%
-        padding 0.25rem
+        padding 0.25em
 
         border-width inherit
         border-left-width 0
@@ -409,6 +394,26 @@
         border-bottom-width 0
         border-style inherit
         border-color inherit
+    }
+
+    .列提示语皿 {
+        padding 0.25em 0.75em
+        margin 1em 0.25em
+        line-height 1.5
+
+        p {
+            margin 0.25em 0
+        }
+
+        em {
+            font-style normal
+            margin 0 0.2em
+        }
+
+        strong {
+            font-style normal
+            font-weight normal
+        }
     }
 
     .column-list {
@@ -423,11 +428,11 @@
 
         .column-list-item {
             user-select none
-            padding 0 0.25rem
+            padding 0 0.25em
 
             > .el-checkbox {
                 display block
-                padding 0.2rem 0.25rem 0.2rem 0.5rem
+                padding 0.2em 0.25em 0.2em 0.5em
                 overflow hidden
 
                 &.is-disabled {
