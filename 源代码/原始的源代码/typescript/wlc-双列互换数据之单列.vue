@@ -112,6 +112,10 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
+import {
+    尽可能将用户输入的文本视为正则表达式并用以过滤列表,
+} from './工具集'
+
 type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置
 type 范_三态勾选框之状态值 = Wlc双列互换数据.范_三态勾选框之状态值
 type 范_条目 = Wlc双列互换数据.范_条目
@@ -213,37 +217,11 @@ export default class Wlc双列互换数据之单列 extends Vue {
     }
 
     private get 匹配当下过滤配置之所有条目之列表 (): 范_条目之列表 {
-        const { 所有条目之列表_最终采纳值, 用以过滤条目之关键词 } = this
-
-        let _用以过滤条目之关键词: string = ''
-        if (typeof 用以过滤条目之关键词 === 'string') {
-            _用以过滤条目之关键词 = 用以过滤条目之关键词
-        }
-
-        let 所有匹配的条目 = 所有条目之列表_最终采纳值
-        if (_用以过滤条目之关键词) {
-            const 关键词像是正则表达式: boolean = /\s*\/.+\/\s*/.test(_用以过滤条目之关键词)
-            let 用以匹配条目的正则表达式: RegExp | null = null
-
-            if (关键词像是正则表达式) {
-                const 正则表达式主体内容: string = _用以过滤条目之关键词.trim().slice(1, -1)
-                // console.debug('正则表达式主体内容', 正则表达式主体内容)
-                try {
-                    用以匹配条目的正则表达式 = new RegExp(正则表达式主体内容, 'i')
-                } catch (正则表达式格式非法) {
-                    console.error('正则表达式主体内容无效')
-                }
-            }
-
-            if (用以匹配条目的正则表达式 instanceof RegExp) {
-                所有匹配的条目 = 所有条目之列表_最终采纳值.filter(条目 => 用以匹配条目的正则表达式!.test(条目.在界面中的称谓))
-            } else {
-                所有匹配的条目 = 所有条目之列表_最终采纳值.filter(条目 => 条目.在界面中的称谓.indexOf(_用以过滤条目之关键词) > -1)
-            }
-
-        }
-
-        return 所有匹配的条目
+        return 尽可能将用户输入的文本视为正则表达式并用以过滤列表<范_条目>(
+            this.所有条目之列表_最终采纳值,
+            this.用以过滤条目之关键词,
+            条目 => 条目.在界面中的称谓
+        )
     }
 
     private get 当下列示着的所有条目之列表 (): 范_条目之列表 {
