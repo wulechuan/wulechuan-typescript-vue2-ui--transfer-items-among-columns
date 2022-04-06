@@ -18,7 +18,7 @@ declare module Wlc双列互换数据 {
         已选中?: boolean;
         已禁止交互?: boolean;
         数据?: any;
-    };
+    }
 
     type 范_条目之列表 = Array<范_条目>;
 
@@ -102,5 +102,5 @@ declare module Wlc双列互换数据 {
 
         // -------- 生命周期钩子 ----------------------------
         private mounted (): void
-    };
+    }
 }

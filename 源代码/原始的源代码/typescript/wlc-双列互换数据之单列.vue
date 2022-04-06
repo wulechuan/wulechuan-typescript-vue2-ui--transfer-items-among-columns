@@ -28,9 +28,6 @@
                     type="checkbox"
                     class="el-checkbox__original"
                     :disabled="与选中所有条目_含隐藏之条目_之交互相关的汇总数据.应禁止交互"
-                    @keydown.stop
-                    @keyup.stop
-                    @keypress.stop
                     @change="当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时($event)"
                 ></span><span class="el-checkbox__label">{{ 与选中所有条目_含隐藏之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
 
@@ -44,9 +41,6 @@
                     type="checkbox"
                     class="el-checkbox__original"
                     :disabled="与选中所有条目_仅列示之条目_之交互相关的汇总数据.应禁止交互"
-                    @keydown.stop
-                    @keyup.stop
-                    @keypress.stop
                     @change="当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时($event)"
                 ></span><span class="el-checkbox__label">{{ 与选中所有条目_仅列示之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
             </div>
