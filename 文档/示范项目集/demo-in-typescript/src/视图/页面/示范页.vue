@@ -1,7 +1,7 @@
 <template>
     <div class="页面 页面--示范页">
         <div class="页面中央内容块">
-            <WlcDualColumns
+            <Wlc双列互换数据
                 ref="双列互换数据控件-1"
                 v-model="双列互换数据功能.选中的条目之唯一标识之列表"
                 :所有候选条目之列表="双列互换数据功能.候选列表"
@@ -43,7 +43,7 @@
                         @click="每当点击用以将乙列选中之条目迁移至甲列之按钮后()"
                     >退货</button>
                 </template>
-            </WlcDualColumns>
+            </Wlc双列互换数据>
         </div>
     </div>
 </template>
@@ -80,7 +80,7 @@ type 范_示范页_双列互换数据功能配置集 = {
 
 @Component({
     components: {
-        WlcDualColumns: Wlc双列互换数据,
+        Wlc双列互换数据,
     },
 })
 export default class Page示范页 extends Vue {
