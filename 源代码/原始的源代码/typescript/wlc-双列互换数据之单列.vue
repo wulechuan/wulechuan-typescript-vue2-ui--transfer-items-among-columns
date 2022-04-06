@@ -10,6 +10,9 @@
                     class="column-filter-input"
                     :class="{ 'emphasize-to-call-to-action': 当下期望列示的条目过多故暂不列示任何条目 }"
                     :disabled="所有条目之总数 < 1"
+                    @keydown.stop
+                    @keyup.stop
+                    @keypress.stop
                 >
                 <i class="el-input__icon el-icon-search" ></i>
             </div>
@@ -25,6 +28,9 @@
                     type="checkbox"
                     class="el-checkbox__original"
                     :disabled="与选中所有条目_含隐藏之条目_之交互相关的汇总数据.应禁止交互"
+                    @keydown.stop
+                    @keyup.stop
+                    @keypress.stop
                     @change="当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时($event)"
                 ></span><span class="el-checkbox__label">{{ 与选中所有条目_含隐藏之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
 
@@ -38,6 +44,9 @@
                     type="checkbox"
                     class="el-checkbox__original"
                     :disabled="与选中所有条目_仅列示之条目_之交互相关的汇总数据.应禁止交互"
+                    @keydown.stop
+                    @keyup.stop
+                    @keypress.stop
                     @change="当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时($event)"
                 ></span><span class="el-checkbox__label">{{ 与选中所有条目_仅列示之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
             </div>
@@ -142,6 +151,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     @Prop() public readonly 所有条目之列表?: 范_条目之列表
     @Prop() public readonly 新增条目之插入规则?: 范_各列新增条目之插入规则
     @Prop() public readonly 条目排序之函数?: 范_各列条目排序之函数
+    @Prop() public readonly 本列初始的用以过滤条目之配置?: string | RegExp
 
 
 
@@ -566,6 +576,23 @@ export default class Wlc双列互换数据之单列 extends Vue {
     private 当某条目之选中状态变动后 (选中状态变动之条目: 范_条目) {
         // console.log(日志前缀, { ...选中状态变动之条目 })
         this.每当有任何条目之选中状态变动时()
+    }
+
+    private 当操作者在某个条目上松开键盘某按键时 (键盘事件之记载: KeyboardEvent): void {
+        console.log(键盘事件之记载)
+    }
+
+
+
+
+    private mounted (): void {
+        const { 本列初始的用以过滤条目之配置 } = this
+
+        if (本列初始的用以过滤条目之配置 instanceof RegExp) {
+            this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置.toString()
+        } else if (typeof 本列初始的用以过滤条目之配置 === 'string') {
+            this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置
+        }
     }
 }
 </script>

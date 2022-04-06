@@ -60,6 +60,8 @@ declare module Wlc双列互换数据 {
         public readonly 单列允许列示的条目数之上限?: number
         public readonly 甲列之称谓?: string
         public readonly 乙列之称谓?: string
+        public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
+        public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
         public readonly 甲列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
         public readonly 乙列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
         public readonly 各列新增条目之插入规则?: 范_各列新增条目之插入规则

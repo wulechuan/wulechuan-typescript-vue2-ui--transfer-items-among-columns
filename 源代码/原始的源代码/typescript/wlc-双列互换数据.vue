@@ -1,5 +1,8 @@
 <template>
-    <div class="wlc-dual-columns-exchange-items">
+    <div
+        class="wlc-dual-columns-exchange-items"
+        @keyup="每当键盘按键松开时($event)"
+    >
         <header class="title-bar">
             <slot name="内容皿-总标题栏" v-bind="用于各界面内容皿之状态汇总数据"></slot>
         </header>
@@ -13,6 +16,7 @@
                 :所有条目之列表="甲列之数据集.所有条目之列表"
                 :新增条目之插入规则="各列新增条目之插入规则"
                 :条目排序之函数="各列条目排序之函数"
+                :本列初始的用以过滤条目之配置="甲列初始的用以过滤条目之配置"
             ></Wlc双列互换数据之单列>
 
             <div class="center-column">
@@ -45,6 +49,7 @@
                 :所有条目之列表="乙列之数据集.所有条目之列表"
                 :新增条目之插入规则="各列新增条目之插入规则"
                 :条目排序之函数="各列条目排序之函数"
+                :本列初始的用以过滤条目之配置="乙列初始的用以过滤条目之配置"
             ></Wlc双列互换数据之单列>
         </div>
 
@@ -78,6 +83,8 @@ export default class Wlc双列互换数据 extends Vue {
     @Prop() public readonly 单列允许列示的条目数之上限?: number
     @Prop() public readonly 甲列之称谓?: string
     @Prop() public readonly 乙列之称谓?: string
+    @Prop() public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
+    @Prop() public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
     @Prop() public readonly 甲列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
     @Prop() public readonly 乙列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
     @Prop() public readonly 各列新增条目之插入规则?: 范_各列新增条目之插入规则
@@ -370,6 +377,17 @@ export default class Wlc双列互换数据 extends Vue {
 
     private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void {
         this.将乙列选中的条目迁移至甲列()
+    }
+
+    private 每当键盘按键松开时 (键盘事件之记载: KeyboardEvent): void {
+        console.log(键盘事件之记载)
+        const { key } = 键盘事件之记载
+
+        if (key === 'ArrowRight') {
+            this.将甲列选中的条目迁移至乙列()
+        } else if (key === 'ArrowLeft') {
+            this.将乙列选中的条目迁移至甲列()
+        }
     }
 
 
