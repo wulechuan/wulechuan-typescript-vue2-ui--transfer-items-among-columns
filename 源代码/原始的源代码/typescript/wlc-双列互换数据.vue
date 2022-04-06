@@ -380,9 +380,8 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private 每当键盘按键松开时 (键盘事件之记载: KeyboardEvent): void {
-        console.log(键盘事件之记载)
-
         const { key } = 键盘事件之记载
+
         if (key === 'ArrowRight') {
             this.将甲列选中的条目迁移至乙列()
         } else if (key === 'ArrowLeft') {
