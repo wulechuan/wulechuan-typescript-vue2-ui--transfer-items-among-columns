@@ -103,7 +103,7 @@
                             type="checkbox"
                             aria-hidden="false"
                             class="el-checkbox__original"
-                            :disabled="条目.已禁止交互"
+                            :disabled="条目.已禁止选择"
                         ></span><span class="el-checkbox__label">{{ 条目.在界面中的称谓 }}</span></label></li>
                     </ol>
                 </div>
@@ -233,7 +233,7 @@
                             type="checkbox"
                             aria-hidden="false"
                             class="el-checkbox__original"
-                            :disabled="条目.已禁止交互"
+                            :disabled="条目.已禁止选择"
                         ></span><span class="el-checkbox__label">{{ 条目.在界面中的称谓 }}</span></label></li>
                     </ol>
                 </div>
@@ -332,11 +332,11 @@ export default class Wlc双列互换数据 extends Vue {
         return this.甲列之状态.allItems.filter(条目 => {
 
         })
-        // return this.甲列之状态.allItems.filter(条目 => !条目.已禁止交互)
+        // return this.甲列之状态.allItems.filter(条目 => !条目.已禁止选择)
     }
 
     private get rightEnabledItems (): 范_条目之列表 {
-        return this.乙列之状态.allItems.filter(条目 => !条目.已禁止交互)
+        return this.乙列之状态.allItems.filter(条目 => !条目.已禁止选择)
     }
 
     private get leftMatchedItems (): 范_条目之列表 {
@@ -398,23 +398,23 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private get leftCheckedItems (): 范_条目之列表 {
-        const checkedItems = this.甲列之状态.allItems.filter(条目 => !条目.已禁止交互 && !!条目.已选中)
+        const checkedItems = this.甲列之状态.allItems.filter(条目 => !条目.已禁止选择 && !!条目.已选中)
         this.甲列之状态.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
     private get rightCheckedItems (): 范_条目之列表 {
-        const checkedItems = this.乙列之状态.allItems.filter(条目 => !条目.已禁止交互 && !!条目.已选中)
+        const checkedItems = this.乙列之状态.allItems.filter(条目 => !条目.已禁止选择 && !!条目.已选中)
         this.乙列之状态.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
     private get leftShownCheckedItems (): 范_条目之列表 {
-        return this.leftShownItems.filter(条目 => !条目.已禁止交互 && !!条目.已选中)
+        return this.leftShownItems.filter(条目 => !条目.已禁止选择 && !!条目.已选中)
     }
 
     private get rightShownCheckedItems (): 范_条目之列表 {
-        return this.rightShownItems.filter(条目 => !条目.已禁止交互 && !!条目.已选中)
+        return this.rightShownItems.filter(条目 => !条目.已禁止选择 && !!条目.已选中)
     }
 
     private get shouldDisableTransferingButton0 (): boolean {
@@ -509,7 +509,7 @@ export default class Wlc双列互换数据 extends Vue {
             if (!原始条目) { return }
             const {
                 唯一标识: 该条目之唯一标识,
-                已禁止交互: 该条目已禁止交互,
+                已禁止选择: 该条目已禁止选择,
             } = 原始条目
 
             if (该条目之唯一标识 in itemsDeduplicatedDict) {
@@ -534,7 +534,7 @@ export default class Wlc双列互换数据 extends Vue {
             // }
 
             if (该条目应位于乙列中) {
-                if (!该条目已禁止交互) {
+                if (!该条目已禁止选择) {
                     const cachedUXItem = rightCheckedItemsCache.find(条目 => 条目.唯一标识 === 该条目之唯一标识)
                     if (cachedUXItem) {
                         条目.已选中 = cachedUXItem.已选中
@@ -543,7 +543,7 @@ export default class Wlc双列互换数据 extends Vue {
 
                 rightAllItems.push(条目)
             } else {
-                if (!该条目已禁止交互) {
+                if (!该条目已禁止选择) {
                     const cachedUXItem = leftCheckedItemsCache.find(条目 => 条目.唯一标识 === 该条目之唯一标识)
                     if (cachedUXItem) {
                         条目.已选中 = cachedUXItem.已选中
@@ -576,16 +576,16 @@ export default class Wlc双列互换数据 extends Vue {
         if (!条目) { return null }
 
         const 已选中 = !!条目.已选中
-        const 已禁止交互 = !!条目.已禁止交互
+        const 已禁止选择 = !!条目.已禁止选择
 
         return {
             labelElement: {
                 'is-checked': 已选中,
-                'is-disabled': 已禁止交互,
+                'is-disabled': 已禁止选择,
             },
             psuedoCheckboxSpan: {
                 'is-checked': 已选中,
-                'is-disabled': 已禁止交互,
+                'is-disabled': 已禁止选择,
             },
         }
     }
@@ -712,7 +712,7 @@ export default class Wlc双列互换数据 extends Vue {
         const shouldCheckAll = !allVisibleAreChecked
 
         allShownItems.forEach(条目 => {
-            if (条目.已禁止交互) { return }
+            if (条目.已禁止选择) { return }
             条目.已选中 = shouldCheckAll
         })
 
@@ -736,7 +736,7 @@ export default class Wlc双列互换数据 extends Vue {
         const toMoveToRight: 范_条目之列表 = []
 
         this.甲列之状态.allItems.forEach(条目 => {
-            if (!条目.已禁止交互 && 条目.已选中) {
+            if (!条目.已禁止选择 && 条目.已选中) {
                 toMoveToRight.push(条目)
                 条目.已选中 = false
             } else {
@@ -755,7 +755,7 @@ export default class Wlc双列互换数据 extends Vue {
         const toMoveToLeft: 范_条目之列表 = []
 
         this.乙列之状态.allItems.forEach(条目 => {
-            if (!条目.已禁止交互 && 条目.已选中) {
+            if (!条目.已禁止选择 && 条目.已选中) {
                 toMoveToLeft.push(条目)
                 条目.已选中 = false
             } else {
