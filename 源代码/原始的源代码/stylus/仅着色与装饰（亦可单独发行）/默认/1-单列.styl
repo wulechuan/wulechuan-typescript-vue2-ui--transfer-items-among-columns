@@ -2,156 +2,6 @@
 
 // Stylus 语言的变量名不允许采用汉字！label:focus-within {
 
-{identifiable_selector__component_root} {
-    {css_var_name__focusing_element_outline_color}: black // #795cfc
-
-    color black
-
-    label {
-        outline-color transparent
-        box-shadow none
-    }
-
-    label:focus-within {
-        transition-property outline, visibility, opacity, color, border, background-color, box-shadow, text-shadow
-        transition-duration  0.219s,       0.5s,    0.5s,  0.5s,   0.5s,             0.5s,       0.5s,        0.5s
-        transition-timing-function ease-out
-
-        outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
-        box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))
-    }
-
-    textarea,
-    input,
-    button {
-        transition-property outline, visibility, opacity, color, border, background-color, box-shadow, text-shadow
-        transition-duration  0.219s,       0.5s,    0.5s,  0.5s,   0.5s,             0.5s,       0.5s,        0.5s
-        transition-timing-function ease-out
-
-        outline-color transparent
-        box-shadow none
-
-        &:focus-visible {
-            outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
-            box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))
-        }
-    }
-
-    textarea,
-    input {
-
-        &::placeholder {
-            color #ccc
-        }
-    }
-
-    button {
-        color #000
-        border-color #888
-        background-color #eee
-    }
-
-    input[type="checkbox"] {
-        color inherit
-        border-color currentColor
-    }
-
-    input[type="checkbox"]:hover,
-    label.包裹着输入项:hover .勾选项视觉假体 {
-        color #795cfc
-    }
-
-    .输入项 {
-
-    }
-
-    .勾选项视觉假体 {
-        border-radius 0.2em
-        background-color white
-    }
-
-    .输入项-勾选项 {
-
-        &.部分勾选 {
-
-            .勾选项视觉假体::before {
-                border-radius 0.1em
-                background-color currentColor
-            }
-        }
-    }
-
-    label.包裹着输入项 {
-
-        & {
-            color inherit
-            // color black
-            border-radius 0.2em
-
-            input[type="checkbox"]:focus-visible,
-            input[type="checkbox"]:focus {
-                outline none
-                box-shadow none
-            }
-
-            // .输入项配文 {
-            //     color inherit
-            // }
-        }
-
-        &:hover {
-            background-color rgba(black, 0.1)
-        }
-
-        &:disabled,
-        &.已禁止交互 {
-            color #0004
-            border-color transparent
-            background-color transparent
-        }
-    }
-
-    .总标题栏 {
-        border-color inherit
-    }
-
-    // .底部内容栏 {
-    //     border-color inherit
-    // }
-
-    .甲乙两列之间之竖栏 {
-        border-color transparent
-        // border-color #333
-        // background-color #aaa
-    }
-
-    .甲乙两列之间之竖栏-默认内容,
-    .底部内容栏-默认内容 {
-
-        .功能单体-主体为按钮 {
-
-            .迁移条目之按钮 {
-                border-radius 1000px
-
-                // &:disabled {
-                // }
-            }
-
-            .角标 {
-                border-radius 1000px
-                background-color red
-                color white
-                box-shadow 0 0 0.25em rgba(#722, 0.319)
-            }
-        }
-    }
-
-    // .底部内容栏-默认内容 {
-    //     margin-top calc(-1 * border-width var(--chief-blocks-border-width)) // 用以 “ 吃掉 ” 中央左右两列底部的边线
-    //     background-color #eee
-    // }
-}
-
 {identifiable_selector__sub_component_single_column} {
 
     .列首 {
@@ -217,6 +67,7 @@
     }
 
     .功能块-条目列表皿 {
+        border-color inherit
         box-shadow inset 0 0 0.3em rgba(black, 0.319)
     }
 
@@ -255,8 +106,9 @@
 
     .条目列表 {
 
-        // .条目 {
-        // }
+        .条目 {
+            background-color transparent
+        }
 
         .条目视觉主体 {
             background-color transparent
