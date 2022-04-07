@@ -18,7 +18,8 @@
     }
 
     label.包裹着输入项 {
-        color black
+        color inherit
+        // color black
 
         &:hover {
             background-color rgba(black, 0.1)
@@ -42,7 +43,7 @@
 
     input[type="checkbox"]:hover,
     label.包裹着输入项:hover input[type="checkbox"] {
-        color rgb(121, 92, 252)
+        color #795cfc
     }
 
     .总标题栏 {
@@ -53,12 +54,8 @@
     //     border-color inherit
     // }
 
-    .甲乙两列之间之竖栏 {
-
-        .el-badge__content {
-            box-shadow 0 0 0.25rem rgba(black, 0.319)
-        }
-    }
+    // .甲乙两列之间之竖栏 {
+    // }
 
     .甲乙两列之间之竖栏-默认内容,
     .底部内容栏-默认内容 {
@@ -76,14 +73,15 @@
                 border-radius 1000px
                 background-color red
                 color white
+                box-shadow 0 0 0.25em rgba(#722, 0.319)
             }
         }
     }
 
-    .底部内容栏-默认内容 {
-        // margin-top -2px // “吃掉”中央左右两列底部的边线
-        // background-color #eee
-    }
+    // .底部内容栏-默认内容 {
+    //     margin-top -2px // 用以 “ 吃掉 ” 中央左右两列底部的边线
+    //     background-color #eee
+    // }
 }
 
 {identifiable_selector__sub_component_single_column} {
@@ -97,6 +95,7 @@
         color white
         background-color rgba(black, 0.6)
     }
+
     .功能块-条目过滤器 {
         border-color inherit
     }
@@ -161,14 +160,15 @@
     }
 
     .功能块-条目列表皿 {
-        box-shadow inset 0 0 0.3rem rgba(black, 0.319)
+        box-shadow inset 0 0 0.3em rgba(black, 0.319)
     }
 
     .条目列表之提示语 {
+        border-radius 0.5em
         color #bbb
-        border-color rgba(black, 0.19)
-        background-color rgba(black, 0.75)
-        box-shadow 0 0 0.2em rgba(black, 0.515)
+        border-color black
+        background-color rgba(black, 0.87)
+        box-shadow 0 0 0.4em rgba(black, 0.75)
 
         // em {
         //     color red
