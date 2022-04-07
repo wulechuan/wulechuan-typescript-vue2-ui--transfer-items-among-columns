@@ -14,6 +14,18 @@
         display inline-block
     }
 
+    .输入项 {
+
+    }
+
+    .输入项-勾选项 {
+
+    }
+
+    .勾选项视觉假体 {
+
+    }
+
     label.包裹着输入项 {
         cursor pointer
         font-size inherit
@@ -44,41 +56,29 @@
         max-height 1em /* 迁就火狐浏览器。 */
         margin 0.27em 0.7em 0.27em 0
 
-        &::before { /* 火狐浏览器中的 input 元素不支持 ::before 。 */
-            content ''
-            display block
-            box-sizing border-box
-            width 1.1em
-            height 1.1em
-            line-height 0.9
-            text-align center
-            position absolute
-            top auto
-            left auto
-            margin -0.05em
-            border-width 0.1em
-            border-style solid
-        }
+        // &::before { /* 火狐浏览器中的 input 元素不支持 ::before 。 */
+        //     content ''
+        //     display block
+        //     box-sizing border-box
+        //     width 1.1em
+        //     height 1.1em
+        //     line-height 0.9
+        //     text-align center
+        //     position absolute
+        //     top auto
+        //     left auto
+        //     margin -0.05em
+        //     border-width 0.1em
+        //     border-style solid
+        // }
 
-        &:checked::before {
-            content '✓'
-        }
+        // &:checked::before {
+        //     content '✓'
+        // }
     }
 
     label.包裹着输入项 input[type="checkbox"] {
         margin-left -0.2em
-    }
-
-    .输入项 {
-
-    }
-
-    .输入项-勾选项 {
-
-    }
-
-    .勾选项视觉假体 {
-
     }
 
     .总标题栏 {
@@ -87,6 +87,7 @@
 
     .底部内容栏 {
         flex 0 0 auto
+        padding 0 1em
     }
 
     .容纳着双列的中央主体 {
@@ -94,7 +95,8 @@
         display flex
         flex-direction row
         align-items stretch
-        overflow hidden
+        overflow auto
+        padding 1em // 为了在出现滚动条的情形给主体内容四周留白。
     }
 
     .底部内容栏-默认内容 .功能块,
@@ -103,7 +105,11 @@
         flex-grow 3
         flex-basis auto
         width 30em
+    }
+
+    {identifiable_selector__sub_component_single_column} {
         min-width 20em
+        min-height 30em
     }
 
     .底部内容栏-默认内容 .中央间隙,
@@ -230,20 +236,20 @@
         .功能块 {
             position relative
             display block
-            // text-align center
+            text-align center
         }
 
-        .功能块--针对甲列 {
-            text-align right
-        }
+        // .功能块--针对甲列 {
+        //     text-align right
+        // }
 
-        .功能块--针对乙列 {
-            text-align left
-        }
+        // .功能块--针对乙列 {
+        //     text-align left
+        // }
 
-        .中央间隙 {
-            margin 0 2.5em
-        }
+        // .中央间隙 {
+        //     margin 0 2.5em
+        // }
 
         .功能单体-主体为按钮 {
             display inline-block
