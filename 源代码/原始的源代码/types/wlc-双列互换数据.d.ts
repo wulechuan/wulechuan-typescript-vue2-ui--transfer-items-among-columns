@@ -15,9 +15,13 @@ declare module Wlc双列互换数据 {
     interface 范_条目 {
         唯一标识: 范_条目之唯一标识;
         在界面中的称谓: string;
-        已选中?: boolean;
         已禁止选择?: boolean;
+        已选中?: boolean;
         数据?: any;
+    }
+
+    interface 范_条目_之内用格式 extends 范_条目 {
+        已选中?: boolean;
     }
 
     type 范_条目之列表 = Array<范_条目>;
