@@ -3,6 +3,8 @@
 // Stylus 语言的变量名不允许采用汉字！
 
 {identifiable_selector__component_root} {
+    --chief-blocks-border-width: 2px;
+
     font-size 20px
 
     display flex
@@ -30,7 +32,6 @@
         cursor pointer
         font-size inherit
         padding 0.5em 1em
-        border-radius 0.35em
         margin-right 1em
         display inline-flex
         flex-direction row
@@ -125,6 +126,11 @@
     .甲乙两列之间之竖栏 {
         box-sizing border-box
         padding 17em 0.25em 3em
+
+        border-style solid
+        border-width var(--chief-blocks-border-width)
+        border-left-width 0
+        border-right-width 0
 
         hr.仅用于样式表缺失之情形 {
             display none
@@ -274,7 +280,7 @@
     overflow hidden
     flex-direction column
     box-sizing border-box
-    border-width 2px
+    border-width var(--chief-blocks-border-width)
     border-style solid
 
     .列首 {
@@ -333,14 +339,14 @@
     }
 
     .功能块-全选或全部取消选中 {
-        padding 0em 0.5em 0.25em 0.5em
+        padding 0.25em 1em
+        margin-top -0.5em
 
         label.包裹着输入项 {
             display block
             padding-top 0.25em
             padding-bottom 0.25em
-            margin 0
-            border-radius 0.25em
+            margin 0.1em 0
 
             &.已禁止交互 {
                 cursor not-allowed
@@ -383,7 +389,6 @@
                 padding 0.2em 0.3em
                 height 1.6em
                 line-height 1.2
-                border-radius 0.2em
             }
         }
 
@@ -471,11 +476,11 @@
         height 100%
         padding 0.25em
 
-        border-width inherit
+        border-style solid
+        border-width var(--chief-blocks-border-width)
         border-left-width 0
         border-right-width 0
         border-bottom-width 0
-        border-style inherit
         border-color inherit
     }
 
@@ -493,6 +498,7 @@
 
         em {
             font-style normal
+            font-weight normal
             margin 0 0.2em
         }
 

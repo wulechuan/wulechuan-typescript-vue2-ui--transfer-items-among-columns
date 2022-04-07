@@ -20,6 +20,7 @@
     label.包裹着输入项 {
         color inherit
         // color black
+        border-radius 0.35em
 
         &:hover {
             background-color rgba(black, 0.1)
@@ -35,10 +36,10 @@
         color inherit
         border-color currentColor
 
-        &::before { /* 火狐浏览器中的 input 元素不支持 ::before 。 */
-            border-radius 0.2em
-            background-color white
-        }
+        // &::before { /* 火狐浏览器中的 input 元素不支持 ::before 。 */
+        //     border-radius 0.2em
+        //     background-color white
+        // }
     }
 
     input[type="checkbox"]:hover,
@@ -54,8 +55,11 @@
     //     border-color inherit
     // }
 
-    // .甲乙两列之间之竖栏 {
-    // }
+    .甲乙两列之间之竖栏 {
+        border-color transparent
+        // border-color #333
+        // background-color #aaa
+    }
 
     .甲乙两列之间之竖栏-默认内容,
     .底部内容栏-默认内容 {
@@ -79,13 +83,12 @@
     }
 
     // .底部内容栏-默认内容 {
-    //     margin-top -2px // 用以 “ 吃掉 ” 中央左右两列底部的边线
+    //     margin-top calc(-1 * border-width var(--chief-blocks-border-width)) // 用以 “ 吃掉 ” 中央左右两列底部的边线
     //     background-color #eee
     // }
 }
 
 {identifiable_selector__sub_component_single_column} {
-    // border-color black
 
     .列首 {
         border-color inherit
@@ -131,15 +134,19 @@
     }
 
     .功能块-条目统计 {
-        background-color rgba(black, 0.1)
+        background-color rgba(black, 0.15)
+
+        .字典式列表之条目 > dt,
+        .字典式列表之条目 > dd {
+
+            > span {
+                border-radius 0.2em
+            }
+        }
 
         .字典式列表之条目 {
             color #888
         }
-
-        // .字典式列表之条目 > dt,
-        // .字典式列表之条目 > dd {
-        // }
 
         .字典式列表之条目 > dd > span {
             color black
@@ -167,31 +174,31 @@
         border-radius 0.5em
         color #bbb
         border-color black
-        background-color rgba(black, 0.87)
+        background-color rgba(black, 0.9)
         box-shadow 0 0 0.4em rgba(black, 0.75)
 
-        // em {
+        // em.值 {
         //     color red
         // }
 
-        .期望列示之条目总数 {
+        .值-期望列示之条目总数 {
             color #ff8
         }
 
-        .条目总数之限制数 {
+        .值-条目总数之限制数 {
             color rgb(90, 236, 61)
         }
 
         strong {
             color #faa
 
-            // animation-name dual-list-transferer-tip-text-flashing
+            // animation-name wulechuan-dual-columns-exchange-data--message--strong-text-flashing
             // animation-iteration-count infinite
             // animation-duration 4.5s
 
-            // @keyframes dual-list-transferer-tip-text-flashing {
-            //   0%, 100% { color #faa }
-            //   50% { color #f88 }
+            // @keyframes wulechuan-dual-columns-exchange-data--message--strong-text-flashing {
+            //   0%, 100% { color: #faa; }
+            //   50% { color: #f88; }
             // }
         }
     }
@@ -242,8 +249,8 @@
                 border-color #f00
 
                 // Stylus 语言的关键帧动画名称不允许采用汉字！
-                animation-name wulechuan-dual-columns-exchange-data-list-items-filtering-input-box1-emphasizing
-                @keyframes wulechuan-dual-columns-exchange-data-list-items-filtering-input-box1-emphasizing {
+                animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box1--emphasizing
+                @keyframes wulechuan-dual-columns-exchange-data--list-items-filtering-input-box1--emphasizing {
                     0%, 100% { border-color: #f00; }
                     40%, 60% { border-color: #fbb; }
                 }
@@ -264,8 +271,8 @@
                 border-color #090
 
                 // Stylus 语言的关键帧动画名称不允许采用汉字！
-                animation-name wulechuan-dual-columns-exchange-data-list-items-filtering-input-box2-emphasizing
-                @keyframes wulechuan-dual-columns-exchange-data-list-items-filtering-input-box2-emphasizing {
+                animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box2--emphasizing
+                @keyframes wulechuan-dual-columns-exchange-data--list-items-filtering-input-box2--emphasizing {
                     0%, 100% { border-color: #aea; }
                     40%, 60% { border-color: #090; }
                 }
