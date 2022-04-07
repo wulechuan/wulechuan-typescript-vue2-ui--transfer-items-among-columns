@@ -3,7 +3,7 @@
 // Stylus 语言的变量名不允许采用汉字！label:focus-within {
 
 {identifiable_selector__component_root} {
-    {css_var_name__focusing_element_outline_color}: black // #795cfc
+    {css_var_name__focusing_element_outline_color}: #795cfc
 
     color black
 
@@ -111,21 +111,60 @@
     }
 
     .角标 {
-        border-radius 1000px
-        background-color red
-        color white
+
+        &,
+        &.标准配色-红 {
+            border-radius 1000px
+            background-color red
+            color white
+        }
+
+        // &.标准配色-绿 {
+
+        // }
+
+        // &.标准配色-蓝 {
+
+        // }
     }
 
-    .总标题栏 {
-    }
+    .消息文本皿 {
 
-    .底部内容栏 {
+        // &,
+        // &.标准配色-鲜亮 {
+
+        //     em {
+        //     }
+
+        //     strong {
+        //     }
+        // }
+
+        &.标准配色-幽暗 {
+            border-radius 0.4em
+            color #ccc
+            border-color black
+            background-color rgba(black, 0.9)
+            box-shadow 0 0 0.4em rgba(black, 0.75)
+
+            em {
+                color lightgreen
+            }
+
+            strong {
+                color #f88
+            }
+        }
     }
 
     .甲乙两列之间之竖栏 {
-        border-color transparent
-        // border-color #333
-        // background-color #aaa
+
+        if true {
+            border-color transparent
+        } else {
+            border-color #333
+            background-color #aaa
+        }
     }
 
     .甲乙两列之间之竖栏之默认内容,
@@ -141,8 +180,5 @@
                 box-shadow 0 0 0.25em rgba(#722, 0.319)
             }
         }
-    }
-
-    .底部内容栏之默认内容 {
     }
 }

@@ -3,251 +3,20 @@
 // Stylus 语言的变量名不允许采用汉字！
 
 {identifiable_selector__component_root} {
-    {css_var_name__chief_blocks_border_width} 2px
-    {css_var_name__input_boxes_border_width} 'var(%s)' % unquote(css_var_name__chief_blocks_border_width)
-    {css_var_name__focusing_element_outline_width} 'calc(2 * var(%s))' % unquote(css_var_name__input_boxes_border_width)
-    {css_var_name__buttons_border_width} 3px
 
-    font-size 20px
+    // 故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
+    @import './0-基础'
 
-    display flex
-    flex-direction column
-    box-sizing border-box
-    height 100%
+    & { // 为 “ 对抗 ” @import './0-基础' 内带有的 & 包裹，此处必须也采用 & 包裹，不能省略。
+        {css_var_name__chief_blocks_border_width} 2px
+        // {css_var_name__input_boxes_border_width} 'var(%s)' % unquote(css_var_name__chief_blocks_border_width)
 
-    .尽量不换行之短语 {
-        display inline-block
-    }
+        font-size 20px
 
-    label:focus-within {
-        outline-offset 0
-        outline-style solid
-        outline-width 'var(%s)' % unquote(css_var_name__focusing_element_outline_width)
-    }
-
-    textarea,
-    input,
-    button {
-        border-style solid
-
-        &:focus-visible {
-            outline-offset 0
-            outline-style solid
-            outline-width 'var(%s)' % unquote(css_var_name__focusing_element_outline_width)
-        }
-
-        &:disabled {
-            cursor not-allowed
-        }
-    }
-
-    textarea,
-    input{
-        border-width 'var(%s)' % unquote(css_var_name__input_boxes_border_width)
-    }
-
-    input[type="button"],
-    button {
-        cursor pointer
-        border-width 'var(%s)' % unquote(css_var_name__buttons_border_width)
-        display inline-flex
-        align-items center
-        justify-content center
+        display flex
+        flex-direction column
         box-sizing border-box
-        text-align center
-
-        line-height 1.33
-        padding 0.33em 1.5em
-        min-width 8em
-
-        &.按钮-形状必须为正圆 {
-            min-width 0
-            padding 0.25em
-            line-height 1.1
-            width 2.5em
-            height 2.5em
-        }
-    }
-
-    input[type="checkbox"] {
-        font-size inherit
-        display inline-block
-        width 1em
-        height 1em
-    }
-
-    label.包裹着输入项 input[type="checkbox"] {
-        margin-left -0.2em
-    }
-
-    .输入项 {
-
-    }
-
-    .勾选项视觉假体 {
-        display block
-        box-sizing content-box
-        width 1em
-        height 1em
-        line-height 0.9
-        text-align center
-        border-width 0.1em
-        border-style solid
-        position relative
-    }
-
-    .输入项-勾选项 {
-
-        & {
-            display block
-            box-sizing border-box
-            flex 0 0 1.2em
-            width 1.2em
-            height 1.2em
-            position relative
-            margin 0.15em 0.5em 0.15em 0
-
-            input[type="checkbox"] {
-                visibility hidden
-            }
-
-            .勾选项视觉假体 {
-                z-index 5
-            }
-
-            .勾选项视觉假体 + input[type="checkbox"] {
-                z-index 0
-                display block
-                position absolute
-                top 0
-                left 0
-                margin 0.1em
-            }
-        }
-
-        &.已勾选 {
-
-            .勾选项视觉假体::before {
-                content '✓'
-            }
-        }
-
-        &.部分勾选 {
-
-            .勾选项视觉假体::before {
-                content ''
-                display block
-                width 0.6em
-                height 0.6em
-                margin 0.2em
-            }
-        }
-
-        &.已禁止交互 {
-            // cursor not-allowed
-            visibility hidden
-
-            // input[type="checkbox"],
-            // .勾选项视觉假体 {
-            //     display none
-            // }
-        }
-
-        // input[type="checkbox"],
-        // .勾选项视觉假体 + input[type="checkbox"] {
-
-        //     &:disabled {
-        //         visibility hidden
-        //     }
-        // }
-    }
-
-    label.包裹着输入项 {
-
-        & {
-            cursor pointer
-            font-size inherit
-            padding 0.25em 1em
-            margin 0.2em 0
-            display inline-flex
-            flex-direction row
-            flex-wrap nowrap
-            align-items flex-start
-            justify-content flex-start
-            line-height 1.5
-            transition-property color, border-color, background-color
-            transition-timing-function ease-out
-            transition-duration 0.319s
-            text-align left
-
-            .输入项-勾选项 {
-                margin-left -0.5em
-            }
-        }
-
-        &:disabled,
-        &.已禁止交互 {
-            cursor not-allowed
-        }
-    }
-
-    label.包裹着输入项-勾选项 {
-
-        .输入项配文-勾选项 {
-            flex 1 1 auto
-        }
-    }
-
-    .功能单体 {
-
-        sub.角标,
-        sup.角标 {
-            font-style normal
-            font-size inherit
-
-            display block
-            box-sizing border-box
-            width auto
-            min-width 1.8em
-            height 1.8em
-            line-height 1.45
-            text-align center
-            padding 0.2em 0.3em
-            margin -0.5em 0
-
-            position absolute
-            left auto
-            right 0
-            transform translateX(50%)
-        }
-
-        sub.角标 {
-            top auto
-            bottom 0
-        }
-
-        sup.角标 {
-            top 0
-            bottom auto
-        }
-
-        sub.角标,
-        sup.角标 {
-
-            &.角标-位置应居左 {
-                left 0
-                right auto
-                transform translateX(-50%)
-            }
-        }
-    }
-    
-    .功能单体-主体为按钮 {
-
-        input[type="button"],
-        button {
-            margin 0
-        }
+        height 100%
     }
 
     .总标题栏 {
@@ -305,15 +74,6 @@
         }
     }
 
-    .甲乙两列之间之竖栏之默认内容,
-    .底部内容栏之默认内容 {
-
-        .功能单体-主体为按钮 {
-            display block
-            position relative
-        }
-    }
-
     .甲乙两列之间之竖栏之默认内容 {
         display flex
         flex-direction column
@@ -325,11 +85,13 @@
         height 100%
 
         .功能单体-主体为按钮 {
+            display block
             margin 0.75em auto
+            position relative
 
             .迁移条目之按钮 {
-                display flex
                 font-size 1.25em
+                margin 0
             }
 
             .迁移条目之按钮--甲列至乙列.应做特别调整 {
@@ -359,15 +121,11 @@
 
         .功能单体-主体为按钮 {
             display inline-block
+            position relative
 
             .迁移条目之按钮 {
-                display flex
                 font-size 1.25em
                 margin 0
-            }
-
-            .角标 {
-                margin -0.25em 0.25em
             }
         }
     }
