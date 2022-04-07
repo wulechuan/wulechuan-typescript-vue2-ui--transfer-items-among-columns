@@ -23,7 +23,7 @@
                 <i class="el-input__icon el-icon-search" ></i>
             </div>
 
-            <div class="column-check-all">
+            <div class="功能块-全选或全部取消选中">
                 <label
                     class="el-checkbox column-check-all--including-hidden"
                     :class="与选中所有条目_含隐藏之条目_之交互相关的汇总数据.交互项之特征样式类名_其根元素"
@@ -51,9 +51,9 @@
                 ></span><span class="el-checkbox__label">{{ 与选中所有条目_仅列示之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
             </div>
 
-            <dl class="counts-summary">
-                <div class="entry 栏目--所有条目之统计">
-                    <dt>总数</dt>
+            <dl class="字典式列表 功能块-条目统计">
+                <div class="字典式列表之条目 字典式列表之条目--所有条目之统计">
+                    <dt><span>总数</span></dt>
 
                     <dd>
                         <span class="值 值--总数">{{ 所有条目之总数 }}</span>
@@ -65,8 +65,8 @@
                     </dd>
                 </div>
 
-                <div class="entry 栏目--已选中条目之统计">
-                    <dt>已选中</dt>
+                <div class="字典式列表之条目 字典式列表之条目--已选中条目之统计">
+                    <dt><span>已选中</span></dt>
 
                     <dd>
                         <span class="值 值--总数">{{ 当下已选中的所有条目_含隐藏之条目_之列表.length }}</span>
@@ -80,10 +80,10 @@
             </dl>
         </header>
 
-        <div class="column-list-container">
+        <div class="功能块-条目列表皿">
             <div
                 v-if="当下期望列示的条目过多故暂不列示任何条目"
-                class="列提示语皿"
+                class="条目列表之提示语"
             >
                 <p>符合条件的条目太多，<span class="尽量不换行之短语">达<em class="期望列示之条目总数">{{
                     匹配当下过滤配置之所有条目之列表.length
@@ -93,11 +93,11 @@
                 <p><strong>请先输入筛选关键字，以减少须列示的条目。</strong></p>
             </div>
 
-            <ol v-else class="column-list">
+            <ol v-else class="条目列表">
                 <li
                     v-for="条目 in 当下列示着的所有条目之列表"
                     :key="条目.唯一标识"
-                    class="column-list-item"
+                    class="条目"
                 ><span
                     class="el-checkbox"
                     :class="求某条目之样式类名集_其根元素(条目)"

@@ -35,7 +35,8 @@
         flex-shrink 1
         flex-grow 3
         flex-basis auto
-        width 25em
+        width 30em
+        min-width 20em
     }
 
     .底部内容栏-默认内容 .中央间隙,
@@ -258,7 +259,7 @@
         border-style solid
     }
 
-    .column-check-all {
+    .功能块-全选或全部取消选中 {
         padding 0rem 0.5rem 0.25rem 0.5rem
 
         .el-checkbox {
@@ -281,41 +282,44 @@
         }
     }
 
-    .counts-summary {
+    .功能块-条目统计 {
         margin 0
         padding 0.3em 0.75em 0.3em 0.75em
 
-        .entry {
+        .字典式列表之条目 {
             display flex
+            flex-direction row
+            flex-wrap wrap
             max-width 24em
         }
 
-        dt,
-        dd {
+        .字典式列表之条目 > dt,
+        .字典式列表之条目 > dd {
             padding 0.25em
             margin 0
-        }
-
-        dt {
-            flex 0 0 4em
-            display block
-            // margin-right 1em
-        }
-
-        dd {
-            flex 1 1 auto
-            display flex
-            flex-direction row
-            // align-items center
 
             > span {
                 box-sizing border-box
                 display block
-                padding 0.1em 0.25em
-                height 1.5em
-                line-height 1.3
+                padding 0.2em 0.3em
+                height 1.6em
+                line-height 1.2
                 border-radius 0.2em
             }
+        }
+
+        .字典式列表之条目 > dt {
+            flex 0 0 4em
+            display block
+            margin-right -1em
+        }
+
+        .字典式列表之条目 > dd {
+            flex 1 1 auto
+            min-width 16em
+            margin-left 2em
+            display flex
+            flex-direction row
 
             .括弧--左,
             .括弧--右 {
@@ -324,7 +328,7 @@
 
             .括弧--左 {
                 flex 1 0 auto
-                margin-left 1em
+                margin-left 0.5em
                 margin-right 0
                 text-align right
 
@@ -380,7 +384,7 @@
         }
     }
 
-    .column-list-container {
+    .功能块-条目列表皿 {
         display flex
         flex-direction column
         overflow hidden
@@ -396,7 +400,7 @@
         border-color inherit
     }
 
-    .列提示语皿 {
+    .条目列表之提示语 {
         padding 0.25em 0.75em
         margin 1em 0.25em
         line-height 1.5
@@ -416,7 +420,7 @@
         }
     }
 
-    .column-list {
+    .条目列表 {
         list-style none
         padding 0
         flex 1 1
@@ -426,7 +430,7 @@
         padding 0
         margin 0
 
-        .column-list-item {
+        .条目 {
             user-select none
             padding 0 0.25em
 

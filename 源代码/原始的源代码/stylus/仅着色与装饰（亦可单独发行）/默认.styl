@@ -81,7 +81,7 @@
         }
     }
 
-    .column-check-all {
+    .功能块-全选或全部取消选中 {
 
         .el-checkbox {
 
@@ -99,37 +99,41 @@
         }
     }
 
-    .counts-summary {
+    .功能块-条目统计 {
         background-color rgba(black, 0.1)
 
-        dt,
-        dd {
-            color #777
+        .字典式列表之条目 {
+            color #888
+
         }
 
-        span {
+        // .字典式列表之条目 > dt,
+        // .字典式列表之条目 > dd {
+        // }
+
+        .字典式列表之条目 > dd > span {
             color black
             text-shadow 0 0 1px rgba(black, 0.25)
         }
 
-        .栏目--已选中条目之统计 .值.值--总数 {
+        .字典式列表之条目--已选中条目之统计 .值.值--总数 {
             text-shadow none
             color white
             background-color black
         }
 
-        .栏目--已选中条目之统计 .值.值--列示数 {
+        .字典式列表之条目--已选中条目之统计 .值.值--列示数 {
             text-shadow none
             color white
             background-color rgba(black, 0.5)
         }
     }
 
-    .column-list-container {
+    .功能块-条目列表皿 {
         box-shadow inset 0 0 0.3rem rgba(black, 0.319)
     }
 
-    .列提示语皿 {
+    .条目列表之提示语 {
         color #bbb
         border-color rgba(black, 0.19)
         background-color rgba(black, 0.75)
@@ -161,27 +165,30 @@
         }
     }
 
-    .column-list {
+    .条目列表 {
 
-        .column-list-item > .el-checkbox {
+        .条目 {
 
-            &hover {
-                // background-color #dbeafa
-                background-color #eee
-            }
+            > .el-checkbox {
 
-            &.已选中 {
-                // background-color #409EFF
-                background-color #777
-
-                .el-checkbox__label {
-                    color white
+                &hover {
+                    // background-color #dbeafa
+                    background-color #eee
                 }
-            }
 
-            &.已禁止选择 {
-                color #777
-                background-color #e4e4e4
+                &.已选中 {
+                    // background-color #409EFF
+                    background-color #777
+
+                    .el-checkbox__label {
+                        color white
+                    }
+                }
+
+                &.已禁止选择 {
+                    color #777
+                    background-color #e4e4e4
+                }
             }
         }
     }
@@ -194,15 +201,6 @@
         }
 
         .条目过滤器-文本输入框 {
-
-            // input {
-            //     border-color rgba(black, 0.75)
-
-            //     &[disabled] {
-            //         border-color rgba(black, 0.1)
-            //         background-color rgba(white, 0.319)
-            //     }
-            // }
 
             &.应给予视觉强调以引导用户来此 {
                 border-color #f00
@@ -225,15 +223,6 @@
         }
 
         .条目过滤器-文本输入框 {
-
-            // input {
-            //     border-color rgba(black, 0.75)
-
-            //     &[disabled] {
-            //         border-color rgba(black, 0.1)
-            //         background-color rgba(white, 0.319)
-            //     }
-            // }
 
             &.应给予视觉强调以引导用户来此 {
                 border-color #090
