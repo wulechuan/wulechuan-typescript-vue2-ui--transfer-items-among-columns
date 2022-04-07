@@ -29,22 +29,27 @@
     input,
     button {
         border-style solid
-        border-width 'var(%s)' % unquote(css_var_name__input_boxes_border_width)
 
         &:focus-visible {
             outline-offset 0
             outline-style solid
             outline-width 'var(%s)' % unquote(css_var_name__focusing_element_outline_width)
         }
+        
+        &:disabled {
+            cursor not-allowed
+        }
+    }
+
+    textarea,
+    input{
+        border-width 'var(%s)' % unquote(css_var_name__input_boxes_border_width)
     }
 
     input[type="button"],
     button {
         cursor pointer
-
-        &:disabled {
-            cursor not-allowed
-        }
+        border-width 'var(%s)' % unquote(css_var_name__buttons_border_width)
     }
 
     .输入项 {
