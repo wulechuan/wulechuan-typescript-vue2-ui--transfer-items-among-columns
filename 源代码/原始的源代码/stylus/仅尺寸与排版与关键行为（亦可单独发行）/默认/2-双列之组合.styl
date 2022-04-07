@@ -20,16 +20,16 @@
     }
 
     .总标题栏 {
-        flex 0 0 auto
+        flex 0 0
     }
 
     .底部内容栏 {
-        flex 0 0 auto
+        flex 0 0
         padding 0 1em
     }
 
     .容纳着双列的中央主体 {
-        flex 1 1 auto
+        flex 1 1
         display flex
         flex-direction row
         align-items stretch
@@ -37,21 +37,16 @@
         padding 1em // 为了在出现滚动条的情形给主体内容四周留白。
     }
 
-    .底部内容栏之默认内容 .功能块,
-    {identifiable_selector__sub_component_single_column} {
+    // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
+    left_and_right_columns_layout = @block {
         flex-shrink 1
         flex-grow 3
         flex-basis auto
         width 30em
     }
 
-    {identifiable_selector__sub_component_single_column} {
-        min-width 20em
-        min-height 30em
-    }
-
-    .底部内容栏之默认内容 .中央间隙,
-    .甲乙两列之间之竖栏 {
+    // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
+    middle_column_layout = @block {
         flex-shrink 3
         flex-grow 1
         flex-basis auto
@@ -60,7 +55,16 @@
         height 100%
     }
 
+    {identifiable_selector__sub_component_single_column} {
+        {left_and_right_columns_layout}
+
+        min-width 20em
+        min-height 30em
+    }
+
     .甲乙两列之间之竖栏 {
+        {middle_column_layout}
+
         box-sizing border-box
         padding 17em 0.25em 3em
 
@@ -73,6 +77,8 @@
             display none
         }
     }
+
+    // 以下是 Vue 部件中各 “ 内容皿 ” 中提供的默认内容之样式定义。一旦内容皿之内容被替换，以下样式之定义恐怕就用不上了。
 
     .甲乙两列之间之竖栏之默认内容 {
         display flex
@@ -114,9 +120,15 @@
         height 6em
 
         .功能块 {
+            {left_and_right_columns_layout}
+
             position relative
             display block
             text-align center
+        }
+
+        .中央间隙 {
+            {middle_column_layout}
         }
 
         .功能单体-主体为按钮 {
