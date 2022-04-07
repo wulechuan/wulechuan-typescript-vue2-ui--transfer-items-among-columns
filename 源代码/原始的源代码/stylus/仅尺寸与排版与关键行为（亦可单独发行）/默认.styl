@@ -303,8 +303,8 @@
 
         // .图标-搜索 {
         //     position absolute
-        //     top 0.5rem
-        //     left 0.75rem
+        //     top 0.5em
+        //     left 0.75em
         //     height 1.8em
         //     line-height 1.8em
         //     width 1.8em
@@ -337,10 +337,15 @@
 
             &.已禁止交互 {
                 cursor not-allowed
+
+                // .输入项-勾选项,
+                input[type="checkbox"],
+                .勾选项视觉假体 {
+                    visibility hidden
+                }
             }
 
             input[type="checkbox"] {
-                // margin-top -0.1rem
 
                 &:disabled {
                     visibility hidden
