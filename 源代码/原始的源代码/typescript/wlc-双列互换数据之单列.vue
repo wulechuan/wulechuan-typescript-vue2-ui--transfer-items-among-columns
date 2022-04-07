@@ -96,10 +96,10 @@
                     :key="条目.唯一标识"
                     class="条目"
                 ><span
-                    class="el-checkbox"
+                    class="条目视觉主体"
                     :class="求某条目之样式类名集_其根元素(条目)"
                     @click="每当点击某条目后(条目, $event)"
-                ><span class="勾选项配文">{{ 条目.在界面中的称谓 }}</span></span></li>
+                ><span class="选项配文 选项配文-勾选项">{{ 条目.在界面中的称谓 }}</span></span></li>
             </ol>
         </div>
     </div>

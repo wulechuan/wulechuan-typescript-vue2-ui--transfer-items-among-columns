@@ -15,58 +15,58 @@
     }
 
     label.包裹着输入项 {
-        cursor: pointer;
-        font-size: inherit;
-        padding: 0.5em 1em;
-        border-radius: 0.35em;
-        margin-right: 1em;
-        display: inline-flex;
-        flex-direction: row;
-        align-items: flex-start;
-        line-height: 1.5;
-        transition-property: color, border-color, background-color;
-        transition-timing-function: ease-out;
-        transition-duration: 0.319s;
-        text-align: left;
+        cursor pointer
+        font-size inherit
+        padding 0.5em 1em
+        border-radius 0.35em
+        margin-right 1em
+        display inline-flex
+        flex-direction row
+        align-items flex-start
+        line-height 1.5
+        transition-property color, border-color, background-color
+        transition-timing-function ease-out
+        transition-duration 0.319s
+        text-align left
 
         &:disabled {
-            cursor: not-allowed;
+            cursor not-allowed
         }
     }
 
     input[type="checkbox"] {
-        font-size: inherit;
-        width: 1em;
-        height: 1em;
-        min-width: 1em; /* 迁就火狐浏览器。 */
-        max-width: 1em; /* 迁就火狐浏览器。 */
-        min-height: 1em; /* 迁就火狐浏览器。 */
-        max-height: 1em; /* 迁就火狐浏览器。 */
-        margin: 0.27em 0.7em 0.27em 0;
+        font-size inherit
+        width 1em
+        height 1em
+        min-width 1em /* 迁就火狐浏览器。 */
+        max-width 1em /* 迁就火狐浏览器。 */
+        min-height 1em /* 迁就火狐浏览器。 */
+        max-height 1em /* 迁就火狐浏览器。 */
+        margin 0.27em 0.7em 0.27em 0
 
         &::before { /* 火狐浏览器中的 input 元素不支持 ::before 。 */
-            content: '';
-            display: block;
-            box-sizing: border-box;
-            width: 1.1em;
-            height: 1.1em;
-            line-height: 0.9;
-            text-align: center;
-            position: absolute;
-            top: auto;
-            left: auto;
-            margin: -0.05em;
-            border-width: 0.1em;
-            border-style: solid;
+            content ''
+            display block
+            box-sizing border-box
+            width 1.1em
+            height 1.1em
+            line-height 0.9
+            text-align center
+            position absolute
+            top auto
+            left auto
+            margin -0.05em
+            border-width 0.1em
+            border-style solid
         }
 
         &:checked::before {
-            content: '✓';
+            content '✓'
         }
     }
 
     label.包裹着输入项 input[type="checkbox"] {
-        margin-left: -0.2em;
+        margin-left -0.2em
     }
 
     .总标题栏 {
@@ -488,18 +488,23 @@
         .条目 {
             user-select none
             padding 0 0.25em
+        }
 
-            > .el-checkbox {
-                display block
-                padding 0.2em 0.25em 0.2em 0.5em
-                overflow hidden
+        .条目视觉主体 {
+            cursor pointer
+            display block
+            padding 0.2em 0.25em 0.2em 0.5em
+            overflow hidden
 
-                &.已禁止选择 {
-                    cursor not-allowed
+            transition-property color, background-color, opacity, border-color
+            transition-duration 0.319s
+            transition-timing-function ease-out
 
-                    .el-checkbox__input {
-                        visibility hidden
-                    }
+            &.已禁止选择 {
+                cursor not-allowed
+
+                .el-checkbox__input {
+                    visibility hidden
                 }
             }
         }

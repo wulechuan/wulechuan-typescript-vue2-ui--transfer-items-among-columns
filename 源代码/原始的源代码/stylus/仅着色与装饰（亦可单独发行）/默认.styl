@@ -4,33 +4,33 @@
 
 {identifiable_selector__component_root} {
     color black
-    
+
     label.包裹着输入项 {
-        color: black;
+        color black
 
         &:hover {
             background-color rgba(black, 0.1)
         }
 
         &:disabled {
-            color: #999;
-            border-color: transparent;
+            color #999
+            border-color transparent
         }
     }
 
     input[type="checkbox"] {
-        color: rgb(70, 54, 139);
-        border-color: currentColor;
+        color inherit
+        border-color currentColor
 
         &::before { /* 火狐浏览器中的 input 元素不支持 ::before 。 */
-            border-radius: 0.2em;
-            background-color: white;
+            border-radius 0.2em
+            background-color white
         }
     }
 
     input[type="checkbox"]:hover,
     label.包裹着输入项:hover input[type="checkbox"] {
-        color: rgb(121, 92, 252);
+        color rgb(121, 92, 252)
     }
 
     .总标题栏 {
@@ -87,10 +87,6 @@
     }
     .功能块-条目过滤器 {
         border-color inherit
-
-        .el-input__icon {
-            color #999
-        }
     }
 
     .条目过滤器-文本输入框 {
@@ -128,7 +124,6 @@
 
         .字典式列表之条目 {
             color #888
-
         }
 
         // .字典式列表之条目 > dt,
@@ -191,28 +186,32 @@
 
     .条目列表 {
 
-        .条目 {
+        // .条目 {
+        // }
 
-            > .el-checkbox {
+        .条目视觉主体 {
+            background-color transparent
 
-                &hover {
-                    // background-color #dbeafa
-                    background-color #eee
+            &:hover {
+                // color white
+                // background-color #eee
+                background-color #dad3f8
+            }
+
+            &.已选中 {
+                color white
+                // background-color #777
+                background-color #795cfc
+                
+                &:hover {
+                    background-color #a38eff
                 }
+            }
 
-                &.已选中 {
-                    // background-color #409EFF
-                    background-color #777
 
-                    .el-checkbox__label {
-                        color white
-                    }
-                }
-
-                &.已禁止选择 {
-                    color #777
-                    background-color #e4e4e4
-                }
+            &.已禁止选择 {
+                color #777
+                background-color #e4e4e4
             }
         }
     }
