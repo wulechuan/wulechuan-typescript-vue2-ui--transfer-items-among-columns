@@ -51,46 +51,64 @@
         background-color #eee
     }
 
+    input[type="checkbox"] {
+        color inherit
+        border-color currentColor
+    }
+
+    input[type="checkbox"]:hover,
+    label.包裹着输入项:hover .勾选项视觉假体 {
+        color #795cfc
+    }
+
     .输入项 {
 
     }
 
-    .输入项-勾选项 {
-
+    .勾选项视觉假体 {
+        border-radius 0.2em
+        background-color white
     }
 
-    .勾选项视觉假体 {
+    .输入项-勾选项 {
 
+        &.部分勾选 {
+
+            .勾选项视觉假体::before {
+                border-radius 0.1em
+                background-color currentColor
+            }
+        }
     }
 
     label.包裹着输入项 {
-        color inherit
-        // color black
-        border-radius 0.2em
+
+        & {
+            color inherit
+            // color black
+            border-radius 0.2em
+
+            input[type="checkbox"]:focus-visible,
+            input[type="checkbox"]:focus {
+                outline none
+                box-shadow none
+            }
+
+            // .输入项配文 {
+            //     color inherit
+            // }
+        }
 
         &:hover {
             background-color rgba(black, 0.1)
         }
 
-        &:disabled {
-            color #999
+        &:disabled,
+        &.已禁止交互 {
+            color #0004
             border-color transparent
+            background-color transparent
         }
-    }
-
-    input[type="checkbox"] {
-        color inherit
-        border-color currentColor
-
-        // &::before { /* 火狐浏览器中的 input 元素不支持 ::before 。 */
-        //     border-radius 0.2em
-        //     background-color white
-        // }
-    }
-
-    input[type="checkbox"]:hover,
-    label.包裹着输入项:hover input[type="checkbox"] {
-        color #795cfc
     }
 
     .总标题栏 {
@@ -162,20 +180,6 @@
             animation-name none
             border-color rgba(black, 0.079)
             background-color rgba(white, 0.319)
-        }
-    }
-
-    .功能块-全选或全部取消选中 {
-
-        label.包裹着输入项 {
-
-            &.已禁止交互 {
-                background-color transparent
-            }
-
-            .输入项配文 {
-                color black
-            }
         }
     }
 
