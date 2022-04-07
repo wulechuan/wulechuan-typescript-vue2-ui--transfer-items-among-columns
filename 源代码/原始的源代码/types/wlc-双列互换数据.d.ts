@@ -12,25 +12,20 @@ declare module Wlc双列互换数据 {
     type 范_条目之唯一标识 = number | string;
     type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>;
 
-    interface 范_条目 {
+    interface 范_基础条目 {
         唯一标识: 范_条目之唯一标识;
         在界面中的称谓: string;
         已禁止选择?: boolean;
-        已选中?: boolean;
         数据?: any;
     }
 
-    interface 范_条目_之内用格式 extends 范_条目 {
-        已选中?: boolean;
+    interface 范_内用格式之条目 extends 范_基础条目 {
+        已禁止选择: boolean;
+        已选中: boolean;
     }
 
-    type 范_条目之列表 = Array<范_条目>;
-
-    type 范_单列之内部数据集 = {
-        所有条目之列表: 范_条目之列表;
-        当下选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表;
-        当下正在通过视觉强调动画引导用户: boolean;
-    }
+    type 范_基础条目之列表 = Array<范_基础条目>;
+    type 范_内用格式之条目之列表 = Array<范_内用格式之条目>;
 
     type 范_状态汇总数据 = {
         甲列当下选中的条目之总数: number;
@@ -54,14 +49,14 @@ declare module Wlc双列互换数据 {
         | '总是追加在首部'
     );
 
-    type 范_各列条目排序之函数 = (甲: 范_条目, 乙: 范_条目) => number;
+    type 范_各列条目排序之函数 = (甲: 范_基础条目, 乙: 范_基础条目) => number;
 
     class Wlc双列互换数据类 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
         // -------- 外来数据 --------------------------------
-        public readonly 所有候选条目之列表?: 范_条目之列表
+        public readonly 所有候选条目之列表?: 范_基础条目之列表
         public readonly 单列允许列示的条目数之上限?: number
         public readonly 甲列之称谓?: string
         public readonly 乙列之称谓?: string
@@ -84,7 +79,7 @@ declare module Wlc双列互换数据 {
 
         // -------- 私有数据 --------------------------------
         private 日志前缀: string
-        private 所有条目之列表之去重后的缓存版本: null | 范_条目之列表
+        private 所有条目之列表之去重后的缓存版本: null | 范_基础条目之列表
         private 甲列之数据集: 范_单列之内部数据集
         private 乙列之数据集: 范_单列之内部数据集
         private 将所有候选条目分配到左右两列_之期待: null | Promise<void>

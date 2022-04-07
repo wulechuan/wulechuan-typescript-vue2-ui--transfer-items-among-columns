@@ -1,6 +1,6 @@
 import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
 
-export interface 范_双列互换数据_实际条目 extends Wlc双列互换数据.范_条目 {
+export interface 范_双列互换数据_实际条目 extends Wlc双列互换数据.范_基础条目 {
     数据: string;
 }
 
@@ -26,7 +26,6 @@ export const 一切可能的条目之列表: Array<范_双列互换数据_实际
         唯一标识: '鲲鹏',
         数据: '鲲鹏',
         在界面中的称谓: '鲲鹏',
-        已选中: true, // FIXME
     },
     {
         唯一标识: '穷奇',

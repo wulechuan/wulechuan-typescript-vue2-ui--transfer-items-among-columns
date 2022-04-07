@@ -131,9 +131,13 @@ import {
 
 type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置;
 type 范_三态勾选框之状态值 = Wlc双列互换数据.范_三态勾选框之状态值;
-type 范_条目 = Wlc双列互换数据.范_条目;
-type 范_条目之列表 = Wlc双列互换数据.范_条目之列表;
+
+type 范_基础条目 = Wlc双列互换数据.范_基础条目;
 type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表;
+
+type 范_内用格式之条目 = Wlc双列互换数据.范_内用格式之条目;
+type 范_内用格式之条目之列表 = Wlc双列互换数据.范_内用格式之条目之列表;
+
 type 范_各列新增条目之插入规则 = Wlc双列互换数据.范_各列新增条目之插入规则;
 type 范_各列条目排序之函数 = Wlc双列互换数据.范_各列条目排序之函数;
 
@@ -160,7 +164,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     @Prop() public readonly 本列之称谓?: string
     @Prop() public readonly 本列之特征样式类名之配置?: 范_界面元素之样式类名之配置
     @Prop() public readonly 允许列示的条目数之上限?: number | string
-    @Prop() public readonly 所有条目之列表?: 范_条目之列表
+    @Prop() public readonly 所有条目之列表?: 范_内用格式之条目之列表
     @Prop() public readonly 新增条目之插入规则?: 范_各列新增条目之插入规则
     @Prop() public readonly 条目排序之函数?: 范_各列条目排序之函数
     @Prop() public readonly 本列初始的用以过滤条目之配置?: string | RegExp
@@ -172,12 +176,12 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
     private 用以过滤条目之关键词: string = ''
-    private 所有条目之列表_最终采纳值: 范_条目之列表 = []
+    private 所有条目之列表_最终采纳值: 范_内用格式之条目之列表 = []
     private 所有条目之列表_最终采纳值_求解之期待: null | Promise<boolean> = null
     private 所有条目之列表_最终采纳值_求解之期待之原因: string = ''
     private 三态勾选框_所有条目_含隐藏之条目_之勾选状态统计_之状态值: 范_三态勾选框之状态值 = '未勾选'
     private 三态勾选框_所有条目_仅列示之条目_之勾选状态统计_之状态值: 范_三态勾选框之状态值 = '未勾选'
-    private 最末经由交互动作改变其选中之状态之条目: 范_条目 | null = null
+    private 最末经由交互动作改变其选中之状态之条目: 范_内用格式之条目 | null = null
     private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null = null
 
 
@@ -231,19 +235,19 @@ export default class Wlc双列互换数据之单列 extends Vue {
         // return this.所有未禁止交互之条目之列表.length > 0 ? `筛选【${this.本列之称谓_最终采纳值}】（可用正则表达式）` : '无条目可筛选'
     }
 
-    private get 所有未禁止交互之条目之列表 (): 范_条目之列表 {
+    private get 所有未禁止交互之条目之列表 (): 范_内用格式之条目之列表 {
         return this.所有条目之列表_最终采纳值.filter(条目 => !条目.已禁止选择)
     }
 
-    private get 匹配当下过滤配置之所有条目之列表 (): 范_条目之列表 {
-        return 尽可能将用户输入的文本视为正则表达式并用以过滤列表<范_条目>(
+    private get 匹配当下过滤配置之所有条目之列表 (): 范_内用格式之条目之列表 {
+        return 尽可能将用户输入的文本视为正则表达式并用以过滤列表<范_内用格式之条目>(
             this.所有条目之列表_最终采纳值,
             this.用以过滤条目之关键词,
             条目 => 条目.在界面中的称谓
         )
     }
 
-    private get 当下列示着的所有条目之列表 (): 范_条目之列表 {
+    private get 当下列示着的所有条目之列表 (): 范_内用格式之条目之列表 {
         const 期望列示的所有条目 = this.匹配当下过滤配置之所有条目之列表
         const { 允许列示的条目数之上限_最终采纳值 } = this
 
@@ -255,7 +259,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         }
     }
 
-    private get 当下列示着的所有未禁止交互之条目之列表 (): 范_条目之列表 {
+    private get 当下列示着的所有未禁止交互之条目之列表 (): 范_内用格式之条目之列表 {
         return this.当下列示着的所有条目之列表.filter(条目 => !条目.已禁止选择)
     }
 
@@ -263,11 +267,11 @@ export default class Wlc双列互换数据之单列 extends Vue {
         return this.匹配当下过滤配置之所有条目之列表.length > 0 && this.当下列示着的所有条目之列表.length === 0
     }
 
-    private get 当下已选中的所有条目_含隐藏之条目_之列表 (): 范_条目之列表 {
+    private get 当下已选中的所有条目_含隐藏之条目_之列表 (): 范_内用格式之条目之列表 {
         return this.所有未禁止交互之条目之列表.filter(条目 => !!条目.已选中)
     }
 
-    private get 当下已选中的所有条目_仅列示的条目_之列表 (): 范_条目之列表 {
+    private get 当下已选中的所有条目_仅列示的条目_之列表 (): 范_内用格式之条目之列表 {
         return this.当下列示着的所有未禁止交互之条目之列表.filter(条目 => !!条目.已选中)
     }
 
@@ -335,7 +339,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         const { 日志前缀 } = this
 
         const _构建实用的条目总表 = () => {
-            let 给出的所有条目之原始无序列表: 范_条目之列表
+            let 给出的所有条目之原始无序列表: 范_内用格式之条目之列表
             let 当下选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表
 
             if (Array.isArray(this.所有条目之列表)) {
@@ -356,7 +360,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
                 当下选中的所有条目之唯一标识在新的所有条目列表中的存在性统计[某条目之唯一标识] = false
             })
 
-            const 旧有的所有条目之列表: 范_条目之列表 = this.所有条目之列表_最终采纳值
+            const 旧有的所有条目之列表: 范_内用格式之条目之列表 = this.所有条目之列表_最终采纳值
 
             const 旧有的所有条目之唯一标识之列表: 范_条目之唯一标识之列表 = 旧有的所有条目之列表.map(条目 => 条目.唯一标识)
             const 给出的所有条目之唯一标识之列表: 范_条目之唯一标识之列表 = 给出的所有条目之原始无序列表.map(条目 => 条目.唯一标识)
@@ -376,7 +380,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
             let 选中的条目之列表将会变化: boolean = false
 
-            const 应保留的旧有条目之列表: 范_条目之列表 = 旧有的所有条目之列表.filter(条目 => {
+            const 应保留的旧有条目之列表: 范_内用格式之条目之列表 = 旧有的所有条目之列表.filter(条目 => {
                 if (!条目) { return false }
 
                 const {
@@ -409,7 +413,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
                 选中的条目之列表将会变化 = true
             }
 
-            const 应追加至新列表的条目之列表: 范_条目之列表 = 给出的所有条目之原始无序列表.filter(条目 => {
+            const 应追加至新列表的条目之列表: 范_内用格式之条目之列表 = 给出的所有条目之原始无序列表.filter(条目 => {
                 if (!条目) { return false }
 
                 const {
@@ -420,7 +424,6 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
                 if (该条目应添加到新列表中去) {
                     条目.已选中 = false
-                    if (!条目.已禁止选择) { 条目.已禁止选择 = false } // 防止外界省略该值，在此初始化之。
                 }
 
                 return 该条目应添加到新列表中去
@@ -434,7 +437,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
             const 给出了排序函数 = typeof 条目排序之函数 === 'function'
             const 应重新排序 = 给出了排序函数 && (新增条目之插入规则_最终采纳值 === '总是参与排序' || 旧有的所有条目之列表.length === 0)
 
-            let 所有条目之列表_最终采纳的新值: 范_条目之列表
+            let 所有条目之列表_最终采纳的新值: 范_内用格式之条目之列表
 
             if (新增条目之插入规则_最终采纳值 === '总是追加在首部') {
                 所有条目之列表_最终采纳的新值 = [
@@ -491,7 +494,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         return this.所有条目之列表_最终采纳值_求解之期待
     }
 
-    private 求某条目之样式类名集_其根元素 (条目: 范_条目) {
+    private 求某条目之样式类名集_其根元素 (条目: 范_内用格式之条目) {
         if (!条目) { return null }
         const 已选中 = !!条目.已选中
         const 已禁止选择 = !!条目.已禁止选择
@@ -525,7 +528,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
         let 交互项之界面措辞: 范_交互项之界面措辞
 
-        const 所有参与统计之条目: 范_条目之列表 = 本次统计时应将暂不可见的条目一并计入
+        const 所有参与统计之条目: 范_内用格式之条目之列表 = 本次统计时应将暂不可见的条目一并计入
             ? this.所有未禁止交互之条目之列表
             : this.当下列示着的所有未禁止交互之条目之列表
 
@@ -593,7 +596,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         this.选中后取消选中一系列条目(this.所有条目之列表_最终采纳值, 本次目的是选中这一系列条目, 条目甲, 条目乙)
     }
 
-    private 选中后取消选中一系列条目 (应考察的所有条目之列表?: 范_条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
+    private 选中后取消选中一系列条目 (应考察的所有条目之列表?: 范_内用格式之条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
         if (!Array.isArray(应考察的所有条目之列表)) { return }
         if (!条目甲 || !条目乙) { return }
 
@@ -642,7 +645,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         this.发布事件_选中的条目已变动()
     }
 
-    private _统计某应考察之条目之列表中的勾选状态 (所有应考察之条目: 范_条目之列表): 范_三态勾选框之状态值 {
+    private _统计某应考察之条目之列表中的勾选状态 (所有应考察之条目: 范_内用格式之条目之列表): 范_三态勾选框之状态值 {
         const 考察的条目中已选中条目之总数: number = 所有应考察之条目.filter(条目 => 条目.已选中).length
         const 所有应考察之条目之总数: number = 所有应考察之条目.length
 
@@ -702,7 +705,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         this.每当有任何条目之选中状态变动时()
     }
 
-    private 每当点击某条目后 (被点击之条目: 范_条目, 事件之记载: PointerEvent) {
+    private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent) {
         if (被点击之条目 && 事件之记载) {
             const {
                 最末经由交互动作改变其选中之状态之条目,

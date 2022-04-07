@@ -250,17 +250,17 @@
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
 type 范_列之内部代号 = Wlc双列互换数据.范_列之内部代号
-type 范_条目 = Wlc双列互换数据.范_条目
-type 范_条目之列表 = Wlc双列互换数据.范_条目之列表
-type 范_条目之唯一标识 = 范_条目['唯一标识']
+type 范_基础条目 = Wlc双列互换数据.范_基础条目
+type 范_基础条目之列表 = Wlc双列互换数据.范_基础条目之列表
+type 范_基础条目之唯一标识 = 范_基础条目['唯一标识']
 
 const 单列允许列示的条目数之上限_默认值 = 9
 
 @Component({})
 export default class Wlc双列互换数据 extends Vue {
-    @Model('change') public value?: Array<范_条目之唯一标识>
+    @Model('change') public value?: Array<范_基础条目之唯一标识>
 
-    @Prop() public allCandidatesOfBothColumns?: 范_条目之列表
+    @Prop() public allCandidatesOfBothColumns?: 范_基础条目之列表
     @Prop() public maxCountOfItemsToDisplayInEitherColumn?: number
     @Prop() public hasNotTitleBar?: boolean
     @Prop() public hasFooterBar?: boolean
@@ -328,18 +328,18 @@ export default class Wlc双列互换数据 extends Vue {
         ]
     }
 
-    private get leftEnabledItems (): 范_条目之列表 {
+    private get leftEnabledItems (): 范_基础条目之列表 {
         return this.甲列之状态.allItems.filter(条目 => {
 
         })
         // return this.甲列之状态.allItems.filter(条目 => !条目.已禁止选择)
     }
 
-    private get rightEnabledItems (): 范_条目之列表 {
+    private get rightEnabledItems (): 范_基础条目之列表 {
         return this.乙列之状态.allItems.filter(条目 => !条目.已禁止选择)
     }
 
-    private get leftMatchedItems (): 范_条目之列表 {
+    private get leftMatchedItems (): 范_基础条目之列表 {
         const {
             allItems,
             filteringKeyword,
@@ -354,7 +354,7 @@ export default class Wlc双列互换数据 extends Vue {
         return 所有匹配的条目
     }
 
-    private get rightMatchedItems (): 范_条目之列表 {
+    private get rightMatchedItems (): 范_基础条目之列表 {
         const {
             allItems,
             filteringKeyword,
@@ -369,7 +369,7 @@ export default class Wlc双列互换数据 extends Vue {
         return 所有匹配的条目
     }
 
-    private get leftShownItems (): 范_条目之列表 {
+    private get leftShownItems (): 范_基础条目之列表 {
         const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.leftMatchedItems
@@ -379,7 +379,7 @@ export default class Wlc双列互换数据 extends Vue {
         return itemsToShow
     }
 
-    private get rightShownItems (): 范_条目之列表 {
+    private get rightShownItems (): 范_基础条目之列表 {
         const { decided_maxCountOfItemsToDisplayInEitherColumn } = this
 
         const itemsToShow = this.rightMatchedItems
@@ -397,23 +397,23 @@ export default class Wlc双列互换数据 extends Vue {
         return this.rightShownItems.length === 0 && this.rightMatchedItems.length > 0
     }
 
-    private get leftCheckedItems (): 范_条目之列表 {
+    private get leftCheckedItems (): 范_基础条目之列表 {
         const checkedItems = this.甲列之状态.allItems.filter(条目 => !条目.已禁止选择 && !!条目.已选中)
         this.甲列之状态.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
-    private get rightCheckedItems (): 范_条目之列表 {
+    private get rightCheckedItems (): 范_基础条目之列表 {
         const checkedItems = this.乙列之状态.allItems.filter(条目 => !条目.已禁止选择 && !!条目.已选中)
         this.乙列之状态.checkedItemsCache = [...checkedItems] // eslint-disable-line
         return checkedItems
     }
 
-    private get leftShownCheckedItems (): 范_条目之列表 {
+    private get leftShownCheckedItems (): 范_基础条目之列表 {
         return this.leftShownItems.filter(条目 => !条目.已禁止选择 && !!条目.已选中)
     }
 
-    private get rightShownCheckedItems (): 范_条目之列表 {
+    private get rightShownCheckedItems (): 范_基础条目之列表 {
         return this.rightShownItems.filter(条目 => !条目.已禁止选择 && !!条目.已选中)
     }
 
@@ -440,7 +440,7 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private columnFilterPlaceholderText (side: 范_列之内部代号): '筛选左侧条目' | '筛选右侧条目' | '无条目可筛选' {
-        let candidates: 范_条目之列表
+        let candidates: 范_基础条目之列表
         if (side === '甲列') {
             candidates = this.甲列之状态.allItems
         } else {
@@ -480,8 +480,8 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private generateItemsOfBothColumns () {
-        let rightsideValues: Array<范_条目之唯一标识>
-        let candidates: 范_条目之列表
+        let rightsideValues: Array<范_基础条目之唯一标识>
+        let candidates: 范_基础条目之列表
 
         if (Array.isArray(this.value)) {
             rightsideValues = this.value
@@ -502,8 +502,8 @@ export default class Wlc双列互换数据 extends Vue {
             [value: string]: number;
         } = {}
 
-        const leftAllItems: 范_条目之列表 = []
-        const rightAllItems: 范_条目之列表 = []
+        const leftAllItems: 范_基础条目之列表 = []
+        const rightAllItems: 范_基础条目之列表 = []
 
         candidates.forEach(原始条目 => {
             if (!原始条目) { return }
@@ -572,7 +572,7 @@ export default class Wlc双列互换数据 extends Vue {
         }
     }
 
-    private getCSSClassNamesOfItem (条目: 范_条目) {
+    private getCSSClassNamesOfItem (条目: 范_基础条目) {
         if (!条目) { return null }
 
         const 已选中 = !!条目.已选中
@@ -591,7 +591,7 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private getStateOfColumnCheckAllIncludingHidden (side: 范_列之内部代号) {
-        let allEnabledItems: 范_条目之列表
+        let allEnabledItems: 范_基础条目之列表
         if (side === '甲列') {
             allEnabledItems = this.leftEnabledItems
         } else {
@@ -637,7 +637,7 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private getStateOfColumnCheckAllVisible (side: 范_列之内部代号) {
-        let allEnabledItems: 范_条目之列表
+        let allEnabledItems: 范_基础条目之列表
         if (side === '甲列') {
             allEnabledItems = this.leftShownItems
         } else {
@@ -682,7 +682,7 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private handleColumnCheckAllIncludingHiddenChange (side: 范_列之内部代号) {
-        let allEnabledItems: 范_条目之列表
+        let allEnabledItems: 范_基础条目之列表
         if (side === '甲列') {
             allEnabledItems = this.leftEnabledItems
         } else {
@@ -701,7 +701,7 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private handleColumnCheckAllVisibleChange (side: 范_列之内部代号) {
-        let allShownItems: 范_条目之列表
+        let allShownItems: 范_基础条目之列表
         if (side === '甲列') {
             allShownItems = this.leftShownItems
         } else {
@@ -732,8 +732,8 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private transferLeftCheckedItemsToRight () {
-        const restOfLeft: 范_条目之列表 = []
-        const toMoveToRight: 范_条目之列表 = []
+        const restOfLeft: 范_基础条目之列表 = []
+        const toMoveToRight: 范_基础条目之列表 = []
 
         this.甲列之状态.allItems.forEach(条目 => {
             if (!条目.已禁止选择 && 条目.已选中) {
@@ -751,8 +751,8 @@ export default class Wlc双列互换数据 extends Vue {
     }
 
     private transferRighttColumnCheckedItemsToLeft () {
-        const restOfRight: 范_条目之列表 = []
-        const toMoveToLeft: 范_条目之列表 = []
+        const restOfRight: 范_基础条目之列表 = []
+        const toMoveToLeft: 范_基础条目之列表 = []
 
         this.乙列之状态.allItems.forEach(条目 => {
             if (!条目.已禁止选择 && 条目.已选中) {
