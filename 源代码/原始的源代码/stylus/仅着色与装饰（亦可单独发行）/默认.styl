@@ -1,9 +1,55 @@
 @import '../_通用变量集_'
 
-// Stylus 语言的变量名不允许采用汉字！
+// Stylus 语言的变量名不允许采用汉字！label:focus-within {
 
 {identifiable_selector__component_root} {
+    {css_var_name__focusing_element_outline_color}: black // #795cfc
+
     color black
+
+    label {
+        outline-color transparent
+        box-shadow none
+    }
+
+    label:focus-within {
+        transition-property visibility, opacity, color, border-color, background-color, outline-color, box-shadow, text-shadow
+        transition-duration 0.319s
+        transition-timing-function ease-out
+
+        outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+        box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))
+    }
+
+    textarea,
+    input,
+    button {
+        transition-property visibility, opacity, color, border-color, background-color, outline-color, box-shadow, text-shadow
+        transition-duration 0.319s
+        transition-timing-function ease-out
+
+        outline-color transparent
+        box-shadow none
+
+        &:focus-visible {
+            outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+            box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))
+        }
+    }
+
+    textarea,
+    input {
+
+        &::placeholder {
+            color #ccc
+        }
+    }
+
+    button {
+        color #000
+        border-color #888
+        background-color #eee
+    }
 
     .输入项 {
 
@@ -20,7 +66,7 @@
     label.包裹着输入项 {
         color inherit
         // color black
-        border-radius 0.35em
+        border-radius 0.2em
 
         &:hover {
             background-color rgba(black, 0.1)
