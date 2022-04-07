@@ -4,6 +4,34 @@
 
 {identifiable_selector__component_root} {
     color black
+    
+    label.包裹着输入项 {
+        color: black;
+
+        &:hover {
+            background-color rgba(black, 0.1)
+        }
+
+        &:disabled {
+            color: #999;
+            border-color: transparent;
+        }
+    }
+
+    input[type="checkbox"] {
+        color: rgb(70, 54, 139);
+        border-color: currentColor;
+
+        &::before { /* 火狐浏览器中的 input 元素不支持 ::before 。 */
+            border-radius: 0.2em;
+            background-color: white;
+        }
+    }
+
+    input[type="checkbox"]:hover,
+    label.包裹着输入项:hover input[type="checkbox"] {
+        color: rgb(121, 92, 252);
+    }
 
     .总标题栏 {
         border-color inherit
@@ -83,19 +111,15 @@
 
     .功能块-全选或全部取消选中 {
 
-        .el-checkbox {
-
-            &hover {
-                background-color rgba(black, 0.1)
-            }
+        label.包裹着输入项 {
 
             &.已禁止交互 {
                 background-color transparent
             }
-        }
 
-        .el-checkbox__label {
-            color black
+            .输入项配文 {
+                color black
+            }
         }
     }
 

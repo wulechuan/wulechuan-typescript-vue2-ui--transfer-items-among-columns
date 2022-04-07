@@ -20,35 +20,32 @@
                     @keyup.stop
                     @keypress.stop
                 >
-                <i class="el-input__icon el-icon-search" ></i>
             </div>
 
             <div class="功能块-全选或全部取消选中">
                 <label
-                    class="el-checkbox column-check-all--including-hidden"
+                    class="包裹着输入项 包裹着输入项-勾选框"
                     :class="与选中所有条目_含隐藏之条目_之交互相关的汇总数据.交互项之特征样式类名_其根元素"
                 ><span
-                    class="el-checkbox__input"
-                ><span class="el-checkbox__inner" ></span><input
+                    class="输入项 输入项-勾选项"
+                ><span class="勾选项视觉假体"></span><input
                     :checked="与选中所有条目_含隐藏之条目_之交互相关的汇总数据.三态勾选框之状态值 === '已勾选'"
                     type="checkbox"
-                    class="el-checkbox__original"
                     :disabled="与选中所有条目_含隐藏之条目_之交互相关的汇总数据.应禁止交互"
                     @change="每当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时($event)"
-                ></span><span class="el-checkbox__label">{{ 与选中所有条目_含隐藏之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
+                ></span><span class="输入项配文 输入项配文-勾选项">{{ 与选中所有条目_含隐藏之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
 
                 <label
-                    class="el-checkbox column-check-all--visible-only"
+                    class="包裹着输入项 包裹着输入项-勾选框"
                     :class="与选中所有条目_仅列示之条目_之交互相关的汇总数据.交互项之特征样式类名_其根元素"
                 ><span
-                    class="el-checkbox__input"
-                ><span class="el-checkbox__inner" ></span><input
+                    class="输入项 输入项-勾选项"
+                ><span class="勾选项视觉假体" ></span><input
                     :checked="与选中所有条目_仅列示之条目_之交互相关的汇总数据.三态勾选框之状态值 === '已勾选'"
                     type="checkbox"
-                    class="el-checkbox__original"
                     :disabled="与选中所有条目_仅列示之条目_之交互相关的汇总数据.应禁止交互"
                     @change="每当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时($event)"
-                ></span><span class="el-checkbox__label">{{ 与选中所有条目_仅列示之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
+                ></span><span class="选项配文 选项配文-勾选项">{{ 与选中所有条目_仅列示之条目_之交互相关的汇总数据.交互项之界面措辞 }}</span></label>
             </div>
 
             <dl class="字典式列表 功能块-条目统计">
@@ -102,7 +99,7 @@
                     class="el-checkbox"
                     :class="求某条目之样式类名集_其根元素(条目)"
                     @click="每当点击某条目后(条目, $event)"
-                ><span class="el-checkbox__label">{{ 条目.在界面中的称谓 }}</span></span></li>
+                ><span class="勾选项配文">{{ 条目.在界面中的称谓 }}</span></span></li>
             </ol>
         </div>
     </div>
