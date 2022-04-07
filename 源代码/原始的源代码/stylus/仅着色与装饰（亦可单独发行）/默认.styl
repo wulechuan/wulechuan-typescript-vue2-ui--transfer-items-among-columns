@@ -49,9 +49,9 @@
         border-color inherit
     }
 
-    .底部内容栏 {
-        // border-color inherit
-    }
+    // .底部内容栏 {
+    //     border-color inherit
+    // }
 
     .甲乙两列之间之竖栏 {
 
@@ -68,8 +68,8 @@
             .迁移条目之按钮 {
                 border-radius 1000px
 
-                &disabled {
-                }
+                // &:disabled {
+                // }
             }
 
             .角标 {
@@ -110,7 +110,7 @@
             animation-duration 1.5s
         }
 
-        &[disabled] {
+        &:disabled {
             animation-name none
             border-color rgba(black, 0.079)
             background-color rgba(white, 0.319)
@@ -220,10 +220,11 @@
                 }
             }
 
-
             &.已禁止选择 {
-                color #777
-                background-color #e4e4e4
+                color #e3e3e3
+                text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
+                background-color #f8f8f8
+                background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.5em, rgba(black, 0.025) 0.55em 1em);
             }
         }
     }
