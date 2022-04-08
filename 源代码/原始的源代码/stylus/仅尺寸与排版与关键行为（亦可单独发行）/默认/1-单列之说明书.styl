@@ -1,0 +1,60 @@
+@import '../_通用变量集_'
+
+// Stylus 语言的变量名不允许采用汉字！
+
+{identifiable_selector__sub_component_single_column_readme} {
+    position relative
+    perspective 15em
+
+    .条目列表说明书 {
+        height 40vh
+        max-height 50em
+        margin 0.3em
+        padding-top 2.5em
+        transform-origin center 0%
+        transform-style: preserve-3d
+
+        animation-duration 0.45s
+        animation-timing-function linear
+        // animation-iteration-count infinite
+
+        // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+        animation-name wulechuan-dual-columns-exchange-data--list-readme-panel--presents
+        animation-name unquote('吴乐川-双列互换数据之单列--动画--条目列表说明书--出现')
+        @keyframes {@animation-name} {
+            0%   {
+                transform: rotateX(-27deg) translateY(28.5em) translateZ(-2.8em) scaleX(86%);
+                opacity: 0;
+            }
+
+            33%  {
+                transform: rotateX(-9deg) translateY(18em) translateZ(-1em) scaleX(86%);
+            }
+
+            60%  {
+                transform: rotateX(-2deg) translateY(4em) translateZ(0.1em) scaleX(94%);
+                opacity: 1;
+            }
+
+            83%  {
+                transform: rotateX(-0.5deg) translateY(0.6em) translateZ(0) scaleX(98%);
+            }
+
+            100% {
+                transform: none;
+            }
+        }
+
+        .标准按钮-叉 {
+            margin 0.6em 0.4em
+        }
+
+        .消息文本-可滚动的内容皿 {
+
+            article {
+                padding-left 0.5em
+                padding-right 0.5em
+            }
+        }
+    }
+}

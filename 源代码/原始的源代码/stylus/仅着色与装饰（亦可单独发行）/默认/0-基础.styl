@@ -1,6 +1,6 @@
 @import '../_通用变量集_'
 
-// Stylus 语言的变量名不允许采用汉字！label:focus-within {
+// Stylus 语言的变量名不允许采用汉字！
 
 & {
     {css_var_name__focusing_element_outline_color}: #795cfc
@@ -232,14 +232,32 @@
             color #ccc
             border-color black
 
+            em,
+            strong {
+                text-shadow none
+            }
+
+            em_and_strong_should_use_highlighter_pen_style = false
+
             em {
-                color lightgreen
+                if em_and_strong_should_use_highlighter_pen_style {
+                    color white
+                    background-color #44b
+                } else {
+                    color #99e
+                    background-color transparent
+                }
             }
 
             strong {
-                color #f88
+                if em_and_strong_should_use_highlighter_pen_style {
+                    color white
+                    background-color #b44
+                } else {
+                    color #f88
+                    background-color transparent
+                }
             }
         }
-
     }
 }

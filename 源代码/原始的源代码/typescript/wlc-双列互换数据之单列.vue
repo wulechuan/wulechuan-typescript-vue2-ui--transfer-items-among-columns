@@ -127,7 +127,8 @@
             <button @click="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
             <Wlc双列互换数据之单列之说明书
                 v-model="应呈现列表操作说明书"
-
+                采用的标准配色方案之名称="暗"
+                采用的标准配色方案之磨砂玻璃效果之名称="弱"
             ></Wlc双列互换数据之单列之说明书>
         </div>
     </div>
@@ -202,6 +203,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     private 最末经由交互动作改变其选中之状态之条目: 范_内用格式之条目 | null = null
     private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null = null
     private 应呈现列表操作说明书: boolean = false
+
 
 
 
