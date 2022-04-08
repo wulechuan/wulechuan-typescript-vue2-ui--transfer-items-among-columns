@@ -7,6 +7,69 @@
     {css_var_name__focusing_element_outline_width} 'calc(2 * var(%s))' % unquote(css_var_name__input_boxes_border_width)
     {css_var_name__buttons_border_width} 3px
 
+    em,
+    strong {
+        font-style normal
+        font-weight normal
+    }
+
+    p {
+        margin 0.75em 0
+
+        &:first-child {
+            margin-top 0
+        }
+
+        &:last-child {
+            margin-bottom 0
+        }
+    }
+
+    article {
+        line-height 1.66
+
+        ul,
+        ol,
+        dl {
+            margin-left auto
+            margin-right auto
+            margin-top 0.5em
+            margin-bottom 1.5em
+        }
+
+        ul, ol {
+            padding 0 0 0 1.75em
+        }
+
+        li, dd {
+            text-align justify
+        }
+
+        li {
+            margin 1.25em 0
+            padding 0 0.5em // li 上下的 padding 为零，可另 li 内的 p 的上下 margin 与 li 自身上下的 margin 重叠。
+        }
+    }
+
+    kbd {
+        font-size 1em
+        display inline-block
+        vertical-align baseline
+        line-height 1
+        min-height 1em
+        min-width 0.5em
+        font-style normal
+        border-style solid
+        letter-spacing 0
+
+        border-width 1px
+        margin 0 0.3em
+        padding 0.15em 0.3em
+
+        position relative
+        top -0.1em
+    }
+
     .尽量不换行之短语 {
         display inline-block
     }
@@ -98,16 +161,16 @@
                     font-size 1.2em
                 }
             }
+        }
 
-            &.按钮具备标准功能-关闭某物 {
-                display flex
-                position absolute
-                top 0
-                left auto
-                right 0
-                bottom auto
-                margin -0.8em
-            }
+        &.按钮具备标准功能-关闭某物 {
+            display flex
+            position absolute
+            top 0
+            left auto
+            right 0
+            bottom auto
+            margin -0.8em
         }
     }
 
@@ -287,36 +350,36 @@
         }
     }
 
-    .消息文本皿 {
+    .消息文本块 {
+        box-sizing border-box
         margin 0.5em
-        line-height 1.5
+        padding 0.5em
         border-width 2px
         border-style solid
         letter-spacing 0.075em
         text-align left
+        position relative
+
+        .消息文本-可滚动的内容皿 {
+            box-sizing border-box
+            height 100%
+            margin 0
+            overflow auto
+        }
 
         &,
-        &.内容较长 {
-            padding 1em 1.6em
-        }
-
         &.内容较简短 {
-            padding 0.5em 1em
+
+            article {
+                padding 0.25em 0.5em
+            }
         }
 
-        p {
-            margin 0.25em 0
-        }
+        &.内容较长 {
 
-        em {
-            font-style normal
-            font-weight normal
-            margin 0 0.2em
-        }
-
-        strong {
-            font-style normal
-            font-weight normal
+            article {
+                padding 0.25em 1em 4.75em
+            }
         }
     }
 }

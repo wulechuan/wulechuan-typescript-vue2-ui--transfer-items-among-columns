@@ -82,7 +82,7 @@
         box-shadow inset 0 0 0.3em rgba(black, 0.319)
     }
 
-    .消息文本皿.标准配色-幽暗.条目列表之提示语 {
+    .消息文本块.标准配色-暗.条目列表之提示语 {
 
         .值 {
             margin 0 0.2em
@@ -128,8 +128,16 @@
         }
     }
 
-    .功能块-条目列表说明书 {
+    .功能块-条目列表说明书-控制栏 {
         background-color #222
+    }
+
+    .消息文本块.条目列表说明书 {
+
+        .消息文本-可滚动的内容皿 {
+            MIXIN_DefineWebkitScrollBar(black, 1.25)
+            scrollbar-width: thin;
+        }
     }
 
     &.甲列 {

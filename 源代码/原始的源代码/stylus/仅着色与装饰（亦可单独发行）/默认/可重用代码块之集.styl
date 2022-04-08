@@ -4,11 +4,11 @@ MIXIN_DefineWebkitScrollBar($BaseColor = black, $SizeScale = 1) {
 
         &::-webkit-scrollbar { // 是整个滚动条控件。
             border-radius (0.1em * $SizeScale)
-            width (0.6em * $SizeScale)
+            width (0.66em * $SizeScale)
             height @width
 
             &:hover {
-                background-color rgba($BaseColor, 0.333)
+                background-color rgba($BaseColor, 0.15)
             }
         }
 
@@ -35,7 +35,7 @@ MIXIN_DefineWebkitScrollBar($BaseColor = black, $SizeScale = 1) {
         }
 
         &::-webkit-scrollbar-thumb { // 是滚动条控件之各滑条主体上可以拖动的滑块。
-            border-width: (0.2em * $SizeScale);
+            border-width: (0.25em * $SizeScale);
             background-color: rgba($BaseColor, 0.45);
 
             &:hover {

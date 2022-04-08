@@ -5,6 +5,26 @@
 & {
     {css_var_name__focusing_element_outline_color}: #795cfc
 
+    kbd {
+        font-family 'Cascadia Code', 'PT Mono', 'consolas', 'Courier New', Courier, 'Microsoft Yahei UI', 'Microsoft Yahei', '微软雅黑', monospace
+        border-radius 0.25em
+        text-shadow none
+        font-weight 300
+
+        if false {
+            color #fff
+            border-color #fff
+            background-color #789abc
+            box-shadow 1px 1px 1px 0 rgba(0, 0, 0, 0.219)
+        } else {
+            color black;
+            border-color #bbb #ddd #ddd #bbb
+            background-color #fff
+            background-image linear-gradient(45deg, white, #eee)
+            box-shadow 0em 0.15em 0 0.05em #bbb
+        }
+    }
+
     label.包裹着输入项,
     textarea,
     input,
@@ -143,14 +163,14 @@
         // }
     }
 
-    .消息文本皿 {
+    .消息文本块 {
         border-radius 0.4em
 
         @supports (backdrop-filter blur(32px)) {
             backdrop-filter blur(32px)
 
             &.磨砂玻璃效果-弱 {
-                backdrop-filter blur(4px)
+                backdrop-filter blur(8px)
             }
 
             &.磨砂玻璃效果-无 {
@@ -159,7 +179,7 @@
         }
 
         MIXIN_background_effects(background_color_base_value = white) {
-            background-color rgba(background_color_base_value, 0.95)
+            background-color rgba(background_color_base_value, 0.96)
             box-shadow 0 0 0.4em rgba(black, 0.319)
 
             @supports (backdrop-filter blur(32px)) {
@@ -178,23 +198,39 @@
             }
         }
 
+        em,
+        strong {
+            border-radius 0.15em
+        }
+
         &,
-        &.标准配色-鲜亮 {
+        &.标准配色-亮 {
+            MIXIN_background_effects(white)
+
             color #000
             border-color #222
-            MIXIN_background_effects(white)
-            
+
+            em,
+            strong {
+                text-shadow 0 0 0.75px #0009
+            }
+
             em {
+                // color #66e
+                background-color #ddf
             }
 
             strong {
+                // color #f44
+                background-color #fcc
             }
         }
 
-        &.标准配色-幽暗 {
+        &.标准配色-暗 {
+            MIXIN_background_effects(black)
+
             color #ccc
             border-color black
-            MIXIN_background_effects(black)
 
             em {
                 color lightgreen

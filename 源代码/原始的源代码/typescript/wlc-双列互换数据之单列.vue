@@ -94,17 +94,21 @@
         </header>
 
         <div class="功能块-条目列表皿">
-            <article
+            <div
                 v-if="当下期望列示的条目过多故暂不列示任何条目"
-                class="消息文本皿 标准配色-幽暗 内容较简短 磨砂玻璃效果-弱 条目列表之提示语"
+                class="消息文本块 标准配色-暗 内容较简短 磨砂玻璃效果-弱 条目列表之提示语"
             >
-                <p>{{ 用以过滤条目之关键词 ? '符合筛选条件的' : '候选' }}条目太多，<span class="尽量不换行之短语">达<strong class="值 值-期望列示之条目总数">{{
-                    匹配当下过滤配置之所有条目之列表.length
-                }}</strong>条，</span>已逾<span class="尽量不换行之短语"><strong class="值 值-条目总数之限制数">{{
-                    允许列示的条目数之上限_最终采纳值
-                }}</strong>条</span>之限。为确保程序不致僵死，暂不列示任何条目。</p>
-                <p><em>请先输入筛选关键词，以减少须列示的条目。</em></p>
-            </article>
+                <div class="消息文本-可以滚动的内容皿">
+                    <article>
+                        <p>{{ 用以过滤条目之关键词 ? '符合筛选条件的' : '候选' }}条目太多，<span class="尽量不换行之短语">达<strong class="值 值-期望列示之条目总数">{{
+                            匹配当下过滤配置之所有条目之列表.length
+                        }}</strong>条，</span>已逾<span class="尽量不换行之短语"><strong class="值 值-条目总数之限制数">{{
+                            允许列示的条目数之上限_最终采纳值
+                        }}</strong>条</span>之限。为确保程序不致僵死，暂不列示任何条目。</p>
+                        <p><em>请先输入筛选关键词，以减少须列示的条目。</em></p>
+                    </article>
+                </div>
+            </div>
 
             <ol v-else class="条目列表">
                 <li
@@ -119,17 +123,41 @@
             </ol>
         </div>
 
-        <div class="功能块-条目列表说明书">
+        <div class="功能块-条目列表说明书-控制栏">
             <button @click="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
 
             <div
                 v-if="应呈现列表操作说明书"
                 class="条目列表说明书皿"
             >
-                <div class="视觉主体">
-                    <div class="消息文本皿 标准配色-鲜亮 磨砂玻璃效果-弱 条目列表说明书">
+                <div class="消息文本块 标准配色-亮 磨砂玻璃效果-弱 内容较长 条目列表说明书">
+                    <div class="消息文本-可滚动的内容皿">
                         <article>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere corrupti expedita error, velit quia ad quae sit aspernatur quod officia, eligendi voluptatum aperiam sed unde quibusdam deserunt placeat iure odio?</p>
+                            <ol>
+                                <li>
+                                    <p>在顶部的文字输入框输入文字可以筛选条目，<em>不符合筛选条件之条目将暂时隐藏</em>。筛选条目非但有助于操作者搜寻条目，且可防止呈现过多条目时浏览器卡顿乃至卡死的情形。</p>
+                                    <p>另，该输入框<em>可以输入正则表达式</em>以设计复杂的筛选条件。</p>
+                                </li>
+
+                                <li>
+                                    <p>单击（或触摸）某条目，即可反复选中或取消选中该条目。<em>事先由程序设定为不允许选中的条目除外。</em></p>
+                                </li>
+
+                                <li>
+                                    <p>在点选条目时，按住<span
+                                        class="尽量不换行之短语"
+                                    ><kbd>Shift</kbd>键</span
+                                    >，则可一次性选中或取消选中位置相邻的一组条目，<em>但不改变其间任何隐藏着的条目之选中状态</em>。</p>
+                                </li>
+
+                                <li>
+                                    <p>在点选条目时，若同时按住<span
+                                        class="尽量不换行之短语"><kbd>Shift</kbd>键</span
+                                    >和<span
+                                        class="尽量不换行之短语"><kbd>Ctrl</kbd>键</span
+                                    >，则可一次性选中或取消选中位置相邻的一组条目，<strong>且其间隐藏着的条目也一并选中</strong>。</p>
+                                </li>
+                            </ol>
                         </article>
                     </div>
 
