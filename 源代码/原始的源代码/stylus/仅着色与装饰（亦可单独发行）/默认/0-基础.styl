@@ -57,7 +57,7 @@
 
     input[type="checkbox"]:hover,
     label.包裹着输入项:hover .勾选项视觉假体 {
-        color #795cfc
+        color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
     }
 
     .输入项 {
