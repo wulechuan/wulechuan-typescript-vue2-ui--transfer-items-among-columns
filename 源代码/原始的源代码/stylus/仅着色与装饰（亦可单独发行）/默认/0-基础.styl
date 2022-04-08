@@ -5,7 +5,7 @@
 & {
     {css_var_name__focusing_element_outline_color}: #795cfc
 
-    label,
+    label.包裹着输入项,
     textarea,
     input,
     button {
@@ -14,11 +14,11 @@
         transition-timing-function: ease-out;
     }
 
-    label {
+    label.包裹着输入项 {
         outline-color transparent
         box-shadow none
 
-        &:focus,
+        &:focus-visible,
         &:focus-within {
             outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
             box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))

@@ -11,10 +11,14 @@
         display inline-block
     }
 
-    label:focus-within {
-        outline-offset 0
-        outline-style solid
-        outline-width 'var(%s)' % unquote(css_var_name__focusing_element_outline_width)
+    label.包裹着输入项 {
+
+        &:focus-visible,
+        &:focus-within {
+            outline-offset 0
+            outline-style solid
+            outline-width 'var(%s)' % unquote(css_var_name__focusing_element_outline_width)
+        }
     }
 
     textarea,
@@ -178,8 +182,6 @@
     label.包裹着输入项 {
 
         & {
-            cursor pointer
-            font-size inherit
             padding 0.25em 1em
             margin 0.2em 0
             display inline-flex
@@ -251,7 +253,7 @@
             }
         }
     }
-    
+
     .功能单体-主体为按钮 {
 
         input[type="button"],
