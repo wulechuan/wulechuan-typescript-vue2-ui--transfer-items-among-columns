@@ -57,33 +57,58 @@
         padding 0.33em 1.5em
         min-width 8em
 
-        &.标准按钮-叉,
-        &.按钮-形状必须为正圆 {
+        MIXIN_round_button_layout(font_size_in_em = 1) {
             min-width 0
             padding 0.25em
-            line-height 1.1
+            line-height 1.1em
             width 2.5em
             height 2.5em
         }
 
-        &.标准按钮-叉 {
-            font-size 0.75em
+        &.按钮-形状必须为正圆 {
+            min-width 0
+            width 2.5em
+            height @width
+            padding 0.2em
+            line-height normal
+        }
 
-            &::before {
-                content '×'
-                font-size 2em
+        &.标准按钮-叉 {
+
+            & { // Chrome 、 Edge 都能正常排版。
+                font-size 0.9em
+                min-width 0
+                width 2em
+                height @width
+                padding 0
+                line-height normal
+
+                &::before {
+                    font-size 1.6em
+                    content '×'
+                }
+            }
+
+            @-moz-document url-prefix() {
+                /**
+                * 火狐浏览器的盒模型宽度计算与 chrome 不一致。
+                */
+
+                &::before {
+                    font-size 1.2em
+                }
             }
 
             &.按钮具备标准功能-关闭某物 {
+                display flex
                 position absolute
                 top 0
                 left auto
                 right 0
                 bottom auto
-                margin -1.25em
+                margin -0.8em
             }
         }
-
     }
 
     input[type="checkbox"] {

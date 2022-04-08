@@ -159,22 +159,22 @@
         }
 
         MIXIN_background_effects(background_color_base_value = white) {
-            background-color rgba(background_color_base_value, 0.9)
-            box-shadow 0 0 0.4em rgba(background_color_base_value, 0.51)
+            background-color rgba(background_color_base_value, 0.95)
+            box-shadow 0 0 0.4em rgba(black, 0.319)
 
             @supports (backdrop-filter blur(32px)) {
-                background-color rgba(background_color_base_value, 0.51)
-                box-shadow 0 0 0.4em rgba(background_color_base_value, 0.19)
-            }
+                background-color rgba(background_color_base_value, 0.66)
+                box-shadow 0 0 0.4em rgba(black, 0.19)
 
-            &.磨砂玻璃效果-弱 {
-                background-color rgba(background_color_base_value, 0.87)
-                box-shadow 0 0 0.4em rgba(black, 0.219)
-            }
+                &.磨砂玻璃效果-弱 {
+                    background-color rgba(background_color_base_value, 0.91)
+                    box-shadow 0 0 0.4em rgba(black, 0.219)
+                }
 
-            &.磨砂玻璃效果-无 {
-                background-color @background-color
-                box-shadow @box-shadow
+                &.磨砂玻璃效果-无 {
+                    background-color @background-color
+                    box-shadow @box-shadow
+                }
             }
         }
 

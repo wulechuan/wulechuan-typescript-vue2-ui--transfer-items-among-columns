@@ -127,9 +127,11 @@
                 class="条目列表说明书皿"
             >
                 <div class="视觉主体">
-                    <article class="消息文本皿 标准配色-鲜亮 磨砂玻璃效果-弱 条目列表说明书">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere corrupti expedita error, velit quia ad quae sit aspernatur quod officia, eligendi voluptatum aperiam sed unde quibusdam deserunt placeat iure odio?</p>
-                    </article>
+                    <div class="消息文本皿 标准配色-鲜亮 磨砂玻璃效果-弱 条目列表说明书">
+                        <article>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere corrupti expedita error, velit quia ad quae sit aspernatur quod officia, eligendi voluptatum aperiam sed unde quibusdam deserunt placeat iure odio?</p>
+                        </article>
+                    </div>
 
                     <button class="标准按钮-叉 按钮具备标准功能-关闭某物" @click="应呈现列表操作说明书 = false"></button>
                 </div>
