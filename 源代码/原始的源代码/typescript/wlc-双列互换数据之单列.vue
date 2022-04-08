@@ -125,51 +125,18 @@
 
         <div class="功能块-条目列表说明书-控制栏">
             <button @click="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
+            <Wlc双列互换数据之单列之说明书
+                v-model="应呈现列表操作说明书"
 
-            <div
-                v-if="应呈现列表操作说明书"
-                class="条目列表说明书皿"
-            >
-                <div class="消息文本块 标准配色-亮 磨砂玻璃效果-弱 内容较长 条目列表说明书">
-                    <div class="消息文本-可滚动的内容皿">
-                        <article>
-                            <ol>
-                                <li>
-                                    <p>在顶部的文字输入框输入文字可以筛选条目，<em>不符合筛选条件之条目将暂时隐藏</em>。筛选条目非但有助于操作者搜寻条目，且可防止呈现过多条目时浏览器卡顿乃至卡死的情形。</p>
-                                    <p>另，该输入框<em>可以输入正则表达式</em>以设计复杂的筛选条件。</p>
-                                </li>
-
-                                <li>
-                                    <p>单击（或触摸）某条目，即可反复选中或取消选中该条目。<em>事先由程序设定为不允许选中的条目除外。</em></p>
-                                </li>
-
-                                <li>
-                                    <p>在点选条目时，按住<span
-                                        class="尽量不换行之短语"
-                                    ><kbd>Shift</kbd>键</span
-                                    >，则可一次性选中或取消选中位置相邻的一组条目，<em>但不改变其间任何隐藏着的条目之选中状态</em>。</p>
-                                </li>
-
-                                <li>
-                                    <p>在点选条目时，若同时按住<span
-                                        class="尽量不换行之短语"><kbd>Shift</kbd>键</span
-                                    >和<span
-                                        class="尽量不换行之短语"><kbd>Ctrl</kbd>键</span
-                                    >，则可一次性选中或取消选中位置相邻的一组条目，<strong>且其间隐藏着的条目也一并选中</strong>。</p>
-                                </li>
-                            </ol>
-                        </article>
-                    </div>
-
-                    <button class="标准按钮-叉 按钮具备标准功能-关闭某物" @click="应呈现列表操作说明书 = false"></button>
-                </div>
-            </div>
+            ></Wlc双列互换数据之单列之说明书>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
+
+import Wlc双列互换数据之单列之说明书 from './wlc-双列互换数据之单列-说明书.vue'
 
 import {
     求可靠的文本,
@@ -198,13 +165,17 @@ type 范_构建实用的条目总表_发起之原因 = (
 
 const 单列允许列示的条目数之上限_默认值 = 500
 
-export const 各列条目排序之函数所有允许的值值列表: 范_各列新增条目之插入规则[] = [
+export const 各列条目排序之规则所有允许的值之列表: 范_各列新增条目之插入规则[] = [
     '总是追加在尾部',
     '总是追加在首部',
     '总是参与排序',
 ]
 
-@Component({})
+@Component({
+    components: {
+        Wlc双列互换数据之单列之说明书,
+    },
+})
 export default class Wlc双列互换数据之单列 extends Vue {
     @Model('选中的条目已变动') public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
@@ -267,7 +238,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         const 排序函数确已给出: boolean = typeof this.条目排序之函数 === 'function'
 
         let 决定采纳的值: 范_各列新增条目之插入规则
-        if (typeof 外界给出值 === 'string' && 各列条目排序之函数所有允许的值值列表.includes(外界给出值)) {
+        if (typeof 外界给出值 === 'string' && 各列条目排序之规则所有允许的值之列表.includes(外界给出值)) {
             决定采纳的值 = 外界给出值
         } else {
             决定采纳的值 = 排序函数确已给出 ? '总是参与排序' : '总是追加在尾部'
