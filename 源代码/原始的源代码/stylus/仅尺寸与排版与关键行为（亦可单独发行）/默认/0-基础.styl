@@ -120,9 +120,9 @@
             position relative
             margin 0.15em 0.5em 0.15em 0
 
-            input[type="checkbox"] {
-                visibility hidden
-            }
+            // input[type="checkbox"] {
+            //     visibility hidden // 不能设为 hidden ， 因为那样会令父级的 label 无法获取焦点。
+            // }
 
             .勾选项视觉假体 {
                 z-index 5
@@ -188,9 +188,6 @@
             align-items flex-start
             justify-content flex-start
             line-height 1.5
-            transition-property color, border-color, background-color
-            transition-timing-function ease-out
-            transition-duration 0.319s
             text-align left
 
             .输入项-勾选项 {
