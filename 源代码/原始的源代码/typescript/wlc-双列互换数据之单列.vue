@@ -1,5 +1,5 @@
 <template>
-    <div class="吴乐川-双列互换数据之单列" :class="本列之特征样式类名之配置">
+    <div class="吴乐川-双列互换数据之单列" :class="本列之特征样式类名之配置" @click="每当根元素点击后($event)">
         <header class="列首">
             <div class="列标题栏">
                 <slot name="皿-标题栏">
@@ -124,7 +124,7 @@
         </div>
 
         <div v-if="!不应创建底部栏目" class="功能块-条目列表说明书-控制栏">
-            <button @click="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
+            <button @click.stop="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
             <Wlc双列互换数据之单列之说明书
                 v-model="应呈现列表操作说明书"
                 采用的标准配色方案之名称="默认"
@@ -219,6 +219,10 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
     private get 本列之标题栏之文字 (): string {
         return this.本列之称谓_最终采纳值
+    }
+
+    private get 当下有浮层覆盖着条目列表 (): boolean {
+        return !!(this.应呈现列表操作说明书)
     }
 
     private get 允许列示的条目数之上限_最终采纳值 (): number {
@@ -730,11 +734,17 @@ export default class Wlc双列互换数据之单列 extends Vue {
         this.每当有任何条目之选中状态变动时()
     }
 
+    private 每当根元素点击后 (事件之记载: PointerEvent): void {
+        this.应呈现列表操作说明书 = false
+    }
+
     private 每当列表操作说明书开关按钮点击时 (): void {
         this.应呈现列表操作说明书 = !this.应呈现列表操作说明书
     }
 
     private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent): void {
+        if (this.当下有浮层覆盖着条目列表) { return }
+
         if (被点击之条目 && 事件之记载) {
             const {
                 最末经由交互动作改变其选中之状态之条目,
