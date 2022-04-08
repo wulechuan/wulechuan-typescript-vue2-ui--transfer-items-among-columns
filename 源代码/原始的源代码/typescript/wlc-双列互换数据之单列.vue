@@ -1,5 +1,5 @@
 <template>
-    <div class="吴乐川-双列互换数据-单列" :class="本列之特征样式类名之配置">
+    <div class="吴乐川-双列互换数据之单列" :class="本列之特征样式类名之配置">
         <header class="列首">
             <div class="列标题栏">
                 <slot name="皿-标题栏">

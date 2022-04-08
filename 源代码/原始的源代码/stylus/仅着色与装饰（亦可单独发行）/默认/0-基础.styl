@@ -5,27 +5,28 @@
 & {
     {css_var_name__focusing_element_outline_color}: #795cfc
 
+    label,
+    textarea,
+    input,
+    button {
+        transition-property: outline, visibility, opacity, color, border, background-color, box-shadow, text-shadow;
+        transition-duration:  0.219s,       0.5s,    0.5s,  0.5s,   0.5s,             0.5s,       0.5s,        0.5s;
+        transition-timing-function: ease-out;
+    }
+
     label {
         outline-color transparent
         box-shadow none
-    }
 
-    label:focus-within {
-        transition-property outline, visibility, opacity, color, border, background-color, box-shadow, text-shadow
-        transition-duration  0.219s,       0.5s,    0.5s,  0.5s,   0.5s,             0.5s,       0.5s,        0.5s
-        transition-timing-function ease-out
-
-        outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
-        box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))
+        &:focus-within {
+            outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+            box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))
+        }
     }
 
     textarea,
     input,
     button {
-        transition-property outline, visibility, opacity, color, border, background-color, box-shadow, text-shadow
-        transition-duration  0.219s,       0.5s,    0.5s,  0.5s,   0.5s,             0.5s,       0.5s,        0.5s
-        transition-timing-function ease-out
-
         outline-color transparent
         box-shadow none
 

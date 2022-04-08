@@ -85,21 +85,10 @@
 
         .值 {
             margin 0 0.2em
-        }
 
-        .值-条目总数之限制数 {
-            color #ff8
-        }
-
-        em {
-            // animation-name wulechuan-dual-columns-exchange-data--message--emphasized-text-flashing
-            // animation-iteration-count infinite
-            // animation-duration 4.5s
-
-            // @keyframes wulechuan-dual-columns-exchange-data--message--emphasized-text-flashing {
-            //   0%, 100% { color: #faa; }
-            //   50% { color: #f88; }
-            // }
+            &.值-条目总数之限制数 {
+                color #ff8
+            }
         }
     }
 
@@ -148,9 +137,10 @@
             &.应给予视觉强调以引导用户来此 {
                 border-color #f00
 
-                // Stylus 语言的关键帧动画名称不允许采用汉字！
-                animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box1--emphasizing
-                @keyframes wulechuan-dual-columns-exchange-data--list-items-filtering-input-box1--emphasizing {
+                // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+                // animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box--emphasizing--column1
+                animation-name unquote('吴乐川-双列互换数据之单列--动画--条目过滤器-文本输入框--视觉强调--甲列')
+                @keyframes {@animation-name} {
                     0%, 100% { border-color: #f00; }
                     40%, 60% { border-color: #fbb; }
                 }
@@ -170,9 +160,10 @@
             &.应给予视觉强调以引导用户来此 {
                 border-color #090
 
-                // Stylus 语言的关键帧动画名称不允许采用汉字！
-                animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box2--emphasizing
-                @keyframes wulechuan-dual-columns-exchange-data--list-items-filtering-input-box2--emphasizing {
+                // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+                // animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box--emphasizing--column2
+                animation-name unquote('吴乐川-双列互换数据之单列--动画--条目过滤器-文本输入框--视觉强调--乙列')
+                @keyframes {@animation-name} {
                     0%, 100% { border-color: #aea; }
                     40%, 60% { border-color: #090; }
                 }
