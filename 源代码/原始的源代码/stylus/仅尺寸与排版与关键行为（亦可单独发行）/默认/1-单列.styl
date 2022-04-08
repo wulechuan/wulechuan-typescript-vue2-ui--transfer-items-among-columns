@@ -169,7 +169,7 @@
         display flex
         flex-direction column
         overflow hidden
-        padding 0.25em
+        padding 0.1em 0.1em 0.1em 0.25em
 
         border-style solid
         border-top-width 'var(%s)' % unquote(css_var_name__chief_blocks_border_width)
@@ -190,7 +190,7 @@
 
         .条目 {
             user-select none
-            padding 0 0.25em
+            padding 0 0.1em 0 0.25em
         }
 
         .条目视觉主体 {
@@ -211,6 +211,73 @@
                     visibility hidden
                 }
             }
+        }
+    }
+
+    .功能块-条目列表说明书 {
+        position relative
+        padding 0.5em
+        text-align center
+
+        button {
+            font-size 0.8em
+        }
+    }
+
+    .条目列表说明书皿 {
+        position absolute
+        top auto
+        left 0
+        right 0
+        bottom 100%
+        margin 0
+        perspective: 15em;
+        overflow hidden
+
+        > .视觉主体 {
+            margin 0.5em 0.3em
+            transform-origin center 0%
+            transform-style: preserve-3d
+
+            animation-duration 0.45s
+            animation-timing-function linear
+            // animation-iteration-count infinite
+
+            // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+            animation-name wulechuan-dual-columns-exchange-data--list-readme-panel--presents
+            animation-name unquote('吴乐川-双列互换数据之单列--动画--条目列表说明书--出现')
+            @keyframes {@animation-name} {
+                0%   {
+                    transform: rotateX(-27deg) translateY(28.5em) translateZ(-2.8em) scaleX(86%);
+                    opacity: 0;
+                }
+
+                33%  {
+                    transform: rotateX(-9deg) translateY(18em) translateZ(-1em) scaleX(86%);
+                }
+
+                60%  {
+                    transform: rotateX(-2deg) translateY(4em) translateZ(0.1em) scaleX(94%);
+                    opacity: 1;
+                }
+
+                83%  {
+                    transform: rotateX(-0.5deg) translateY(0.6em) translateZ(0) scaleX(98%);
+                }
+
+                100% {
+                    transform: none;
+                }
+            }
+
+            .标准按钮-叉 {
+                margin 0.7em 0.6em
+            }
+        }
+
+        .条目列表说明书 {
+            min-height 14em
+            margin 0
         }
     }
 }

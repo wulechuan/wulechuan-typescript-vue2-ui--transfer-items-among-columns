@@ -1,4 +1,5 @@
 @import '../_通用变量集_'
+@import './可重用代码块之集'
 
 // Stylus 语言的变量名不允许采用汉字！label:focus-within {
 
@@ -93,6 +94,8 @@
     }
 
     .条目列表 {
+        MIXIN_DefineWebkitScrollBar(black, 1)
+        scrollbar-width: thin;
 
         .条目 {
             background-color transparent
@@ -123,6 +126,10 @@
                 background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.5em, rgba(black, 0.025) 0.55em 1em);
             }
         }
+    }
+
+    .功能块-条目列表说明书 {
+        background-color #222
     }
 
     &.甲列 {

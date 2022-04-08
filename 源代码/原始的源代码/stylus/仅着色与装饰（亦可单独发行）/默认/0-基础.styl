@@ -129,23 +129,57 @@
     }
 
     .消息文本皿 {
+        border-radius 0.4em
 
-        // &,
-        // &.标准配色-鲜亮 {
+        @supports (backdrop-filter blur(32px)) {
+            backdrop-filter blur(32px)
 
-        //     em {
-        //     }
+            &.磨砂玻璃效果-弱 {
+                backdrop-filter blur(4px)
+            }
 
-        //     strong {
-        //     }
-        // }
+            &.磨砂玻璃效果-无 {
+                backdrop-filter none
+            }
+        }
+
+        MIXIN_background_effects(background_color_base_value = white) {
+            background-color rgba(background_color_base_value, 0.9)
+            box-shadow 0 0 0.4em rgba(background_color_base_value, 0.51)
+
+            @supports (backdrop-filter blur(32px)) {
+                background-color rgba(background_color_base_value, 0.51)
+                box-shadow 0 0 0.4em rgba(background_color_base_value, 0.19)
+            }
+
+            &.磨砂玻璃效果-弱 {
+                background-color rgba(background_color_base_value, 0.87)
+                box-shadow 0 0 0.4em rgba(black, 0.219)
+            }
+
+            &.磨砂玻璃效果-无 {
+                background-color @background-color
+                box-shadow @box-shadow
+            }
+        }
+
+        &,
+        &.标准配色-鲜亮 {
+            color #000
+            border-color #222
+            MIXIN_background_effects(white)
+            
+            em {
+            }
+
+            strong {
+            }
+        }
 
         &.标准配色-幽暗 {
-            border-radius 0.4em
             color #ccc
             border-color black
-            background-color rgba(black, 0.9)
-            box-shadow 0 0 0.4em rgba(black, 0.75)
+            MIXIN_background_effects(black)
 
             em {
                 color lightgreen
@@ -155,5 +189,6 @@
                 color #f88
             }
         }
+
     }
 }

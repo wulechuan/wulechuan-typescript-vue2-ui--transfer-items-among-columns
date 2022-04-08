@@ -6,10 +6,13 @@
 
     // 故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
     @import './0-基础'
+    @import './可重用代码块之集'
 
     & { // 为 “ 对抗 ” @import './0-基础' 内带有的 & 包裹，此处必须也采用 & 包裹，不能省略。
         color black
     }
+
+    MIXIN_DefineWebkitScrollBar()
 
     button {
         border-radius 1000px

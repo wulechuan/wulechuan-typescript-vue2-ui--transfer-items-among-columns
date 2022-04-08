@@ -96,7 +96,7 @@
         <div class="功能块-条目列表皿">
             <article
                 v-if="当下期望列示的条目过多故暂不列示任何条目"
-                class="消息文本皿 标准配色-幽暗 条目列表之提示语"
+                class="消息文本皿 标准配色-幽暗 内容较简短 磨砂玻璃效果-弱 条目列表之提示语"
             >
                 <p>{{ 用以过滤条目之关键词 ? '符合筛选条件的' : '候选' }}条目太多，<span class="尽量不换行之短语">达<strong class="值 值-期望列示之条目总数">{{
                     匹配当下过滤配置之所有条目之列表.length
@@ -117,6 +117,23 @@
                     @click="每当点击某条目后(条目, $event)"
                 ><span class="选项配文 选项配文-勾选项">{{ 条目.在界面中的称谓 }}</span></span></li>
             </ol>
+        </div>
+
+        <div class="功能块-条目列表说明书">
+            <button @click="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
+
+            <div
+                v-if="应呈现列表操作说明书"
+                class="条目列表说明书皿"
+            >
+                <div class="视觉主体">
+                    <article class="消息文本皿 标准配色-鲜亮 磨砂玻璃效果-弱 条目列表说明书">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere corrupti expedita error, velit quia ad quae sit aspernatur quod officia, eligendi voluptatum aperiam sed unde quibusdam deserunt placeat iure odio?</p>
+                    </article>
+
+                    <button class="标准按钮-叉 按钮具备标准功能-关闭某物" @click="应呈现列表操作说明书 = false"></button>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -183,6 +200,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     private 三态勾选框_所有条目_仅列示之条目_之勾选状态统计_之状态值: 范_三态勾选框之状态值 = '未勾选'
     private 最末经由交互动作改变其选中之状态之条目: 范_内用格式之条目 | null = null
     private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null = null
+    private 应呈现列表操作说明书: boolean = false
 
 
 
@@ -208,6 +226,8 @@ export default class Wlc双列互换数据之单列 extends Vue {
         } else if (typeof 外界给出值 === 'string' && 外界给出值.trim()) {
             拟采纳值 = +外界给出值.trim()
         }
+
+        拟采纳值 = Math.floor(拟采纳值)
 
         return 拟采纳值 > 0 ? 拟采纳值 : 单列允许列示的条目数之上限_默认值
     }
@@ -317,17 +337,17 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
     @Watch('所有条目之列表', { immediate: true })
-    private 在外界给出的所有条目之列表变动后 () {
+    private 在外界给出的所有条目之列表变动后 (): void {
         this.根据外界给出的条件构建实用的条目总表(构建实用的条目总表_发起之原因_所有条目之列表已变动)
     }
 
     @Watch('当下选中的所有条目之唯一标识之列表', { immediate: true })
-    private 在外界给出的当下选中的所有条目之唯一标识之列表变动后 () {
+    private 在外界给出的当下选中的所有条目之唯一标识之列表变动后 (): void {
         this.根据外界给出的条件构建实用的条目总表(构建实用的条目总表_发起之原因_当下选中的所有条目之唯一标识之列表已变动)
     }
 
     @Watch('当下有否视觉强调动画之结论', { immediate: true })
-    private 在外界给出的当下有否视觉强调动画之结论变动后 (结论: boolean) {
+    private 在外界给出的当下有否视觉强调动画之结论变动后 (结论: boolean): void {
         this.发布事件_视觉强调之状态已变动(结论)
     }
 
@@ -494,10 +514,11 @@ export default class Wlc双列互换数据之单列 extends Vue {
         return this.所有条目之列表_最终采纳值_求解之期待
     }
 
-    private 求某条目之样式类名集_其根元素 (条目: 范_内用格式之条目) {
+    private 求某条目之样式类名集_其根元素 (条目: 范_内用格式之条目): 范_界面元素之样式类名之配置 {
         if (!条目) { return null }
         const 已选中 = !!条目.已选中
         const 已禁止选择 = !!条目.已禁止选择
+
         return {
             '已选中': 已选中,
             '已禁止选择': 已禁止选择,
@@ -674,7 +695,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
 
-    private 发布事件_选中的条目已变动 () {
+    private 发布事件_选中的条目已变动 (): void {
         const 事件之记载: 范_条目之唯一标识之列表 = this.所有条目之列表_最终采纳值
             .filter(条目 => !!条目.已选中)
             .map(条目 => 条目.唯一标识)
@@ -682,7 +703,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
         this.$emit('选中的条目已变动', 事件之记载)
     }
 
-    private 发布事件_视觉强调之状态已变动 (当下有否视觉强调动画之结论?: boolean) {
+    private 发布事件_视觉强调之状态已变动 (当下有否视觉强调动画之结论?: boolean): void {
         const 事件之记载: boolean = !!当下有否视觉强调动画之结论
         this.$emit('视觉强调之状态已变动', 事件之记载)
     }
@@ -691,21 +712,25 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
 
 
-    private 每当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent) {
+    private 每当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent): void {
         if (!界面表单元素变动事件之记载.target) { return }
         const 界面表单元素 = 界面表单元素变动事件之记载.target as HTMLInputElement
         this.所有未禁止交互之条目之列表.forEach(条目 => { 条目.已选中 = 界面表单元素.checked })
         this.每当有任何条目之选中状态变动时()
     }
 
-    private 每当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent) {
+    private 每当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent): void {
         if (!界面表单元素变动事件之记载.target) { return }
         const 界面表单元素 = 界面表单元素变动事件之记载.target as HTMLInputElement
         this.当下列示着的所有未禁止交互之条目之列表.forEach(条目 => { 条目.已选中 = 界面表单元素.checked })
         this.每当有任何条目之选中状态变动时()
     }
 
-    private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent) {
+    private 每当列表操作说明书开关按钮点击时 (): void {
+        this.应呈现列表操作说明书 = !this.应呈现列表操作说明书
+    }
+
+    private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent): void {
         if (被点击之条目 && 事件之记载) {
             const {
                 最末经由交互动作改变其选中之状态之条目,
