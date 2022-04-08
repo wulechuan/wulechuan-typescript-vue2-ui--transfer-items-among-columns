@@ -17,6 +17,7 @@
                 :本列初始的用以过滤条目之配置="甲列初始的用以过滤条目之配置"
                 :对列当下正以视觉强调引导用户操作之="乙列之数据集.当下正在通过视觉强调动画引导用户"
                 :在对列以视觉强调引导用户操作之时_本列之强调不应有动画="false"
+                :不应创建底部栏目="各列均不应创建底部栏目"
                 @视觉强调之状态已变动="甲列之数据集.当下正在通过视觉强调动画引导用户 = $event"
             ></Wlc双列互换数据之单列>
 
@@ -68,6 +69,7 @@
                 :本列初始的用以过滤条目之配置="乙列初始的用以过滤条目之配置"
                 :对列当下正以视觉强调引导用户操作之="甲列之数据集.当下正在通过视觉强调动画引导用户"
                 :在对列以视觉强调引导用户操作之时_本列之强调不应有动画="true"
+                :不应创建底部栏目="各列均不应创建底部栏目"
                 @视觉强调之状态已变动="乙列之数据集.当下正在通过视觉强调动画引导用户 = $event"
             ></Wlc双列互换数据之单列>
         </div>
@@ -144,22 +146,26 @@ type 范_单列之内部数据集 = {
 export default class Wlc双列互换数据 extends Vue {
     @Model('条目之分布已变动') public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
-    @Prop() public readonly 所有候选条目之列表?: 范_基础条目之列表
-    @Prop() public readonly 单列允许列示的条目数之上限?: number
     @Prop() public readonly 甲列之称谓?: string
     @Prop() public readonly 乙列之称谓?: string
     @Prop() public readonly 甲列之特征样式类名之配置?: 范_界面元素之样式类名之配置
     @Prop() public readonly 乙列之特征样式类名之配置?: 范_界面元素之样式类名之配置
-    @Prop() public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
-    @Prop() public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
-    @Prop() public readonly 甲列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
-    @Prop() public readonly 乙列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
-    @Prop() public readonly 各列新增条目之插入规则?: 范_各列新增条目之插入规则
-    @Prop() public readonly 各列条目排序之函数?: 范_各列条目排序之函数
+
     @Prop() public readonly 按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列?: string
     @Prop() public readonly 按钮上的措辞_中央竖栏默认内容_将条目从乙列迁移至甲列?: string
     @Prop() public readonly 按钮上的措辞_底部内容栏默认内容_将条目从甲列迁移至乙列?: string
     @Prop() public readonly 按钮上的措辞_底部内容栏默认内容_将条目从乙列迁移至甲列?: string
+    @Prop() public readonly 各列均不应创建底部栏目?: boolean
+
+    @Prop() public readonly 所有候选条目之列表?: 范_基础条目之列表
+    @Prop() public readonly 单列允许列示的条目数之上限?: number
+    @Prop() public readonly 各列新增条目之插入规则?: 范_各列新增条目之插入规则
+    @Prop() public readonly 各列条目排序之函数?: 范_各列条目排序之函数
+
+    @Prop() public readonly 甲列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    @Prop() public readonly 乙列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    @Prop() public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
+    @Prop() public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
 
 
 

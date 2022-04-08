@@ -123,12 +123,12 @@
             </ol>
         </div>
 
-        <div class="功能块-条目列表说明书-控制栏">
+        <div v-if="!不应创建底部栏目" class="功能块-条目列表说明书-控制栏">
             <button @click="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
             <Wlc双列互换数据之单列之说明书
                 v-model="应呈现列表操作说明书"
-                采用的标准配色方案之名称="暗"
-                采用的标准配色方案之磨砂玻璃效果之名称="弱"
+                采用的标准配色方案之名称="默认"
+                采用的标准配色方案之磨砂玻璃效果之名称="默认"
             ></Wlc双列互换数据之单列之说明书>
         </div>
     </div>
@@ -189,6 +189,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     @Prop() public readonly 本列初始的用以过滤条目之配置?: string | RegExp
     @Prop() public readonly 对列当下正以视觉强调引导用户操作之?: boolean
     @Prop() public readonly 在对列以视觉强调引导用户操作之时_本列之强调不应有动画?: boolean
+    @Prop() public readonly 不应创建底部栏目?: boolean
 
 
 
