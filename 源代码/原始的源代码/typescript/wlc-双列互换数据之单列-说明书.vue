@@ -48,7 +48,7 @@ import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 
 import {
     将变量值稳妥地映射成规定的样式类名,
-} from './工具集'
+} from './辅助工具集'
 
 type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置;
 type 范_信息文本块_配色方案之名称 = Wlc双列互换数据.范_信息文本块_配色方案之名称;
