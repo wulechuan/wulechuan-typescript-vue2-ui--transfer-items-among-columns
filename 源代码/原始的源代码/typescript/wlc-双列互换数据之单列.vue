@@ -112,15 +112,15 @@
 
             <ol v-else class="条目列表">
                 <li
-                    v-for="条目 in 当下列示着的所有条目之列表"
-                    :key="条目.唯一标识"
+                    v-for="内用格式之条目 in 当下列示着的所有条目之列表"
+                    :key="内用格式之条目.唯一标识"
                     class="吴乐川-双列互换数据之条目皿"
-                    :class="求某条目之样式类名集_其根元素(条目)"
+                    :class="求某条目之样式类名集_其根元素(内用格式之条目)"
                 >
                     <component
-                        :is="_部件构造函数之自定义主表条目"
-                        :条目="条目"
-                        @click.native="每当点击某条目后(条目, $event)"
+                        :is="部件构造函数之自定义主表条目_最终采纳值"
+                        :条目="内用格式之条目"
+                        @click.native="每当点击某条目后(内用格式之条目, $event)"
                     ></component>
                 </li>
             </ol>
@@ -179,7 +179,7 @@ export const 各列条目排序之规则所有允许的值之列表: 范_各列�
 
 @Component({
     components: {
-        // Wlc双列互换数据之条目之默认形态,
+        // Wlc双列互换数据之条目: Wlc双列互换数据之条目之默认形态,
         Wlc双列互换数据之单列之说明书,
     },
 })
@@ -210,6 +210,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     private 最末经由交互动作改变其选中之状态之条目: 范_内用格式之条目 | null = null
     private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null = null
     private 应呈现列表操作说明书: boolean = false
+    private 部件构造函数之自定义主表条目_最终采纳值: VueConstructor = Wlc双列互换数据之条目之默认形态
 
 
 
@@ -221,12 +222,6 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
     private get 日志前缀 (): string {
         return `Vue 部件 <Wlc双列互换数据之单列> “ ${this.本列之称谓_最终采纳值} ” ：`
-    }
-
-    private get _部件构造函数之自定义主表条目 (): VueConstructor {
-        const 给出的构造函数 = this.部件构造函数之自定义主表条目
-        if (typeof 给出的构造函数 === 'function') { return 给出的构造函数 }
-        return Wlc双列互换数据之条目之默认形态
     }
 
     private get 本列之标题栏之文字 (): string {
@@ -806,6 +801,10 @@ export default class Wlc双列互换数据之单列 extends Vue {
             this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置.toString()
         } else if (typeof 本列初始的用以过滤条目之配置 === 'string') {
             this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置
+        }
+
+        if (typeof this.部件构造函数之自定义主表条目 === 'function') {
+            this.部件构造函数之自定义主表条目_最终采纳值 = this.部件构造函数之自定义主表条目
         }
     }
 }

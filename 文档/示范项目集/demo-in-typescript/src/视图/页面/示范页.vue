@@ -51,7 +51,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
-import Wlc双列互换数据之条目之自定义形态示范 from './wlc-双列互换数据之条目-自定义形态.vue'
+import Wlc双列互换数据之条目之自定义形态示范 from '@/视图/部件/wlc-双列互换数据之条目-自定义形态.vue'
 
 import {
     一切可能的条目之列表,
@@ -96,7 +96,7 @@ export default class Page示范页 extends Vue {
             按钮上的措辞_底部内容栏默认内容_将条目从乙列迁移至甲列: '退货',
             各列均不应创建底部栏目: false,
 
-            所有候选条目之列表: 一切可能的条目之列表,
+            所有候选条目之列表: 一切可能的条目之列表.slice(0, 4),
             单列允许列示的条目数之上限: 320,
             各列新增条目之插入规则: '总是追加在首部',
             // 各列条目排序之函数: (甲, 乙) => 乙.在界面中的称谓.length - 甲.在界面中的称谓.length,
