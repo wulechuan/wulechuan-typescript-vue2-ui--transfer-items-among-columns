@@ -85,6 +85,11 @@
 
         .值 {
             margin 0 0.2em
+            background-color transparent
+
+            &.值-期望列示之条目总数 {
+                color #f88
+            }
 
             &.值-条目总数之限制数 {
                 color #ff8
@@ -101,8 +106,7 @@
         background-color #222
     }
 
-    &.甲列 {
-        border-color #6e4f4f
+    &.标准双列模式下的甲列 {
 
         .列首 {
             background-color #ffdfdf
@@ -124,8 +128,7 @@
         }
     }
 
-    &.乙列 {
-        border-color #304735
+    &.标准双列模式下的乙列 {
 
         .列首 {
             background-color #ddfce5
@@ -140,7 +143,7 @@
                 // animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box--emphasizing--column2
                 animation-name unquote('吴乐川-双列互换数据之单列--动画--条目过滤器-文本输入框--视觉强调--乙列')
                 @keyframes {@animation-name} {
-                    0%, 100% { border-color: #aea; }
+                    0%, 100% { border-color: #8d8; }
                     40%, 60% { border-color: #090; }
                 }
 

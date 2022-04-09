@@ -7,7 +7,7 @@
     {css_var_name__element_highlighting_color_static} #795cfc
     {css_var_name__element_highlighting_color_hover} #a38eff
     {css_var_name__element_non_highlighting_color_hover} #dad3f8
-    {css_var_name__focusing_element_outline_color} 'var($s)' % unquote(css_var_name__element_highlighting_color_static)
+    {css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
 
     kbd {
         font-family 'Cascadia Code', 'PT Mono', 'consolas', 'Courier New', Courier, 'Microsoft Yahei UI', 'Microsoft Yahei', '微软雅黑', monospace
@@ -114,10 +114,6 @@
     label.包裹着输入项.已勾选:hover .勾选项视觉假体 {
         background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_hover)
         border-color @background-color
-    }
-
-    .输入项 {
-
     }
 
     .输入项-勾选项 {

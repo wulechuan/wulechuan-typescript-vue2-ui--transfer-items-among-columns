@@ -28,6 +28,13 @@
     article {
         line-height 1.66
 
+        em,
+        strong {
+            font-size inherit
+            padding 0 0.1em 0.1em
+            margin 0 -0.1em
+        }
+
         ul,
         ol,
         dl {
@@ -148,18 +155,20 @@
                 line-height normal
 
                 &::before {
-                    font-size 1.6em
+                    font-size 1.8em
+                    margin-top 0.05em
                     content '×'
                 }
             }
 
-            @-moz-document url-prefix() {
-                /**
-                * 火狐浏览器的盒模型宽度计算与 chrome 不一致。
-                */
+            @-moz-document url-prefix() { // 火狐浏览器的盒模型宽度计算与 chrome 不一致。
 
-                &::before {
-                    font-size 1.2em
+                & {
+
+                    &::before {
+                        margin-top -0.15em
+                        font-size 1.3em
+                    }
                 }
             }
         }
@@ -341,7 +350,7 @@
 
     .消息文本块 {
         box-sizing border-box
-        margin 0.5em
+        margin 0.25em
         padding 0.5em
         border-width 2px
         border-style solid
