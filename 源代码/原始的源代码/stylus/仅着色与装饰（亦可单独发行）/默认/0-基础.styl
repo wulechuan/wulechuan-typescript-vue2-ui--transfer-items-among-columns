@@ -1,11 +1,13 @@
 @import '../_通用变量集_'
+@import './可重用代码块之集'
 
 // Stylus 语言的变量名不允许采用汉字！
 
 {identifiable_selector__component_root} { // 故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
-    @import './可重用代码块之集'
-
-    {css_var_name__focusing_element_outline_color}: #795cfc
+    {css_var_name__element_highlighting_color_static} #795cfc
+    {css_var_name__element_highlighting_color_hover} #a38eff
+    {css_var_name__element_non_highlighting_color_hover} #dad3f8
+    {css_var_name__focusing_element_outline_color} 'var($s)' % unquote(css_var_name__element_highlighting_color_static)
 
     kbd {
         font-family 'Cascadia Code', 'PT Mono', 'consolas', 'Courier New', Courier, 'Microsoft Yahei UI', 'Microsoft Yahei', '微软雅黑', monospace
@@ -28,6 +30,7 @@
     }
 
     label.包裹着输入项,
+    .勾选项视觉假体,
     textarea,
     input,
     button {
@@ -75,7 +78,7 @@
         &:hover {
             color #fff
             border-color #0003
-            background-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+            background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
         }
 
         &:disabled {
@@ -95,19 +98,21 @@
 
     // input[type="checkbox"]:hover,
     label.包裹着输入项:hover .勾选项视觉假体 {
-        color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+        // color 'var(%s)' % unquote(css_var_name__element_non_highlighting_color_hover)
+        color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
     }
 
     // input[type="checkbox"]:checked,
     label.包裹着输入项.已勾选 .勾选项视觉假体 {
         color white
-        background-color black
+        // background-color black
+        background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
         border-color @background-color
     }
 
     // input[type="checkbox"]:checked:hover,
     label.包裹着输入项.已勾选:hover .勾选项视觉假体 {
-        background-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+        background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_hover)
         border-color @background-color
     }
 
@@ -152,7 +157,7 @@
         }
 
         &:hover {
-            background-color rgba(black, 0.1)
+            background-color rgba(black, 0.079)
         }
 
         &:disabled,

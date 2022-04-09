@@ -191,8 +191,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     @Prop() public readonly 新增条目之插入规则?: 范_各列新增条目之插入规则
     @Prop() public readonly 条目排序之函数?: 范_各列条目排序之函数
     @Prop() public readonly 本列初始的用以过滤条目之配置?: string | RegExp
-    @Prop() public readonly 对列当下正以视觉强调引导用户操作之?: boolean
-    @Prop() public readonly 在对列以视觉强调引导用户操作之时_本列之强调不应有动画?: boolean
+    @Prop() public readonly 当下另有他列优先于本列采取视觉强调引导用户操作之?: boolean
     @Prop() public readonly 不应创建底部栏目?: boolean
 
 
@@ -309,21 +308,20 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
     private get 条目过滤器文本输入框元素之样式类名配置 (): 范_界面元素之样式类名之配置 {
         const {
-            对列当下正以视觉强调引导用户操作之,
-            在对列以视觉强调引导用户操作之时_本列之强调不应有动画,
+            当下另有他列优先于本列采取视觉强调引导用户操作之,
             当下期望列示的条目过多故暂不列示任何条目,
+            用以过滤条目之关键词,
         } = this
 
-        const 应给予视觉强调以引导用户来此: boolean = 当下期望列示的条目过多故暂不列示任何条目
+        const 应给予视觉强调以引导用户来此: boolean = 当下期望列示的条目过多故暂不列示任何条目 && !用以过滤条目之关键词
 
         const 给予的视觉强调不应为动画: boolean = !!(
             应给予视觉强调以引导用户来此 &&
-            对列当下正以视觉强调引导用户操作之 &&
-            在对列以视觉强调引导用户操作之时_本列之强调不应有动画
+            当下另有他列优先于本列采取视觉强调引导用户操作之
         )
 
         return {
-            '应给予视觉强调以引导用户来此': 当下期望列示的条目过多故暂不列示任何条目,
+            '应给予视觉强调以引导用户来此': 应给予视觉强调以引导用户来此,
             '给予的视觉强调不应为动画': 给予的视觉强调不应为动画,
         }
     }

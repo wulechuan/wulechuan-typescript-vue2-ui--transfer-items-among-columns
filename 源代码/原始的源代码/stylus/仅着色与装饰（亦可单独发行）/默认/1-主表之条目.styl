@@ -1,32 +1,32 @@
 @import '../_通用变量集_'
+@import './可重用代码块之集'
 
 // Stylus 语言的变量名不允许采用汉字！
 
-{identifiable_selector__sub_component_single_item_visual_root} {
-    @import './可重用代码块之集'
-
-    MIXIN_transition_colors_and_shades()
-
-    background-color transparent
-
-    &:hover {
-        // background-color #eee
-        background-color #dad3f8
-    }
-}
-
 {identifiable_selector__sub_component_single_item_root} {
     background-color transparent
+
+    {identifiable_selector__sub_component_single_item_visual_root} {
+
+        MIXIN_transition_colors_and_shades()
+
+        background-color transparent
+
+        &:hover {
+            // background-color #eee
+            background-color 'var(%s)' % unquote(css_var_name__element_non_highlighting_color_hover)
+        }
+    }
 
     &.已选中 {
 
         {identifiable_selector__sub_component_single_item_visual_root} {
             color white
             // background-color #777
-            background-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+            background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
 
             &:hover {
-                background-color #a38eff
+                background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_hover)
             }
         }
     }
