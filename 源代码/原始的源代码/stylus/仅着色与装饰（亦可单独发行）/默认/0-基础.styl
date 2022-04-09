@@ -97,13 +97,14 @@
     }
 
     // input[type="checkbox"]:hover,
-    label.包裹着输入项:hover .勾选项视觉假体 {
+    .输入项-勾选项:hover .勾选项视觉假体,
+    label.包裹着输入项:hover .输入项-勾选项 .勾选项视觉假体 {
         // color 'var(%s)' % unquote(css_var_name__element_non_highlighting_color_hover)
         color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
     }
 
     // input[type="checkbox"]:checked,
-    label.包裹着输入项.已勾选 .勾选项视觉假体 {
+    .输入项-勾选项.已勾选 .勾选项视觉假体 {
         color white
         // background-color black
         background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
@@ -111,7 +112,9 @@
     }
 
     // input[type="checkbox"]:checked:hover,
-    label.包裹着输入项.已勾选:hover .勾选项视觉假体 {
+    .输入项-勾选项.已勾选:hover .勾选项视觉假体,
+    label.包裹着输入项:hover .输入项-勾选项.已勾选 .勾选项视觉假体 {
+        color white
         background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_hover)
         border-color @background-color
     }
