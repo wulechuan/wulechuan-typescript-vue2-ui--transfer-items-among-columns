@@ -32,7 +32,7 @@
     }
 
     // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
-    left_and_right_columns_layout = @block {
+    BLOCK_left_and_right_columns_layout = @block {
         flex-shrink 1
         flex-grow 3
         flex-basis auto
@@ -40,27 +40,31 @@
     }
 
     // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
-    middle_column_layout = @block {
+    BLOCK_middle_column_layout = @block {
         flex-shrink 3
         flex-grow 1
         flex-basis auto
         max-width 20em
         min-width 6em
         height 100%
+        box-sizing border-box
+        padding-left 0.25em
+        padding-right 0.25em
     }
 
     {identifiable_selector__sub_component_single_column} {
-        {left_and_right_columns_layout}
+        {BLOCK_left_and_right_columns_layout}
 
         min-width 20em
         min-height 30em
     }
 
     .甲乙两列之间之竖栏 {
-        {middle_column_layout}
+        {BLOCK_middle_column_layout}
 
         box-sizing border-box
-        padding 17em 0.25em 3em
+        padding-top 17em
+        padding-bottom 3em
 
         border-style solid
         border-width 'var(%s)' % unquote(css_var_name__chief_blocks_border_width)
@@ -111,18 +115,19 @@
         align-items center
         box-sizing border-box
         padding 1em
+        margin 0 -1em
         height 6em
 
         .功能块 {
-            {left_and_right_columns_layout}
+            {BLOCK_left_and_right_columns_layout}
 
             position relative
             display block
             text-align center
         }
 
-        .中央间隙 {
-            {middle_column_layout}
+        .用以影响柔性布局之中央占位块 {
+            {BLOCK_middle_column_layout}
         }
 
         .功能单体-主体为按钮 {

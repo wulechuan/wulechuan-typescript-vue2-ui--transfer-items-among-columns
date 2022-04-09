@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="中央间隙"></div>
+                    <div class="用以影响柔性布局之中央占位块"></div>
 
                     <div class="功能块 功能块--针对乙列">
                         <div class="功能单体 功能单体-主体为按钮">
