@@ -257,7 +257,7 @@ export default class Wlc双列互换数据 extends Vue {
         const 按钮措辞: string = this.按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列_最终采纳值
         const 排版应作特别微调: boolean = 按钮措辞 === '▶'
         return {
-            '应做特别调整': 排版应作特别微调,
+            '样式应做特别调整': 排版应作特别微调,
         }
     }
 
@@ -265,7 +265,7 @@ export default class Wlc双列互换数据 extends Vue {
         const 按钮措辞: string = this.按钮上的措辞_中央竖栏默认内容_将条目从乙列迁移至甲列_最终采纳值
         const 排版应作特别微调: boolean = 按钮措辞 === '◀'
         return {
-            '应做特别调整': 排版应作特别微调,
+            '样式应做特别调整': 排版应作特别微调,
         }
     }
 
