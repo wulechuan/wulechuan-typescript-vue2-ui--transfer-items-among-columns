@@ -13,7 +13,11 @@
     .列首 {
         margin 0
         padding 0
-        border-width 0
+        border-style solid
+        border-top-width 0
+        border-left-width 0
+        border-right-width 0
+        border-bottom-width 'var(%s)' % unquote(css_var_name__chief_blocks_border_width)
     }
 
     .列标题栏 {
@@ -169,13 +173,7 @@
         display flex
         flex-direction column
         overflow hidden
-        padding 0.1em 0.1em 0.1em 0.25em
-
-        border-style solid
-        border-top-width 'var(%s)' % unquote(css_var_name__chief_blocks_border_width)
-        border-left-width 0
-        border-right-width 0
-        border-bottom-width 0
+        padding 0.1em
     }
 
     .条目列表 {
@@ -183,9 +181,8 @@
         padding 0
         flex 1 1
         height 100%
-        overflow auto
         overflow-y scroll
-        padding 0
+        padding 0 0 0 0.5em
         margin 0
     }
 
