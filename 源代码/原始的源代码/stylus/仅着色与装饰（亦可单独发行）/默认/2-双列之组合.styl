@@ -7,10 +7,13 @@
 
     color black
 
-    MIXIN_DefineWebkitScrollBar()
-
     button {
         border-radius 1000px
+    }
+
+    .容纳着双列的中央主体 {
+        MIXIN_webkit_scrollbar(black, 1)
+        scrollbar-width: thin;
     }
 
     .甲乙两列之间之竖栏 {
