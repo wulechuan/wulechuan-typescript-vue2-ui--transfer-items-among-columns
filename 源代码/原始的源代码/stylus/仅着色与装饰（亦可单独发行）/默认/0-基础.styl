@@ -88,26 +88,44 @@
 
     input[type="checkbox"] {
         color inherit
+        width 1.25em
+        height @width
         border-color currentColor
     }
 
-    input[type="checkbox"]:hover,
+    // input[type="checkbox"]:hover,
     label.包裹着输入项:hover .勾选项视觉假体 {
         color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+    }
+
+    // input[type="checkbox"]:checked,
+    label.包裹着输入项.已勾选 .勾选项视觉假体 {
+        color white
+        background-color black
+        border-color @background-color
+    }
+
+    // input[type="checkbox"]:checked:hover,
+    label.包裹着输入项.已勾选:hover .勾选项视觉假体 {
+        background-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+        border-color @background-color
     }
 
     .输入项 {
 
     }
 
-    .勾选项视觉假体 {
-        border-radius 0.2em
-        background-color white
-    }
-
     .输入项-勾选项 {
 
-        &.部分勾选 {
+        & {
+
+            .勾选项视觉假体 {
+                border-radius 0.2em
+                background-color white
+            }
+        }
+
+        &.已部分勾选 {
 
             .勾选项视觉假体::before {
                 border-radius 0.1em
@@ -218,12 +236,19 @@
 
             em {
                 // color #66e
-                background-color #ddf
+                // background-color #ddf
+                background-color #fd96
             }
 
             strong {
                 // color #f44
-                background-color #fcc
+                // background-color #fcc
+                background-color #f555
+            }
+
+            .消息文本-可滚动的内容皿 {
+                MIXIN_webkit_scrollbar(black, 1.25)
+                scrollbar-width thin
             }
         }
 
@@ -238,12 +263,13 @@
                 text-shadow none
             }
 
-            em_and_strong_should_use_highlighter_pen_style = false
+            em_and_strong_should_use_highlighter_pen_style = true
 
             em {
                 if em_and_strong_should_use_highlighter_pen_style {
                     color white
-                    background-color #44b
+                    // background-color #44b
+                    background-color #eb57
                 } else {
                     color #99e
                     background-color transparent
@@ -253,11 +279,17 @@
             strong {
                 if em_and_strong_should_use_highlighter_pen_style {
                     color white
-                    background-color #b44
+                    // background-color #b44
+                    background-color #f338
                 } else {
                     color #f88
                     background-color transparent
                 }
+            }
+
+            .消息文本-可滚动的内容皿 {
+                MIXIN_webkit_scrollbar(white, 1.25)
+                // scrollbar-width thin
             }
         }
     }

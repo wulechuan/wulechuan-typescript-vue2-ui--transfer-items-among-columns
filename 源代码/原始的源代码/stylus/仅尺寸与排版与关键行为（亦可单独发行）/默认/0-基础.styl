@@ -187,29 +187,16 @@
     }
 
     .输入项 {
-
-    }
-
-    .勾选项视觉假体 {
         display block
-        box-sizing content-box
-        width 1em
-        height 1em
-        line-height 0.9
-        text-align center
-        border-width 0.1em
-        border-style solid
-        position relative
+        box-sizing border-box
     }
 
     .输入项-勾选项 {
 
         & {
-            display block
-            box-sizing border-box
-            flex 0 0 1.2em
-            width 1.2em
-            height 1.2em
+            width 1.25em
+            height @width
+            flex 0 0 @width
             position relative
             margin 0.15em 0.5em 0.15em 0
 
@@ -218,16 +205,30 @@
             // }
 
             .勾选项视觉假体 {
+                position relative
                 z-index 5
+                display block
+                box-sizing border-box
+                width 100%
+                height 100%
+                line-height @width
+                text-align center
+                border-width 'var(%s)' % unquote(css_var_name__input_boxes_border_width)
+                border-style solid
             }
 
             .勾选项视觉假体 + input[type="checkbox"] {
-                z-index 0
                 display block
                 position absolute
+                z-index 0
                 top 0
                 left 0
-                margin 0.1em
+                right 0
+                bottom 0
+                width 100%
+                height 100%
+                margin 0
+                opacity 0
             }
         }
 
@@ -239,34 +240,20 @@
             }
         }
 
-        &.部分勾选 {
+        &.已部分勾选 {
 
             .勾选项视觉假体::before {
                 content ''
                 display block
-                width 0.6em
-                height 0.6em
+                width 0.65em
+                height 0.65em
                 margin 0.2em
             }
         }
 
         &.已禁止交互 {
-            // cursor not-allowed
             visibility hidden
-
-            // input[type="checkbox"],
-            // .勾选项视觉假体 {
-            //     display none
-            // }
         }
-
-        // input[type="checkbox"],
-        // .勾选项视觉假体 + input[type="checkbox"] {
-
-        //     &:disabled {
-        //         visibility hidden
-        //     }
-        // }
     }
 
     label.包裹着输入项 {
