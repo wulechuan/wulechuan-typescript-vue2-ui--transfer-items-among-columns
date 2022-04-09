@@ -3,10 +3,10 @@
 
 // Stylus 语言的变量名不允许采用汉字！
 
-{identifiable_selector__sub_component_single_item_root} {
+{identifiable_selector__list_single_item__root} {
     background-color transparent
 
-    {identifiable_selector__sub_component_single_item_visual_root} {
+    {identifiable_selector__list_single_item__visual_base} {
 
         MIXIN_transition_colors_and_shades()
 
@@ -21,7 +21,7 @@
 
     &.已选中 {
 
-        {identifiable_selector__sub_component_single_item_visual_root} {
+        {identifiable_selector__list_single_item__visual_base} {
             color white
             // background-color #777
             background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
@@ -34,7 +34,7 @@
 
     &.已禁止选择 {
 
-        {identifiable_selector__sub_component_single_item_visual_root} {
+        {identifiable_selector__list_single_item__visual_base} {
             color #e3e3e3
             text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
             background-color #00000003

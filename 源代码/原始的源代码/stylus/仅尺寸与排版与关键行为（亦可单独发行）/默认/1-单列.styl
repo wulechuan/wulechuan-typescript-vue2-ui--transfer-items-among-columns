@@ -2,7 +2,7 @@
 
 // Stylus 语言的变量名不允许采用汉字！
 
-{identifiable_selector__sub_component_single_column} {
+{identifiable_selector__single_column__root} {
     display flex
     overflow hidden
     flex-direction column
@@ -28,10 +28,10 @@
 
     .列标题栏之默认内容 {
         margin -0.5em -1em
-        padding 0.8em 1em
+        padding 0.5em 1em
 
         h5 {
-            font-size 1.25em
+            font-size 1.2em
             font-weight 600
             margin 0
             letter-spacing 0.1em
@@ -60,7 +60,7 @@
         margin-top -0.5em
 
         label.包裹着输入项 {
-            display flex
+            // display flex
             width 15em
             white-space nowrap
             // margin-left auto
@@ -195,7 +195,7 @@
             font-size 0.8em
         }
 
-        {identifiable_selector__sub_component_single_column_readme} {
+        {identifiable_selector__single_column_readme__root} {
             z-index 50
             position absolute
             top auto

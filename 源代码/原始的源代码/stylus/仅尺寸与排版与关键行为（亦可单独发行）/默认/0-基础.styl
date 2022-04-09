@@ -2,7 +2,7 @@
 
 // Stylus 语言的变量名不允许采用汉字！
 
-{identifiable_selector__component_root} { // 故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
+{identifiable_selector__dual_columns__root} { // 故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
     {css_var_name__input_boxes_border_width} 2px
     {css_var_name__focusing_element_outline_width} 'calc(2 * var(%s))' % unquote(css_var_name__input_boxes_border_width)
     {css_var_name__buttons_border_width} 3px
@@ -269,8 +269,9 @@
 
         & {
             padding 0.25em 1em
-            margin 0.2em 0
+            margin 0.1em 0
             display inline-flex
+            vertical-align top
             flex-direction row
             flex-wrap nowrap
             align-items flex-start
