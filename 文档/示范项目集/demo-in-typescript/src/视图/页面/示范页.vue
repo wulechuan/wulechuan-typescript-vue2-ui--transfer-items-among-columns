@@ -51,6 +51,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
+import Wlc双列互换数据之条目之自定义形态示范 from './wlc-双列互换数据之条目-自定义形态.vue'
 
 import {
     一切可能的条目之列表,
@@ -107,6 +108,8 @@ export default class Page示范页 extends Vue {
             // 可配置各过滤器中最初填写的文本或正则表达式。
             甲列初始的用以过滤条目之配置: '', // '牛',
             乙列初始的用以过滤条目之配置: /.{9,}|[天龙鸟]/,
+
+            部件构造函数之自定义主表条目: Wlc双列互换数据之条目之自定义形态示范,
         },
     }
 

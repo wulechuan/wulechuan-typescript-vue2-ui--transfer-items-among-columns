@@ -17,6 +17,7 @@
                 :本列初始的用以过滤条目之配置="甲列初始的用以过滤条目之配置"
                 :当下另有他列优先于本列采取视觉强调引导用户操作之="false"
                 :不应创建底部栏目="各列均不应创建底部栏目"
+                :部件构造函数之自定义主表条目="部件构造函数之自定义主表条目"
                 @内部某元素之视觉强调之状态已变动="甲列之数据集.当下正在通过视觉强调动画引导用户 = $event"
             ></Wlc双列互换数据之单列>
 
@@ -68,6 +69,7 @@
                 :本列初始的用以过滤条目之配置="乙列初始的用以过滤条目之配置"
                 :当下另有他列优先于本列采取视觉强调引导用户操作之="甲列之数据集.当下正在通过视觉强调动画引导用户"
                 :不应创建底部栏目="各列均不应创建底部栏目"
+                :部件构造函数之自定义主表条目="部件构造函数之自定义主表条目"
                 @内部某元素之视觉强调之状态已变动="乙列之数据集.当下正在通过视觉强调动画引导用户 = $event"
             ></Wlc双列互换数据之单列>
         </div>
@@ -111,6 +113,7 @@
 </template>
 
 <script lang="ts">
+import { VueConstructor } from 'vue'
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
 import Wlc双列互换数据之单列 from './wlc-双列互换数据之单列.vue'
@@ -168,6 +171,8 @@ export default class Wlc双列互换数据 extends Vue {
     @Prop() public readonly 乙列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
     @Prop() public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
     @Prop() public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
+
+    @Prop() public readonly 部件构造函数之自定义主表条目?: VueConstructor
 
 
 
