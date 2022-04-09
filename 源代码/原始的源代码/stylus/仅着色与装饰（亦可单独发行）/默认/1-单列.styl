@@ -56,11 +56,11 @@
         .字典式列表之条目--所有条目之统计 .值 {
             background-color rgba(black, 0.05)
 
-            &.值--总数 {
-            }
+            // &.值--总数 {
+            // }
 
-            &.值--列示数 {
-            }
+            // &.值--列示数 {
+            // }
         }
 
         .字典式列表之条目--已选中条目之统计 .值 {
@@ -96,36 +96,6 @@
     .条目列表 {
         MIXIN_DefineWebkitScrollBar(black, 1)
         scrollbar-width: thin;
-
-        .条目 {
-            background-color transparent
-        }
-
-        .条目视觉主体 {
-            background-color transparent
-
-            &:hover {
-                // background-color #eee
-                background-color #dad3f8
-            }
-
-            &.已选中 {
-                color white
-                // background-color #777
-                background-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
-
-                &:hover {
-                    background-color #a38eff
-                }
-            }
-
-            &.已禁止选择 {
-                color #e3e3e3
-                text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
-                background-color #00000003
-                background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);
-            }
-        }
     }
 
     .功能块-条目列表说明书-控制栏 {

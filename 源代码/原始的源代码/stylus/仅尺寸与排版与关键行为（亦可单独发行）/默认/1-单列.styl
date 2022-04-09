@@ -187,31 +187,6 @@
         overflow-y scroll
         padding 0
         margin 0
-
-        .条目 {
-            user-select none
-            padding 0 0.1em 0 0.25em
-        }
-
-        .条目视觉主体 {
-            letter-spacing 0.1em
-            cursor pointer
-            display block
-            padding 0.3em 0.5em
-            overflow hidden
-
-            transition-property color, background-color, opacity, border-color
-            transition-duration 0.319s
-            transition-timing-function ease-out
-
-            &.已禁止选择 {
-                cursor not-allowed
-
-                .el-checkbox__input {
-                    visibility hidden
-                }
-            }
-        }
     }
 
     .功能块-条目列表说明书-控制栏 {

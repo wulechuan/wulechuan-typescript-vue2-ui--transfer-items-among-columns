@@ -1,0 +1,26 @@
+@import '../_通用变量集_'
+
+// Stylus 语言的变量名不允许采用汉字！
+
+{identifiable_selector__sub_component_single_item_root} {
+    user-select none
+    padding 0 0.1em 0 0.25em
+    
+    &.已禁止选择 {
+        cursor not-allowed
+    }
+}
+
+{identifiable_selector__sub_component_single_item_visual_root} {
+    display block
+    padding 0.25em 1em
+    letter-spacing 0.1em
+    cursor pointer
+    display block
+    padding 0.3em 0.5em
+    overflow hidden
+
+    transition-property color, background-color, opacity, border-color
+    transition-duration 0.319s
+    transition-timing-function ease-out
+}

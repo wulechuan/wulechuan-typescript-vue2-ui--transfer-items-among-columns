@@ -1,0 +1,39 @@
+@import '../_通用变量集_'
+
+// Stylus 语言的变量名不允许采用汉字！
+
+{identifiable_selector__sub_component_single_item_visual_root} {
+    background-color transparent
+
+    &:hover {
+        // background-color #eee
+        background-color #dad3f8
+    }
+}
+
+{identifiable_selector__sub_component_single_item_root} {
+    background-color transparent
+
+    &.已选中 {
+
+        {identifiable_selector__sub_component_single_item_visual_root} {
+            color white
+            // background-color #777
+            background-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
+
+            &:hover {
+                background-color #a38eff
+            }
+        }
+    }
+
+    &.已禁止选择 {
+
+        {identifiable_selector__sub_component_single_item_visual_root} {
+            color #e3e3e3
+            text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
+            background-color #00000003
+            background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);
+        }
+    }
+}

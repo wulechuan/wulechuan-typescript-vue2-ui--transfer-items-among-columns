@@ -114,12 +114,14 @@
                 <li
                     v-for="条目 in 当下列示着的所有条目之列表"
                     :key="条目.唯一标识"
-                    class="条目"
-                ><span
-                    class="条目视觉主体"
+                    class="吴乐川-双列互换数据之条目皿"
                     :class="求某条目之样式类名集_其根元素(条目)"
-                    @click="每当点击某条目后(条目, $event)"
-                ><span class="选项配文 选项配文-勾选项">{{ 条目.在界面中的称谓 }}</span></span></li>
+                >
+                    <Wlc双列互换数据之条目之默认形态
+                        :条目="条目"
+                        @click.native="每当点击某条目后(条目, $event)"
+                    ></Wlc双列互换数据之条目之默认形态>
+                </li>
             </ol>
         </div>
 
@@ -137,6 +139,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
+import Wlc双列互换数据之条目之默认形态 from './wlc-双列互换数据之条目-默认形态.vue'
 import Wlc双列互换数据之单列之说明书 from './wlc-双列互换数据之单列-说明书.vue'
 
 import {
@@ -174,6 +177,7 @@ export const 各列条目排序之规则所有允许的值之列表: 范_各列�
 
 @Component({
     components: {
+        Wlc双列互换数据之条目之默认形态,
         Wlc双列互换数据之单列之说明书,
     },
 })
@@ -356,7 +360,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
 
     @Watch('当下有否视觉强调动画之结论', { immediate: true })
     private 在外界给出的当下有否视觉强调动画之结论变动后 (结论: boolean): void {
-        this.发布事件_视觉强调之状态已变动(结论)
+        this.发布事件_某元素之视觉强调之状态已变动(结论)
     }
 
 
@@ -618,14 +622,14 @@ export default class Wlc双列互换数据之单列 extends Vue {
     }
 
     private 选中或取消选中一系列列示着的条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
-        this.选中后取消选中一系列条目(this.当下列示着的所有条目之列表, 本次目的是选中这一系列条目, 条目甲, 条目乙)
+        this.选中或取消选中一系列条目(this.当下列示着的所有条目之列表, 本次目的是选中这一系列条目, 条目甲, 条目乙)
     }
 
     private 选中或取消选中一系列条目_含隐藏之条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
-        this.选中后取消选中一系列条目(this.所有条目之列表_最终采纳值, 本次目的是选中这一系列条目, 条目甲, 条目乙)
+        this.选中或取消选中一系列条目(this.所有条目之列表_最终采纳值, 本次目的是选中这一系列条目, 条目甲, 条目乙)
     }
 
-    private 选中后取消选中一系列条目 (应考察的所有条目之列表?: 范_内用格式之条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
+    private 选中或取消选中一系列条目 (应考察的所有条目之列表?: 范_内用格式之条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void {
         if (!Array.isArray(应考察的所有条目之列表)) { return }
         if (!条目甲 || !条目乙) { return }
 
@@ -711,9 +715,9 @@ export default class Wlc双列互换数据之单列 extends Vue {
         this.$emit('选中的条目已变动', 事件之记载)
     }
 
-    private 发布事件_视觉强调之状态已变动 (当下有否视觉强调动画之结论?: boolean): void {
+    private 发布事件_某元素之视觉强调之状态已变动 (当下有否视觉强调动画之结论?: boolean): void {
         const 事件之记载: boolean = !!当下有否视觉强调动画之结论
-        this.$emit('视觉强调之状态已变动', 事件之记载)
+        this.$emit('内部某元素之视觉强调之状态已变动', 事件之记载)
     }
 
 
