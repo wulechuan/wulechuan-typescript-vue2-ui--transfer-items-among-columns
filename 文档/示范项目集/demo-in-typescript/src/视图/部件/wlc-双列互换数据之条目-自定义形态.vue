@@ -1,5 +1,5 @@
 <template>
-    <div class="吴乐川-双列互换数据之条目-自定义形态" :class="{ '详情内容块正呈现着': 详情内容块正呈现着 }">
+    <div class="吴乐川-双列互换数据之条目-自定义形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
         <div class="吴乐川-双列互换数据之条目">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
@@ -7,10 +7,10 @@
             </span>
             <span class="输入项配文">{{ 条目_最终采纳值.在界面中的称谓 }}</span>
             <span class="自适应占位器"></span>
-            <button class="详情内容块开关按钮" @click.stop="详情内容块正呈现着 = !详情内容块正呈现着">说明</button>
+            <button class="详情内容块开关按钮" @click.stop="条目_最终采纳值.数据.描述已呈现 = !条目_最终采纳值.数据.描述已呈现">解释</button>
         </div>
 
-        <div v-if="详情内容块正呈现着" class="内容块-详情" @click.stop>
+        <div v-if="条目_最终采纳值.数据.描述已呈现" class="内容块-详情" @click.stop>
             <article>
                 <p
                     v-for="(段落文本, 段落文本之列表编号) in 条目描述文本之诸段落之列表"
@@ -21,8 +21,8 @@
             <button
                 v-if="条目描述文本之诸段落总字数较多"
                 class="位于底部的收起内容块之按钮"
-                @click.stop="详情内容块正呈现着 = false"
-            >收起【{{ 条目_最终采纳值.在界面中的称谓 }}】的说明</button>
+                @click.stop="条目_最终采纳值.数据.描述已呈现 = false"
+            >收起【{{ 条目_最终采纳值.在界面中的称谓 }}】的解释</button>
         </div>
     </div>
 </template>
@@ -42,12 +42,6 @@ type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面
 @Component({})
 export default class Wlc双列互换数据之条目之自定义形态示范 extends Vue {
     @Prop() public 条目?: 范_双列互换数据_内用格式之实际条目
-
-
-
-
-
-    private 详情内容块正呈现着 = false
 
 
 
@@ -112,6 +106,12 @@ export default class Wlc双列互换数据之条目之自定义形态示范 exte
     border-radius 0.25em
     overflow hidden
 
+    button {
+        display block
+        padding 0 1.5em
+        min-width 0
+    }
+
     .吴乐川-双列互换数据之条目 {
         display flex
         flex-direction row
@@ -120,13 +120,14 @@ export default class Wlc双列互换数据之条目之自定义形态示范 exte
         .自适应占位器 {
             flex 10 10 auto
         }
+    }
 
-        .详情内容块开关按钮 {
-            flex 0 0 4em
-            font-size 1em
-            min-width 0
-            padding 0.05em 0.75em 0
-        }
+    .详情内容块开关按钮 {
+        // visibility hidden
+        opacity 0.1
+        flex 0 0 4em
+        padding 0 0.75em
+        margin -0.05em 0 -0.5em
     }
 
     .内容块-详情 {
@@ -136,6 +137,15 @@ export default class Wlc双列互换数据之条目之自定义形态示范 exte
             padding 0.5em 1.5em 1.8em 2.25em
             text-align justify
             user-select text
+        }
+    }
+
+    &:hover,
+    &.详情内容块正呈现着 {
+
+        .详情内容块开关按钮 {
+            // visibility visible
+            opacity 1
         }
     }
 
@@ -153,9 +163,7 @@ export default class Wlc双列互换数据之条目之自定义形态示范 exte
     }
 
     .位于底部的收起内容块之按钮 {
-        padding 0.05em 0.75em 0
-        min-width 0
-        margin-left 2.25em
+        margin 0 auto 1.5em
     }
 }
 </style>
