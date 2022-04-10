@@ -22,7 +22,7 @@ import {
 
 import tsconfig from '../tsconfig.json'
 
-const outputFileIndentation = '    '
+const outputFileIndentation = ' '.repeat(4)
 
 const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭环用以处理和编译一组Vue文件({
     descriptionOfCoreTask: '将所有由 TypeScript 写成的 .vue 文件转换成 JavaScript 版本',
@@ -30,10 +30,10 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
     sourceGlobs: {
         rootFolderPath: './源代码/原始的源代码/typescript',
         relativeGlobsSpecificallyForThisTaskCycle: [
-            '*.vue',
+            '**/*.vue',
         ],
         extraSourceGlobsToWatch: [
-            // './源代码/原始的源代码/typescript/**/*.ts',
+            './源代码/原始的源代码/typescript/**/*.ts',
         ],
     },
 
@@ -63,7 +63,7 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
 
 
 const 任务闭环之将所有Vue文件和所有独立于Vue文件的Typescript文件复制到发布文件夹内 = 构建一个任务闭环用以复制一组文件或文件夹({
-    descriptionOfCoreTask: '将所有独立的 .vue 文件中和 TypeScript 文件复制到发布文件夹中去',
+    descriptionOfCoreTask: '将所有 .vue 文件和 TypeScript 文件复制到发布文件夹中去',
     descriptionOfInputsOfCoreTask: '.vue 、 .ts 文件',
 
     sourceGlobs: {
