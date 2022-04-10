@@ -1,11 +1,30 @@
 <template>
-    <span class="吴乐川-双列互换数据之条目 自定义形态">
-        <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
-            <span class="勾选项视觉假体"></span>
-            <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
-        </span>
-        <span class="输入项配文">{{ 条目_最终采纳值.在界面中的称谓 }}</span>
-    </span>
+    <div class="吴乐川-双列互换数据之条目-自定义形态" :class="{ '详情内容块正呈现着': 详情内容块正呈现着 }">
+        <div class="吴乐川-双列互换数据之条目">
+            <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
+                <span class="勾选项视觉假体"></span>
+                <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
+            </span>
+            <span class="输入项配文">{{ 条目_最终采纳值.在界面中的称谓 }}</span>
+            <span class="自适应占位器"></span>
+            <button class="详情内容块开关按钮" @click.stop="详情内容块正呈现着 = !详情内容块正呈现着">说明</button>
+        </div>
+
+        <div v-if="详情内容块正呈现着" class="内容块-详情" @click.stop>
+            <article>
+                <p
+                    v-for="(段落文本, 段落文本之列表编号) in 条目描述文本之诸段落之列表"
+                    :key="段落文本之列表编号"
+                >{{ 段落文本 }}</p>
+            </article>
+
+            <button
+                v-if="条目描述文本之诸段落总字数较多"
+                class="位于底部的收起内容块之按钮"
+                @click.stop="详情内容块正呈现着 = false"
+            >收起【{{ 条目_最终采纳值.在界面中的称谓 }}】的说明</button>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -13,18 +32,28 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
 
-type 范_内用格式之条目 = Wlc双列互换数据.范_内用格式之条目;
+import type {
+    范_双列互换数据_实际条目,
+} from '../../数据/示范页之数据库'
+
+type 范_双列互换数据_内用格式之实际条目 = Wlc双列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目;
 type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置;
 
 @Component({})
 export default class Wlc双列互换数据之条目之自定义形态示范 extends Vue {
-    @Prop() public 条目?: 范_内用格式之条目
+    @Prop() public 条目?: 范_双列互换数据_内用格式之实际条目
 
 
 
 
 
-    private get 条目_最终采纳值 (): 范_内用格式之条目 {
+    private 详情内容块正呈现着 = false
+
+
+
+
+
+    private get 条目_最终采纳值 (): 范_双列互换数据_内用格式之实际条目 {
         const 外界给出的值 = this.条目
         if (!外界给出的值) return this.构造临时的条目()
         return 外界给出的值
@@ -35,20 +64,98 @@ export default class Wlc双列互换数据之条目之自定义形态示范 exte
         return { '已勾选': 条目.已选中, '已禁止交互': 条目.已禁止选择, '未选中': !条目.已选中 }
     }
 
+    private get 条目描述文本之诸段落之列表 (): string[] {
+        let 诸段落之列表: string[] = []
+
+        const 原始数据 = this.条目_最终采纳值.数据
+        if (原始数据) {
+            const 原始值 = 原始数据.描述
+            if (Array.isArray(原始值)) {
+                诸段落之列表 = 原始值
+            } else {
+                诸段落之列表 = [ 原始值 ]
+            }
+
+            诸段落之列表 = 诸段落之列表
+                .filter(某段落文本 => typeof 某段落文本 === 'string' && !!某段落文本.trim())
+                .map(某段落文本 => 某段落文本.trim())
+        }
+
+        if (诸段落之列表.length === 0) {
+            诸段落之列表 = [ '不详。' ]
+        }
+
+        return 诸段落之列表
+    }
+
+    private get 条目描述文本之诸段落总字数较多 (): boolean {
+        const 总字符数: number = this.条目描述文本之诸段落之列表.reduce((字数, 某段落文本) => {
+            return 字数 + 某段落文本.length
+        }, 0)
+
+        return 总字符数 > 219
+    }
 
 
 
 
-    private 构造临时的条目 (): 范_内用格式之条目 {
+
+    private 构造临时的条目 (): 范_双列互换数据_内用格式之实际条目 {
         const 称谓: string = Math.random().toFixed(10)
-        return { 唯一标识: 称谓, 在界面中的称谓: 称谓, 已禁止选择: true, 已选中: false }
+        return { 唯一标识: 称谓, 在界面中的称谓: 称谓, 已禁止选择: true, 已选中: false, 数据: {} }
     }
 }
 </script>
 
 <style lang="stylus">
-.吴乐川-双列互换数据之条目.自定义形态 {
-    display flex
-    flex-direction row
+.吴乐川-双列互换数据之条目-自定义形态 {
+    border-radius 0.25em
+    overflow hidden
+
+    .吴乐川-双列互换数据之条目 {
+        display flex
+        flex-direction row
+        align-items flex-start
+
+        .自适应占位器 {
+            flex 10 10 auto
+        }
+
+        .详情内容块开关按钮 {
+            flex 0 0 4em
+            font-size 1em
+            min-width 0
+            padding 0.05em 0.75em 0
+        }
+    }
+
+    .内容块-详情 {
+        min-height 3em
+
+        article {
+            padding 0.5em 1.5em 1.8em 2.25em
+            text-align justify
+            user-select text
+        }
+    }
+
+    &.详情内容块正呈现着 {
+        background-color #ddd
+        box-shadow inset 0 0 0.2em 0 rgba(black, 0.319)
+        // margin-top 0.5em
+        margin-bottom 1.5em
+
+        .吴乐川-双列互换数据之条目 {
+            border-bottom-left-radius 0
+            border-bottom-right-radius 0
+            box-shadow 0 0 0.2em 0 rgba(black, 0.319)
+        }
+    }
+
+    .位于底部的收起内容块之按钮 {
+        padding 0.05em 0.75em 0
+        min-width 0
+        margin-left 2.25em
+    }
 }
 </style>
