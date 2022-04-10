@@ -124,16 +124,16 @@ export default class Page示范页 extends Vue {
 
 
 
-    private 当双列互换数据功能出错时 (错误之记载: Error) {
+    private 当双列互换数据功能出错时 (错误之记载: Error): void {
         false && console.log(错误之记载)
     }
 
-    private 每当点击用以将甲列选中之条目迁移至乙列之按钮后 () {
+    private 每当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void {
         const 部件实例 = this.$refs['双列互换数据控件-1'] as Wlc双列互换数据类
         部件实例.将甲列选中的条目迁移至乙列()
     }
 
-    private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 () {
+    private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void {
         const 部件实例 = this.$refs['双列互换数据控件-1'] as Wlc双列互换数据类
         部件实例.将乙列选中的条目迁移至甲列()
     }
