@@ -8,8 +8,16 @@ import {
 import 为PostCss插件构建配置项集
     from '../辅助工具集/为-postcss-构建器配置项集'
 
-
-
+/**
+ * @param {object} taskCycleConfig
+ * @param {string} taskCycleConfig.descriptionOfCoreTask
+ * @param {string} taskCycleConfig.descriptionOfInputsOfCoreTask
+ * @param {object} taskCycleConfig.sourceGlobs
+ * @param {object} taskCycleConfig.outputFiles
+ * @param {object} taskCycleConfig.compressions
+ * @param {object} taskCycleConfig.extraOptions
+ * @param {boolean} taskCycleConfig.extraOptions.shouldDiscardMostCommentsEvenIfNotCompressCSS
+ */
 export function 构建一个任务闭环用以将一组独立于Vue文件的Stylus文件各自编译成Css文件(taskCycleConfig) {
     const {
         descriptionOfCoreTask,

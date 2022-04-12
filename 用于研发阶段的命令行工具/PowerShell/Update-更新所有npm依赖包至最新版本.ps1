@@ -45,5 +45,6 @@ npm  i  -D `
     "indent.js@latest" `
     "plugin-error@latest" `
     "rimraf@latest" `
+    "stylus@latest" `
     "through2@latest" `
     "typescript@latest"

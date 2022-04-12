@@ -9,6 +9,17 @@ import {
     createATaskCycle,
 } from '@wulechuan/gulp-classical-task-cycle'
 
+/**
+ * @param {object} taskCycleConfig
+ * @param {string} taskCycleConfig.descriptionOfCoreTask
+ * @param {string} taskCycleConfig.descriptionOfInputsOfCoreTask
+ * @param {object} taskCycleConfig.sourceGlobs
+ * @param {object} taskCycleConfig.outputFiles
+ * @param {object} taskCycleConfig.compressions
+ * @param {object} taskCycleConfig.extraOptions
+ * @param {string | number} taskCycleConfig.extraOptions.indentation
+ * @param {import('typescript').CompilerOptions} taskCycleConfig.extraOptions.tsconfig
+ */
 export function 构建一个任务闭环用以将一组独立于Vue文件的Typescript文件各自转译成Javascript文件(taskCycleConfig) {
     const {
         descriptionOfCoreTask,
@@ -16,11 +27,13 @@ export function 构建一个任务闭环用以将一组独立于Vue文件的Type
         sourceGlobs,
         outputFiles,
         compressions = {},
-        extraOptions: {
-            indentation,
-            tsconfig,
-        } = {},
+        extraOptions = { indentation: 4, tsconfig: null },
     } = taskCycleConfig
+
+    const {
+        indentation,
+        tsconfig,
+    } = extraOptions
 
     const compressor1 = null
     const compressor2 = null // gulpUglifyES

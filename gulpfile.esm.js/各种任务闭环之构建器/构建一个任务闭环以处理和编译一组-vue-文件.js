@@ -11,14 +11,25 @@ import {
     transformContentStringOfSingleVueFile,
 } from '@wulechuan/vue2-sfc-from-typescript-to-javascript'
 
-export function 构建一个任务闭环用以处理和编译一组Vue文件(options) {
+/** @typedef {import('@wulechuan/vue2-sfc-from-typescript-to-javascript').T_TransformationOptions} T_Vue2SFCFromTypescriptToJavascript_Options */
+
+/**
+ * @param {object} taskCycleConfig
+ * @param {string} taskCycleConfig.descriptionOfCoreTask
+ * @param {string} taskCycleConfig.descriptionOfInputsOfCoreTask
+ * @param {object} taskCycleConfig.sourceGlobs
+ * @param {object} taskCycleConfig.outputFiles
+ * @param {object} taskCycleConfig.extraOptions
+ * @param {T_Vue2SFCFromTypescriptToJavascript_Options} taskCycleConfig.extraOptions.vueFileConversionOptions
+ */
+export function 构建一个任务闭环用以处理和编译一组Vue文件(taskCycleConfig) {
     const {
         descriptionOfCoreTask,
         descriptionOfInputsOfCoreTask,
         sourceGlobs,
         outputFiles,
-        extraOptions = {},
-    } = options
+        extraOptions = { vueFileConversionOptions: {} },
+    } = taskCycleConfig
 
     const {
         vueFileConversionOptions,
