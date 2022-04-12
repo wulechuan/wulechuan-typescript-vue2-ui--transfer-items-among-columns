@@ -1,3 +1,5 @@
+import path from 'path'
+
 import {
     构建一个任务闭环用以处理和编译一组Vue文件,
 } from './各种任务闭环之构建器/构建一个任务闭环以处理和编译一组-vue-文件'
@@ -23,6 +25,11 @@ import {
 import tsconfig from '../tsconfig.json'
 
 const outputFileIndentation = ' '.repeat(4)
+const resolvePath = path.resolve
+
+
+
+
 
 const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭环用以处理和编译一组Vue文件({
     descriptionOfCoreTask: '将所有由 TypeScript 写成的 .vue 文件转换成 JavaScript 版本',
@@ -52,6 +59,12 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
         vueFileConversionOptions: {
             indentation: outputFileIndentation,
             tsconfig,
+
+            cssStylusCompilationOptions: {
+                paths: [
+                    resolvePath(__dirname, '../源代码/原始的源代码/stylus'),
+                ],
+            },
 
             // shouldNotCompileStylus: true,
             // shouldNotCompileSass:   true,

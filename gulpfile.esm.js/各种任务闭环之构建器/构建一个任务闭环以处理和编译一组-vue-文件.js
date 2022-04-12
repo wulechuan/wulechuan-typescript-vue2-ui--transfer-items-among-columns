@@ -30,7 +30,7 @@ export function 构建一个任务闭环用以处理和编译一组Vue文件(opt
 
         sourceGlobs,
         outputFiles,
-        firstPipeForProcessingSources: processSingleVueFile,
+        firstPipeForProcessingSources: _处理单个Vue文件,
         // optionsArrayToApplyForTheFirstPipe,
 
         compressions: {
@@ -41,30 +41,31 @@ export function 构建一个任务闭环用以处理和编译一组Vue文件(opt
         },
     })
 
-    function processSingleVueFile() {
-        return through.obj(async function (file, fileEncoding, callback) {
-            if (file.isStream()) {
-                return callback(createNewGulpError('Streaming is not supported.'))
+    function _处理单个Vue文件() {
+        return through.obj(async function (文件对象, 文件内容之字符编码类型, 回调函数) {
+            if (文件对象.isStream()) {
+                回调函数(createNewGulpError('Streaming is not supported.'))
             }
 
-            if (file.isNull()) {
-                return callback(null, file)
+            if (文件对象.isNull()) {
+                回调函数(null, 文件对象)
             }
 
-            const sourceVueFileName = path.basename(file.path)
+            const 源Vue文件之基本名称_不含文件扩展名 = path.basename(文件对象.path)
 
-            const sourceVueContents = file.contents.toString(fileEncoding || 'utf-8')
-            const processedVueContents = await transformContentStringOfSingleVueFile(
-                sourceVueContents,
+            const 源Vue文件之内容全文 = 文件对象.contents.toString(文件内容之字符编码类型 || 'utf-8')
+            return await transformContentStringOfSingleVueFile(
+                源Vue文件之内容全文,
                 {
                     ...vueFileConversionOptions,
-                    sourceContentDescriptionName: sourceVueFileName,
+                    sourceContentDescriptionName: 源Vue文件之基本名称_不含文件扩展名,
                 }
-            )
-
-            file.contents = Buffer.from(processedVueContents)
-
-            return callback(null, file)
+            ).then(处理后的Vue文件内容全文 => {
+                文件对象.contents = Buffer.from(处理后的Vue文件内容全文)
+                回调函数(null, 文件对象)
+            }).catch(error => {
+                回调函数(createNewGulpError(error), 文件对象)
+            })
         })
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div id="vue-应用根">
-        <page示范页></page示范页>
+        <Page示范页></Page示范页>
     </div>
 </template>
 

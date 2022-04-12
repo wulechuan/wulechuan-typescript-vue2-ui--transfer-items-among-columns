@@ -1,15 +1,20 @@
-// import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
+/**
+ * @typedef {object} 范_双列互换数据_实际条目
+ * @property {范_双列互换数据_实际条目之数据} 数据
+ */
 
-// export interface 范_双列互换数据_实际条目 extends Wlc双列互换数据.范_基础条目 {
-//     数据?: {
-//         描述?: string | string[];
-//         描述已呈现?: boolean;
-//     };
-// }
+/**
+ * @extends {Wlc双列互换数据.范_基础条目}
+ * @typedef {object} 范_双列互换数据_实际条目之数据
+ * @property {string | string[]} 描述
+ * @property {boolean} 描述已呈现
+ */
 
-// export type 范_双列互换数据_实际条目之列表 = Array<范_双列互换数据_实际条目>
+/**
+ * @typedef {Array<范_双列互换数据_实际条目>} 范_双列互换数据_实际条目之列表
+ */
 
-/** @type {Array<范_双列互换数据_实际条目>} */
+/** @type {范_双列互换数据_实际条目之列表} */
 export const 一切可能的条目之列表 = [
     {
         唯一标识: '蠃鱼',

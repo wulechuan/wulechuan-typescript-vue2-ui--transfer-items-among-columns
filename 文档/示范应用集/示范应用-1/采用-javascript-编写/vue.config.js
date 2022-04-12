@@ -30,5 +30,5 @@ const config = buildVueConfig({
 
 module.exports = defineConfig({
     transpileDependencies: true,
-    // ...config,
+    ...config,
 })

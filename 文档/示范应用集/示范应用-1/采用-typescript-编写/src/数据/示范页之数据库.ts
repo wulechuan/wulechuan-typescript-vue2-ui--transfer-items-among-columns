@@ -9,7 +9,7 @@ export interface 范_双列互换数据_实际条目 extends Wlc双列互换数�
 
 export type 范_双列互换数据_实际条目之列表 = Array<范_双列互换数据_实际条目>
 
-export const 一切可能的条目之列表: Array<范_双列互换数据_实际条目> = [
+export const 一切可能的条目之列表: 范_双列互换数据_实际条目之列表 = [
     {
         唯一标识: '蠃鱼',
         在界面中的称谓: '蠃（luǒ）鱼',

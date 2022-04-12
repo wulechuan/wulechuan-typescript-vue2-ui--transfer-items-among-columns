@@ -26,7 +26,7 @@ module.exports = {
         }],
         'vue/html-self-closing': [2, {
             html: {
-                void: 'never',
+                void: 'any',
                 normal: 'never',
                 component: 'never',
             },

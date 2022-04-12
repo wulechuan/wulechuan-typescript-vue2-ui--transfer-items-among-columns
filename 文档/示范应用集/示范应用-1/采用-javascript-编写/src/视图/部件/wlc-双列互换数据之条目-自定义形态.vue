@@ -28,14 +28,9 @@
 </template>
 
 <script>
-// import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
-
-// import type {
-//     范_双列互换数据_实际条目,
-// } from '../../数据/示范页之数据库'
-
-// type 范_双列互换数据_内用格式之实际条目 = Wlc双列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目;
-// type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置;
+/** @typedef {import('../../数据/示范页之数据库').范_双列互换数据_实际条目} 范_双列互换数据_实际条目 */
+/** @typedef {Wlc双列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目} 范_双列互换数据_内用格式之实际条目 */
+/** @typedef {Wlc双列互换数据.范_界面元素之样式类名之配置} 范_界面元素之样式类名之配置*/
 
 export default {
     name: 'Wlc双列互换数据之条目之自定义形态示范',
@@ -52,20 +47,26 @@ export default {
     },
 
     computed: {
-        /** @returns {范_双列互换数据_内用格式之实际条目} */
+        /**
+         * @returns {范_双列互换数据_内用格式之实际条目}
+         */
         条目_最终采纳值 () {
             const 外界给出的值 = this.条目
             if (!外界给出的值) return this.构造临时的条目()
             return 外界给出的值
         },
 
-        /** @returns {范_界面元素之样式类名之配置} */
+        /**
+         * @returns {范_界面元素之样式类名之配置}
+         */
         输入项之样式类名配置 () {
             const 条目 = this.条目_最终采纳值
             return { '已勾选': 条目.已选中, '已禁止交互': 条目.已禁止选择, '未选中': !条目.已选中 }
         },
 
-        /** @returns {string[]} */
+        /**
+         * @returns {string[]}
+         */
         条目描述文本之诸段落之列表 () {
             /** @type {string[]} */
             let 诸段落之列表 = []
@@ -91,7 +92,9 @@ export default {
             return 诸段落之列表
         },
 
-        /** @returns {boolean} */
+        /**
+         * @returns {boolean}
+         */
         条目描述文本之诸段落总字数较多 () {
             /** @type {number} */
             const 总字符数 = this.条目描述文本之诸段落之列表.reduce((字数, 某段落文本) => {
@@ -103,7 +106,9 @@ export default {
     },
 
     methods: {
-        /** @returns {范_双列互换数据_内用格式之实际条目} */
+        /**
+         * @returns {范_双列互换数据_内用格式之实际条目}
+         */
         构造临时的条目 () {
             /** @type {string} */
             const 称谓 = Math.random().toFixed(10)
