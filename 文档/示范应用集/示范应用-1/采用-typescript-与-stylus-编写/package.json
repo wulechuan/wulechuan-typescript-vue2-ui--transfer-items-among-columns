@@ -1,11 +1,11 @@
 {
-    "name": "@wulechuan/vue2-ui--two-columns-exchange-items--demo-1-in-typescript",
+    "name": "@wulechuan/vue2-ui--two-columns-exchange-items--demo-1-in-typescript-and-stylus",
     "author": "吴乐川 <wulechuan@live.com>",
     "license": "WTFPL",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
     "scripts": {
-        "start": "vue-cli-service serve --port=8119",
+        "start": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
     },

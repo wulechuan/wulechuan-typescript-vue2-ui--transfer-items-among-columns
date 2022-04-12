@@ -8,7 +8,7 @@ const {
 module.exports = buildVueConfig({
     dev: {
         server: {
-            defaultPort: 8119,
+            defaultPort: 8119 + 2, // 81192
         },
     },
 
