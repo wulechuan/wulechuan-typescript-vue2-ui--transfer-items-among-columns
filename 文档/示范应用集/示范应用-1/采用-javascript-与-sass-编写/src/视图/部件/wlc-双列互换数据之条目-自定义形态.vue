@@ -1,6 +1,6 @@
 <template>
-    <div class="吴乐川-双列互换数据之条目-自定义形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
-        <div class="吴乐川-双列互换数据之条目">
+    <div class="吴乐川-任意两列互换数据之条目视觉根-自定义形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
+        <div class="吴乐川-任意两列互换数据之条目视觉根">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
                 <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
@@ -119,7 +119,7 @@ export default {
 </script>
 
 <style lang="scss">
-.吴乐川-双列互换数据之条目-自定义形态 {
+.吴乐川-任意两列互换数据之条目视觉根-自定义形态 {
     border-radius: 0.25em;
     overflow: hidden;
 
@@ -129,7 +129,7 @@ export default {
         min-width: 0;
     }
 
-    .吴乐川-双列互换数据之条目 {
+    .吴乐川-任意两列互换数据之条目视觉根 {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -172,7 +172,7 @@ export default {
         // margin-top: 0.5em;
         margin-bottom: 1.5em;
 
-        .吴乐川-双列互换数据之条目 {
+        .吴乐川-任意两列互换数据之条目视觉根 {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             box-shadow: 0 0 0.2em 0 rgba(black, 0.319);

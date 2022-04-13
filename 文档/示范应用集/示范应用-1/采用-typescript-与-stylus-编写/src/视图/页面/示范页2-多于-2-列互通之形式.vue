@@ -40,7 +40,7 @@
                         </div>
                     </template>
 
-                    <Wlc双列互换数据之单列
+                    <Wlc任意两列互换数据之单列
                         :key="`列-${某列之列表编号 + 1}-${某列.可成批自动绑定的属性.本列之称谓}`"
                         v-model="某列.当下选中的所有条目之唯一标识之列表"
                         v-bind="某列.可成批自动绑定的属性"
@@ -50,7 +50,7 @@
                         <template slot="界面皿-标题栏">
                             <h3>{{ 某列.可成批自动绑定的属性.本列之称谓 }}</h3>
                         </template>
-                    </Wlc双列互换数据之单列>
+                    </Wlc任意两列互换数据之单列>
                 </template>
             </div>
         </div>
@@ -61,9 +61,9 @@
 import { VueConstructor } from 'vue'
 import { Component, Vue } from 'vue-property-decorator'
 
-import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
-import Wlc双列互换数据之单列 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据之单列.vue'
-import Wlc双列互换数据之条目之自定义形态示范 from '@/视图/部件/wlc-双列互换数据之条目-自定义形态.vue'
+import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-任意两列互换数据之现成双列.vue'
+import Wlc任意两列互换数据之单列 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-任意两列互换数据之单列.vue'
+import Wlc任意两列互换数据之条目视觉根之自定义形态示范 from '@/视图/部件/wlc-任意两列互换数据之条目视觉根-自定义形态.vue'
 
 import {
     将某列选中的条目迁移至另一列,
@@ -168,7 +168,7 @@ const 天干表: string[] = '甲乙丙丁戊己庚辛壬癸'.split('')
 
 @Component({
     components: {
-        Wlc双列互换数据之单列,
+        Wlc任意两列互换数据之单列,
     },
 })
 export default class Page示范页2_多余2列互通之形式 extends Vue {
@@ -241,7 +241,7 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
                     本列初始的用以过滤条目之配置: '',
                     当下另有他列优先于本列采取视觉强调引导用户操作之: false,
                     不应创建底部栏目: false,
-                    部件构造函数之自定义主表条目: 故意要求该列之条目之形态为自定义形态 ? Wlc双列互换数据之条目之自定义形态示范 : null,
+                    部件构造函数之自定义主表条目: 故意要求该列之条目之形态为自定义形态 ? Wlc任意两列互换数据之条目视觉根之自定义形态示范 : null,
                 },
             }
         })
@@ -339,7 +339,7 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
         overflow auto
     }
 
-    .吴乐川-双列互换数据之单列 {
+    .吴乐川-任意两列互换数据之单列 {
         flex 0 0 20em
 
         .列标题栏 {

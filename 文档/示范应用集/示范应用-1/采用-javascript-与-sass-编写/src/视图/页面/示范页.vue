@@ -49,7 +49,7 @@
 
 <script>
 import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/javascript/wlc-双列互换数据.vue'
-import Wlc双列互换数据之条目之自定义形态示范 from '@/视图/部件/wlc-双列互换数据之条目-自定义形态.vue'
+import Wlc双列互换数据之条目之自定义形态示范 from '@/视图/部件/wlc-任意两列互换数据之条目视觉根-自定义形态.vue'
 
 import {
     一切可能的条目之列表,

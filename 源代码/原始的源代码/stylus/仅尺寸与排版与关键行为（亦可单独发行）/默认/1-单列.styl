@@ -2,6 +2,20 @@
 
 // Stylus 语言的变量名不允许采用汉字！
 
+
+
+{identifiable_selector__list_single_item__root} {
+    user-select none
+    padding 0 0.1em 0 0.25em
+    margin 0.1em 0
+    
+    &.已禁止选择 {
+        cursor not-allowed
+    }
+}
+
+
+
 {identifiable_selector__single_column__root} {
     display flex
     overflow hidden

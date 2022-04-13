@@ -18,8 +18,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
-import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
-import Wlc双列互换数据之条目之自定义形态示范 from '@/视图/部件/wlc-双列互换数据之条目-自定义形态.vue'
+import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-任意两列互换数据之现成双列.vue'
+import Wlc任意两列互换数据之条目视觉根之自定义形态示范 from '@/视图/部件/wlc-任意两列互换数据之条目视觉根-自定义形态.vue'
 
 import {
     一切可能的条目之列表,
@@ -96,7 +96,7 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
             甲列初始的用以过滤条目之配置: '', // '牛',
             乙列初始的用以过滤条目之配置: /.{9,}|[天龙白鸟]/,
 
-            部件构造函数之自定义主表条目: Wlc双列互换数据之条目之自定义形态示范,
+            部件构造函数之自定义主表条目: Wlc任意两列互换数据之条目视觉根之自定义形态示范,
         }
     }
 

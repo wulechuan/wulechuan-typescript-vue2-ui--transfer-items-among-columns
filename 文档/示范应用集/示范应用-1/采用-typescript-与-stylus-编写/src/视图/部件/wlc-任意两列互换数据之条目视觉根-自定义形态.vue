@@ -1,6 +1,6 @@
 <template>
-    <div class="吴乐川-双列互换数据之条目-自定义形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
-        <div class="吴乐川-双列互换数据之条目">
+    <div class="吴乐川-任意两列互换数据之条目视觉根-自定义形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
+        <div class="吴乐川-任意两列互换数据之条目视觉根">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
                 <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
@@ -40,7 +40,7 @@ type 范_双列互换数据_内用格式之实际条目 = Wlc双列互换数据.
 type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置;
 
 @Component({})
-export default class Wlc双列互换数据之条目之自定义形态示范 extends Vue {
+export default class Wlc任意两列互换数据之条目视觉根之自定义形态示范 extends Vue {
     @Prop() public 条目?: 范_双列互换数据_内用格式之实际条目
 
 
@@ -102,7 +102,7 @@ export default class Wlc双列互换数据之条目之自定义形态示范 exte
 </script>
 
 <style lang="stylus">
-.吴乐川-双列互换数据之条目-自定义形态 {
+.吴乐川-任意两列互换数据之条目视觉根-自定义形态 {
     border-radius 0.25em
     overflow hidden
 
@@ -112,7 +112,7 @@ export default class Wlc双列互换数据之条目之自定义形态示范 exte
         min-width 0
     }
 
-    .吴乐川-双列互换数据之条目 {
+    .吴乐川-任意两列互换数据之条目视觉根 {
         display flex
         flex-direction row
         align-items flex-start
@@ -155,7 +155,7 @@ export default class Wlc双列互换数据之条目之自定义形态示范 exte
         // margin-top 0.5em
         margin-bottom 1.5em
 
-        .吴乐川-双列互换数据之条目 {
+        .吴乐川-任意两列互换数据之条目视觉根 {
             border-bottom-left-radius 0
             border-bottom-right-radius 0
             box-shadow 0 0 0.2em 0 rgba(black, 0.319)

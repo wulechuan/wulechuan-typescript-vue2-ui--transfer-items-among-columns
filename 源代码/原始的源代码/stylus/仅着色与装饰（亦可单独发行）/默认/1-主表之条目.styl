@@ -3,42 +3,15 @@
 
 // Stylus 语言的变量名不允许采用汉字！
 
-{identifiable_selector__list_single_item__root} {
+{identifiable_selector__list_single_item__visual_base} {
+
+    MIXIN_transition_colors_and_shades()
+
+    border-radius 0.2em
     background-color transparent
 
-    {identifiable_selector__list_single_item__visual_base} {
-
-        MIXIN_transition_colors_and_shades()
-
-        border-radius 0.2em
-        background-color transparent
-
-        &:hover {
-            // background-color #eee
-            background-color 'var(%s)' % unquote(css_var_name__element_non_highlighting_color_hover)
-        }
-    }
-
-    &.已选中 {
-
-        {identifiable_selector__list_single_item__visual_base} {
-            color white
-            // background-color #777
-            background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
-
-            &:hover {
-                background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_hover)
-            }
-        }
-    }
-
-    &.已禁止选择 {
-
-        {identifiable_selector__list_single_item__visual_base} {
-            color #e3e3e3
-            text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
-            background-color #00000003
-            background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);
-        }
+    &:hover {
+        // background-color #eee
+        background-color 'var(%s)' % unquote(css_var_name__element_non_highlighting_color_hover)
     }
 }

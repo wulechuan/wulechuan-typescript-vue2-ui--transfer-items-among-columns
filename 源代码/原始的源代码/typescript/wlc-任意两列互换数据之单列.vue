@@ -1,5 +1,5 @@
 <template>
-    <div class="吴乐川-双列互换数据之单列" :class="本列之特征样式类名之配置" @click="每当根元素点击后($event)">
+    <div class="吴乐川-任意两列互换数据之单列" :class="本列之特征样式类名之配置" @click="每当根元素点击后($event)">
         <header class="列首">
             <div class="列标题栏">
                 <slot name="界面皿-标题栏">
@@ -114,7 +114,7 @@
                 <li
                     v-for="采取内用格式之条目 in 当下列示着的所有条目之列表"
                     :key="采取内用格式之条目.唯一标识"
-                    class="吴乐川-双列互换数据之条目皿"
+                    class="吴乐川-任意两列互换数据之条目根"
                     :class="求某条目之样式类名集_其根元素(采取内用格式之条目)"
                 >
                     <component
@@ -129,11 +129,11 @@
 
         <div v-if="!不应创建底部栏目" class="功能块-条目列表说明书-控制栏">
             <button @click.stop="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
-            <Wlc双列互换数据之单列之说明书
+            <Wlc任意两列互换数据之单列之说明书
                 v-model="应呈现列表操作说明书"
                 采用的标准配色方案之名称="默认"
                 采用的标准配色方案之磨砂玻璃效果之名称="默认"
-            ></Wlc双列互换数据之单列之说明书>
+            ></Wlc任意两列互换数据之单列之说明书>
         </div>
     </div>
 </template>
@@ -142,8 +142,8 @@
 import { VueConstructor } from 'vue'
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-import Wlc双列互换数据之条目之默认形态 from './wlc-双列互换数据之条目-默认形态.vue'
-import Wlc双列互换数据之单列之说明书 from './wlc-双列互换数据之单列-说明书.vue'
+import Wlc任意两列互换数据之条目视觉根之默认形态 from './wlc-任意两列互换数据之条目视觉根-默认形态.vue'
+import Wlc任意两列互换数据之单列之说明书 from './wlc-任意两列互换数据之单列-说明书.vue'
 
 import {
     求可靠的文本,
@@ -180,11 +180,11 @@ export const 各列条目排序之规则所有允许的值之列表: 范_各列�
 
 @Component({
     components: {
-        // Wlc双列互换数据之条目: Wlc双列互换数据之条目之默认形态,
-        Wlc双列互换数据之单列之说明书,
+        // Wlc任意两列互换数据之条目视觉根: Wlc任意两列互换数据之条目视觉根之默认形态,
+        Wlc任意两列互换数据之单列之说明书,
     },
 })
-export default class Wlc双列互换数据之单列 extends Vue {
+export default class Wlc任意两列互换数据之单列 extends Vue {
     @Model('选中的条目已变动') public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
     @Prop() public readonly 本列之称谓?: string
@@ -211,7 +211,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     private 最末经由交互动作改变其选中之状态之条目: 范_内用格式之条目 | null = null
     private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null = null
     private 应呈现列表操作说明书: boolean = false
-    private 部件构造函数之自定义主表条目_最终采纳值: VueConstructor = Wlc双列互换数据之条目之默认形态
+    private 部件构造函数之自定义主表条目_最终采纳值: VueConstructor = Wlc任意两列互换数据之条目视觉根之默认形态
 
 
 
@@ -222,7 +222,7 @@ export default class Wlc双列互换数据之单列 extends Vue {
     }
 
     private get 日志前缀 (): string {
-        return `Vue 部件 <Wlc双列互换数据之单列> “ ${this.本列之称谓_最终采纳值} ” ：`
+        return `Vue 部件 <Wlc任意两列互换数据之单列> “ ${this.本列之称谓_最终采纳值} ” ：`
     }
 
     private get 本列之标题栏之文字 (): string {

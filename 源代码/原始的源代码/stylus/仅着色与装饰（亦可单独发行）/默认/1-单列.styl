@@ -3,6 +3,37 @@
 
 // Stylus 语言的变量名不允许采用汉字！
 
+
+
+{identifiable_selector__list_single_item__root} {
+    background-color transparent
+
+    &.已选中 {
+
+        {identifiable_selector__list_single_item__visual_base} {
+            color white
+            // background-color #777
+            background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
+
+            &:hover {
+                background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_hover)
+            }
+        }
+    }
+
+    &.已禁止选择 {
+
+        {identifiable_selector__list_single_item__visual_base} {
+            color #e3e3e3
+            text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
+            background-color #00000003
+            background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);
+        }
+    }
+}
+
+
+
 {identifiable_selector__single_column__root} {
 
     .列首 {
@@ -119,7 +150,7 @@
 
                 // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
                 // animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box--emphasizing--column1
-                animation-name unquote('吴乐川-双列互换数据之单列--动画--条目过滤器-文本输入框--视觉强调--甲列')
+                animation-name unquote('吴乐川-任意两列互换数据之单列--动画--条目过滤器-文本输入框--视觉强调--甲列')
                 @keyframes {@animation-name} {
                     0%, 100% { border-color: #f00; }
                     40%, 60% { border-color: #fbb; }
@@ -141,7 +172,7 @@
 
                 // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
                 // animation-name wulechuan-dual-columns-exchange-data--list-items-filtering-input-box--emphasizing--column2
-                animation-name unquote('吴乐川-双列互换数据之单列--动画--条目过滤器-文本输入框--视觉强调--乙列')
+                animation-name unquote('吴乐川-任意两列互换数据之单列--动画--条目过滤器-文本输入框--视觉强调--乙列')
                 @keyframes {@animation-name} {
                     0%, 100% { border-color: #8d8; }
                     40%, 60% { border-color: #090; }

@@ -1,5 +1,5 @@
 <template>
-    <div id="vue-应用根" class="吴乐川-任意双列互换数据">
+    <div id="vue-应用根" class="吴乐川-任意两列互换数据">
         <Layout默认></Layout默认>
     </div>
 </template>
