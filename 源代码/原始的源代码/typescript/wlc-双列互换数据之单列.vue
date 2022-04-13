@@ -2,7 +2,7 @@
     <div class="吴乐川-双列互换数据之单列" :class="本列之特征样式类名之配置" @click="每当根元素点击后($event)">
         <header class="列首">
             <div class="列标题栏">
-                <slot name="皿-标题栏">
+                <slot name="界面皿-标题栏">
                     <div class="列标题栏之默认内容">
                         <h5>{{ 本列之标题栏之文字 }}</h5>
                     </div>

@@ -1,21 +1,17 @@
 <template>
-    <div id="vue-应用根">
-        <Page示范页></Page示范页>
+    <div id="vue-应用根" class="吴乐川-任意双列互换数据">
+        <Layout默认></Layout默认>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import Page示范页 from './页面/示范页.vue'
+import 页面之默认布局 from './页面布局库/默认布局.vue'
 
 @Component({
     components: {
-        Page示范页,
+        Layout默认: 页面之默认布局,
     },
 })
 export default class App根 extends Vue {}
 </script>
-
-<style lang="stylus">
-
-</style>

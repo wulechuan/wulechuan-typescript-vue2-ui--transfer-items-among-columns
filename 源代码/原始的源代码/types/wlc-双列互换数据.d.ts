@@ -153,7 +153,7 @@ declare module Wlc双列互换数据 {
         // -------- 衍生数据 --------------------------------
         private get 甲列之称谓_最终采纳值 (): string
         private get 乙列之称谓_最终采纳值 (): string
-        private get 用于各界面内容皿之状态集 (): 范_状态汇总数据
+        private get 用于各界面皿之状态集 (): 范_状态汇总数据
         private get 按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列_最终采纳值 (): string
         private get 按钮上的措辞_中央竖栏默认内容_将条目从乙列迁移至甲列_最终采纳值 (): string
         private get 按钮上的措辞_底部内容栏默认内容_将条目从甲列迁移至乙列_最终采纳值 (): string

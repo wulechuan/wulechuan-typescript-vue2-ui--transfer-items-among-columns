@@ -2,7 +2,7 @@
 
 // Stylus 语言的变量名不允许采用汉字！
 
-{identifiable_selector__dual_columns__root} { // 故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
+{identifiable_selector__base_styles_wrapper} { // 故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
     {css_var_name__input_boxes_border_width} 2px
     {css_var_name__focusing_element_outline_width} 'calc(2 * var(%s))' % unquote(css_var_name__input_boxes_border_width)
     {css_var_name__buttons_border_width} 3px
@@ -127,14 +127,7 @@
         line-height 1.33
         padding 0.33em 1.5em
         min-width 8em
-
-        MIXIN_round_button_layout(font_size_in_em = 1) {
-            min-width 0
-            padding 0.25em
-            line-height 1.1em
-            width 2.5em
-            height 2.5em
-        }
+        border-radius 1000px
 
         &.按钮-形状必须为正圆 {
             min-width 0
@@ -142,9 +135,11 @@
             height @width
             padding 0.2em
             line-height normal
+            border-radius 2000px
         }
 
         &.标准按钮-叉 {
+            border-radius 2000px
 
             & { // Chrome 、 Edge 都能正常排版。
                 font-size 0.9em
