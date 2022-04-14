@@ -23,7 +23,7 @@
 
             <slot name="界面皿-中央列" v-bind="用于各界面皿之状态集">
                 <Wlc任意两列互换数据之两列之间之默认竖栏
-                    :已全面禁止交互="已全面禁止交互"
+                    :应全面禁止交互="应全面禁止交互"
                     :按钮上的措辞_将条目从甲列迁移至乙列="按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列_最终采纳值"
                     :按钮上的措辞_将条目从乙列迁移至甲列="按钮上的措辞_中央竖栏默认内容_将条目从乙列迁移至甲列_最终采纳值"
                     :甲列当下选中的条目之总数="用于各界面皿之状态集.甲列当下选中的条目之总数"
@@ -145,7 +145,7 @@ type 范_单列之内部数据集 = {
 export default class Wlc任意两列互换数据之现成实用的双列 extends Vue {
     @Model('条目之分布已变动') public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
-    @Prop() public readonly 已全面禁止交互?: boolean // TODO
+    @Prop() public readonly 应全面禁止交互?: boolean // TODO
 
     @Prop() public readonly 甲列之称谓?: string
     @Prop() public readonly 乙列之称谓?: string

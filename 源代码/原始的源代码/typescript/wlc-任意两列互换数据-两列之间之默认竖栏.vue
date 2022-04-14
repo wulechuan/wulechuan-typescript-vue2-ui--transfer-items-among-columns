@@ -62,7 +62,7 @@ type 范_界面元素之样式类名之配置 = Wlc任意两列互换数据.泛�
 
 @Component({})
 export default class Wlc任意两列互换数据之两列之间之默认竖栏 extends Vue {
-    @Prop() public readonly 已全面禁止交互?: boolean
+    @Prop() public readonly 应全面禁止交互?: boolean
     @Prop() public readonly 按钮上的措辞_将条目从甲列迁移至乙列?: string
     @Prop() public readonly 按钮上的措辞_将条目从乙列迁移至甲列?: string
     @Prop() public readonly 甲列当下选中的条目之总数?: number
@@ -131,13 +131,13 @@ export default class Wlc任意两列互换数据之两列之间之默认竖栏 e
     }
 
     private get 应禁止甲按钮 (): boolean {
-        const { 甲列当下有至少一条选中之条目, 已全面禁止交互 } = this
-        return !!已全面禁止交互 || !甲列当下有至少一条选中之条目
+        const { 甲列当下有至少一条选中之条目, 应全面禁止交互 } = this
+        return !!应全面禁止交互 || !甲列当下有至少一条选中之条目
     }
 
     private get 应禁止乙按钮 (): boolean {
-        const { 乙列当下有至少一条选中之条目, 已全面禁止交互 } = this
-        return !!已全面禁止交互 || !乙列当下有至少一条选中之条目
+        const { 乙列当下有至少一条选中之条目, 应全面禁止交互 } = this
+        return !!应全面禁止交互 || !乙列当下有至少一条选中之条目
     }
 
 

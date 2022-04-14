@@ -106,12 +106,172 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
+    declare class Wlc任意两列互换数据之单列 extends Vue {
+        // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
+        public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
+
+        // -------- 外来数据 --------------------------------
+        public readonly 应全面禁止交互?: boolean
+        public readonly 本列之称谓?: string
+        public readonly 本列之特征样式类名之配置?: 范_界面元素之样式类名之配置
+        public readonly 允许列示的条目数之上限?: number | string
+        public readonly 所有条目之列表?: 范_内用格式之条目之列表
+        public readonly 新增条目之插入规则?: 范_各列新增条目之插入规则
+        public readonly 条目排序之函数?: 范_各列条目排序之函数
+        public readonly 本列初始的用以过滤条目之配置?: string | RegExp
+        public readonly 当下另有他列优先于本列采取视觉强调引导用户操作之?: boolean
+        public readonly 不应创建底部栏目?: boolean
+        public readonly 部件构造函数之自定义主表条目?: VueConstructor
+
+        // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+        // -------- 私有数据 --------------------------------
+        private 用以过滤条目之关键词: string
+        private 所有条目之列表_最终采纳值: 范_内用格式之条目之列表
+        private 所有条目之列表_最终采纳值_求解之期待: null | Promise<boolean>
+        private 所有条目之列表_最终采纳值_求解之期待之原因: string
+        private 三态勾选框_所有条目_含隐藏之条目_之勾选状态统计_之状态值: 范_三态勾选框之状态值
+        private 三态勾选框_所有条目_仅列示之条目_之勾选状态统计_之状态值: 范_三态勾选框之状态值
+        private 最末经由交互动作改变其选中之状态之条目: 范_内用格式之条目 | null
+        private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null
+        private 应呈现列表操作说明书: boolean
+        private 部件构造函数之自定义主表条目_最终采纳值: VueConstructor
+
+        // -------- 衍生数据 --------------------------------
+        private get 本列之称谓_最终采纳值 (): string
+        private get 日志前缀 (): string
+        private get 本列之标题栏之文字 (): string
+        private get 当下有浮层覆盖着条目列表 (): boolean
+        private get 允许列示的条目数之上限_最终采纳值 (): number
+        private get 新增条目之插入规则_最终采纳值 (): 范_各列新增条目之插入规则
+        private get 所有条目之总数 (): number
+        private get 条目过滤器之文本输入框之空框状态提示措辞 (): string
+        private get 所有未禁止交互之条目之列表 (): 范_内用格式之条目之列表
+        private get 匹配当下过滤配置之所有条目之列表 (): 范_内用格式之条目之列表
+        private get 当下列示着的所有条目之列表 (): 范_内用格式之条目之列表
+        private get 当下列示着的所有未禁止交互之条目之列表 (): 范_内用格式之条目之列表
+        private get 当下期望列示的条目过多故暂不列示任何条目 (): boolean
+        private get 当下已选中的所有条目_含隐藏之条目_之列表 (): 范_内用格式之条目之列表
+        private get 当下已选中的所有条目_仅列示的条目_之列表 (): 范_内用格式之条目之列表
+        private get 条目过滤器文本输入框元素之样式类名配置 (): 范_界面元素之样式类名之配置
+        private get 当下有否视觉强调动画之结论 (): boolean
+        private get 与选中所有条目_含隐藏之条目_之交互相关的汇总数据 ()
+        private get 与选中所有条目_仅列示之条目_之交互相关的汇总数据 ()
+
+        // -------- @Watch 数据变动之处理程序 ----------------
+        private 在外界给出的所有条目之列表变动后 (): void
+        private 在外界给出的当下选中的所有条目之唯一标识之列表变动后 (): void
+        private 在外界给出的当下有否视觉强调动画之结论变动后 (结论: boolean): void
+
+        // -------- 私有行为 -------------------------------
+        private 根据外界给出的条件构建实用的条目总表 (本次原因: 范_构建实用的条目总表_发起之原因): Promise<boolean>
+        private 求某条目之样式类名集_其皿元素 (条目: 范_内用格式之条目): 范_界面元素之样式类名之配置
+        private 求某条目之样式类名集_其根元素 (条目: 范_内用格式之条目): 范_界面元素之样式类名之配置
+        private 求与选中所有条目之交互相关的汇总数据 (本次统计时应将暂不可见的条目一并计入?: boolean)
+        private 选中或取消选中一系列列示着的条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
+        private 选中或取消选中一系列条目_含隐藏之条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
+        private 选中或取消选中一系列条目 (应考察的所有条目之列表?: 范_内用格式之条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
+        private 每当有任何条目之选中状态变动时 (): void
+        private _统计某应考察之条目之列表中的勾选状态 (所有应考察之条目: 范_内用格式之条目之列表): 范_三态勾选框之状态值
+        private 统计所有条目_含隐藏条目_之勾选状态 (): void
+        private 统计所有条目_仅列示条目_之勾选状态 (): void
+        // - - - - - - - - - - - - - - - - - - - - - - -
+        private 发布事件_选中的条目已变动 (): void
+        private 发布事件_某元素之视觉强调之状态已变动 (当下有否视觉强调动画之结论?: boolean): void
+
+        // -------- 界面元素事件之处理程序 -------------------
+        private 每当选择所有条目或清除所有条目之选中状态_含隐藏之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent): void
+        private 每当选择所有条目或清除所有条目之选中状态_仅列示之条目_之交互项动作时 (界面表单元素变动事件之记载: InputEvent): void
+        private 每当根元素点击后 (事件之记载: PointerEvent): void
+        private 每当列表操作说明书开关按钮点击时 (): void
+        private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent): void
+
+        // -------- 生命周期钩子 ----------------------------
+        private created (): void
+    };
+
+
+
+
+
+    declare class Wlc任意两列互换数据之单列之说明书 extends Vue {
+        // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
+        public readonly 当下正呈现着?: boolean
+
+        // -------- 外来数据 --------------------------------
+        public readonly 采用的标准配色方案之名称?: 范_信息文本块_配色方案之名称
+        public readonly 采用的标准配色方案之磨砂玻璃效果之名称?: 范_信息文本块_标准配色方案之磨砂玻璃效果之名称
+
+        // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+        // -------- 衍生数据 --------------------------------
+        private get 采用的标准配色方案之名称_最终采纳值 (): string | null
+        private get 采用的标准配色方案之磨砂玻璃效果之名称_最终采纳值 (): string | null
+        private get 界面根元素之样式类名之配置 (): 范_界面元素之样式类名之配置
+
+        // -------- 私有行为 -------------------------------
+        // - - - - - - - - - - - - - - - - - - - - - - -
+        private 发布事件_呈现状态期望变更 (期望呈现: boolean): void
+
+        // -------- 界面元素事件之处理程序 -------------------
+        private 每当关闭按钮点击后 (事件之记载: PointerEvent): void
+    };
+
+
+
+
+
+    declare class Wlc任意两列互换数据之两列之间之默认竖栏 extends Vue {
+        // -------- 外来数据 --------------------------------
+        public readonly 应全面禁止交互?: boolean
+        public readonly 按钮上的措辞_将条目从甲列迁移至乙列?: string
+        public readonly 按钮上的措辞_将条目从乙列迁移至甲列?: string
+        public readonly 甲列当下选中的条目之总数?: number
+        public readonly 乙列当下选中的条目之总数?: number
+
+        // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+        // -------- 衍生数据 --------------------------------
+        private get 按钮上的措辞_将条目从甲列迁移至乙列_最终采纳值 (): string
+        private get 按钮上的措辞_将条目从乙列迁移至甲列_最终采纳值 (): string
+        private get 将条目从甲列迁移至乙列_界面元素之样式类名之配置 (): 范_界面元素之样式类名之配置
+        private get 将条目从乙列迁移至甲列_界面元素之样式类名之配置 (): 范_界面元素之样式类名之配置
+        private get 甲列当下选中的条目之总数_最终采纳值 (): number
+        private get 乙列当下选中的条目之总数_最终采纳值 (): number
+        private get 甲列当下有至少一条选中之条目 (): boolean
+        private get 乙列当下有至少一条选中之条目 (): boolean
+        private get 应禁止甲按钮 (): boolean
+        private get 应禁止乙按钮 (): boolean
+
+        // -------- 私有行为 -------------------------------
+        // - - - - - - - - - - - - - - - - - - - - - - -
+        private 发布事件_请求将甲列选中之条目迁移至乙列 (): void
+        private 发布事件_请求将乙列选中之条目迁移至甲列 (): void
+
+        // -------- 界面元素事件之处理程序 -------------------
+        private 每当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void
+        private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void
+    };
+
+
+
+
+
+    declare class Wlc任意两列互换数据之条目视觉根之默认形态 extends Vue {
+        // -------- 外来数据 --------------------------------
+        public readonly 条目?: 范_内用格式之条目
+    };
+
+
+
+
+
     declare class Wlc任意两列互换数据之现成实用的双列 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
         // -------- 外来数据 --------------------------------
-        public readonly 已全面禁止交互?: boolean
+        public readonly 应全面禁止交互?: boolean
 
         public readonly 甲列之称谓?: string
         public readonly 乙列之称谓?: string
@@ -187,7 +347,7 @@ declare namespace Wlc任意两列互换数据 {
 
     namespace Wlc任意两列互换数据之现成实用的双列 {
         type 泛范_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
-            已全面禁止交互?: boolean
+            应全面禁止交互?: boolean
 
             甲列之称谓: string;
             乙列之称谓: string;

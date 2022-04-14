@@ -210,6 +210,7 @@ export const 各列条目排序之规则所有允许的值之列表: 范_各列�
 export default class Wlc任意两列互换数据之单列 extends Vue {
     @Model('选中的条目已变动') public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
+    @Prop() public readonly 应全面禁止交互?: boolean
     @Prop() public readonly 本列之称谓?: string
     @Prop() public readonly 本列之特征样式类名之配置?: 范_界面元素之样式类名之配置
     @Prop() public readonly 允许列示的条目数之上限?: number | string
