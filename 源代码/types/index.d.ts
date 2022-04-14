@@ -1,13 +1,17 @@
-declare module Wlc双列互换数据 {
+declare module '@wulechuan/vue2-ui--columns-exchange-items' {
+    export = Wlc任意两列互换数据
+}
+
+
+
+
+
+declare namespace Wlc任意两列互换数据 {
     type VueConstructor = Vue.VueConstructor
 
 
 
 
-
-    type 范_界面元素之样式类名之配置<类名枚举 = string> = null | 类名枚举 | Array<类名枚举?> | {
-        [cssClassName: string]: boolean | null | undefined;
-    };
 
     type 范_三态勾选框之状态值 = (
         | '已勾选'
@@ -28,6 +32,17 @@ declare module Wlc双列互换数据 {
         | '弱'
         | '无'
     );
+
+    type 泛范_界面元素之样式类名之配置<string或类名枚举 = string> = null | string或类名枚举 | Array<string或类名枚举?> | {
+        [cssClassName: string]: boolean | null | undefined;
+    };
+
+    type 范_交互项之三态勾选框_特征样式类名 = 泛范_界面元素之样式类名之配置<(
+        | '已禁止交互'
+        | '已勾选'
+        | '未勾选'
+        | '已部分勾选'
+    )>;
 
 
 
@@ -58,7 +73,7 @@ declare module Wlc双列互换数据 {
         乙列当下没有条目拟迁移至甲列: boolean;
     };
 
-    type 范_Wlc双列互换数据类之事件名称 = (
+    type 范_类范_Wlc任意两列互换数据之现成实用双列之事件名称 = (
         | '条目之分布已变动'
         | '已出错'
     );
@@ -79,7 +94,7 @@ declare module Wlc双列互换数据 {
 
 
 
-    type Wlc双列互换数据类_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
+    type 类范_Wlc任意两列互换数据之现成实用双列_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
         甲列之称谓: string;
         乙列之称谓: string;
         甲列之特征样式类名之配置?: 范_界面元素之样式类名之配置;
@@ -108,7 +123,7 @@ declare module Wlc双列互换数据 {
 
 
 
-    class Wlc双列互换数据类 extends Vue {
+    class 类范_Wlc任意两列互换数据之现成实用双列 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 

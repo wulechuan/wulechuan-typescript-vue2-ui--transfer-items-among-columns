@@ -35,6 +35,6 @@
         "src/**/*.vue",
         "tests/**/*.ts",
         "tests/**/*.tsx",
-        "node_modules/@wulechuan/vue2-ui--two-columns-exchange-items/"
+        "node_modules/@wulechuan/vue2-ui--columns-exchange-items/"
     ]
 }

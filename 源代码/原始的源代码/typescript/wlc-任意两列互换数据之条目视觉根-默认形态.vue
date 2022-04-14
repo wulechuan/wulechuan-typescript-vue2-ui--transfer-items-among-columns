@@ -1,17 +1,43 @@
 <template>
-    <span v-if="条目" class="吴乐川-任意两列互换数据之条目视觉根 默认形态">{{ 条目.在界面中的称谓 }}</span>
+    <div v-if="条目">
+        <span class="吴乐川-任意两列互换数据之条目视觉根 默认形态">{{ 条目.在界面中的称谓 }}</span>
+    </div>
 </template>
+
+
+
+
+
+
+
+
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-type 范_内用格式之条目 = Wlc双列互换数据.范_内用格式之条目;
+
+
+
+
+type 范_内用格式之条目 = Wlc任意两列互换数据.范_内用格式之条目;
+
+
+
+
 
 @Component({})
 export default class Wlc任意两列互换数据之条目视觉根之默认形态 extends Vue {
     @Prop() public readonly 条目?: 范_内用格式之条目
 }
 </script>
+
+
+
+
+
+
+
+
 
 <style lang="stylus">
 // 在多个 Vue 部件（ component ）中均加载某 .styl 文件时，

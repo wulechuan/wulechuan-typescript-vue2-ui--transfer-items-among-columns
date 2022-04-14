@@ -10,9 +10,21 @@
     </div>
 </template>
 
+
+
+
+
+
+
+
+
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import 应用总导航 from './布局专用部件库/应用总导航.vue'
+
+
+
+
 
 @Component({
     components: {
@@ -21,6 +33,14 @@ import 应用总导航 from './布局专用部件库/应用总导航.vue'
 })
 export default class Layout默认 extends Vue {}
 </script>
+
+
+
+
+
+
+
+
 
 <style lang="stylus">
 .页面布局-默认布局 {

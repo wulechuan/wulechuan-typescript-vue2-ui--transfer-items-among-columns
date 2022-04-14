@@ -1,6 +1,6 @@
-import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
+import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
 
-export interface 范_双列互换数据_实际条目 extends Wlc双列互换数据.范_基础条目 {
+export interface 范_双列互换数据_实际条目 extends Wlc任意两列互换数据.范_基础条目 {
     数据?: {
         描述?: string | string[];
         描述已呈现?: boolean;

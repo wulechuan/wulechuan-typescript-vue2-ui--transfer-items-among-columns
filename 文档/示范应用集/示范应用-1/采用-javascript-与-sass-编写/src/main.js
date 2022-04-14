@@ -1,4 +1,4 @@
-import '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/styles/完整样式表（可单独发行）/默认/0-基础.css'
+import '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/styles/完整样式表（可单独发行）/默认/0-基础.css'
 
 import Vue from 'vue'
 import 应用根 from './视图/应用根.vue'

@@ -4,15 +4,37 @@
 
 
 
+
+
+{identifiable_selector__list_single_item__root_container} {
+    padding 0
+    margin 0.1em 0
+}
+
+
+
+
+
+{identifiable_selector__list_single_item__visual_base} {
+    // 暂无内容。
+}
+
+
+
+
+
 {identifiable_selector__list_single_item__root} {
     user-select none
-    padding 0 0.1em 0 0.25em
-    margin 0.1em 0
-    
+
     &.已禁止选择 {
-        cursor not-allowed
+
+        {identifiable_selector__list_single_item__visual_base} {
+            cursor not-allowed
+        }
     }
 }
+
+
 
 
 

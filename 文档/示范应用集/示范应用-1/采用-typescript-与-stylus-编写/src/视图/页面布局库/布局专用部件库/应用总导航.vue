@@ -12,8 +12,20 @@
     </nav>
 </template>
 
+
+
+
+
+
+
+
+
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+
+
+
+
 
 export type 范_导航配置条目 = {
     内部名称: string;
@@ -27,6 +39,10 @@ export type 范_导航内部实用条目 = 范_导航配置条目 & {
     在界面中的称谓: string;
     在网页标题中的称谓: string;
 }
+
+
+
+
 
 @Component({})
 export default class App总导航 extends Vue {
@@ -92,6 +108,14 @@ export default class App总导航 extends Vue {
 }
 </script>
 
+
+
+
+
+
+
+
+
 <style lang="stylus">
 .应用总导航 {
     padding 0.75em 2.5em
@@ -112,6 +136,10 @@ export default class App总导航 extends Vue {
         list-style none
     }
 }
+
+
+
+
 
 .应用总导航-条目 {
     display block

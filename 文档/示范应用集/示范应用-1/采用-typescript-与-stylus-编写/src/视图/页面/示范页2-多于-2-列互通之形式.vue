@@ -57,17 +57,25 @@
     </div>
 </template>
 
+
+
+
+
+
+
+
+
 <script lang="ts">
 import { VueConstructor } from 'vue'
 import { Component, Vue } from 'vue-property-decorator'
 
-import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-任意两列互换数据之现成双列.vue'
-import Wlc任意两列互换数据之单列 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-任意两列互换数据之单列.vue'
+import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
+import Wlc任意两列互换数据之单列 from '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/typescript/wlc-任意两列互换数据之单列.vue'
 import Wlc任意两列互换数据之条目视觉根之自定义形态示范 from '@/视图/部件/wlc-任意两列互换数据之条目视觉根-自定义形态.vue'
 
 import {
     将某列选中的条目迁移至另一列,
-} from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/核心工具集'
+} from '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/typescript/核心工具集'
 
 import {
     一切可能的条目之列表,
@@ -83,16 +91,16 @@ import type {
 
 
 /* 一系列从部件引入的 “ 范（即通常所说的 ‘ 类型 ’ ）”。 */
-type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表;
-type 范_各列新增条目之插入规则 = Wlc双列互换数据.范_各列新增条目之插入规则;
-type 范_各列条目排序之函数 = Wlc双列互换数据.范_各列条目排序之函数;
+type 范_条目之唯一标识之列表 = Wlc任意两列互换数据.范_条目之唯一标识之列表;
+type 范_各列新增条目之插入规则 = Wlc任意两列互换数据.范_各列新增条目之插入规则;
+type 范_各列条目排序之函数 = Wlc任意两列互换数据.范_各列条目排序之函数;
 
 
 
 
 
 /* 本页专用的 “ 范（即通常所说的 ‘ 类型 ’ ）”。 */
-type 范_双列互换数据_实际完整形式之条目 = Wlc双列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目;
+type 范_双列互换数据_实际完整形式之条目 = Wlc任意两列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目;
 type 范_双列互换数据_实际完整形式之条目之列表 = Array<范_双列互换数据_实际完整形式之条目>;
 
 type 范_多列互换数据功能之数据 = {
@@ -131,6 +139,7 @@ type 范_多列互换数据功能之单列数据 = {
 
 
 
+
 const 一切可能的条目去重后之列表: 范_双列互换数据_实际条目之列表 = 一切可能的条目之列表.reduce((状态, 条目) => {
     const { 去重后的列表, 用以去重的辅助字典 } = 状态
     const { 唯一标识 } = 条目
@@ -155,7 +164,7 @@ const 一切可能的实用完整形式之条目之列表: 范_双列互换数�
     const 完整形式之条目: 范_双列互换数据_实际完整形式之条目 = {
         ...原始条目,
         已选中: false,
-        已禁止选择: false,
+        已禁止选择: !!原始条目.已禁止选择,
     }
 
     if (!完整形式之条目.数据) { 完整形式之条目.数据 = {} }
@@ -295,6 +304,14 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
     }
 }
 </script>
+
+
+
+
+
+
+
+
 
 <style lang="stylus">
 .页面--示范页2-多余-2-列互通之形式 {

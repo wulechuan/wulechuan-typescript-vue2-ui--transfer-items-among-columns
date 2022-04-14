@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/javascript/wlc-双列互换数据.vue'
+import Wlc双列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/javascript/wlc-任意两列互换数据之现成实用的双列.vue'
 import Wlc双列互换数据之条目之自定义形态示范 from '@/视图/部件/wlc-任意两列互换数据之条目视觉根-自定义形态.vue'
 
 import {
@@ -58,14 +58,14 @@ import {
 /* 一系列从部件引入的 “ 范（即通常所说的 ‘ 类型 ’ ）”。 */
 /** @typedef {import('../../数据/示范页之数据库').范_双列互换数据_实际条目} 范_双列互换数据_实际条目 */
 /** @typedef {Wlc双列互换数据.范_条目之唯一标识之列表} 范_条目之唯一标识之列表 */
-/** @typedef {Wlc双列互换数据.Wlc双列互换数据类} Wlc双列互换数据类 */
-/** @typedef {Wlc双列互换数据.Wlc双列互换数据类_实例可绑定之属性集<范_双列互换数据_实际条目>} Wlc双列互换数据类_实例可绑定之属性集 */
+/** @typedef {Wlc双列互换数据.类范_Wlc任意两列互换数据之现成实用双列} 类范_Wlc任意两列互换数据之现成实用双列 */
+/** @typedef {Wlc双列互换数据.类范_Wlc任意两列互换数据之现成实用双列_实例可绑定之属性集<范_双列互换数据_实际条目>} 类范_Wlc任意两列互换数据之现成实用双列_实例可绑定之属性集 */
 
 /* 本页专用的 “ 范（即通常所说的 ‘ 类型 ’ ）”。 */
 /**
  * @typedef {object} 范_示范页_双列互换数据功能配置集
  * @property {范_条目之唯一标识之列表} 当下已选购的条目之唯一标识之列表
- * @property {Wlc双列互换数据类_实例可绑定之属性集} 可成批自动绑定的属性
+ * @property {类范_Wlc任意两列互换数据之现成实用双列_实例可绑定之属性集} 可成批自动绑定的属性
  */
 
 /* 补齐可缺省之数据。 */

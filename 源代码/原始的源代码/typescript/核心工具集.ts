@@ -1,5 +1,16 @@
-type 范_内用格式之条目 = Wlc双列互换数据.范_内用格式之条目
-type 范_内用格式之条目之列表 = Wlc双列互换数据.范_内用格式之条目之列表
+import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
+
+
+
+
+
+// type 范_内用格式之条目 = Wlc任意两列互换数据.范_内用格式之条目
+type 范_内用格式之条目之列表 = Wlc任意两列互换数据.范_内用格式之条目之列表
+
+
+
+
+
 
 export function 将某列选中的条目迁移至另一列 (
     迁移前起列所有条目之列表?: 范_内用格式之条目之列表,

@@ -43,6 +43,14 @@
     </div>
 </template>
 
+
+
+
+
+
+
+
+
 <script lang="ts">
 import { Vue, Component, Prop, Model } from 'vue-property-decorator'
 
@@ -50,9 +58,17 @@ import {
     将变量值稳妥地映射成规定的样式类名,
 } from './辅助工具集'
 
-type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置;
-type 范_信息文本块_配色方案之名称 = Wlc双列互换数据.范_信息文本块_配色方案之名称;
-type 范_信息文本块_标准配色方案之磨砂玻璃效果之名称 = Wlc双列互换数据.范_信息文本块_标准配色方案之磨砂玻璃效果之名称;
+
+
+
+
+type 范_界面元素之样式类名之配置 = Wlc任意两列互换数据.泛范_界面元素之样式类名之配置<string>;
+type 范_信息文本块_配色方案之名称 = Wlc任意两列互换数据.范_信息文本块_配色方案之名称;
+type 范_信息文本块_标准配色方案之磨砂玻璃效果之名称 = Wlc任意两列互换数据.范_信息文本块_标准配色方案之磨砂玻璃效果之名称;
+
+
+
+
 
 @Component({})
 export default class Wlc任意两列互换数据之单列之说明书 extends Vue {
@@ -121,6 +137,14 @@ export default class Wlc任意两列互换数据之单列之说明书 extends Vu
     }
 }
 </script>
+
+
+
+
+
+
+
+
 
 <style lang="stylus">
 // 在多个 Vue 部件（ component ）中均加载某 .styl 文件时，

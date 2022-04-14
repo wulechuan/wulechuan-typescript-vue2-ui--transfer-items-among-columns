@@ -1,12 +1,12 @@
 <template>
-    <div class="吴乐川-任意两列互换数据之条目视觉根-自定义形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
+    <div class="条目根-在该范例中的订制形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
         <div class="吴乐川-任意两列互换数据之条目视觉根">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
                 <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
             </span>
             <span class="输入项配文">{{ 条目_最终采纳值.在界面中的称谓 }}</span>
-            <span class="自适应占位器"></span>
+            <span class="位于中央的宽度自调节之占位器"></span>
             <button class="详情内容块开关按钮" @click.stop="条目_最终采纳值.数据.描述已呈现 = !条目_最终采纳值.数据.描述已呈现">解释</button>
         </div>
 
@@ -27,17 +27,33 @@
     </div>
 </template>
 
+
+
+
+
+
+
+
+
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-import type Wlc双列互换数据 from '@wulechuan/vue2-ui--two-columns-exchange-items/源代码/发布的源代码/typescript/wlc-双列互换数据.vue'
+import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
 
 import type {
     范_双列互换数据_实际条目,
 } from '../../数据/示范页之数据库'
 
-type 范_双列互换数据_内用格式之实际条目 = Wlc双列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目;
-type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置;
+
+
+
+
+type 范_双列互换数据_内用格式之实际条目 = Wlc任意两列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目;
+type 范_界面元素之样式类名之配置 = Wlc任意两列互换数据.泛范_界面元素之样式类名之配置<string>;
+
+
+
+
 
 @Component({})
 export default class Wlc任意两列互换数据之条目视觉根之自定义形态示范 extends Vue {
@@ -101,8 +117,16 @@ export default class Wlc任意两列互换数据之条目视觉根之自定义�
 }
 </script>
 
+
+
+
+
+
+
+
+
 <style lang="stylus">
-.吴乐川-任意两列互换数据之条目视觉根-自定义形态 {
+.条目根-在该范例中的订制形态 {
     border-radius 0.25em
     overflow hidden
 
@@ -116,8 +140,9 @@ export default class Wlc任意两列互换数据之条目视觉根之自定义�
         display flex
         flex-direction row
         align-items flex-start
+        padding 0.3em 0.5em
 
-        .自适应占位器 {
+        .位于中央的宽度自调节之占位器 {
             flex 10 10 auto
         }
     }

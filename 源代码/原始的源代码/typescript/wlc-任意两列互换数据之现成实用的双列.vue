@@ -1,5 +1,5 @@
 <template>
-    <div class="吴乐川-任意两列互换数据之现成双列">
+    <div class="吴乐川-任意两列互换数据之现成实用的双列">
         <header class="总标题栏">
             <slot name="界面皿-总标题栏" v-bind="用于各界面皿之状态集"></slot>
         </header>
@@ -114,6 +114,14 @@
     </div>
 </template>
 
+
+
+
+
+
+
+
+
 <script lang="ts">
 import { VueConstructor } from 'vue'
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
@@ -128,16 +136,20 @@ import {
     将某列选中的条目迁移至另一列,
 } from './核心工具集'
 
-type 范_界面元素之样式类名之配置 = Wlc双列互换数据.范_界面元素之样式类名之配置;
 
-type 范_条目之唯一标识之列表 = Wlc双列互换数据.范_条目之唯一标识之列表;
-type 范_基础条目之列表 = Wlc双列互换数据.范_基础条目之列表;
-type 范_内用格式之条目 = Wlc双列互换数据.范_内用格式之条目;
-type 范_内用格式之条目之列表 = Wlc双列互换数据.范_内用格式之条目之列表;
 
-type 范_状态汇总数据 = Wlc双列互换数据.范_状态汇总数据;
-type 范_各列新增条目之插入规则 = Wlc双列互换数据.范_各列新增条目之插入规则;
-type 范_各列条目排序之函数 = Wlc双列互换数据.范_各列条目排序之函数;
+
+
+type 范_界面元素之样式类名之配置 = Wlc任意两列互换数据.泛范_界面元素之样式类名之配置<string>;
+
+type 范_条目之唯一标识之列表 = Wlc任意两列互换数据.范_条目之唯一标识之列表;
+type 范_基础条目之列表 = Wlc任意两列互换数据.范_基础条目之列表;
+type 范_内用格式之条目 = Wlc任意两列互换数据.范_内用格式之条目;
+type 范_内用格式之条目之列表 = Wlc任意两列互换数据.范_内用格式之条目之列表;
+
+type 范_状态汇总数据 = Wlc任意两列互换数据.范_状态汇总数据;
+type 范_各列新增条目之插入规则 = Wlc任意两列互换数据.范_各列新增条目之插入规则;
+type 范_各列条目排序之函数 = Wlc任意两列互换数据.范_各列条目排序之函数;
 
 type 范_单列之内部数据集 = {
     所有条目之列表: 范_内用格式之条目之列表;
@@ -145,12 +157,16 @@ type 范_单列之内部数据集 = {
     当下正在通过视觉强调动画引导用户: boolean;
 };
 
+
+
+
+
 @Component({
     components: {
         Wlc任意两列互换数据之单列,
     },
 })
-export default class Wlc任意两列互换数据之现成双列 extends Vue {
+export default class Wlc任意两列互换数据之现成实用的双列 extends Vue {
     @Model('条目之分布已变动') public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
     @Prop() public readonly 甲列之称谓?: string
@@ -511,6 +527,14 @@ export default class Wlc任意两列互换数据之现成双列 extends Vue {
 }
 </script>
 
+
+
+
+
+
+
+
+
 <style lang="stylus">
 // 在多个 Vue 部件（ component ）中均加载某 .styl 文件时，
 // 即便采用 @require 语句而非 @import 语句，也无法避免该 .styl 文件之内容
@@ -521,6 +545,6 @@ export default class Wlc任意两列互换数据之现成双列 extends Vue {
 // 否则，非但 css 会有重复内容，且重复加载的 css 内容其相对于其他 css 内容之顺序也不能确保正确。
 // 目前推荐的做法是，始终提醒本工具之使用者在 Vue 的 `main.ts` 或 `main.js` 中加载**两**个 `0-基础.styl` 文件。
 
-@import '../stylus/仅尺寸与排版与关键行为（亦可单独发行）/默认/2-现成的双列之组合.styl'
-@import '../stylus/仅着色与装饰（亦可单独发行）/默认/2-现成的双列之组合.styl'
+@import '../stylus/仅尺寸与排版与关键行为（亦可单独发行）/默认/2-现成实用的双列.styl'
+@import '../stylus/仅着色与装饰（亦可单独发行）/默认/2-现成实用的双列.styl'
 </style>

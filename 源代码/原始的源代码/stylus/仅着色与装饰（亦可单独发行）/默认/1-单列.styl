@@ -5,14 +5,41 @@
 
 
 
-{identifiable_selector__list_single_item__root} {
+
+
+{identifiable_selector__list_single_item__root_container} {
     background-color transparent
+}
+
+
+
+
+
+{identifiable_selector__list_single_item__visual_base} {
+
+    MIXIN_transition_colors_and_shades()
+
+    & {
+        border-radius 0.2em
+        background-color transparent
+
+        &:hover {
+            background-color 'var(%s)' % unquote(css_var_name__element_non_highlighting_color_hover)
+        }
+    }
+
+}
+
+
+
+
+
+{identifiable_selector__list_single_item__root} {
 
     &.已选中 {
 
         {identifiable_selector__list_single_item__visual_base} {
             color white
-            // background-color #777
             background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
 
             &:hover {
@@ -31,6 +58,8 @@
         }
     }
 }
+
+
 
 
 
