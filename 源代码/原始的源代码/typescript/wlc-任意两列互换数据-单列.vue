@@ -1,5 +1,5 @@
 <template>
-    <div class="吴乐川-任意两列互换数据之单列" :class="本列之特征样式类名之配置" @click="每当根元素点击后($event)">
+    <div class="吴乐川-任意两列互换数据-单列" :class="本列之特征样式类名之配置" @click="每当根元素点击后($event)">
         <header class="列首">
             <div class="列标题栏">
                 <slot name="界面皿-标题栏">
@@ -114,14 +114,14 @@
                 <li
                     v-for="采取内用格式之条目 in 当下列示着的所有条目之列表"
                     :key="采取内用格式之条目.唯一标识"
-                    class="吴乐川-任意两列互换数据之条目皿"
+                    class="吴乐川-任意两列互换数据-条目皿"
                     :class="求某条目之样式类名集_其皿元素(采取内用格式之条目)"
                 >
                     <component
                         :key="采取内用格式之条目.唯一标识"
                         :is="部件构造函数之自定义主表条目_最终采纳值"
                         :条目="采取内用格式之条目"
-                        class="吴乐川-任意两列互换数据之条目根"
+                        class="吴乐川-任意两列互换数据-条目根"
                         :class="求某条目之样式类名集_其根元素(采取内用格式之条目)"
                         @click.native="每当点击某条目后(采取内用格式之条目, $event)"
                     ></component>
@@ -152,8 +152,8 @@
 import { VueConstructor } from 'vue'
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-import Wlc任意两列互换数据之条目视觉根之默认形态 from './wlc-任意两列互换数据之条目视觉根-默认形态.vue'
-import Wlc任意两列互换数据之单列之说明书 from './wlc-任意两列互换数据之单列-说明书.vue'
+import Wlc任意两列互换数据之条目视觉根之默认形态 from './wlc-任意两列互换数据-条目之视觉根-默认形态.vue'
+import Wlc任意两列互换数据之单列之说明书 from './wlc-任意两列互换数据-单列之说明书.vue'
 
 import {
     求可靠的文本,

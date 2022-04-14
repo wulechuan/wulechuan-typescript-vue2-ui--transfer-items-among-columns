@@ -1,0 +1,49 @@
+@require '../../_通用变量集_'
+@require './可重用代码块之集'
+
+// Stylus 语言的变量名不允许采用汉字！
+
+
+
+
+
+// 【两列之间之默认竖栏】。
+{identifiable_selector__default_center_column_between_2_list_columns__root} {
+
+    box-sizing border-box
+    padding 19em 0.5em 3em
+
+    border-style solid
+    border-width 'var(%s)' % unquote(css_var_name__chief_blocks_border_width)
+    border-left-width 0
+    border-right-width 0
+
+    display flex
+    flex-direction column
+    justify-content flex-start
+    align-items center
+    box-sizing border-box
+
+    hr.仅用于样式表缺失之情形 {
+        display none
+    }
+
+    .功能单体-主体为按钮 {
+        display block
+        margin 0.75em auto
+        position relative
+
+        .迁移条目之按钮 {
+            font-size 1.25em
+            margin 0
+        }
+
+        .迁移条目之按钮--甲列至乙列.样式应做特别调整 {
+            padding-left 0.75em
+        }
+
+        .迁移条目之按钮--乙列至甲列.样式应做特别调整 {
+            padding-left 0.25em
+        }
+    }
+}

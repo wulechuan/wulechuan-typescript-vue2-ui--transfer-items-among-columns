@@ -358,7 +358,7 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
         overflow auto
     }
 
-    .吴乐川-任意两列互换数据之单列 {
+    .吴乐川-任意两列互换数据-单列 {
         flex 0 0 20em
 
         .列标题栏 {

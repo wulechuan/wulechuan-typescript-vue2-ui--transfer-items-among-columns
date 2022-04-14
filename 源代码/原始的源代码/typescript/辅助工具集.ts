@@ -1,3 +1,19 @@
+export function 求可靠的数字 (原始值: any): number {
+    let 拟采纳值: number = NaN
+
+    if (typeof 原始值 === 'number') {
+        拟采纳值 = 原始值
+    } else if (typeof 原始值 === 'string' && 原始值.trim()) {
+        拟采纳值 = +原始值.trim()
+    }
+
+    return 拟采纳值
+}
+
+
+
+
+
 export function 求可靠的文本 (原始值: any, 默认值: string, 原始值为空白字符串视为有效?: boolean): string {
     let 拟采纳值: string
 

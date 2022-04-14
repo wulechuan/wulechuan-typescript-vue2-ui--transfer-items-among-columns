@@ -42,7 +42,7 @@
 
 
 // 【单列之说明书】。
-{identifiable_selector__single_column_readme__root} {
+{identifiable_selector__single_list_column_readme__root} {
     position relative
     perspective 15em
 
@@ -56,11 +56,10 @@
 
         animation-duration 0.45s
         animation-timing-function linear
-        // animation-iteration-count infinite
 
         // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
-        animation-name wulechuan-dual-columns-exchange-data--list-readme-panel--presents
-        animation-name unquote('吴乐川-任意两列互换数据之单列--动画--条目列表说明书--出现')
+        // animation-name wulechuan-columns-exchange-items--list-column-readme-panel--presents
+        animation-name unquote('吴乐川-任意两列互换数据-动画--单列之说明书--出现')
         @keyframes {@animation-name} {
             0%   {
                 transform: rotateX(-27deg) translateY(180%) translateZ(-2.8em) scaleX(86%);
@@ -104,7 +103,7 @@
 
 
 // 【单列】。
-{identifiable_selector__single_column__root} {
+{identifiable_selector__single_list_column__root} {
     display flex
     overflow hidden
     flex-direction column
@@ -297,7 +296,7 @@
             font-size 0.8em
         }
 
-        {identifiable_selector__single_column_readme__root} {
+        {identifiable_selector__single_list_column_readme__root} {
             z-index 50
             position absolute
             top auto
