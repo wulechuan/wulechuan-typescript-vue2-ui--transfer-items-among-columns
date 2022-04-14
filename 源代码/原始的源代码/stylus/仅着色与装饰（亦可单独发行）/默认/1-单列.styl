@@ -7,14 +7,8 @@
 
 
 
-{identifiable_selector__list_single_item__root_container} {
-    background-color transparent
-}
 
-
-
-
-
+// 【主表条目之视觉根】。
 {identifiable_selector__list_single_item__visual_base} {
 
     MIXIN_transition_colors_and_shades()
@@ -27,13 +21,13 @@
             background-color 'var(%s)' % unquote(css_var_name__element_non_highlighting_color_hover)
         }
     }
-
 }
 
 
 
 
 
+// 【主表条目根】。
 {identifiable_selector__list_single_item__root} {
 
     &.已选中 {
@@ -63,6 +57,25 @@
 
 
 
+// 【主表条目皿】。
+{identifiable_selector__list_single_item__root_container} {
+    background-color transparent
+}
+
+
+
+
+
+// 【单列之说明书】。
+{identifiable_selector__single_column_readme__root} {
+    // 暂无内容。
+}
+
+
+
+
+
+// 【单列】。
 {identifiable_selector__single_column__root} {
 
     .列首 {
