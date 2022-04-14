@@ -10,7 +10,7 @@
         "test": "测试集",
         "doc": "文档"
     },
-    "main": "源代码/发布的源代码/typescript/wlc-任意两列互换数据之现成实用的双列.vue",
+    "main": "源代码/发布的源代码/typescript/index.ts",
     "scripts": {
         "检验以下代码：须发布的文件": "eslint  --fix  ./源代码/发布的源代码/**/*.vue  ./源代码/发布的源代码/**/*.js",
         "检验以下代码：原始的源文件": "eslint  --fix  ./源代码/原始的源代码/**/*.vue  ./源代码/原始的源代码/**/*.ts  ./gulpfile.esm.js/**/*",

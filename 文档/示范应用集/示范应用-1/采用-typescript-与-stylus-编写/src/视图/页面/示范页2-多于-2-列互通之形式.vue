@@ -69,8 +69,10 @@
 import { VueConstructor } from 'vue'
 import { Component, Vue } from 'vue-property-decorator'
 
-import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
-import Wlc任意两列互换数据之单列 from '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/typescript/wlc-任意两列互换数据之单列.vue'
+import Wlc任意两列互换数据, {
+    Wlc任意两列互换数据之单列,
+} from '@wulechuan/vue2-ui--columns-exchange-items'
+
 import Wlc任意两列互换数据之条目视觉根之自定义形态示范 from '@/视图/部件/wlc-任意两列互换数据之条目视觉根-自定义形态.vue'
 
 import {

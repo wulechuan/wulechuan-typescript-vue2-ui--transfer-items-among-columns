@@ -1,4 +1,4 @@
-import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
+// import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
 
 
 
@@ -6,7 +6,6 @@ import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchan
 
 // type 范_内用格式之条目 = Wlc任意两列互换数据.范_内用格式之条目
 type 范_内用格式之条目之列表 = Wlc任意两列互换数据.范_内用格式之条目之列表
-
 
 
 
