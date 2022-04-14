@@ -491,6 +491,6 @@ export default class Wlc任意两列互换数据之现成实用的双列 extends
 // 否则，非但 css 会有重复内容，且重复加载的 css 内容其相对于其他 css 内容之顺序也不能确保正确。
 // 目前推荐的做法是，始终提醒本工具之使用者在 Vue 的 `main.ts` 或 `main.js` 中加载**两**个 `0-基础.styl` 文件。
 
-@import '../stylus/仅尺寸与排版与关键行为（亦可单独发行）/默认/2-现成实用的双列.styl'
-@import '../stylus/仅着色与装饰（亦可单独发行）/默认/2-现成实用的双列.styl'
+@import '../stylus/仅尺寸与排版与关键行为/默认/2-现成实用的双列.styl'
+@import '../stylus/仅着色与装饰/默认/2-现成实用的双列.styl'
 </style>

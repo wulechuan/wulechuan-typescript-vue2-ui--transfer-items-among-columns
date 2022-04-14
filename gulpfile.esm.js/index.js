@@ -219,7 +219,7 @@ const 任务闭环之将所有独立于Vue文件的Stylus文件各自编译成Cs
 
         relativeGlobsSpecificallyForThisTaskCycle: [
             // '_通用变量集_/*.styl',
-            // '完整样式表（可单独发行）/默认/*.styl',
+            // '完整样式表/默认/*.styl',
             '**/*.styl',
         ],
 
