@@ -35,16 +35,18 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 import {
-    Wlc任意两列互换数据之现成实用的双列,
     范_条目之唯一标识之列表,
+
+    Wlc任意两列互换数据之现成实用的双列,
 } from '@wulechuan/vue2-ui--columns-exchange-items'
 
 import Wlc任意两列互换数据之条目视觉根之自定义形态示范 from '@/视图/部件/wlc-任意两列互换数据之条目视觉根-自定义形态.vue'
 
 import {
-    一切可能的条目之列表,
     范_双列互换数据_实际条目,
     范_双列互换数据_实际条目之列表,
+
+    一切可能的条目之列表,
 } from '../../数据/示范页之数据库'
 
 
