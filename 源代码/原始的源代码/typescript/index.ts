@@ -8,5 +8,3 @@ export * from './wlc-任意两列互换数据之单列.vue'
 export * from './wlc-任意两列互换数据之单列-说明书.vue'
 export * from './wlc-任意两列互换数据之条目视觉根-默认形态.vue'
 export * from './wlc-任意两列互换数据之现成实用的双列.vue'
-
-// export default {}

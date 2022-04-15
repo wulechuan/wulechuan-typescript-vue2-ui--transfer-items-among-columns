@@ -10,7 +10,7 @@
         "test": "测试集",
         "doc": "文档"
     },
-    "types": "./源代码/types/index.d.ts",
+    "types": "./源代码/发布的源代码/typescript/index.d.ts",
     "main": "./源代码/发布的源代码/typescript/index.ts",
     "scripts": {
         "检验以下代码：须发布的文件": "eslint  --fix  ./源代码/发布的源代码/**/*.vue  ./源代码/发布的源代码/**/*.js",
