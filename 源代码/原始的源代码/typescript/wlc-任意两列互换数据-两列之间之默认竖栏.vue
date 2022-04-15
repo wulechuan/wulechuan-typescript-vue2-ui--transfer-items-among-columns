@@ -72,12 +72,6 @@ export default class Wlc任意两列互换数据之两列之间之默认竖栏 e
 
 
 
-    // private 日志前缀: string = 'Vue 部件 <Wlc任意两列互换数据之两列之间之默认竖栏> ：'
-
-
-
-
-
     private get 按钮上的措辞_将条目从甲列迁移至乙列_最终采纳值 (): string {
         return 求可靠的文本(this.按钮上的措辞_将条目从甲列迁移至乙列, '▶', false)
     }
