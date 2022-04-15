@@ -5,7 +5,9 @@
         </header>
 
         <div class="页面布局之主体">
-            <router-view></router-view>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </div>
     </div>
 </template>
