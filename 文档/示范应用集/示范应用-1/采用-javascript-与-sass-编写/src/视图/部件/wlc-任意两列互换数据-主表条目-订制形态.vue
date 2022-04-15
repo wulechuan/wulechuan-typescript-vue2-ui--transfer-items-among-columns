@@ -56,7 +56,7 @@ import {
 
 
 export default {
-    name: 'Wlc任意两列互换数据之条目视觉根之自定义形态示范',
+    name: 'Wlc任意两列互换数据_主表条目_订制形态',
 
     props: {
         /** @type {范_双列互换数据_内用格式之实际条目} */

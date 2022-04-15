@@ -1,5 +1,6 @@
 /// <reference types="vue" />
 type VueConstructor = Vue.VueConstructor
+type VueConstructorOptions = Vue.ComponentOptions<Vue>
 
 
 
@@ -115,6 +116,8 @@ declare namespace Wlc任意两列互换数据 {
 
     type 范_各列条目排序之函数 = (甲: 范_基础条目, 乙: 范_基础条目) => number;
 
+    type 范_Vue动态部件之Is属性可接受的数据 = VueConstructor | VueConstructorOptions | string;
+
 
 
 
@@ -134,7 +137,7 @@ declare namespace Wlc任意两列互换数据 {
         public readonly 本列初始的用以过滤条目之配置?: string | RegExp
         public readonly 当下另有他列优先于本列采取视觉强调引导用户操作之?: boolean
         public readonly 不应创建底部栏目?: boolean
-        public readonly 部件构造函数之自定义主表条目?: VueConstructor
+        public readonly vue部件之定义_订制的主表条目?: 范_Vue动态部件之Is属性可接受的数据
 
         // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
@@ -148,7 +151,6 @@ declare namespace Wlc任意两列互换数据 {
         private 最末经由交互动作改变其选中之状态之条目: 范_内用格式之条目 | null
         private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null
         private 应呈现列表操作说明书: boolean
-        private 部件构造函数之自定义主表条目_最终采纳值: VueConstructor
 
         // -------- 衍生数据 --------------------------------
         private get 应全面禁止交互_最终采纳值 (): boolean
@@ -169,8 +171,9 @@ declare namespace Wlc任意两列互换数据 {
         private get 当下已选中的所有条目_仅列示的条目_之列表 (): 范_内用格式之条目之列表
         private get 条目过滤器文本输入框元素之样式类名配置 (): 泛范_界面元素之样式类名之配置
         private get 当下有否视觉强调动画之结论 (): boolean
-        private get 与选中所有条目_含隐藏之条目_之交互相关的汇总数据 ()
-        private get 与选中所有条目_仅列示之条目_之交互相关的汇总数据 ()
+        private get 与选中所有条目_含隐藏之条目_之交互相关的汇总数据 (): Wlc任意两列互换数据之单列.范_与选中所有条目之交互相关的汇总数据
+        private get 与选中所有条目_仅列示之条目_之交互相关的汇总数据 (): Wlc任意两列互换数据之单列.范_与选中所有条目之交互相关的汇总数据
+        private get vue部件之定义_订制的主表条目_最终采纳值(): 范_Vue动态部件之Is属性可接受的数据
 
         // -------- @Watch 数据变动之处理程序 ----------------
         private 每当外界给出的所有条目之列表变动后 (): void
@@ -181,7 +184,7 @@ declare namespace Wlc任意两列互换数据 {
         private 根据外界给出的条件构建实用的条目总表 (本次原因: Wlc任意两列互换数据之单列.范_构建实用的条目总表_发起之原因): Promise<boolean>
         private 求某条目之样式类名集_其皿元素 (条目: 范_内用格式之条目): 泛范_界面元素之样式类名之配置
         private 求某条目之样式类名集_其根元素 (条目: 范_内用格式之条目): 泛范_界面元素之样式类名之配置
-        private 求与选中所有条目之交互相关的汇总数据 (本次统计时应将暂不可见的条目一并计入?: boolean)
+        private 求与选中所有条目之交互相关的汇总数据 (本次统计时应将暂不可见的条目一并计入?: boolean): Wlc任意两列互换数据之单列.范_与选中所有条目之交互相关的汇总数据
         private 选中或取消选中一系列列示着的条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
         private 选中或取消选中一系列条目_含隐藏之条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
         private 选中或取消选中一系列条目 (应考察的所有条目之列表?: 范_内用格式之条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
@@ -221,7 +224,7 @@ declare namespace Wlc任意两列互换数据 {
                 本列初始的用以过滤条目之配置: null | string | RegExp;
                 当下另有他列优先于本列采取视觉强调引导用户操作之: null | boolean;
                 不应创建底部栏目: null | boolean;
-                部件构造函数之自定义主表条目: null | VueConstructor;
+                vue部件之定义_订制的主表条目: null | 范_Vue动态部件之Is属性可接受的数据;
             };
         };
 
@@ -234,6 +237,23 @@ declare namespace Wlc任意两列互换数据 {
             | '所有条目之列表变动'
             | '当下选中的所有条目之唯一标识之列表变动'
         );
+
+        type 范_交互项之界面措辞 = (
+            | '--'
+            | '无可勾选项'
+            | '选中所有条目（含未列示条目）'
+            | '选中所有条目（仅列示条目）'
+            | '清除所有选择（含未列示条目）'
+            | '清除所有选择（仅列示条目）'
+        );
+
+        type 范_与选中所有条目之交互相关的汇总数据 = {
+            交互项之界面措辞: 范_交互项之界面措辞;
+            应禁止交互: boolean;
+            三态勾选框之状态值: 范_三态勾选框之状态值;
+            交互项之特征样式类名_其根元素: '已勾选' | '已部分勾选' | '未勾选' | '已禁止交互';
+            交互项之特征样式类名_其勾选项之根元素: '已勾选' | '已部分勾选' | '未勾选' | '已禁止交互';
+        };
     }
 
 
@@ -353,7 +373,7 @@ declare namespace Wlc任意两列互换数据 {
         public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
         public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
 
-        public readonly 部件构造函数之自定义主表条目?: VueConstructor
+        public readonly vue部件之定义_订制的主表条目?: 范_Vue动态部件之Is属性可接受的数据
 
         // -------- 公开行为 --------------------------------
         public 将甲列选中的条目迁移至乙列 (调用者?: Vue): void
@@ -421,7 +441,7 @@ declare namespace Wlc任意两列互换数据 {
             甲列初始的用以过滤条目之配置?: string | RegExp;
             乙列初始的用以过滤条目之配置?: string | RegExp;
 
-            部件构造函数之自定义主表条目?: VueConstructor;
+            vue部件之定义_订制的主表条目?: 范_Vue动态部件之Is属性可接受的数据;
         };
 
         type 范_事件名称 = (

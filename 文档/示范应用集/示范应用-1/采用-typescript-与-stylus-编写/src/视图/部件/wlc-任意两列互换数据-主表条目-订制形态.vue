@@ -56,7 +56,7 @@ type 范_界面元素之样式类名之配置 = Wlc任意两列互换数据.泛�
 
 
 @Component({})
-export default class Wlc任意两列互换数据之条目视觉根之自定义形态示范 extends Vue {
+export default class Wlc任意两列互换数据_主表条目_订制形态 extends Vue {
     @Prop() public 条目?: 范_双列互换数据_内用格式之实际条目
 
 

@@ -18,7 +18,7 @@
                 :本列初始的用以过滤条目之配置="甲列初始的用以过滤条目之配置"
                 :当下另有他列优先于本列采取视觉强调引导用户操作之="false"
                 :不应创建底部栏目="各列均不应创建底部栏目"
-                :部件构造函数之自定义主表条目="部件构造函数之自定义主表条目"
+                :vue部件之定义_订制的主表条目="vue部件之定义_订制的主表条目"
                 @内部某元素之视觉强调之状态已变动="甲列之数据集.当下正在通过视觉强调动画引导用户 = $event"
             ></Wlc任意两列互换数据之单列>
 
@@ -47,7 +47,7 @@
                 :本列初始的用以过滤条目之配置="乙列初始的用以过滤条目之配置"
                 :当下另有他列优先于本列采取视觉强调引导用户操作之="甲列之数据集.当下正在通过视觉强调动画引导用户"
                 :不应创建底部栏目="各列均不应创建底部栏目"
-                :部件构造函数之自定义主表条目="部件构造函数之自定义主表条目"
+                :vue部件之定义_订制的主表条目="vue部件之定义_订制的主表条目"
                 @内部某元素之视觉强调之状态已变动="乙列之数据集.当下正在通过视觉强调动画引导用户 = $event"
             ></Wlc任意两列互换数据之单列>
         </div>
@@ -99,7 +99,6 @@
 
 
 <script lang="ts">
-import { VueConstructor } from 'vue'
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
 import Wlc任意两列互换数据之单列 from './wlc-任意两列互换数据-单列.vue'
@@ -128,6 +127,8 @@ type 范_状态汇总数据 = Wlc任意两列互换数据.范_状态汇总数据
 type 范_各列新增条目之插入规则 = Wlc任意两列互换数据.范_各列新增条目之插入规则;
 type 范_各列条目排序之函数 = Wlc任意两列互换数据.范_各列条目排序之函数;
 
+type 范_Vue动态部件之Is属性可接受的数据 = Wlc任意两列互换数据.范_Vue动态部件之Is属性可接受的数据;
+
 type 范_单列之内部数据集 = Wlc任意两列互换数据.Wlc任意两列互换数据之现成实用的双列.范_单列之内部数据集;
 
 
@@ -145,7 +146,7 @@ export default class Wlc任意两列互换数据之现成实用的双列 extends
 
 
 
-    @Prop() public readonly 应全面禁止交互?: boolean // TODO
+    @Prop() public readonly 应全面禁止交互?: boolean
 
     @Prop() public readonly 甲列之称谓?: string
     @Prop() public readonly 乙列之称谓?: string
@@ -168,7 +169,7 @@ export default class Wlc任意两列互换数据之现成实用的双列 extends
     @Prop() public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
     @Prop() public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
 
-    @Prop() public readonly 部件构造函数之自定义主表条目?: VueConstructor
+    @Prop() public readonly vue部件之定义_订制的主表条目?: 范_Vue动态部件之Is属性可接受的数据
 
 
 

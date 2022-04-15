@@ -119,7 +119,7 @@
                 >
                     <component
                         :key="采取内用格式之条目.唯一标识"
-                        :is="部件构造函数之自定义主表条目_最终采纳值"
+                        :is="vue部件之定义_订制的主表条目_最终采纳值"
                         :条目="采取内用格式之条目"
                         class="吴乐川-任意两列互换数据-条目根"
                         :class="求某条目之样式类名集_其根元素(采取内用格式之条目)"
@@ -149,7 +149,6 @@
 
 
 <script lang="ts">
-import { VueConstructor } from 'vue'
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
 import Wlc任意两列互换数据之条目视觉根之默认形态 from './wlc-任意两列互换数据-条目之视觉根-默认形态.vue'
@@ -176,6 +175,8 @@ type 范_内用格式之条目之列表 = Wlc任意两列互换数据.范_内用
 
 type 范_各列新增条目之插入规则 = Wlc任意两列互换数据.范_各列新增条目之插入规则;
 type 范_各列条目排序之函数 = Wlc任意两列互换数据.范_各列条目排序之函数;
+
+type 范_Vue动态部件之Is属性可接受的数据 = Wlc任意两列互换数据.范_Vue动态部件之Is属性可接受的数据;
 
 const 构建实用的条目总表_发起之原因_所有条目之列表已变动 = '所有条目之列表变动'
 const 构建实用的条目总表_发起之原因_当下选中的所有条目之唯一标识之列表已变动 = '当下选中的所有条目之唯一标识之列表变动'
@@ -221,7 +222,7 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
     @Prop() public readonly 本列初始的用以过滤条目之配置?: string | RegExp
     @Prop() public readonly 当下另有他列优先于本列采取视觉强调引导用户操作之?: boolean
     @Prop() public readonly 不应创建底部栏目?: boolean
-    @Prop() public readonly 部件构造函数之自定义主表条目?: VueConstructor
+    @Prop() public readonly vue部件之定义_订制的主表条目?: 范_Vue动态部件之Is属性可接受的数据
 
 
 
@@ -236,7 +237,6 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
     private 最末经由交互动作改变其选中之状态之条目: 范_内用格式之条目 | null = null
     private 最末经由交互动作改变其选中之状态之条目_系选中之: boolean | null = null
     private 应呈现列表操作说明书: boolean = false
-    private 部件构造函数之自定义主表条目_最终采纳值: VueConstructor = Wlc任意两列互换数据之条目视觉根之默认形态
 
 
 
@@ -374,6 +374,16 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
 
     private get 与选中所有条目_仅列示之条目_之交互相关的汇总数据 () {
         return this.求与选中所有条目之交互相关的汇总数据(false)
+    }
+
+    private get vue部件之定义_订制的主表条目_最终采纳值 (): 范_Vue动态部件之Is属性可接受的数据 {
+        const { vue部件之定义_订制的主表条目 } = this
+
+        if (vue部件之定义_订制的主表条目 && [ 'function', 'object' ].includes(typeof vue部件之定义_订制的主表条目)) {
+            return vue部件之定义_订制的主表条目
+        } else {
+            return Wlc任意两列互换数据之条目视觉根之默认形态
+        }
     }
 
 
@@ -846,10 +856,6 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
             this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置.toString()
         } else if (typeof 本列初始的用以过滤条目之配置 === 'string') {
             this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置
-        }
-
-        if (typeof this.部件构造函数之自定义主表条目 === 'function') {
-            this.部件构造函数之自定义主表条目_最终采纳值 = this.部件构造函数之自定义主表条目
         }
     }
 }
