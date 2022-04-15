@@ -358,9 +358,9 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
 
         h3 {
             flex 1 1 auto
-            font-size: 2rem
-            text-align: center
-            margin: 0 1em
+            font-size 2rem
+            text-align center
+            margin 0 1em
             padding 1rem
         }
 
