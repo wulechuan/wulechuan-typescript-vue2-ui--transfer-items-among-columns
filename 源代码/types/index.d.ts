@@ -9,11 +9,81 @@ declare module '@wulechuan/vue2-ui--columns-exchange-items' {
 
 
 declare namespace Wlc任意两列互换数据 {
-    // import _Wlc任意两列互换数据之单列 from '../发布的源代码/typescript/wlc-任意两列互换数据-单列.vue'
-    // import _Wlc任意两列互换数据之单列之说明书 from '../发布的源代码/typescript/wlc-任意两列互换数据-单列之说明书.vue'
-    // import _Wlc任意两列互换数据之两列之间之默认竖栏 from '../发布的源代码/typescript/wlc-任意两列互换数据-两列之间之默认竖栏.vue'
-    // import _Wlc任意两列互换数据之条目视觉根之默认形态 from '../发布的源代码/typescript/wlc-任意两列互换数据-条目之视觉根-默认形态.vue'
-    // import _Wlc任意两列互换数据之现成实用的双列 from '../发布的源代码/typescript/wlc-任意两列互换数据-现成实用的双列.vue'
+    // import {
+    //     求可靠的数字,
+    //     求可靠的文本,
+    //     尽可能将用户输入的文本视为正则表达式并用以过滤列表,
+    //     将变量值稳妥地映射成规定的样式类名,
+    // } from '../发布的源代码/typescript/辅助工具集'
+
+    // import {
+    //     将某列选中的条目迁移至另一列,
+    // } from '../发布的源代码/typescript/核心工具集'
+
+    // export const 辅助工具集 = {
+    //     求可靠的数字,
+    //     求可靠的文本,
+    //     尽可能将用户输入的文本视为正则表达式并用以过滤列表,
+    //     将变量值稳妥地映射成规定的样式类名,
+    // }
+
+    // export const 核心工具集 = {
+    //     将某列选中的条目迁移至另一列,
+    // }
+    export declare namespace 核心工具集 {
+        export declare function 将某列选中的条目迁移至另一列(迁移前起列所有条目之列表?: 范_内用格式之条目之列表, 迁移前迄列所有条目之列表?: 范_内用格式之条目之列表): null | {
+            迁移后起列所有条目之列表: 范_内用格式之条目之列表;
+            迁移后迄列所有条目之列表: 范_内用格式之条目之列表;
+        };
+    };
+
+    export declare namespace 辅助工具集 {
+        export declare function 求可靠的数字(原始值: any): number;
+        export declare function 求可靠的文本(原始值: any, 默认值: string, 原始值为空白字符串视为有效?: boolean): string;
+        export declare function 尽可能将用户输入的文本视为正则表达式并用以过滤列表<范_列表之条目 = any>(原始列表: 范_列表之条目[], 用户输入的匹配词: string, 从某条目获得用以匹配之文本: (条目: 范_列表之条目) => string): 范_列表之条目[];
+        export declare function 将变量值稳妥地映射成规定的样式类名<范_允许映射得出的规定样式类名 = string>({ 当下给出的变量值, 用以将变量至映射至样式类名的字典, 默认的样式类名 }?: {
+            当下给出的变量值?: any;
+            默认的样式类名?: 范_允许映射得出的规定样式类名;
+            用以将变量至映射至样式类名的字典?: {
+                [变量允许采取的规定值: string]: 范_允许映射得出的规定样式类名;
+            };
+        }): 范_允许映射得出的规定样式类名 | null;
+    };
+
+
+
+
+
+    import _Wlc任意两列互换数据之单列 from '../发布的源代码/typescript/wlc-任意两列互换数据-单列.vue'
+    import _Wlc任意两列互换数据之单列之说明书 from '../发布的源代码/typescript/wlc-任意两列互换数据-单列之说明书.vue'
+    import _Wlc任意两列互换数据之两列之间之默认竖栏 from '../发布的源代码/typescript/wlc-任意两列互换数据-两列之间之默认竖栏.vue'
+    import _Wlc任意两列互换数据之条目视觉根之默认形态 from '../发布的源代码/typescript/wlc-任意两列互换数据-条目之视觉根-默认形态.vue'
+    import _Wlc任意两列互换数据之现成实用的双列 from '../发布的源代码/typescript/wlc-任意两列互换数据-现成实用的双列.vue'
+
+    export declare module 'Wlc任意两列互换数据之单列' {
+        export as namespace Wlc任意两列互换数据之单列
+        export = _Wlc任意两列互换数据之单列
+    }
+
+    export declare module 'Wlc任意两列互换数据之单列之说明书' {
+        export as namespace Wlc任意两列互换数据之单列之说明书
+        export = _Wlc任意两列互换数据之单列之说明书
+    }
+
+    export declare module 'Wlc任意两列互换数据之两列之间之默认竖栏' {
+        export as namespace Wlc任意两列互换数据之两列之间之默认竖栏
+        export = _Wlc任意两列互换数据之两列之间之默认竖栏
+    }
+
+    export declare module 'Wlc任意两列互换数据之条目视觉根之默认形态' {
+        export as namespace Wlc任意两列互换数据之条目视觉根之默认形态
+        export = _Wlc任意两列互换数据之条目视觉根之默认形态
+    }
+
+    export declare module 'Wlc任意两列互换数据之现成实用的双列' {
+        export as namespace Wlc任意两列互换数据之现成实用的双列
+        export = _Wlc任意两列互换数据之现成实用的双列
+    }
 
     // export const Wlc任意两列互换数据之单列 = _Wlc任意两列互换数据之单列
     // export const Wlc任意两列互换数据之单列之说明书 = _Wlc任意两列互换数据之单列之说明书
@@ -25,31 +95,31 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    type 范_三态勾选框之状态值 = (
+    export declare type 范_三态勾选框之状态值 = (
         | '已勾选'
         | '已部分勾选'
         | '未勾选'
     );
 
-    type 范_信息文本块_配色方案之名称 = (
+    export declare type 范_信息文本块_配色方案之名称 = (
         | ''
         | '默认'
         | '亮'
         | '暗'
     );
 
-    type 范_信息文本块_标准配色方案之磨砂玻璃效果之名称 = (
+    export declare type 范_信息文本块_标准配色方案之磨砂玻璃效果之名称 = (
         | ''
         | '默认'
         | '弱'
         | '无'
     );
 
-    type 泛范_界面元素之样式类名之配置<string或类名枚举 = string> = null | string或类名枚举 | Array<string或类名枚举?> | {
+    export declare type 泛范_界面元素之样式类名之配置<string或类名枚举 = string> = null | string或类名枚举 | Array<string或类名枚举?> | {
         [cssClassName: string]: boolean | null | undefined;
     };
 
-    type 范_交互项之三态勾选框_特征样式类名 = 泛范_界面元素之样式类名之配置<(
+    export declare type 范_交互项之三态勾选框_特征样式类名 = 泛范_界面元素之样式类名之配置<(
         | '已禁止交互'
         | '已勾选'
         | '未勾选'
@@ -60,32 +130,32 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    type 范_条目之唯一标识 = number | string;
-    type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>;
+    export declare type 范_条目之唯一标识 = number | string;
+    export declare type 范_条目之唯一标识之列表 = Array<范_条目之唯一标识>;
 
-    interface 范_基础条目 {
+    export declare interface 范_基础条目 {
         唯一标识: 范_条目之唯一标识;
         在界面中的称谓: string;
         已禁止选择?: boolean;
         数据?: any;
     }
 
-    interface 范_内用格式之条目 extends 范_基础条目 {
+    export declare interface 范_内用格式之条目 extends 范_基础条目 {
         已禁止选择: boolean;
         已选中: boolean;
     }
 
-    type 范_基础条目之列表 = Array<范_基础条目>;
-    type 范_内用格式之条目之列表 = Array<范_内用格式之条目>;
+    export declare type 范_基础条目之列表 = Array<范_基础条目>;
+    export declare type 范_内用格式之条目之列表 = Array<范_内用格式之条目>;
 
-    type 范_状态汇总数据 = {
+    export declare type 范_状态汇总数据 = {
         甲列当下选中的条目之总数: number;
         乙列当下选中的条目之总数: number;
         甲列当下没有条目拟迁移至乙列: boolean;
         乙列当下没有条目拟迁移至甲列: boolean;
     };
 
-    type 范_类范_Wlc任意两列互换数据之现成实用双列之事件名称 = (
+    export declare type 范_类范_Wlc任意两列互换数据之现成实用双列之事件名称 = (
         | '条目之分布已变动'
         | '已出错'
     );
@@ -94,19 +164,19 @@ declare namespace Wlc任意两列互换数据 {
      * - `总是参与排序` 为首要默认值。当【排序函数】确已给出时，若并未给出【插入规则】，则【插入规则】采纳该值。
      * - `总是追加在尾部` 为次要默认值。当【排序函数】并未给出时，若亦未给出【插入规则】，则【插入规则】采纳该值。
      */
-    type 范_各列新增条目之插入规则 = (
+    export declare type 范_各列新增条目之插入规则 = (
         | '总是参与排序'
         | '总是追加在尾部'
         | '总是追加在首部'
     );
 
-    type 范_各列条目排序之函数 = (甲: 范_基础条目, 乙: 范_基础条目) => number;
+    export declare type 范_各列条目排序之函数 = (甲: 范_基础条目, 乙: 范_基础条目) => number;
 
 
 
 
 
-    declare class Wlc任意两列互换数据之单列 extends Vue {
+    export declare class Wlc任意两列互换数据之单列 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
@@ -190,8 +260,28 @@ declare namespace Wlc任意两列互换数据 {
         private created (): void
     };
 
-    namespace Wlc任意两列互换数据之单列 {
-        type 范_事件名称 = (
+    export declare namespace Wlc任意两列互换数据之单列 {
+        export declare type 泛范_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
+            // 用于 v-model 双向绑定。
+            当下选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表;
+
+            // 用于 props 单向绑定。
+            可成批自动绑定的属性: {
+                本列之称谓: string;
+                所有条目之列表: 范_实际条目[];
+
+                本列之特征样式类名之配置: null | string;
+                允许列示的条目数之上限: null | number;
+                新增条目之插入规则: null | 范_各列新增条目之插入规则;
+                条目排序之函数: null | 范_各列条目排序之函数;
+                本列初始的用以过滤条目之配置: null | string | RegExp;
+                当下另有他列优先于本列采取视觉强调引导用户操作之: null | boolean;
+                不应创建底部栏目: null | boolean;
+                部件构造函数之自定义主表条目: null | VueConstructor;
+            };
+        };
+
+        export declare type 范_事件名称 = (
             | '选中的条目已变动'
             | '内部某元素之视觉强调之状态已变动'
         );
@@ -201,7 +291,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    declare class Wlc任意两列互换数据之单列之说明书 extends Vue {
+    export declare class Wlc任意两列互换数据之单列之说明书 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 当下正呈现着?: boolean
 
@@ -224,8 +314,8 @@ declare namespace Wlc任意两列互换数据 {
         private 每当关闭按钮点击后 (事件之记载: PointerEvent): void
     };
 
-    namespace Wlc任意两列互换数据之单列之说明书 {
-        type 范_事件名称 = (
+    export declare namespace Wlc任意两列互换数据之单列之说明书 {
+        export declare type 范_事件名称 = (
             | '呈现状态期望变更'
         );
     };
@@ -234,7 +324,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    declare class Wlc任意两列互换数据之两列之间之默认竖栏 extends Vue {
+    export declare class Wlc任意两列互换数据之两列之间之默认竖栏 extends Vue {
         // -------- 外来数据 --------------------------------
         public readonly 应全面禁止交互?: boolean
         public readonly 按钮上的措辞_将条目从甲列迁移至乙列?: string
@@ -266,8 +356,8 @@ declare namespace Wlc任意两列互换数据 {
         private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void
     };
 
-    namespace Wlc任意两列互换数据之两列之间之默认竖栏 {
-        type 范_事件名称 = (
+    export declare namespace Wlc任意两列互换数据之两列之间之默认竖栏 {
+        export declare type 范_事件名称 = (
             | '请求将甲列选中之条目迁移至乙列'
             | '请求将乙列选中之条目迁移至甲列'
         );
@@ -277,7 +367,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    declare class Wlc任意两列互换数据之条目视觉根之默认形态 extends Vue {
+    export declare class Wlc任意两列互换数据之条目视觉根之默认形态 extends Vue {
         // -------- 外来数据 --------------------------------
         public readonly 条目?: 范_内用格式之条目
     };
@@ -286,7 +376,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    declare class Wlc任意两列互换数据之现成实用的双列 extends Vue {
+    export declare class Wlc任意两列互换数据之现成实用的双列 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
@@ -366,7 +456,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
     namespace Wlc任意两列互换数据之现成实用的双列 {
-        type 泛范_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
+        export declare type 泛范_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
             应全面禁止交互?: boolean
 
             甲列之称谓: string;
@@ -393,7 +483,7 @@ declare namespace Wlc任意两列互换数据 {
             部件构造函数之自定义主表条目?: VueConstructor;
         };
 
-        type 范_事件名称 = (
+        export declare type 范_事件名称 = (
             | '条目之分布已变动'
             | '已出错'
         );

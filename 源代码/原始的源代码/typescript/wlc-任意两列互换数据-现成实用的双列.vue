@@ -100,8 +100,8 @@
 import { VueConstructor } from 'vue'
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-import Wlc任意两列互换数据之单列 from './wlc-任意两列互换数据-单列.vue'
-import Wlc任意两列互换数据之两列之间之默认竖栏 from './wlc-任意两列互换数据-两列之间之默认竖栏.vue'
+import { Wlc任意两列互换数据之单列 } from './wlc-任意两列互换数据-单列.vue'
+import { Wlc任意两列互换数据之两列之间之默认竖栏 } from './wlc-任意两列互换数据-两列之间之默认竖栏.vue'
 
 import {
     求可靠的文本,
@@ -142,7 +142,7 @@ type 范_单列之内部数据集 = {
         Wlc任意两列互换数据之两列之间之默认竖栏,
     },
 })
-export default class Wlc任意两列互换数据之现成实用的双列 extends Vue {
+export class Wlc任意两列互换数据之现成实用的双列 extends Vue {
     @Model('条目之分布已变动') public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
 
