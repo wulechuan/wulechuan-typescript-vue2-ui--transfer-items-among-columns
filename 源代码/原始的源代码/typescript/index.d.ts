@@ -37,22 +37,6 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    // import _Wlc任意两列互换数据之单列 from './wlc-任意两列互换数据-单列.vue'
-    // import _Wlc任意两列互换数据之单列之说明书 from './wlc-任意两列互换数据-单列之说明书.vue'
-    // import _Wlc任意两列互换数据之两列之间之默认竖栏 from './wlc-任意两列互换数据-两列之间之默认竖栏.vue'
-    // import _Wlc任意两列互换数据之条目视觉根之默认形态 from './wlc-任意两列互换数据-条目之视觉根-默认形态.vue'
-    // import _Wlc任意两列互换数据之现成实用的双列 from './wlc-任意两列互换数据-现成实用的双列.vue'
-
-    // export const Wlc任意两列互换数据之单列 = _Wlc任意两列互换数据之单列
-    // export const Wlc任意两列互换数据之单列之说明书 = _Wlc任意两列互换数据之单列之说明书
-    // export const Wlc任意两列互换数据之两列之间之默认竖栏 = _Wlc任意两列互换数据之两列之间之默认竖栏
-    // export const Wlc任意两列互换数据之条目视觉根之默认形态 = _Wlc任意两列互换数据之条目视觉根之默认形态
-    // export const Wlc任意两列互换数据之现成实用的双列 = _Wlc任意两列互换数据之现成实用的双列
-
-
-
-
-
     type 范_三态勾选框之状态值 = (
         | '已勾选'
         | '已部分勾选'
@@ -73,7 +57,7 @@ declare namespace Wlc任意两列互换数据 {
         | '无'
     );
 
-    type 泛范_界面元素之样式类名之配置<string或类名枚举 = string> = null | string或类名枚举 | Array<string或类名枚举> | {
+    type 泛范_界面元素之样式类名之配置<string或类名枚举 = string> = null | string或类名枚举 | Array<null | string或类名枚举> | {
         [cssClassName: string]: boolean | null | undefined;
     };
 

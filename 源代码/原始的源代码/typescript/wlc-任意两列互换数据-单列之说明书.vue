@@ -71,7 +71,7 @@ type 范_信息文本块_标准配色方案之磨砂玻璃效果之名称 = Wlc�
 
 
 @Component({})
-export class Wlc任意两列互换数据之单列之说明书 extends Vue {
+export default class Wlc任意两列互换数据之单列之说明书 extends Vue {
     @Model('呈现状态期望变更') public readonly 当下正呈现着?: boolean
 
 

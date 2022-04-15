@@ -152,8 +152,8 @@
 import { VueConstructor } from 'vue'
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-import { Wlc任意两列互换数据之条目视觉根之默认形态 } from './wlc-任意两列互换数据-条目之视觉根-默认形态.vue'
-import { Wlc任意两列互换数据之单列之说明书 } from './wlc-任意两列互换数据-单列之说明书.vue'
+import Wlc任意两列互换数据之条目视觉根之默认形态 from './wlc-任意两列互换数据-条目之视觉根-默认形态.vue'
+import Wlc任意两列互换数据之单列之说明书 from './wlc-任意两列互换数据-单列之说明书.vue'
 
 import {
     求可靠的文本,
@@ -206,7 +206,7 @@ export const 各列条目排序之规则所有允许的值之列表: 范_各列�
         Wlc任意两列互换数据之单列之说明书,
     },
 })
-export class Wlc任意两列互换数据之单列 extends Vue {
+export default class Wlc任意两列互换数据之单列 extends Vue {
     @Model('选中的条目已变动') public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
 
