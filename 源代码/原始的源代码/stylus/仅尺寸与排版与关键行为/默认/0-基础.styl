@@ -135,9 +135,12 @@
         border-radius 1000px
 
         &.按钮-形状必须为正圆 {
-            min-width 0
             width 2.5em
+            min-width @width
+            max-width @width
             height @width
+            min-height @height
+            max-height @height
             padding 0.2em
             line-height normal
             border-radius 2000px
@@ -149,8 +152,12 @@
             & { // Chrome 、 Edge 都能正常排版。
                 font-size 0.9em
                 min-width 0
-                width 2em
+                width 2.25em
+                min-width @width
+                max-width @width
                 height @width
+                min-height @height
+                max-height @height
                 padding 0
                 line-height normal
 
