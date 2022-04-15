@@ -1,3 +1,10 @@
+/// <reference types="vue" />
+type VueConstructor = Vue.VueConstructor
+
+
+
+
+
 declare module '@wulechuan/vue2-ui--columns-exchange-items' {
     export = Wlc任意两列互换数据
 }
@@ -7,12 +14,6 @@ declare module '@wulechuan/vue2-ui--columns-exchange-items' {
 
 
 declare namespace Wlc任意两列互换数据 {
-    type VueConstructor = Vue.VueConstructor
-
-
-
-
-
     namespace 核心工具集 {
         function 将某列选中的条目迁移至另一列(迁移前起列所有条目之列表?: 范_内用格式之条目之列表, 迁移前迄列所有条目之列表?: 范_内用格式之条目之列表): null | {
             迁移后起列所有条目之列表: 范_内用格式之条目之列表;
@@ -150,6 +151,7 @@ declare namespace Wlc任意两列互换数据 {
         private 部件构造函数之自定义主表条目_最终采纳值: VueConstructor
 
         // -------- 衍生数据 --------------------------------
+        private get 应全面禁止交互_最终采纳值 (): boolean
         private get 本列之称谓_最终采纳值 (): string
         private get 日志前缀 (): string
         private get 本列之标题栏之文字 (): string
@@ -171,9 +173,9 @@ declare namespace Wlc任意两列互换数据 {
         private get 与选中所有条目_仅列示之条目_之交互相关的汇总数据 ()
 
         // -------- @Watch 数据变动之处理程序 ----------------
-        private 在外界给出的所有条目之列表变动后 (): void
-        private 在外界给出的当下选中的所有条目之唯一标识之列表变动后 (): void
-        private 在外界给出的当下有否视觉强调动画之结论变动后 (结论: boolean): void
+        private 每当外界给出的所有条目之列表变动后 (): void
+        private 每当外界给出的当下选中的所有条目之唯一标识之列表变动后 (): void
+        private 每当外界给出的当下有否视觉强调动画之结论变动后 (结论: boolean): void
 
         // -------- 私有行为 -------------------------------
         private 根据外界给出的条件构建实用的条目总表 (本次原因: Wlc任意两列互换数据之单列.范_构建实用的条目总表_发起之原因): Promise<boolean>
@@ -184,7 +186,7 @@ declare namespace Wlc任意两列互换数据 {
         private 选中或取消选中一系列条目_含隐藏之条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
         private 选中或取消选中一系列条目 (应考察的所有条目之列表?: 范_内用格式之条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
         private 每当有任何条目之选中状态变动时 (): void
-        private _统计某应考察之条目之列表中的勾选状态 (所有应考察之条目: 范_内用格式之条目之列表): 范_三态勾选框之状态值
+        private 统计某应考察之条目之列表中的勾选状态 (所有应考察之条目: 范_内用格式之条目之列表): 范_三态勾选框之状态值
         private 统计所有条目_含隐藏条目_之勾选状态 (): void
         private 统计所有条目_仅列示条目_之勾选状态 (): void
         // - - - - - - - - - - - - - - - - - - - - - - -
@@ -199,7 +201,7 @@ declare namespace Wlc任意两列互换数据 {
         private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent): void
 
         // -------- 生命周期钩子 ----------------------------
-        private created (): void
+        private mounted (): void
     }
 
     namespace Wlc任意两列互换数据之单列 {
