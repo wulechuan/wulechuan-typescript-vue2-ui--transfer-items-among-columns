@@ -15,4 +15,58 @@
         MIXIN_webkit_scrollbar(black, 1)
         scrollbar-width thin
     }
+
+
+
+    // 【单列】。
+    {identifiable_selector__single_list_column__root} {
+
+        &.标准双列模式下的甲列 {
+
+            .列首 {
+                background-color #fadecf
+            }
+
+            .条目过滤器-文本输入框 {
+
+                &.应给予视觉强调以引导用户来此 {
+                    border-color #f00
+
+                    // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+                    // animation-name wulechuan-columns-exchange-items--list-items-filtering-input-box--emphasizing--column1
+                    animation-name unquote('吴乐川-任意两列互换数据-动画--单列-条目过滤器-文本输入框--视觉强调--甲列')
+                    @keyframes {@animation-name} {
+                        0%, 100% { border-color: #f00; }
+                        40%, 60% { border-color: #fbb; }
+                    }
+                }
+            }
+        }
+
+        &.标准双列模式下的乙列 {
+
+            .列首 {
+                background-color #defade
+            }
+
+            .条目过滤器-文本输入框 {
+
+                &.应给予视觉强调以引导用户来此 {
+                    border-color #090
+
+                    // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+                    // animation-name wulechuan-columns-exchange-items--list-items-filtering-input-box--emphasizing--column2
+                    animation-name unquote('吴乐川-任意两列互换数据-动画--单列-条目过滤器-文本输入框--视觉强调--乙列')
+                    @keyframes {@animation-name} {
+                        0%, 100% { border-color: #8d8; }
+                        40%, 60% { border-color: #090; }
+                    }
+
+                    &.给予的视觉强调不应为动画 {
+                        animation-name none
+                    }
+                }
+            }
+        }
+    }
 }

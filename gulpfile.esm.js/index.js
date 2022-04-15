@@ -24,7 +24,7 @@ import {
 
 import tsconfig from '../tsconfig.json'
 
-const outputFileIndentation = ' '.repeat(4)
+const 输出诸文件中采用的缩进形式 = ' '.repeat(4)
 const resolvePath = path.resolve
 
 
@@ -36,9 +36,11 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
     descriptionOfInputsOfCoreTask: '用 TypeScript 写成的 .vue 文件',
     sourceGlobs: {
         rootFolderPath: './源代码/原始的源代码/typescript',
+
         relativeGlobsSpecificallyForThisTaskCycle: [
             '**/*.vue',
         ],
+
         extraSourceGlobsToWatch: [
             './源代码/原始的源代码/typescript/**/*.ts',
         ],
@@ -57,7 +59,7 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
 
     extraOptions: {
         vueFileConversionOptions: {
-            indentation: outputFileIndentation,
+            indentation: 输出诸文件中采用的缩进形式,
             tsconfig,
 
             cssStylusCompilationOptions: {
@@ -87,6 +89,7 @@ const 任务闭环之将所有Vue文件以Typescript加Css的形式到发布到�
         relativeGlobsSpecificallyForThisTaskCycle: [
             '**/*.vue',
         ],
+
         extraSourceGlobsToWatch: [
             './源代码/原始的源代码/typescript/**/*.ts',
         ],
@@ -104,7 +107,7 @@ const 任务闭环之将所有Vue文件以Typescript加Css的形式到发布到�
 
     extraOptions: {
         vueFileConversionOptions: {
-            indentation: outputFileIndentation,
+            indentation: 输出诸文件中采用的缩进形式,
             tsconfig,
 
             cssStylusCompilationOptions: {
@@ -134,6 +137,7 @@ const 任务闭环之将所有独立于Vue文件的Typescript文件复制到发�
         relativeGlobsSpecificallyForThisTaskCycle: [
             '**/*.ts',
         ],
+
         extraSourceGlobsToWatch: [
         ],
     },
@@ -161,6 +165,7 @@ const 任务闭环之将所有独立于Vue文件的Typescript文件各自转译�
         relativeGlobsSpecificallyForThisTaskCycle: [
             '**/*.ts',
         ],
+
         extraSourceGlobsToWatch: [
         ],
     },
@@ -176,7 +181,7 @@ const 任务闭环之将所有独立于Vue文件的Typescript文件各自转译�
     },
 
     extraOptions: {
-        indentation: outputFileIndentation,
+        indentation: 输出诸文件中采用的缩进形式,
         tsconfig,
     },
 })
@@ -193,6 +198,7 @@ const 任务闭环之将所有独立于Vue文件的Stylus文件复制到发布�
         relativeGlobsSpecificallyForThisTaskCycle: [
             '**/*.styl',
         ],
+
         extraSourceGlobsToWatch: [
         ],
     },
@@ -218,13 +224,10 @@ const 任务闭环之将所有独立于Vue文件的Stylus文件各自编译成Cs
         rootFolderPath: './源代码/原始的源代码/stylus',
 
         relativeGlobsSpecificallyForThisTaskCycle: [
-            // '_通用变量集_/*.styl',
-            // '完整样式表/默认/*.styl',
             '**/*.styl',
         ],
 
         extraSourceGlobsToWatch: [
-            './源代码/原始的源代码/stylus/**/*.styl',
         ],
     },
 
