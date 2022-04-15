@@ -566,6 +566,7 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
         return {
             '已选中': 已选中,
             '已禁止选择': 已禁止选择,
+            '已受迫禁止交互': this.应全面禁止交互_最终采纳值,
         }
     }
 
@@ -793,7 +794,7 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
     }
 
     private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent): void {
-        if (this.当下有浮层覆盖着条目列表) { return }
+        if (this.应全面禁止交互_最终采纳值 || this.当下有浮层覆盖着条目列表) { return }
 
         if (被点击之条目 && 事件之记载) {
             const {

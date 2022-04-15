@@ -46,13 +46,41 @@
         }
     }
 
+    &.已受迫禁止交互 {
+
+        {identifiable_selector__list_single_item__visual_base} {
+
+            &,
+            &:hover {
+                color #999
+                background-color transparent
+            }
+        }
+    }
+
+    &.已选中.已受迫禁止交互 {
+
+        {identifiable_selector__list_single_item__visual_base} {
+
+            &,
+            &:hover {
+                color black
+                background-color 'var(%s)' % unquote(css_var_name__element_highlighting_but_disabled_color_static)
+            }
+        }
+    }
+
     &.已禁止选择 {
 
         {identifiable_selector__list_single_item__visual_base} {
-            color #e3e3e3
-            text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
-            background-color #00000003
-            background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);
+
+            &,
+            &:hover {
+                color #e3e3e3
+                text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
+                background-color #00000003
+                background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);
+            }
         }
     }
 }
