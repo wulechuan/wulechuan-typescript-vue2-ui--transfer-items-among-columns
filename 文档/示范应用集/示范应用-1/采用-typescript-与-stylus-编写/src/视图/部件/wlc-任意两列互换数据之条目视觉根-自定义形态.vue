@@ -148,7 +148,6 @@ export default class Wlc任意两列互换数据之条目视觉根之自定义�
     }
 
     .详情内容块开关按钮 {
-        // visibility hidden
         opacity 0.1
         flex 0 0 4em
         padding 0 0.75em
