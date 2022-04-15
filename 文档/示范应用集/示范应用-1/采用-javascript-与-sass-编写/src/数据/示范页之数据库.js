@@ -4,7 +4,6 @@
  */
 
 /**
- * @extends {Wlc双列互换数据.范_基础条目}
  * @typedef {object} 范_双列互换数据_实际条目之数据
  * @property {string | string[]} 描述
  * @property {boolean} 描述已呈现

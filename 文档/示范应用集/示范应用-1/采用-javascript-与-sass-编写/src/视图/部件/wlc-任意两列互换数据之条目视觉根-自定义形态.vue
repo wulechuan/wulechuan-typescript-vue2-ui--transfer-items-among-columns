@@ -1,12 +1,12 @@
 <template>
-    <div class="吴乐川-任意两列互换数据-条目根-自定义形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
+    <div class="条目根-在该范例中的订制形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
         <div class="吴乐川-任意两列互换数据-条目之视觉根">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
                 <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
             </span>
             <span class="输入项配文">{{ 条目_最终采纳值.在界面中的称谓 }}</span>
-            <span class="自适应占位器"></span>
+            <span class="位于中央的宽度自调节之占位器"></span>
             <button class="详情内容块开关按钮" @click.stop="条目_最终采纳值.数据.描述已呈现 = !条目_最终采纳值.数据.描述已呈现">解释</button>
         </div>
 
@@ -27,15 +27,39 @@
     </div>
 </template>
 
+
+
+
+
+
+
+
+
 <script>
-/** @typedef {import('../../数据/示范页之数据库').范_双列互换数据_实际条目} 范_双列互换数据_实际条目 */
-/** @typedef {Wlc双列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目} 范_双列互换数据_内用格式之实际条目 */
-/** @typedef {Wlc双列互换数据.范_界面元素之样式类名之配置} 范_界面元素之样式类名之配置*/
+import {
+    范_双列互换数据_实际条目,
+    范_双列互换数据_实际条目之数据,
+} from '../../数据/示范页之数据库'
+
+
+
+
+
+/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items')} Wlc任意两列互换数据 */
+
+/** @typedef {Wlc任意两列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目} 范_双列互换数据_内用格式之实际条目 */
+
+/** @typedef {Wlc任意两列互换数据.泛范_界面元素之样式类名之配置<string>} 范_界面元素之样式类名之配置 */
+
+
+
+
 
 export default {
-    name: 'Wlc双列互换数据之条目之自定义形态示范',
+    name: 'Wlc任意两列互换数据之条目视觉根之自定义形态示范',
 
     props: {
+        /** @type {范_双列互换数据_内用格式之实际条目} */
         条目: {
             type: Object,
             default: null,
@@ -43,7 +67,7 @@ export default {
     },
 
     data () {
-
+        return {}
     },
 
     computed: {
@@ -60,6 +84,7 @@ export default {
          * @returns {范_界面元素之样式类名之配置}
          */
         输入项之样式类名配置 () {
+            /** @type {范_双列互换数据_内用格式之实际条目} */
             const 条目 = this.条目_最终采纳值
             return { '已勾选': 条目.已选中, '已禁止交互': 条目.已禁止选择, '未选中': !条目.已选中 }
         },
@@ -71,7 +96,11 @@ export default {
             /** @type {string[]} */
             let 诸段落之列表 = []
 
-            const 原始数据 = this.条目_最终采纳值.数据
+            /** @type {范_双列互换数据_内用格式之实际条目} */
+            const 条目_最终采纳值 = this.条目_最终采纳值
+
+            /** @type {范_双列互换数据_实际条目之数据} */
+            const 原始数据 = 条目_最终采纳值.数据
             if (原始数据) {
                 const 原始值 = 原始数据.描述
                 if (Array.isArray(原始值)) {
@@ -97,9 +126,16 @@ export default {
          */
         条目描述文本之诸段落总字数较多 () {
             /** @type {number} */
-            const 总字符数 = this.条目描述文本之诸段落之列表.reduce((字数, 某段落文本) => {
-                return 字数 + 某段落文本.length
-            }, 0)
+            const 总字符数 = this.条目描述文本之诸段落之列表.reduce(
+                /**
+                 * @param {number} 字数
+                 * @param {string} 某段落文本
+                 */
+                (字数, 某段落文本) => {
+                    return 字数 + 某段落文本.length
+                },
+                0
+            )
 
             return 总字符数 > 219
         },
@@ -118,10 +154,18 @@ export default {
 }
 </script>
 
+
+
+
+
+
+
+
+
 <style lang="scss">
-.吴乐川-任意两列互换数据-条目根-自定义形态 {
+.条目根-在该范例中的订制形态 {
     border-radius: 0.25em;
-    overflow: hidden;
+    overflow :hidden;
 
     button {
         display: block;
@@ -133,14 +177,14 @@ export default {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
+        padding: 0.3em 0.5em;
 
-        .自适应占位器 {
+        .位于中央的宽度自调节之占位器 {
             flex: 10 10 auto;
         }
     }
 
     .详情内容块开关按钮 {
-        // visibility: hidden;
         opacity: 0.1;
         flex: 0 0 4em;
         padding: 0 0.75em;
@@ -161,7 +205,7 @@ export default {
     &.详情内容块正呈现着 {
 
         .详情内容块开关按钮 {
-            // visibility: visible;
+            // visibility visible
             opacity: 1;
         }
     }

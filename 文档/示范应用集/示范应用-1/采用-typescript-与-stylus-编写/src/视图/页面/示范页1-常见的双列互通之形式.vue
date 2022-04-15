@@ -194,9 +194,9 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
     }
 
     h3 {
-        font-size: 2rem
-        text-align: center
-        margin: 0
+        font-size 2rem
+        text-align center
+        margin 0
         padding 1rem
     }
 }

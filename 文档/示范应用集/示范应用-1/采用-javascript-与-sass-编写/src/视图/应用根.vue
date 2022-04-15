@@ -1,21 +1,29 @@
 <template>
-    <div id="vue-应用根">
-        <Page示范页></Page示范页>
+    <div id="vue-应用根" class="吴乐川-任意两列互换数据">
+        <Layout默认></Layout默认>
     </div>
 </template>
 
+
+
+
+
+
+
+
+
 <script>
-import Page示范页 from './页面/示范页.vue'
+import 页面之默认布局 from './页面布局库/默认布局.vue'
+
+
+
+
 
 export default {
     name: 'App根',
 
     components: {
-        Page示范页,
+        Layout默认: 页面之默认布局,
     },
 }
 </script>
-
-<style lang="scss">
-
-</style>
