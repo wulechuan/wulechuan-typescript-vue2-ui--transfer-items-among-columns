@@ -217,7 +217,7 @@ export default {
     // }
 
     .页面顶部的控制面板 {
-        flex: 0 0 34em;
+        flex: 0 0 32em;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;

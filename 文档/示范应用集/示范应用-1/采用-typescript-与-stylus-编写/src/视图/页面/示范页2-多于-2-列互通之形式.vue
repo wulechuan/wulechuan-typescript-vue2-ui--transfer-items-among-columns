@@ -1,12 +1,14 @@
 <template>
     <div class="页面 页面--示范页2-多余-2-列互通之形式">
         <div class="总标题栏">
-            <h3>大家好！我是吴乐川。
-                <span class="尽量不换行之短语">本例中有多个列，</span>
-                <span class="尽量不换行之短语">不仅两两相邻时可互换条目，</span>
-                <span class="尽量不换行之短语">各列还可直接将条目</span>
-                <span class="尽量不换行之短语">迁移至末列（戊列）。</span>
-            </h3>
+            <h3>大家好！<span class="页面极窄时则隐藏">我是<span
+                class="尽量不换行之短语"
+            >吴乐川。</span></span><span
+                class="页面过窄时则隐藏 尽量不换行之短语">本例中有多个列，</span><span
+                class="页面过窄时则隐藏 尽量不换行之短语">不仅两两相邻时可互换条目，</span><span
+                class="页面过窄时则隐藏 尽量不换行之短语">各列还可直接将条目</span><span
+                class="页面过窄时则隐藏 尽量不换行之短语">迁移至末列（戊列）。</span
+            ></h3>
 
             <div class="页面顶部的控制面板">
                 <label class="包裹着输入项 包裹着输入项-单行文字输入">
@@ -378,6 +380,14 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
     display flex
     flex-direction column
 
+    @media screen and (max-width 1280px) {
+        .页面过窄时则隐藏 { display: none; }
+    }
+
+    @media screen and (max-width 960px) {
+        .页面极窄时则隐藏 { display: none; }
+    }
+
     .总标题栏 {
         flex 0 0 auto
         background-color #ccc
@@ -391,13 +401,13 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
             flex 1 1 auto
             font-size 1.5rem
             text-align center
-            margin 0 1em
-            padding 1rem
+            margin 0 0.5em
+            padding 0.5em
         }
     }
 
     .页面顶部的控制面板 {
-        flex 0 0 34em
+        flex 0 0 32em
         display flex
         flex-direction row
         justify-content flex-end
