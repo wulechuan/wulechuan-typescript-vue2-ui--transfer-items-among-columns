@@ -349,18 +349,18 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
 
         const 应给予视觉强调以引导用户来此: boolean = 当下期望列示的条目过多故暂不列示任何条目 && !用以过滤条目之关键词
 
-        const 给予的视觉强调不应为动画: boolean = !!(
+        const 给予的视觉强调应稍稍弱化: boolean = !!(
             应给予视觉强调以引导用户来此 &&
             当下另有他列优先于本列采取视觉强调引导用户操作之
         )
 
         return {
             '应给予视觉强调以引导用户来此': 应给予视觉强调以引导用户来此,
-            '给予的视觉强调不应为动画': 给予的视觉强调不应为动画,
+            '给予的视觉强调应稍稍弱化': 给予的视觉强调应稍稍弱化,
         }
     }
 
-    private get 当下有否视觉强调动画之结论 (): boolean {
+    private get 当下有否某种视觉强调之结论 (): boolean {
         const 结论: boolean = !!(
             this.当下期望列示的条目过多故暂不列示任何条目
         )
@@ -400,9 +400,9 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
         this.根据外界给出的条件构建实用的条目总表(构建实用的条目总表_发起之原因_当下选中的所有条目之唯一标识之列表已变动)
     }
 
-    @Watch('当下有否视觉强调动画之结论', { immediate: true })
-    private 每当外界给出的当下有否视觉强调动画之结论变动后 (结论: boolean): void {
-        this.发布事件_某元素之视觉强调之状态已变动(结论)
+    @Watch('当下有否某种视觉强调之结论', { immediate: true })
+    private 每当外界给出的当下有否某种视觉强调之结论变动后 (): void {
+        this.发布事件_某元素之视觉强调之状态已变动(this.当下有否某种视觉强调之结论)
     }
 
 
@@ -772,9 +772,9 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
         this.$emit('选中的条目已变动', 事件之记载)
     }
 
-    private 发布事件_某元素之视觉强调之状态已变动 (当下有否视觉强调动画之结论?: boolean): void {
-        const 事件之记载: boolean = !!当下有否视觉强调动画之结论
-        this.$emit('内部某元素之视觉强调之状态已变动', 事件之记载)
+    private 发布事件_某元素之视觉强调之状态已变动 (当下有否某种视觉强调之结论?: boolean): void {
+        const 事件之记载: boolean = !!当下有否某种视觉强调之结论
+        this.$emit('内部某元素之视觉强调之状态已变动', 事件之记载, this.本列之称谓_最终采纳值)
     }
 
 

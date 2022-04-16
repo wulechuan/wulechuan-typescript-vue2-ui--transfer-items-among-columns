@@ -133,6 +133,22 @@
         &.应给予视觉强调以引导用户来此 {
             animation-iteration-count infinite
             animation-duration 1.5s
+
+            box-shadow '0 0 0 6px var(%s)' % unquote(css_var_name__element_highlighting_color_static)
+
+            // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+            // animation-name wulechuan-columns-exchange-items--list-items-filtering-input-box--emphasizing--default
+            animation-name unquote('吴乐川-任意两列互换数据-动画--单列-条目过滤器-文本输入框--视觉强调--默认形式')
+            @keyframes {@animation-name} {
+                0%, 100% { box-shadow: '0 0 0 0   var(%s)' % unquote(css_var_name__element_highlighting_color_static); }
+                40%, 60% { box-shadow: '0 0 0 6px var(%s)' % unquote(css_var_name__element_highlighting_color_static); }
+            }
+
+            &:focus,
+            &.给予的视觉强调应稍稍弱化 {
+                animation-name none
+                box-shadow none
+            }
         }
 
         &:disabled {

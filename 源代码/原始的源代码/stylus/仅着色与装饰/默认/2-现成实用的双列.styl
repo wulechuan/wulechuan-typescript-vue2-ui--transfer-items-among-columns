@@ -62,8 +62,10 @@
                         40%, 60% { border-color: #090; }
                     }
 
-                    &.给予的视觉强调不应为动画 {
+                    &:focus,
+                    &.给予的视觉强调应稍稍弱化 {
                         animation-name none
+                        border-color inherit
                     }
                 }
             }
