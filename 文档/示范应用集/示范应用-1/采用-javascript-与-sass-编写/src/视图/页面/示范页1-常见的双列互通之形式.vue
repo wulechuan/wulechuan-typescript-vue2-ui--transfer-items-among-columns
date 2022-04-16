@@ -1,10 +1,24 @@
 <template>
     <div class="页面 页面--示范页1-常见的双列互通之形式">
         <div class="页面顶部功能区">
-            <button
-                class="反复式开关-全面禁止交互与否"
-                @click="应全面禁止交互 = !应全面禁止交互"
-            >{{ 反复式开关按钮_全面禁止交互与否_措辞 }}</button>
+            <div class="页面顶部的控制面板">
+                <label class="包裹着输入项 包裹着输入项-单行文字输入">
+                    <span class="输入项配文 输入项配文-单行文字输入">
+                        <span class="尽量不换行之短语">单列允许列示的</span>
+                        <span class="尽量不换行之短语">条目数之上限</span>
+                    </span>
+                    <input
+                        class="输入项 输入项-单行文字输入"
+                        type="number"
+                        v-model="单列允许列示的条目数之上限"
+                    >
+                </label>
+
+                <button
+                    class="反复式开关-全面禁止交互与否"
+                    @click="应全面禁止交互 = !应全面禁止交互"
+                >{{ 反复式开关按钮_全面禁止交互与否_措辞 }}</button>
+            </div>
         </div>
 
         <div class="页面中央内容块">
@@ -13,6 +27,7 @@
                 v-model="双列互换数据功能.当下已选购的条目之唯一标识之列表"
                 v-bind="双列互换数据功能.可成批自动绑定的属性"
                 :应全面禁止交互="应全面禁止交互"
+                :单列允许列示的条目数之上限="单列允许列示的条目数之上限"
                 @已出错="当双列互换数据功能出错时($event)"
             >
                 <template slot="界面皿-总标题栏">
@@ -97,6 +112,9 @@ export default {
             /** @type {boolean} */
             应全面禁止交互: false,
 
+            /** @type {number | null} */
+            单列允许列示的条目数之上限: 320,
+
             /** @type {范_示范页_双列互换数据功能配置集} */
             双列互换数据功能: {
                 // 用于 v-model 双向绑定。
@@ -140,7 +158,6 @@ export default {
                 各列均不应创建底部栏目: false,
 
                 所有候选条目之列表: 一切可能条目之列表之修订版,
-                单列允许列示的条目数之上限: 320,
                 各列新增条目之插入规则: '总是追加在首部',
                 // 各列条目排序之函数: (甲, 乙) => 乙.在界面中的称谓.length - 甲.在界面中的称谓.length,
 
@@ -198,6 +215,23 @@ export default {
     // .页面顶部功能区 {
 
     // }
+
+    .页面顶部的控制面板 {
+        flex: 0 0 34em;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        input {
+            display: block;
+            width: 6em;
+        }
+
+        button {
+            flex: 0 0 auto;
+        }
+    }
 
     .页面中央内容块 {
         margin: 0;

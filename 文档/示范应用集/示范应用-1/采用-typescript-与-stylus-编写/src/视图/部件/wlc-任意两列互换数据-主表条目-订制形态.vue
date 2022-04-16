@@ -5,7 +5,7 @@
                 <span class="勾选项视觉假体"></span>
                 <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
             </span>
-            <span class="输入项配文">{{ 条目_最终采纳值.在界面中的称谓 }}</span>
+            <span class="输入项配文 输入项配文-勾选项">{{ 条目_最终采纳值.在界面中的称谓 }}</span>
             <span class="位于中央的宽度自调节之占位器"></span>
             <button class="详情内容块开关按钮" @click.stop="条目_最终采纳值.数据.描述已呈现 = !条目_最终采纳值.数据.描述已呈现">解释</button>
         </div>
@@ -144,6 +144,7 @@ export default class Wlc任意两列互换数据_主表条目_订制形态 exten
 
         .位于中央的宽度自调节之占位器 {
             flex 10 10 auto
+            min-width 1em
         }
     }
 

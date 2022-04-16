@@ -15,7 +15,7 @@
                         <span class="尽量不换行之短语">条目数之上限</span>
                     </span>
                     <input
-                        class="输入项"
+                        class="输入项 输入项-单行文字输入"
                         type="number"
                         v-model="允许列示的条目数之上限"
                     >

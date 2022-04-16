@@ -127,7 +127,7 @@ type 范_状态汇总数据 = Wlc任意两列互换数据.范_状态汇总数据
 type 范_各列新增条目之插入规则 = Wlc任意两列互换数据.范_各列新增条目之插入规则;
 type 范_各列条目排序之函数 = Wlc任意两列互换数据.范_各列条目排序之函数;
 
-type 范_Vue动态部件之Is属性可接受的数据 = Wlc任意两列互换数据.范_Vue动态部件之Is属性可接受的数据;
+type 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串 = Wlc任意两列互换数据.范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串;
 
 type 范_单列之内部数据集 = Wlc任意两列互换数据.Wlc任意两列互换数据之现成实用的双列.范_单列之内部数据集;
 
@@ -169,7 +169,7 @@ export default class Wlc任意两列互换数据之现成实用的双列 extends
     @Prop() public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
     @Prop() public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
 
-    @Prop() public readonly vue部件之定义_订制的主表条目?: 范_Vue动态部件之Is属性可接受的数据
+    @Prop() public readonly vue部件之定义_订制的主表条目?: null | 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串
 
 
 
