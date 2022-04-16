@@ -223,6 +223,7 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
     @Prop() public readonly 当下另有他列优先于本列采取视觉强调引导用户操作之?: boolean
     @Prop() public readonly 不应创建底部栏目?: boolean
     @Prop() public readonly vue部件之定义_订制的主表条目?: null | 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串
+    @Prop() public readonly 应在控制台输出详尽的调试信息?: boolean
 
 
 
@@ -436,7 +437,7 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
 
 
     private 根据外界给出的条件构建实用的条目总表 (本次原因: 范_构建实用的条目总表_发起之原因): Promise<boolean> {
-        const { 日志前缀 } = this
+        const { 日志前缀, 应在控制台输出详尽的调试信息 } = this
 
         const _构建实用的条目总表 = () => {
             let 给出的所有条目之原始无序列表: 范_内用格式之条目之列表
@@ -465,18 +466,22 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
             const 旧有的所有条目之唯一标识之列表: 范_条目之唯一标识之列表 = 旧有的所有条目之列表.map(条目 => 条目.唯一标识)
             const 给出的所有条目之唯一标识之列表: 范_条目之唯一标识之列表 = 给出的所有条目之原始无序列表.map(条目 => 条目.唯一标识)
 
-            // const 在日志中列举条目之数量之上限 = 12; console.debug(
-            //     `${日志前缀}\n\t%c正在构建新的【条目总表之最终采纳值】。%c\n\t原因：%c${本次原因}%c。`,
-            //     'display: inline-block; vertical-align: baseline; color: #000; background-color: #bea; margin: 1px 2px 1px -8px; padding: 2px 0px 2px 8px; border-radius: 3px',
-            //     null,
-            //     'display: inline-block; vertical-align: baseline; color: #000; background-color: #edf; margin: 1px 2px; padding: 2px 4px; border-radius: 3px',
-            //     null,
-            //     '\n\t此时：',
-            //     '\n\t\t给出的所有条目之原始无序列表：', 给出的所有条目之原始无序列表.length, '条。',
-            //     给出的所有条目之原始无序列表.length === 0 ? '' : `\n\t\t\t有：${给出的所有条目之唯一标识之列表.slice(0, 在日志中列举条目之数量之上限).join('、')}${给出的所有条目之原始无序列表.length > 在日志中列举条目之数量之上限 ? '……' : '。'}`,
-            //     '\n\t\t选中的所有条目之列表：', 当下选中的所有条目之唯一标识之列表.length, '条。',
-            //     当下选中的所有条目之唯一标识之列表.length === 0 ? '' : `\n\t\t\t有：${当下选中的所有条目之唯一标识之列表.slice(0, 在日志中列举条目之数量之上限).join('、')}${当下选中的所有条目之唯一标识之列表.length > 在日志中列举条目之数量之上限 ? '……' : '。'}`
-            // )
+            if (应在控制台输出详尽的调试信息) {
+                const 在日志中列举条目之数量之上限 = 12
+
+                console.debug(
+                    `${日志前缀}\n\t%c正在构建新的【条目总表之最终采纳值】。%c\n\t原因：%c${本次原因}%c。`,
+                    'display: inline-block; vertical-align: baseline; color: #000; background-color: #bea; margin: 1px 2px 1px -8px; padding: 2px 0px 2px 8px; border-radius: 3px',
+                    null,
+                    'display: inline-block; vertical-align: baseline; color: #000; background-color: #edf; margin: 1px 2px; padding: 2px 4px; border-radius: 3px',
+                    null,
+                    '\n\t此时：',
+                    '\n\t\t给出的所有条目之原始无序列表：', 给出的所有条目之原始无序列表.length, '条。',
+                    给出的所有条目之原始无序列表.length === 0 ? '' : `\n\t\t\t有：${给出的所有条目之唯一标识之列表.slice(0, 在日志中列举条目之数量之上限).join('、')}${给出的所有条目之原始无序列表.length > 在日志中列举条目之数量之上限 ? '……' : '。'}`,
+                    '\n\t\t选中的所有条目之列表：', 当下选中的所有条目之唯一标识之列表.length, '条。',
+                    当下选中的所有条目之唯一标识之列表.length === 0 ? '' : `\n\t\t\t有：${当下选中的所有条目之唯一标识之列表.slice(0, 在日志中列举条目之数量之上限).join('、')}${当下选中的所有条目之唯一标识之列表.length > 在日志中列举条目之数量之上限 ? '……' : '。'}`
+                )
+            }
 
             let 选中的条目之列表将会变化: boolean = false
 
@@ -581,14 +586,16 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
             this.所有条目之列表_最终采纳值_求解之期待之原因 = 本次原因
             this.所有条目之列表_最终采纳值_求解之期待 = 所有条目之列表_最终采纳值_求解之期待
         } else {
-            // console.debug(
-            //     `${日志前缀}\n\t%c根据外界给出的条件构建实用的条目总表() 不执行。%c\n\t因仍在进行因%c${this.所有条目之列表_最终采纳值_求解之期待之原因}%c而起的任务。`,
-            //     'display: inline-block; vertical-align: baseline; color: #000; background-color: #fdd; margin: 1px 2px 1px -8px; padding: 2px 0px 2px 8px; border-radius: 3px',
-            //     null,
-            //     'display: inline-block; vertical-align: baseline; color: #000; background-color: #edf; margin: 1px 2px; padding: 2px 4px; border-radius: 3px',
-            //     null,
-            //     '\n\t附本次原因：', 本次原因, '。'
-            // )
+            if (应在控制台输出详尽的调试信息) {
+                console.debug(
+                    `${日志前缀}\n\t%c根据外界给出的条件构建实用的条目总表() 不执行。%c\n\t因仍在进行因%c${this.所有条目之列表_最终采纳值_求解之期待之原因}%c而起的任务。`,
+                    'display: inline-block; vertical-align: baseline; color: #000; background-color: #fdd; margin: 1px 2px 1px -8px; padding: 2px 0px 2px 8px; border-radius: 3px',
+                    null,
+                    'display: inline-block; vertical-align: baseline; color: #000; background-color: #edf; margin: 1px 2px; padding: 2px 4px; border-radius: 3px',
+                    null,
+                    '\n\t附本次原因：', 本次原因, '。'
+                )
+            }
         }
 
         return this.所有条目之列表_最终采纳值_求解之期待
