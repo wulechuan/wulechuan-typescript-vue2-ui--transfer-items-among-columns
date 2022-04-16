@@ -492,7 +492,19 @@ export default class Wlc任意两列互换数据之现成实用的双列 extends
 
 
     private mounted ():void {
-        this.接受外界给出的甲乙两列勾选条目之配置()
+        /**
+         * https://v3.cn.vuejs.org/api/options-lifecycle-hooks.html#mounted
+         *
+         * ……注意 mounted 不会保证所有的子组件也都被挂载完成。
+         * 如果你希望等待整个视图都渲染完毕，可以在 mounted 内部使用 vm.$nextTick：……
+         *
+         * 奇怪的是，即便当初下方源代码并未采用 $nextTick 以延后初始化动作，
+         * 在直接采用 TypeScript 语言的示范中项目照样总是不会遭遇错误现象；
+         * 但在采用 JavaScript 语言的示范项目中则总是会遭遇错误。该错误之现象如下：
+         *     - 甲列的初始勾选的条目总是正常、符合预期；
+         *     - 乙列的初始勾选的条目总是为零条，这不符合预期。
+         */
+        this.$nextTick().then(this.接受外界给出的甲乙两列勾选条目之配置)
     }
 }
 </script>

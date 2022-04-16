@@ -418,7 +418,7 @@ declare namespace Wlc任意两列互换数据 {
         // private 每当键盘按键松开时 (键盘事件之记载: KeyboardEvent): void
 
         // -------- 生命周期钩子 ----------------------------
-        private mounted (): void
+        private beforeMount (): void
     }
 
     namespace Wlc任意两列互换数据之现成实用的双列 {
