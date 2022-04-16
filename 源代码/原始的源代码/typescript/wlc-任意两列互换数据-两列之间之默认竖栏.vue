@@ -1,5 +1,7 @@
 <template>
     <div class="吴乐川-任意两列互换数据-两列之间之默认竖栏">
+        <div class="柔性部件配件"></div>
+
         <hr class="仅用于样式表缺失之情形" />
 
         <div class="功能单体 功能单体-主体为按钮">

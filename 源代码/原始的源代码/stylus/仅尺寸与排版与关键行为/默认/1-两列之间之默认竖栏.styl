@@ -12,7 +12,7 @@
 
     box-sizing border-box
     min-width 6em
-    padding 20em 0.5em 3em
+    padding 3em 0.5em 3em
 
     border-style solid
     border-width 'var(%s)' % unquote(css_var_name__chief_blocks_border_width)
@@ -24,6 +24,11 @@
     justify-content flex-start
     align-items center
     box-sizing border-box
+
+    > .柔性部件配件 {
+        flex 10 10 19em
+        max-height 19em
+    }
 
     hr.仅用于样式表缺失之情形 {
         display none
