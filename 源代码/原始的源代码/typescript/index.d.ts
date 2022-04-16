@@ -178,9 +178,10 @@ declare namespace Wlc任意两列互换数据 {
         private get vue部件之定义_订制的主表条目_最终采纳值(): 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串
 
         // -------- @Watch 数据变动之处理程序 ----------------
-        private 每当外界给出的所有条目之列表变动后 (): void
-        private 每当外界给出的当下选中的所有条目之唯一标识之列表变动后 (): void
-        private 每当外界给出的当下有否某种视觉强调之结论变动后 (结论: boolean): void
+        private 每当外界给出的所有条目之列表变动后 (新值?: 范_内用格式之条目之列表): void
+        private 每当外界给出的当下选中的所有条目之唯一标识之列表变动后 (新值?: 范_条目之唯一标识之列表): void
+        private 每当外界给出的当下有否某种视觉强调之结论变动后 (新值: boolean): void
+        private 每当外界给出的本列初始的用以过滤条目之配置变动后 (新值?: string | RegExp): void
 
         // -------- 私有行为 -------------------------------
         private 根据外界给出的条件构建实用的条目总表 (本次原因: Wlc任意两列互换数据之单列.范_构建实用的条目总表_发起之原因): Promise<boolean>
@@ -204,9 +205,6 @@ declare namespace Wlc任意两列互换数据 {
         private 每当根元素点击后 (事件之记载: PointerEvent): void
         private 每当列表操作说明书开关按钮点击时 (): void
         private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent): void
-
-        // -------- 生命周期钩子 ----------------------------
-        private mounted (): void
     }
 
     namespace Wlc任意两列互换数据之单列 {
@@ -399,8 +397,8 @@ declare namespace Wlc任意两列互换数据 {
         private get 按钮上的措辞_底部内容栏默认内容_将条目从乙列迁移至甲列_最终采纳值 (): string
 
         // -------- @Watch 数据变动之处理程序 ----------------
-        private 每当所有候选条目之列表变动后 (): void
-        private 每当乙列所有条目之唯一标识之列表变动后 (): void
+        private 每当所有候选条目之列表变动后 (新值?: 范_基础条目之列表): void
+        private 每当乙列所有条目之唯一标识之列表变动后 (新值?: 范_条目之唯一标识之列表): void
 
         // -------- 私有行为 -------------------------------
         private 将所有候选条目分配到左右两列 (本次原因: string): Promise<void>

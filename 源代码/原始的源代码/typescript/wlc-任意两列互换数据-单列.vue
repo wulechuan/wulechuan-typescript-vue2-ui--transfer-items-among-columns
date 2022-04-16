@@ -420,6 +420,17 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
         this.发布事件_某元素之视觉强调之状态已变动(this.当下有否某种视觉强调之结论)
     }
 
+    @Watch('本列初始的用以过滤条目之配置', { immediate: true })
+    private 每当外界给出的本列初始的用以过滤条目之配置变动后 (): void {
+        const { 本列初始的用以过滤条目之配置 } = this
+
+        if (本列初始的用以过滤条目之配置 instanceof RegExp) {
+            this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置.toString()
+        } else if (typeof 本列初始的用以过滤条目之配置 === 'string') {
+            this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置
+        }
+    }
+
 
 
 
@@ -861,20 +872,6 @@ export default class Wlc任意两列互换数据之单列 extends Vue {
 
                 this.每当有任何条目之选中状态变动时()
             }
-        }
-    }
-
-
-
-
-
-    private mounted (): void {
-        const { 本列初始的用以过滤条目之配置 } = this
-
-        if (本列初始的用以过滤条目之配置 instanceof RegExp) {
-            this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置.toString()
-        } else if (typeof 本列初始的用以过滤条目之配置 === 'string') {
-            this.用以过滤条目之关键词 = 本列初始的用以过滤条目之配置
         }
     }
 }
