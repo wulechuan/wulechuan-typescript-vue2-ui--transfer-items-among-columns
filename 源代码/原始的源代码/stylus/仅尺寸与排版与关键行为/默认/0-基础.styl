@@ -120,6 +120,18 @@
         border-width 'var(%s)' % unquote(css_var_name__input_boxes_border_width)
     }
 
+    input {
+        font-size inherit
+        box-sizing border-box
+        height 2.2em
+        padding 0.25em 1.2em
+        line-height normal
+
+        &[type="number"] {
+            text-align right
+        }
+    }
+
     input[type="button"],
     button {
         cursor pointer
@@ -290,9 +302,15 @@
             justify-content flex-start
             line-height 1.5
             text-align left
+        }
 
-            .输入项-勾选项 {
-                margin-left -0.5em
+        &.独占一行 {
+            display block
+            padding 1em
+            margin 0 0 1em 0
+
+            .输入项配文-单行文字输入 {
+                margin -0.25em 0 0.25em
             }
         }
 
@@ -302,10 +320,26 @@
         }
     }
 
+    label.包裹着输入项-单行文字输入 {
+        display inline-flex
+        flex-direction row
+        align-items center
+        padding 0.5em 1em
+        margin-right 1em
+
+        .输入项配文-单行文字输入 {
+            margin-right 0.5em
+        }
+    }
+
     label.包裹着输入项-勾选项 {
 
         .输入项配文-勾选项 {
             flex 1 1 auto
+        }
+
+        .输入项-勾选项 {
+            margin-left -0.5em
         }
     }
 

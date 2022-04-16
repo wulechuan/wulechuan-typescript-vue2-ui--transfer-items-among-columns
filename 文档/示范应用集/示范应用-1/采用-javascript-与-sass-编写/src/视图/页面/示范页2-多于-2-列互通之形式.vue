@@ -8,10 +8,24 @@
                 <span class="尽量不换行之短语">迁移至末列（戊列）。</span>
             </h3>
 
-            <button
-                class="反复式开关-全面禁止交互与否"
-                @click="应全面禁止交互 = !应全面禁止交互"
-            >{{ 反复式开关按钮_全面禁止交互与否_措辞 }}</button>
+            <div class="页面顶部的控制面板">
+                <label class="包裹着输入项 包裹着输入项-单行文字输入">
+                    <span class="输入项配文 输入项配文-单行文字输入">
+                        <span class="尽量不换行之短语">单列允许列示的</span>
+                        <span class="尽量不换行之短语">条目数之上限</span>
+                    </span>
+                    <input
+                        class="输入项"
+                        type="number"
+                        v-model="允许列示的条目数之上限"
+                    >
+                </label>
+
+                <button
+                    class="反复式开关-全面禁止交互与否"
+                    @click="应全面禁止交互 = !应全面禁止交互"
+                >{{ 反复式开关按钮_全面禁止交互与否_措辞 }}</button>
+            </div>
         </div>
 
         <div class="页面中央内容块">
@@ -45,6 +59,7 @@
                     v-model="某列.当下选中的所有条目之唯一标识之列表"
                     v-bind="某列.可成批自动绑定的属性"
                     :应全面禁止交互="应全面禁止交互"
+                    :允许列示的条目数之上限="允许列示的条目数之上限"
                     @内部某元素之视觉强调之状态已变动="多列互换数据功能之数据.各列之公共数据.当下各列采用视觉强调与否之信号表[某列之列表编号] = $event"
                     @已出错="当双列互换数据功能出错时($event)"
                 >
@@ -201,6 +216,9 @@ export default {
         return {
             /** @type {boolean} */
             应全面禁止交互: false,
+
+            /** @type {number} */
+            允许列示的条目数之上限: NaN,
 
             /** @type {范_多列互换数据功能之数据} */
             多列互换数据功能之数据: {
@@ -430,8 +448,21 @@ export default {
             margin: 0 1em;
             padding: 1rem;
         }
+    }
 
-        .反复式开关-全面禁止交互与否 {
+    .页面顶部的控制面板 {
+        flex: 0 0 34em;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+
+        input {
+            display: block;
+            width: 6em;
+        }
+
+        button {
             flex: 0 0 auto;
         }
     }
