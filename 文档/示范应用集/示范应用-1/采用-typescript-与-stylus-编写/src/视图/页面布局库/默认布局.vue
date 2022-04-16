@@ -59,8 +59,7 @@ export default class Layout默认 extends Vue {}
         flex 1 1 auto
         display flex
         flex-direction column
-        overflow hidden
-        overflow hidden
+        overflow auto
     }
 }
 </style>
