@@ -53,7 +53,7 @@ import {
     范_条目之唯一标识之列表,
 
     Wlc任意两列间转移条目_现成实用的双列,
-} from '@wulechuan/vue2-ui--columns-exchange-items'
+} from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 import Wlc任意两列间转移条目_主表条目之订制形态 from '@/视图/部件/wlc-任意两列间转移条目-主表条目-订制形态.vue'
 

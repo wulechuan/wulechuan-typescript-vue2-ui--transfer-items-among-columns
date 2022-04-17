@@ -1,6 +1,6 @@
-import '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/styles/完整样式表/默认/0-基础.css'
-import '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/styles/完整样式表/默认/1-单列.css'
-import '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/styles/完整样式表/默认/1-两列之间之默认竖栏.css'
+import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/styles/完整样式表/默认/0-基础.css'
+import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/styles/完整样式表/默认/1-单列.css'
+import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/styles/完整样式表/默认/1-两列之间之默认竖栏.css'
 
 import Vue from 'vue'
 import vue路由器实例 from './视图之路由系统'

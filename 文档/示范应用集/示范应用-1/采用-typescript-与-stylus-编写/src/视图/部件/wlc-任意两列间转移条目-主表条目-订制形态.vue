@@ -38,7 +38,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-import type Wlc任意两列间转移条目 from '@wulechuan/vue2-ui--columns-exchange-items'
+import type Wlc任意两列间转移条目 from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 import type {
     范_双列间转移条目_实际条目,

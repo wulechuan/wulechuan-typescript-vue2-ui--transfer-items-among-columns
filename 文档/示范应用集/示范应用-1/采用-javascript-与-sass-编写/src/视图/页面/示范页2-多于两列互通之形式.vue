@@ -93,7 +93,7 @@ import {
     Wlc任意两列间转移条目_两列之间之竖栏_默认形态,
 
     Wlc任意两列间转移条目_专用工具集,
-} from '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/javascript'
+} from '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/javascript'
 
 const {
     将某列选中的条目迁移至另一列: Wlc任意两列间转移条目_专用工具_将某列选中的条目迁移至另一列,
@@ -116,9 +116,9 @@ import {
 
 
 
-/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items').范_各列新增条目之插入规则} 范_各列新增条目之插入规则 */
-/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items').范_各列条目排序之函数} 范_各列条目排序之函数 */
-/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items').范_内用格式之条目} 范_内用格式之条目 */
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_各列新增条目之插入规则} 范_各列新增条目之插入规则 */
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_各列条目排序之函数} 范_各列条目排序之函数 */
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_内用格式之条目} 范_内用格式之条目 */
 
 /**
  * @typedef {范_内用格式之条目 & 范_双列间转移条目_实际条目} 范_双列间转移条目_实际完整形式之条目

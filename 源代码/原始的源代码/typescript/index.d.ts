@@ -6,7 +6,7 @@ type VueConstructorOptions = Vue.ComponentOptions<Vue>
 
 
 
-declare module '@wulechuan/vue2-ui--columns-exchange-items' {
+declare module '@wulechuan/vue2-ui--transfer-items-among-columns' {
     export = Wlc任意两列间转移条目
 }
 

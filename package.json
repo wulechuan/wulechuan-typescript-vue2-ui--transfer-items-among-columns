@@ -1,5 +1,5 @@
 {
-    "name": "@wulechuan/vue2-ui--columns-exchange-items",
+    "name": "@wulechuan/vue2-ui--transfer-items-among-columns",
     "author": "吴乐川 <wulechuan@live.com>",
     "license": "WTFPL",
     "version": "1.0.0",
@@ -92,11 +92,23 @@
         "不卡顿",
         "交互不卡顿",
         "dual columns",
+        "dual columns transfer items",
+        "dual columns exchange items",
         "two columns",
+        "two columns transfer items",
+        "two columns exchange items",
+        "multiple columns",
+        "multiple columns transfer items",
+        "multiple columns exchange items",
         "dual lists",
+        "dual lists transfer items",
         "dual lists exchange items",
         "two lists",
+        "two lists transfer items",
         "two lists exchange items",
+        "multiple lists",
+        "multiple lists transfer items",
+        "multiple lists exchange items",
         "transfer",
         "vuejs",
         "vuejs 2.x",
@@ -109,7 +121,11 @@
         "high performance",
         "performant",
         "long lists",
-        "super long lists"
+        "super long lists",
+        "items screening",
+        "items screen-able",
+        "items filtering",
+        "items filterable"
     ],
     "dependencies": {
         "vue-property-decorator": "^9.1.2"

@@ -45,7 +45,7 @@ import {
 
 
 
-/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items')} Wlc任意两列间转移条目 */
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns')} Wlc任意两列间转移条目 */
 
 /** @typedef {Wlc任意两列间转移条目.范_内用格式之条目 & 范_双列间转移条目_实际条目} 范_双列间转移条目_内用格式之实际条目 */
 

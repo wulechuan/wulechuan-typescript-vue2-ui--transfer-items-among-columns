@@ -1,4 +1,4 @@
-import type Wlc任意两列间转移条目 from '@wulechuan/vue2-ui--columns-exchange-items'
+import type Wlc任意两列间转移条目 from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 export interface 范_双列间转移条目_实际条目 extends Wlc任意两列间转移条目.范_基础条目 {
     数据?: {

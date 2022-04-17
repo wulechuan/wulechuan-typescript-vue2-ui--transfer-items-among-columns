@@ -100,7 +100,7 @@ import {
     Wlc任意两列间转移条目_两列之间之竖栏_默认形态,
 
     Wlc任意两列间转移条目_专用工具集,
-} from '@wulechuan/vue2-ui--columns-exchange-items'
+} from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 const {
     将某列选中的条目迁移至另一列: Wlc任意两列间转移条目_专用工具_将某列选中的条目迁移至另一列,

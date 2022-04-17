@@ -50,7 +50,7 @@
 <script>
 import {
     Wlc任意两列间转移条目_现成实用的双列,
-} from '@wulechuan/vue2-ui--columns-exchange-items/源代码/发布的源代码/javascript'
+} from '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/javascript'
 
 import Wlc任意两列间转移条目_主表条目之订制形态_Vue类之配置 from '@/视图/部件/wlc-任意两列间转移条目-主表条目-订制形态.vue'
 
@@ -65,9 +65,9 @@ import {
 
 
 
-/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items').范_条目之唯一标识之列表} 范_条目之唯一标识之列表 */
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_条目之唯一标识之列表} 范_条目之唯一标识之列表 */
 
-/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items').Wlc任意两列间转移条目_现成实用的双列.泛范_实例可绑定之属性集<范_双列间转移条目_实际条目>} 范_Wlc任意两列间转移条目之现成实用双列_实例可绑定之属性集 */
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').Wlc任意两列间转移条目_现成实用的双列.泛范_实例可绑定之属性集<范_双列间转移条目_实际条目>} 范_Wlc任意两列间转移条目之现成实用双列_实例可绑定之属性集 */
 
 /**
  * @typedef {object} 范_示范页_双列间转移条目功能配置集

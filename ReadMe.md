@@ -22,7 +22,7 @@
 <dt>NPM 包名</dt>
 <dd>
 
-[@wulechuan/vue2-ui--columns-exchange-items](https://www.npmjs.com/package/@wulechuan/vue2-ui--columns-exchange-items)
+[@wulechuan/vue2-ui--transfer-items-among-columns](https://www.npmjs.com/package/@wulechuan/vue2-ui--transfer-items-among-columns)
 
 </dd>
 <dt>作者</dt>
@@ -48,7 +48,7 @@
 ### 安装
 
 ```sh
-npm  i  @wulechuan/vue2-ui--columns-exchange-items
+npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
 ```
 
 
