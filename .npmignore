@@ -13,6 +13,7 @@
 .eslintrc.js
 .markdownlint.json
 tsconfig.json
+.browserslistrc
 
 
 
