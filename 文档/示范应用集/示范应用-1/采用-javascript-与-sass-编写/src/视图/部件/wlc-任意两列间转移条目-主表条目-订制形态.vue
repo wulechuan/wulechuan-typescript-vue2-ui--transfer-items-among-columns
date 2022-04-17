@@ -1,6 +1,6 @@
 <template>
     <div class="条目根-在该范例中的订制形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
-        <div class="吴乐川-任意两列互换数据-条目之视觉根">
+        <div class="吴乐川-任意两列间转移条目-条目之视觉根">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
                 <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
@@ -37,29 +37,29 @@
 
 <script>
 import {
-    范_双列互换数据_实际条目,
-    范_双列互换数据_实际条目之数据,
+    范_双列间转移条目_实际条目,
+    范_双列间转移条目_实际条目之数据,
 } from '../../数据/示范页之数据库'
 
 
 
 
 
-/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items')} Wlc任意两列互换数据 */
+/** @typedef {import('@wulechuan/vue2-ui--columns-exchange-items')} Wlc任意两列间转移条目 */
 
-/** @typedef {Wlc任意两列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目} 范_双列互换数据_内用格式之实际条目 */
+/** @typedef {Wlc任意两列间转移条目.范_内用格式之条目 & 范_双列间转移条目_实际条目} 范_双列间转移条目_内用格式之实际条目 */
 
-/** @typedef {Wlc任意两列互换数据.泛范_界面元素之样式类名之配置<string>} 范_界面元素之样式类名之配置 */
+/** @typedef {Wlc任意两列间转移条目.泛范_界面元素之样式类名之配置<string>} 范_界面元素之样式类名之配置 */
 
 
 
 
 
 export default {
-    name: 'Wlc任意两列互换数据_主表条目_订制形态',
+    name: 'Wlc任意两列间转移条目_主表条目_订制形态',
 
     props: {
-        /** @type {范_双列互换数据_内用格式之实际条目} */
+        /** @type {范_双列间转移条目_内用格式之实际条目} */
         条目: {
             type: Object,
             default: null,
@@ -72,7 +72,7 @@ export default {
 
     computed: {
         /**
-         * @returns {范_双列互换数据_内用格式之实际条目}
+         * @returns {范_双列间转移条目_内用格式之实际条目}
          */
         条目_最终采纳值 () {
             const 外界给出的值 = this.条目
@@ -84,7 +84,7 @@ export default {
          * @returns {范_界面元素之样式类名之配置}
          */
         输入项之样式类名配置 () {
-            /** @type {范_双列互换数据_内用格式之实际条目} */
+            /** @type {范_双列间转移条目_内用格式之实际条目} */
             const 条目 = this.条目_最终采纳值
             return { '已勾选': 条目.已选中, '已禁止交互': 条目.已禁止选择, '未选中': !条目.已选中 }
         },
@@ -96,10 +96,10 @@ export default {
             /** @type {string[]} */
             let 诸段落之列表 = []
 
-            /** @type {范_双列互换数据_内用格式之实际条目} */
+            /** @type {范_双列间转移条目_内用格式之实际条目} */
             const 条目_最终采纳值 = this.条目_最终采纳值
 
-            /** @type {范_双列互换数据_实际条目之数据} */
+            /** @type {范_双列间转移条目_实际条目之数据} */
             const 原始数据 = 条目_最终采纳值.数据
             if (原始数据) {
                 const 原始值 = 原始数据.描述
@@ -143,7 +143,7 @@ export default {
 
     methods: {
         /**
-         * @returns {范_双列互换数据_内用格式之实际条目}
+         * @returns {范_双列间转移条目_内用格式之实际条目}
          */
         构造临时的条目 () {
             /** @type {string} */
@@ -173,7 +173,7 @@ export default {
         min-width: 0;
     }
 
-    .吴乐川-任意两列互换数据-条目之视觉根 {
+    .吴乐川-任意两列间转移条目-条目之视觉根 {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
@@ -217,7 +217,7 @@ export default {
         // margin-top: 0.5em;
         margin-bottom: 1.5em;
 
-        .吴乐川-任意两列互换数据-条目之视觉根 {
+        .吴乐川-任意两列间转移条目-条目之视觉根 {
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             box-shadow: 0 0 0.2em 0 rgba(black, 0.319);

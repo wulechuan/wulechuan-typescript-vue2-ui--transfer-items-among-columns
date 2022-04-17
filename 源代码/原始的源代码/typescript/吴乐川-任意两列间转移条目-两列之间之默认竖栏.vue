@@ -1,5 +1,5 @@
 <template>
-    <div class="吴乐川-任意两列互换数据-两列之间之默认竖栏">
+    <div class="吴乐川-任意两列间转移条目-两列之间之默认竖栏">
         <div class="柔性部件配件"></div>
 
         <hr class="仅用于样式表缺失之情形" />
@@ -58,14 +58,14 @@ import {
 
 
 
-type 范_界面元素之样式类名之配置 = Wlc任意两列互换数据.泛范_界面元素之样式类名之配置<string>;
+type 范_界面元素之样式类名之配置 = Wlc任意两列间转移条目.泛范_界面元素之样式类名之配置<string>;
 
 
 
 
 
 @Component({})
-export default class Wlc任意两列互换数据之两列之间之默认竖栏 extends Vue {
+export default class Wlc任意两列间转移条目_两列之间之竖栏_默认形态 extends Vue {
     @Prop() public readonly 应全面禁止交互?: boolean
     @Prop() public readonly 按钮上的措辞_将条目从甲列迁移至乙列?: string
     @Prop() public readonly 按钮上的措辞_将条目从乙列迁移至甲列?: string

@@ -1,6 +1,6 @@
 <template>
     <div class="条目根-在该范例中的订制形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述已呈现 }">
-        <div class="吴乐川-任意两列互换数据-条目之视觉根">
+        <div class="吴乐川-任意两列间转移条目-条目之视觉根">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
                 <input type="checkbox" :checked="条目_最终采纳值.已选中" @click.prevent>
@@ -38,32 +38,32 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
+import type Wlc任意两列间转移条目 from '@wulechuan/vue2-ui--columns-exchange-items'
 
 import type {
-    范_双列互换数据_实际条目,
+    范_双列间转移条目_实际条目,
 } from '../../数据/示范页之数据库'
 
 
 
 
 
-type 范_双列互换数据_内用格式之实际条目 = Wlc任意两列互换数据.范_内用格式之条目 & 范_双列互换数据_实际条目;
-type 范_界面元素之样式类名之配置 = Wlc任意两列互换数据.泛范_界面元素之样式类名之配置<string>;
+type 范_双列间转移条目_内用格式之实际条目 = Wlc任意两列间转移条目.范_内用格式之条目 & 范_双列间转移条目_实际条目;
+type 范_界面元素之样式类名之配置 = Wlc任意两列间转移条目.泛范_界面元素之样式类名之配置<string>;
 
 
 
 
 
 @Component({})
-export default class Wlc任意两列互换数据_主表条目_订制形态 extends Vue {
-    @Prop() public 条目?: 范_双列互换数据_内用格式之实际条目
+export default class Wlc任意两列间转移条目_主表条目_订制形态 extends Vue {
+    @Prop() public 条目?: 范_双列间转移条目_内用格式之实际条目
 
 
 
 
 
-    private get 条目_最终采纳值 (): 范_双列互换数据_内用格式之实际条目 {
+    private get 条目_最终采纳值 (): 范_双列间转移条目_内用格式之实际条目 {
         const 外界给出的值 = this.条目
         if (!外界给出的值) return this.构造临时的条目()
         return 外界给出的值
@@ -110,7 +110,7 @@ export default class Wlc任意两列互换数据_主表条目_订制形态 exten
 
 
 
-    private 构造临时的条目 (): 范_双列互换数据_内用格式之实际条目 {
+    private 构造临时的条目 (): 范_双列间转移条目_内用格式之实际条目 {
         const 称谓: string = Math.random().toFixed(10)
         return { 唯一标识: 称谓, 在界面中的称谓: 称谓, 已禁止选择: true, 已选中: false, 数据: {} }
     }
@@ -136,7 +136,7 @@ export default class Wlc任意两列互换数据_主表条目_订制形态 exten
         min-width 0
     }
 
-    .吴乐川-任意两列互换数据-条目之视觉根 {
+    .吴乐川-任意两列间转移条目-条目之视觉根 {
         display flex
         flex-direction row
         align-items flex-start
@@ -180,7 +180,7 @@ export default class Wlc任意两列互换数据_主表条目_订制形态 exten
         // margin-top 0.5em
         margin-bottom 1.5em
 
-        .吴乐川-任意两列互换数据-条目之视觉根 {
+        .吴乐川-任意两列间转移条目-条目之视觉根 {
             border-bottom-left-radius 0
             border-bottom-right-radius 0
             box-shadow 0 0 0.2em 0 rgba(black, 0.319)

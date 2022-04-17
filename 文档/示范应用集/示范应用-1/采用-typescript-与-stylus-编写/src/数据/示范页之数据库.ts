@@ -1,15 +1,15 @@
-import type Wlc任意两列互换数据 from '@wulechuan/vue2-ui--columns-exchange-items'
+import type Wlc任意两列间转移条目 from '@wulechuan/vue2-ui--columns-exchange-items'
 
-export interface 范_双列互换数据_实际条目 extends Wlc任意两列互换数据.范_基础条目 {
+export interface 范_双列间转移条目_实际条目 extends Wlc任意两列间转移条目.范_基础条目 {
     数据?: {
         描述?: string | string[];
         描述已呈现?: boolean;
     };
 }
 
-export type 范_双列互换数据_实际条目之列表 = Array<范_双列互换数据_实际条目>
+export type 范_双列间转移条目_实际条目之列表 = Array<范_双列间转移条目_实际条目>
 
-export const 一切可能的条目之列表: 范_双列互换数据_实际条目之列表 = [
+export const 一切可能的条目之列表: 范_双列间转移条目_实际条目之列表 = [
     {
         唯一标识: '蠃鱼',
         在界面中的称谓: '蠃（luǒ）鱼',

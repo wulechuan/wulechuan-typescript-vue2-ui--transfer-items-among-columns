@@ -7,15 +7,15 @@ type VueConstructorOptions = Vue.ComponentOptions<Vue>
 
 
 declare module '@wulechuan/vue2-ui--columns-exchange-items' {
-    export = Wlc任意两列互换数据
+    export = Wlc任意两列间转移条目
 }
 
 
 
 
 
-declare namespace Wlc任意两列互换数据 {
-    namespace 核心工具集 {
+declare namespace Wlc任意两列间转移条目 {
+    namespace Wlc任意两列间转移条目_专用工具集 {
         function 将某列选中的条目迁移至另一列(迁移前起列所有条目之列表?: 范_内用格式之条目之列表, 迁移前迄列所有条目之列表?: 范_内用格式之条目之列表): null | {
             迁移后起列所有条目之列表: 范_内用格式之条目之列表;
             迁移后迄列所有条目之列表: 范_内用格式之条目之列表;
@@ -99,7 +99,7 @@ declare namespace Wlc任意两列互换数据 {
         乙列当下没有条目拟迁移至甲列: boolean;
     };
 
-    type 范_类范_Wlc任意两列互换数据之现成实用双列之事件名称 = (
+    type 范_类范_Wlc任意两列间转移条目之现成实用双列之事件名称 = (
         | '条目之分布已变动'
         | '已出错'
     );
@@ -123,7 +123,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    class Wlc任意两列互换数据之单列 extends Vue {
+    class Wlc任意两列间转移条目_单列 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
@@ -174,8 +174,8 @@ declare namespace Wlc任意两列互换数据 {
         private get 应禁止条目过滤器交互 (): boolean
         private get 条目过滤器文本输入框元素之样式类名配置 (): 泛范_界面元素之样式类名之配置
         private get 当下有否某种视觉强调之结论 (): boolean
-        private get 与选中所有条目_含隐藏之条目_之交互相关之汇总数据 (): Wlc任意两列互换数据之单列.范_与选中所有条目之交互相关之汇总数据
-        private get 与选中所有条目_仅列示之条目_之交互相关之汇总数据 (): Wlc任意两列互换数据之单列.范_与选中所有条目之交互相关之汇总数据
+        private get 与选中所有条目_含隐藏之条目_之交互相关之汇总数据 (): Wlc任意两列间转移条目_单列.范_与选中所有条目之交互相关之汇总数据
+        private get 与选中所有条目_仅列示之条目_之交互相关之汇总数据 (): Wlc任意两列间转移条目_单列.范_与选中所有条目之交互相关之汇总数据
         private get vue部件之定义_订制的主表条目_最终采纳值(): 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串
 
         // -------- @Watch 数据变动之处理程序 ----------------
@@ -185,10 +185,10 @@ declare namespace Wlc任意两列互换数据 {
         private 每当外界给出的本列初始的用以过滤条目之配置变动后 (新值?: string | RegExp): void
 
         // -------- 私有行为 -------------------------------
-        private 根据外界给出的条件构建实用的条目总表 (本次原因: Wlc任意两列互换数据之单列.范_构建实用的条目总表_发起之原因): Promise<boolean>
+        private 根据外界给出的条件构建实用的条目总表 (本次原因: Wlc任意两列间转移条目_单列.范_构建实用的条目总表_发起之原因): Promise<boolean>
         private 求某条目之样式类名集_其皿元素 (条目: 范_内用格式之条目): 泛范_界面元素之样式类名之配置
         private 求某条目之样式类名集_其根元素 (条目: 范_内用格式之条目): 泛范_界面元素之样式类名之配置
-        private 求_与全部选中或取消选中某些条目有关之三态勾选框之汇总数据 (本次统计时应将暂不可见的条目一并计入?: boolean): Wlc任意两列互换数据之单列.范_与选中所有条目之交互相关之汇总数据
+        private 求_与全部选中或取消选中某些条目有关之三态勾选框之汇总数据 (本次统计时应将暂不可见的条目一并计入?: boolean): Wlc任意两列间转移条目_单列.范_与选中所有条目之交互相关之汇总数据
         private 选中或取消选中一系列列示着的条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
         private 选中或取消选中一系列条目_含隐藏之条目 (本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
         private 选中或取消选中一系列条目 (应考察的所有条目之列表?: 范_内用格式之条目之列表, 本次目的是选中这一系列条目?: boolean, 条目甲?: any, 条目乙?: any): void
@@ -208,7 +208,7 @@ declare namespace Wlc任意两列互换数据 {
         private 每当点击某条目后 (被点击之条目: 范_内用格式之条目, 事件之记载: PointerEvent): void
     }
 
-    namespace Wlc任意两列互换数据之单列 {
+    namespace Wlc任意两列间转移条目_单列 {
         type 泛范_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
             // 用于 v-model 双向绑定。
             当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表;
@@ -262,7 +262,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    class Wlc任意两列互换数据之单列之说明书 extends Vue {
+    class Wlc任意两列间转移条目_单列之说明书 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 当下正呈现着?: boolean
 
@@ -285,7 +285,7 @@ declare namespace Wlc任意两列互换数据 {
         private 每当关闭按钮点击后 (事件之记载: PointerEvent): void
     }
 
-    namespace Wlc任意两列互换数据之单列之说明书 {
+    namespace Wlc任意两列间转移条目_单列之说明书 {
         type 范_事件名称 = (
             | '呈现状态期望变更'
         );
@@ -295,7 +295,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    class Wlc任意两列互换数据之两列之间之默认竖栏 extends Vue {
+    class Wlc任意两列间转移条目_两列之间之竖栏_默认形态 extends Vue {
         // -------- 外来数据 --------------------------------
         public readonly 应全面禁止交互?: boolean
         public readonly 按钮上的措辞_将条目从甲列迁移至乙列?: string
@@ -327,7 +327,7 @@ declare namespace Wlc任意两列互换数据 {
         private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void
     }
 
-    namespace Wlc任意两列互换数据之两列之间之默认竖栏 {
+    namespace Wlc任意两列间转移条目_两列之间之竖栏_默认形态 {
         type 范_事件名称 = (
             | '请求将甲列选中之条目迁移至乙列'
             | '请求将乙列选中之条目迁移至甲列'
@@ -338,7 +338,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    class Wlc任意两列互换数据之条目视觉根之默认形态 extends Vue {
+    class Wlc任意两列间转移条目_主表条目_默认形态 extends Vue {
         // -------- 外来数据 --------------------------------
         public readonly 条目?: 范_内用格式之条目
     }
@@ -347,7 +347,7 @@ declare namespace Wlc任意两列互换数据 {
 
 
 
-    class Wlc任意两列互换数据之现成实用的双列 extends Vue {
+    class Wlc任意两列间转移条目_现成实用的双列 extends Vue {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
@@ -388,8 +388,8 @@ declare namespace Wlc任意两列互换数据 {
         // -------- 私有数据 --------------------------------
         private 日志前缀: string
         private 所有条目之列表之去重后的缓存版本: null | 范_基础条目之列表
-        private 甲列之数据集: Wlc任意两列互换数据之现成实用的双列.范_单列之内部数据集
-        private 乙列之数据集: Wlc任意两列互换数据之现成实用的双列.范_单列之内部数据集
+        private 甲列之数据集: Wlc任意两列间转移条目_现成实用的双列.范_单列之内部数据集
+        private 乙列之数据集: Wlc任意两列间转移条目_现成实用的双列.范_单列之内部数据集
         private 将所有候选条目分配到左右两列_之期待: null | Promise<void>
         private 将所有候选条目分配到左右两列_之期待之原因: string
 
@@ -407,7 +407,7 @@ declare namespace Wlc任意两列互换数据 {
         // -------- 私有行为 -------------------------------
         private 接受外界给出的甲乙两列勾选条目之配置 (): void
         private 将所有候选条目分配到左右两列 (本次原因: string): Promise<void>
-        private 将某列选中的条目迁移至对方列 (起列?: Wlc任意两列互换数据之现成实用的双列.范_单列之内部数据集): void
+        private 将某列选中的条目迁移至对方列 (起列?: Wlc任意两列间转移条目_现成实用的双列.范_单列之内部数据集): void
         // - - - - - - - - - - - - - - - - - - - - - - -
         private 发布事件_条目之分布已变动 (): void
         private 发布事件_已出错 (错误之记载或报文: Error | string): void
@@ -421,7 +421,7 @@ declare namespace Wlc任意两列互换数据 {
         private beforeMount (): void
     }
 
-    namespace Wlc任意两列互换数据之现成实用的双列 {
+    namespace Wlc任意两列间转移条目_现成实用的双列 {
         type 泛范_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
             应全面禁止交互?: boolean;
 
