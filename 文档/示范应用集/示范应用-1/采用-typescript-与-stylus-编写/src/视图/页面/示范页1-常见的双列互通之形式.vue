@@ -177,7 +177,7 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
     }
 
     private activated (): void {
-        document.title = '任意两列互换数据 - 例1：经典两列'
+        document.title = '任意两列互换数据 - 例1：经典两列（TypeScript）'
     }
 }
 </script>

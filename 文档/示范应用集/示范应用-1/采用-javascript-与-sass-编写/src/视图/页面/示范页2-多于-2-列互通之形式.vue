@@ -440,7 +440,7 @@ export default {
     },
 
     activated () {
-        document.title = '任意两列互换数据 - 例2：多列互通'
+        document.title = '任意两列互换数据 - 例2：多列互通（JavaScript）'
     },
 }
 </script>

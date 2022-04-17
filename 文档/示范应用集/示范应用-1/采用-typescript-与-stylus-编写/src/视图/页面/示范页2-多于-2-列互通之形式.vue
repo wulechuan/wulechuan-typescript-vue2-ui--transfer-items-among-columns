@@ -370,7 +370,7 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
     }
 
     private activated (): void {
-        document.title = '任意两列互换数据 - 例2：多列互通'
+        document.title = '任意两列互换数据 - 例2：多列互通（TypeScript）'
     }
 }
 </script>

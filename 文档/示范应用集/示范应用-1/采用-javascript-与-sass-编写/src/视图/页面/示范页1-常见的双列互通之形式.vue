@@ -188,7 +188,7 @@ export default {
     },
 
     activated () {
-        document.title = '任意两列互换数据 - 例1：经典两列'
+        document.title = '任意两列互换数据 - 例1：经典两列（JavaScript）'
     },
 }
 </script>
