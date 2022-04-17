@@ -186,6 +186,10 @@ export default {
     beforeMount () {
         this.初始化数据()
     },
+
+    activated () {
+        document.title = '任意两列互换数据 - 例1：经典两列'
+    },
 }
 </script>
 

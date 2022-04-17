@@ -435,8 +435,12 @@ export default {
         },
     },
 
-    mounted () {
+    beforeMount () {
         this.初始化()
+    },
+
+    activated () {
+        document.title = '任意两列互换数据 - 例2：多列互通'
     },
 }
 </script>
