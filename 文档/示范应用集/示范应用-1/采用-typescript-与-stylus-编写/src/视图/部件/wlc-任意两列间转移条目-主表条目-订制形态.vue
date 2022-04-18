@@ -126,69 +126,74 @@ export default class Wlc任意两列间转移条目_主表条目_订制形态 ex
 
 
 <style lang="stylus">
-.条目根-在该范例中的订制形态 {
-    border-radius 0.25em
-    overflow hidden
+@import '@/视图/_公共样式/用以包裹全局之选择器'
 
-    button {
-        display block
-        padding 0 1.5em
-        min-width 0
-    }
+{app_styles_global_wrapper} {
 
-    .吴乐川-任意两列间转移条目-条目之视觉根 {
-        display flex
-        flex-direction row
-        align-items flex-start
-        padding 0.3em 0.5em
+    .条目根-在该范例中的订制形态 {
+        border-radius 0.25em
+        overflow hidden
 
-        .位于中央的宽度自调节之占位器 {
-            flex 10 10 auto
-            min-width 1em
+        button {
+            display block
+            padding 0 1.5em
+            min-width 0
         }
-    }
-
-    .详情内容块开关按钮 {
-        opacity 0.1
-        flex 0 0 4em
-        padding 0 0.75em
-        margin -0.05em 0 -0.5em
-    }
-
-    .内容块-详情 {
-        min-height 3em
-
-        article {
-            padding 0.5em 1.5em 1.8em 2.25em
-            text-align justify
-            user-select text
-        }
-    }
-
-    &:hover,
-    &.详情内容块正呈现着 {
-
-        .详情内容块开关按钮 {
-            // visibility visible
-            opacity 1
-        }
-    }
-
-    &.详情内容块正呈现着 {
-        background-color #ddd
-        box-shadow inset 0 0 0.2em 0 rgba(black, 0.319)
-        // margin-top 0.5em
-        margin-bottom 1.5em
 
         .吴乐川-任意两列间转移条目-条目之视觉根 {
-            border-bottom-left-radius 0
-            border-bottom-right-radius 0
-            box-shadow 0 0 0.2em 0 rgba(black, 0.319)
-        }
-    }
+            display flex
+            flex-direction row
+            align-items flex-start
+            padding 0.3em 0.5em
 
-    .位于底部的收起内容块之按钮 {
-        margin 0 auto 1.5em
+            .位于中央的宽度自调节之占位器 {
+                flex 10 10 auto
+                min-width 1em
+            }
+        }
+
+        .详情内容块开关按钮 {
+            opacity 0.1
+            flex 0 0 4em
+            padding 0 0.75em
+            margin -0.05em 0 -0.5em
+        }
+
+        .内容块-详情 {
+            min-height 3em
+
+            article {
+                padding 0.5em 1.5em 1.8em 2.25em
+                text-align justify
+                user-select text
+            }
+        }
+
+        &:hover,
+        &.详情内容块正呈现着 {
+
+            .详情内容块开关按钮 {
+                // visibility visible
+                opacity 1
+            }
+        }
+
+        &.详情内容块正呈现着 {
+            background-color #ddd
+            box-shadow inset 0 0 0.2em 0 rgba(black, 0.319)
+            // margin-top 0.5em
+            margin-bottom 1.5em
+
+            .吴乐川-任意两列间转移条目-条目之视觉根 {
+                border-bottom-left-radius 0
+                border-bottom-right-radius 0
+                box-shadow 0 0 0.2em 0 rgba(black, 0.319)
+            }
+        }
+
+        .位于底部的收起内容块之按钮 {
+            margin 0 auto 1.5em
+        }
     }
 }
 </style>
