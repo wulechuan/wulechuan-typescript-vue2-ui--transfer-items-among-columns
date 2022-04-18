@@ -7,13 +7,11 @@
 
 
 
-// 【基础】。故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
-{identifiable_selector__base_styles_wrapper} {
-    {css_var_name__element_highlighting_color_static} #795cfc
-    {css_var_name__element_highlighting_color_hover} #a38eff
-    {css_var_name__element_highlighting_but_disabled_color_static} #e1dcf9
-    {css_var_name__element_non_highlighting_color_hover} #e1dcf9
-    {css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
+// 【基础】。
+// 如果 wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper 不是空白或 `&`，
+// 亦即故意将基础样式之定义套在根元素之内，
+// 则以防污染全局的样式定义。
+{wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper} {
 
     kbd {
         font-family 'Cascadia Code', 'PT Mono', 'consolas', 'Courier New', Courier, 'Microsoft Yahei UI', 'Microsoft Yahei', '微软雅黑', monospace

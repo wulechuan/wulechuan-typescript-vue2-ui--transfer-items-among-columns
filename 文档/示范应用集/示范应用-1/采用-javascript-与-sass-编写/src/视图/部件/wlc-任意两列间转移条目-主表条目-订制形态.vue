@@ -165,7 +165,7 @@ export default {
 <style lang="scss">
 @import '@/视图/_公共样式/用以包裹全局之选择器';
 
-#{$app_styles_global_wrapper} {
+#{$用以包裹整个应用之部分样式之选择器} {
 
     .条目根-在该范例中的订制形态 {
         border-radius: 0.25em;

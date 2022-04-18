@@ -1,0 +1,23 @@
+@require '../../_通用变量集_'
+
+// Stylus 语言的变量名不允许采用汉字！
+
+
+
+
+
+BLOCK__css_vars__set_values = @block {
+    {css_var_name__input_boxes_border_width} 2px
+    {css_var_name__focusing_element_outline_width} 'calc(2 * var(%s))' % unquote(css_var_name__input_boxes_border_width)
+    {css_var_name__buttons_border_width} 3px
+}
+
+if lookup('wlc_transfer_items_among_columns__identifiable_selector__css_vars_carrier') {
+    {wlc_transfer_items_among_columns__identifiable_selector__css_vars_carrier} {
+        {BLOCK__css_vars__set_values}
+    }
+} else {
+    body {
+        {BLOCK__css_vars__set_values}
+    }
+}

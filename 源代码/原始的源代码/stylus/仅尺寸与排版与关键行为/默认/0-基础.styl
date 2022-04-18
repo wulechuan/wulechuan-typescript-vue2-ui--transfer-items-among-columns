@@ -6,12 +6,11 @@
 
 
 
-// 【基础】。故意将基础样式之定义套在根元素之内，以防污染全局的样式定义。
-{identifiable_selector__base_styles_wrapper} {
-    {css_var_name__input_boxes_border_width} 2px
-    {css_var_name__focusing_element_outline_width} 'calc(2 * var(%s))' % unquote(css_var_name__input_boxes_border_width)
-    {css_var_name__buttons_border_width} 3px
-
+// 【基础】。
+// 如果 wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper 不是空白或 `&`，
+// 亦即故意将基础样式之定义套在根元素之内，
+// 则以防污染全局的样式定义。
+{wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper} {
     em,
     strong {
         font-style normal
