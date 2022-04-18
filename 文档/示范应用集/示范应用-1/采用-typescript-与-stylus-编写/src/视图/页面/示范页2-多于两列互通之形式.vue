@@ -384,108 +384,112 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
 
 
 <style lang="stylus">
-@require '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/_通用变量集_'
+@require '@/视图/_公共样式/样式定义/stylus-变量集'
 
-.页面--示范页2-多余-2-列互通之形式 {
-    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} black
-    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #444
-    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ccc
-    {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #ddd
-    {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+{app_styles_global_wrapper} {
+    @require '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/_通用变量集_'
 
-    font-size 18px
-    box-sizing border-box
-    height 100%
-    display flex
-    flex-direction column
+    .页面--示范页2-多余-2-列互通之形式 {
+        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} black
+        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #444
+        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ccc
+        {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #ddd
+        {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
 
-    @media screen and (max-width 1280px) {
-        .页面过窄时则隐藏 { display: none; }
-    }
-
-    @media screen and (max-width 960px) {
-        .页面极窄时则隐藏 { display: none; }
-    }
-
-    .总标题栏 {
-        flex 0 0 auto
-        background-color #ccc
-        display flex
-        flex-direction row
-        justify-content center
-        align-items center
-        padding 0.5em 1em
-
-        h3 {
-            flex 1 1 auto
-            font-size 1.5rem
-            text-align center
-            margin 0 0.5em
-            padding 0.5em
-        }
-    }
-
-    .页面顶部的控制面板 {
-        flex 0 0 32em
-        display flex
-        flex-direction row
-        justify-content flex-end
-        align-items center
-
-        input {
-            display block
-            width 6em
-        }
-
-        button {
-            flex 0 0 auto
-        }
-    }
-
-    .页面中央内容块 {
-        flex 1 1 auto
+        font-size 18px
         box-sizing border-box
         height 100%
         display flex
-        flex-direction row
-        flex-wrap nowrap
-        padding 2em
-        overflow auto
-        margin 0 2em 2em
-    }
+        flex-direction column
 
-    .吴乐川-任意两列间转移条目-单列 {
-        flex 0 0 24em
+        @media screen and (max-width 1280px) {
+            .页面过窄时则隐藏 { display: none; }
+        }
 
-        .列标题栏 {
-            color white
-            background-color rgba(black, 0.79)
+        @media screen and (max-width 960px) {
+            .页面极窄时则隐藏 { display: none; }
+        }
+
+        .总标题栏 {
+            flex 0 0 auto
+            background-color #ccc
+            display flex
+            flex-direction row
+            justify-content center
+            align-items center
+            padding 0.5em 1em
 
             h3 {
-                font-size 1.25em
+                flex 1 1 auto
+                font-size 1.5rem
                 text-align center
-                margin 0.2em 0
-            }
-
-            h4 {
-                font-size 1em
-                font-weight normal
-                margin 0.5em 0
-                height 1em
-                line-height 1
+                margin 0 0.5em
+                padding 0.5em
             }
         }
 
-        &.甲 .列首 { background-color: #fcc; }
-        &.乙 .列首 { background-color: #ffc; }
-        &.丙 .列首 { background-color: #cfc; }
-        &.丁 .列首 { background-color: #cff; }
-        &.戊 .列首 { background-color: #ccf; }
-    }
+        .页面顶部的控制面板 {
+            flex 0 0 32em
+            display flex
+            flex-direction row
+            justify-content flex-end
+            align-items center
 
-    .吴乐川-任意两列间转移条目-两列之间之默认竖栏 {
+            input {
+                display block
+                width 6em
+            }
 
-        .直接迁移至戊列之按钮 {
+            button {
+                flex 0 0 auto
+            }
+        }
+
+        .页面中央内容块 {
+            flex 1 1 auto
+            box-sizing border-box
+            height 100%
+            display flex
+            flex-direction row
+            flex-wrap nowrap
+            padding 2em
+            overflow auto
+            margin 0 2em 2em
+        }
+
+        .吴乐川-任意两列间转移条目-单列 {
+            flex 0 0 24em
+
+            .列标题栏 {
+                color white
+                background-color rgba(black, 0.79)
+
+                h3 {
+                    font-size 1.25em
+                    text-align center
+                    margin 0.2em 0
+                }
+
+                h4 {
+                    font-size 1em
+                    font-weight normal
+                    margin 0.5em 0
+                    height 1em
+                    line-height 1
+                }
+            }
+
+            &.甲 .列首 { background-color: #fcc; }
+            &.乙 .列首 { background-color: #ffc; }
+            &.丙 .列首 { background-color: #cfc; }
+            &.丁 .列首 { background-color: #cff; }
+            &.戊 .列首 { background-color: #ccf; }
+        }
+
+        .吴乐川-任意两列间转移条目-两列之间之默认竖栏 {
+
+            .直接迁移至戊列之按钮 {
+            }
         }
     }
 }
