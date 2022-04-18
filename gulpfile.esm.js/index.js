@@ -216,6 +216,34 @@ const 任务闭环之将所有独立于Vue文件的Stylus文件复制到发布�
 
 
 
+const 任务闭环之将所有Sass文件复制到发布文件夹内 = 构建一个任务闭环用以复制一组文件或文件夹({
+    descriptionOfCoreTask: '将所有 Sass 文件复制到发布文件夹中去',
+    descriptionOfInputsOfCoreTask: '.scss 文件',
+
+    sourceGlobs: {
+        rootFolderPath: './源代码/原始的源代码/sass',
+
+        relativeGlobsSpecificallyForThisTaskCycle: [
+            '**/*.scss',
+        ],
+
+        extraSourceGlobsToWatch: [
+        ],
+    },
+
+    outputFiles: {
+        rootFolderPath: './源代码/发布的源代码/sass',
+
+        forBatchOutputFiles: {
+            relativeGlobsOfAllPossibleOutputs: [
+                '**/*.scss',
+            ],
+        },
+    },
+})
+
+
+
 const 任务闭环之将所有独立于Vue文件的Stylus文件各自编译成Css文件 = 构建一个任务闭环用以将一组独立于Vue文件的Stylus文件各自编译成Css文件({
     descriptionOfCoreTask: '将所有独立的（即不在 .vue 文件中的）Stylus 编译为 CSS',
     descriptionOfInputsOfCoreTask: '独立的 .styl 文件',
@@ -271,6 +299,7 @@ const {
 
         任务闭环之将所有独立于Vue文件的Stylus文件复制到发布文件夹内,
         任务闭环之将所有独立于Vue文件的Stylus文件各自编译成Css文件,
+        任务闭环之将所有Sass文件复制到发布文件夹内,
     ],
 })
 

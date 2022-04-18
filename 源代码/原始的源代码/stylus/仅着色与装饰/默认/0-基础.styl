@@ -47,8 +47,8 @@
 
         &:focus-visible,
         &:focus-within {
-            outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
-            box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))
+            outline-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color)
+            box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color))
         }
     }
 
@@ -59,8 +59,8 @@
         box-shadow none
 
         &:focus-visible {
-            outline-color 'var(%s)' % unquote(css_var_name__focusing_element_outline_color)
-            box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(css_var_name__focusing_element_outline_color))
+            outline-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color)
+            box-shadow 0 0 0 ('calc(var(%s) - 1px)' % unquote(wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_width)) ('var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color))
         }
     }
 
@@ -86,7 +86,7 @@
         &:hover {
             color #fff
             border-color #0003
-            background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
+            background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
         }
 
         &:disabled {
@@ -107,15 +107,15 @@
     // input[type="checkbox"]:hover,
     .输入项-勾选项:hover .勾选项视觉假体,
     label.包裹着输入项:hover .输入项-勾选项 .勾选项视觉假体 {
-        // color 'var(%s)' % unquote(css_var_name__element_non_highlighting_color_hover)
-        color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
+        // color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover)
+        color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
     }
 
     // input[type="checkbox"]:checked,
     .输入项-勾选项.已勾选 .勾选项视觉假体 {
         color white
         // background-color black
-        background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_static)
+        background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
         border-color @background-color
     }
 
@@ -123,7 +123,7 @@
     .输入项-勾选项.已勾选:hover .勾选项视觉假体,
     label.包裹着输入项:hover .输入项-勾选项.已勾选 .勾选项视觉假体 {
         color white
-        background-color 'var(%s)' % unquote(css_var_name__element_highlighting_color_hover)
+        background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover)
         border-color @background-color
     }
 

@@ -41,14 +41,14 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import type Wlc任意两列间转移条目 from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 import type {
-    范_双列间转移条目_实际条目,
+    范_任意两列间转移条目_实际条目,
 } from '../../数据/示范页之数据库'
 
 
 
 
 
-type 范_双列间转移条目_内用格式之实际条目 = Wlc任意两列间转移条目.范_内用格式之条目 & 范_双列间转移条目_实际条目;
+type 范_任意两列间转移条目_内用格式之实际条目 = Wlc任意两列间转移条目.范_内用格式之条目 & 范_任意两列间转移条目_实际条目;
 type 范_界面元素之样式类名之配置 = Wlc任意两列间转移条目.泛范_界面元素之样式类名之配置<string>;
 
 
@@ -57,13 +57,13 @@ type 范_界面元素之样式类名之配置 = Wlc任意两列间转移条目.�
 
 @Component({})
 export default class Wlc任意两列间转移条目_主表条目_订制形态 extends Vue {
-    @Prop() public 条目?: 范_双列间转移条目_内用格式之实际条目
+    @Prop() public 条目?: 范_任意两列间转移条目_内用格式之实际条目
 
 
 
 
 
-    private get 条目_最终采纳值 (): 范_双列间转移条目_内用格式之实际条目 {
+    private get 条目_最终采纳值 (): 范_任意两列间转移条目_内用格式之实际条目 {
         const 外界给出的值 = this.条目
         if (!外界给出的值) return this.构造临时的条目()
         return 外界给出的值
@@ -110,7 +110,7 @@ export default class Wlc任意两列间转移条目_主表条目_订制形态 ex
 
 
 
-    private 构造临时的条目 (): 范_双列间转移条目_内用格式之实际条目 {
+    private 构造临时的条目 (): 范_任意两列间转移条目_内用格式之实际条目 {
         const 称谓: string = Math.random().toFixed(10)
         return { 唯一标识: 称谓, 在界面中的称谓: 称谓, 已禁止选择: true, 已选中: false, 数据: {} }
     }
@@ -126,7 +126,7 @@ export default class Wlc任意两列间转移条目_主表条目_订制形态 ex
 
 
 <style lang="stylus">
-@import '@/视图/_公共样式/用以包裹全局之选择器'
+@import '@/视图/_公共样式/样式定义/stylus-变量集'
 
 {app_styles_global_wrapper} {
 

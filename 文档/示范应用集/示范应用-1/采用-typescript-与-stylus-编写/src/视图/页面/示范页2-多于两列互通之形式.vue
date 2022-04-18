@@ -64,7 +64,7 @@
                     :允许列示的条目数之上限="单列允许列示的条目数之上限"
                     :当下另有他列优先于本列采取视觉强调引导用户操作之="求_当下另有他列优先于本列采取视觉强调引导用户操作之(某列之列表编号)"
                     @内部某元素之视觉强调之状态已变动="每当某列之视觉强调之状态变动后(某列之列表编号, $event)"
-                    @已出错="当双列间转移条目功能出错时($event)"
+                    @已出错="当任意两列间转移条目功能出错时($event)"
                 >
                     <template slot="界面皿-标题栏">
                         <h3>{{ 某列.可成批自动绑定的属性.本列之称谓 }}</h3>
@@ -115,8 +115,8 @@ import {
 } from '../../数据/示范页之数据库'
 
 import type {
-    范_双列间转移条目_实际条目,
-    范_双列间转移条目_实际条目之列表,
+    范_任意两列间转移条目_实际条目,
+    范_任意两列间转移条目_实际条目之列表,
 } from '../../数据/示范页之数据库'
 
 
@@ -124,8 +124,8 @@ import type {
 
 
 /* 本页专用的 “ 范（即通常所说的 ‘ 类型 ’ ）”。 */
-type 范_双列间转移条目_实际完整形式之条目 = 范_内用格式之条目 & 范_双列间转移条目_实际条目;
-type 范_双列间转移条目_实际完整形式之条目之列表 = Array<范_双列间转移条目_实际完整形式之条目>;
+type 范_任意两列间转移条目_实际完整形式之条目 = 范_内用格式之条目 & 范_任意两列间转移条目_实际条目;
+type 范_任意两列间转移条目_实际完整形式之条目之列表 = Array<范_任意两列间转移条目_实际完整形式之条目>;
 
 type 范_多列间转移条目功能之数据 = {
     各列之公共数据: {
@@ -138,11 +138,11 @@ type 范_多列间转移条目功能之数据 = {
     各列数据之表: 范_多列间转移条目功能_多列数据之列表;
 };
 
-type 范_多列间转移条目功能_单列数据 = Wlc任意两列间转移条目_单列.泛范_实例可绑定之属性集<范_双列间转移条目_实际完整形式之条目> & {
+type 范_多列间转移条目功能_单列数据 = Wlc任意两列间转移条目_单列.泛范_实例可绑定之属性集<范_任意两列间转移条目_实际完整形式之条目> & {
     当下选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表;
 
     可成批自动绑定的属性: {
-        所有条目之列表: 范_双列间转移条目_实际完整形式之条目[];
+        所有条目之列表: 范_任意两列间转移条目_实际完整形式之条目[];
     };
 
     其他数据: {
@@ -156,7 +156,7 @@ type 范_多列间转移条目功能_多列数据之列表 = Array<范_多列间
 
 
 
-const 一切可能的条目去重后之列表: 范_双列间转移条目_实际条目之列表 = 一切可能的条目之列表.reduce((状态, 条目) => {
+const 一切可能的条目去重后之列表: 范_任意两列间转移条目_实际条目之列表 = 一切可能的条目之列表.reduce((状态, 条目) => {
     const { 去重后的列表, 用以去重的辅助字典 } = 状态
     const { 唯一标识 } = 条目
 
@@ -172,13 +172,13 @@ const 一切可能的条目去重后之列表: 范_双列间转移条目_实际�
     去重后的列表: [],
     用以去重的辅助字典: {},
 } as {
-    去重后的列表: 范_双列间转移条目_实际条目之列表;
+    去重后的列表: 范_任意两列间转移条目_实际条目之列表;
     用以去重的辅助字典: { [条目之唯一标识: string]: number; },
 }).去重后的列表
 
-const 一切可能的实用完整形式之条目之列表: 范_双列间转移条目_实际完整形式之条目之列表 = 一切可能的条目去重后之列表.map(
+const 一切可能的实用完整形式之条目之列表: 范_任意两列间转移条目_实际完整形式之条目之列表 = 一切可能的条目去重后之列表.map(
     (原始条目, 列表编号) => { // eslint-disable-line @typescript-eslint/no-unused-vars
-        const 完整形式之条目: 范_双列间转移条目_实际完整形式之条目 = {
+        const 完整形式之条目: 范_任意两列间转移条目_实际完整形式之条目 = {
             ...原始条目,
             已选中: false,
             已禁止选择: !!原始条目.已禁止选择, // 确保该布尔值存在。
@@ -384,7 +384,15 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
 
 
 <style lang="stylus">
+@require '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/_通用变量集_'
+
 .页面--示范页2-多余-2-列互通之形式 {
+    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} black
+    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #444
+    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ccc
+    {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #ddd
+    {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+
     font-size 18px
     box-sizing border-box
     height 100%
