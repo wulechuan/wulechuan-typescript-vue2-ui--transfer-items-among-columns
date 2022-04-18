@@ -89,11 +89,12 @@
 
     label.包裹着输入项 {
         cursor pointer
+        outline-style solid
+        outline-width 0
+        outline-offset 0
 
         &:focus-visible,
         &:focus-within {
-            outline-offset 0
-            outline-style solid
             outline-width 'var(%s)' % unquote(css_var_name__focusing_element_outline_width)
         }
     }
@@ -103,10 +104,11 @@
     button {
         font-size inherit
         border-style solid
+        outline-style solid
+        outline-width 0
+        outline-offset 0
 
         &:focus-visible {
-            outline-offset 0
-            outline-style solid
             outline-width 'var(%s)' % unquote(css_var_name__focusing_element_outline_width)
         }
 
