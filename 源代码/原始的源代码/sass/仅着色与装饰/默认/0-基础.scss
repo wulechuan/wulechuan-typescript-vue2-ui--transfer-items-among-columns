@@ -1,0 +1,318 @@
+@import '../../_通用变量集_/index.scss';
+@import './通用混叠代码块之集.scss';
+
+
+
+
+
+@mixin 混叠_消息文本块的背景效果配置($background_color_base_value: white) {
+    background-color: rgba($background_color_base_value, 0.96);
+    box-shadow: 0 0 0.4em rgba(black, 0.319);
+
+    @supports (backdrop-filter: blur(32px)) {
+        background-color: rgba($background_color_base_value, 0.66);
+        box-shadow: 0 0 0.4em rgba(black, 0.19);
+
+        &.磨砂玻璃效果-弱 {
+            background-color: rgba($background_color_base_value, 0.91);
+            box-shadow: 0 0 0.4em rgba(black, 0.219);
+        }
+
+        &.磨砂玻璃效果-无 {
+            background-color: rgba($background_color_base_value, 0.96);
+            box-shadow: 0 0 0.4em rgba(black, 0.319);
+        }
+    }
+}
+
+
+
+
+
+@mixin 混叠_基础_仅着色与装饰() {
+
+    kbd {
+        font-family: 'Cascadia Code', 'PT Mono', 'consolas', 'Courier New', Courier, 'Microsoft Yahei UI', 'Microsoft Yahei', '微软雅黑', monospace;
+        border-radius: 0.25em;
+        text-shadow: none;
+        font-weight: 300;
+
+        @if false {
+            color: #fff;
+            border-color: #fff;
+            background-color: #789abc;
+            box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.219);
+        } @else {
+            color: black;
+            border-color: #bbb #ddd #ddd #bbb;
+            background-color: #fff;
+            background-image: linear-gradient(45deg, white, #eee);
+            box-shadow: 0em 0.15em 0 0.05em #bbb;
+        }
+    }
+
+    label.包裹着输入项,
+    .勾选项视觉假体,
+    textarea,
+    input,
+    button {
+        @include 混叠_令与颜色和投影和透明度有关的属性具备过渡动画()
+    }
+
+    label.包裹着输入项 {
+        outline-color: transparent;
+        box-shadow: none;
+
+        &:focus-visible,
+        &:focus-within {
+            outline-color: var(#{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color});
+            box-shadow: 0 0 0 (calc(var(#{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_width}) - 1px)) (var(#{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color}));
+        }
+    }
+
+    textarea,
+    input,
+    button {
+        outline-color: transparent;
+        box-shadow: none;
+
+        &:focus-visible {
+            outline-color: var(#{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color});
+            box-shadow: 0 0 0 (calc(var(#{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_width}) - 1px)) (var(#{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color}));
+        }
+    }
+
+    textarea,
+    input {
+
+        &::placeholder {
+            color: #ccc;
+        }
+    }
+
+    input {
+        border-radius: 1000px;
+    }
+
+    input[type="button"],
+    button {
+        color: #000;
+        border-color: #666;
+        background-color: #eee;
+        opacity: 1;
+
+        &:hover {
+            color: #fff;
+            border-color: #0003;
+            background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
+        }
+
+        &:disabled {
+            opacity: 0.15;
+            color: #000;
+            border-color: #ddd;
+            background-color: #eee;
+        }
+    }
+
+    input[type="checkbox"] {
+        color: inherit;
+        width: 1.25em;
+        height: 1.25em;
+        border-color: currentColor;
+    }
+
+    // input[type="checkbox"]:hover,
+    .输入项-勾选项:hover .勾选项视觉假体,
+    label.包裹着输入项:hover .输入项-勾选项 .勾选项视觉假体 {
+        // color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_non_highlighting_color_hover});
+        color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
+    }
+
+    // input[type="checkbox"]:checked,
+    .输入项-勾选项.已勾选 .勾选项视觉假体 {
+        color: white;
+        // background-color: black;
+        background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
+        border-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
+    }
+
+    // input[type="checkbox"]:checked:hover,
+    .输入项-勾选项.已勾选:hover .勾选项视觉假体,
+    label.包裹着输入项:hover .输入项-勾选项.已勾选 .勾选项视觉假体 {
+        color: white;
+        background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover});
+        border-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover});
+    }
+
+    .输入项-勾选项 {
+
+        & {
+
+            .勾选项视觉假体 {
+                border-radius: 0.2em;
+                background-color: white;
+            }
+        }
+
+        &.已部分勾选 {
+
+            .勾选项视觉假体::before {
+                border-radius: 0.1em;
+                background-color: currentColor;
+            }
+        }
+    }
+
+    label.包裹着输入项 {
+
+        & {
+            color: inherit;
+            border-radius: 0.2em;
+
+            input[type="checkbox"]:focus-visible,
+            input[type="checkbox"]:focus {
+                outline: none;
+                box-shadow: none;
+            }
+
+            .输入项配文 {
+                color: inherit;
+            }
+        }
+
+        &:hover {
+            background-color: rgba(black, 0.079);
+        }
+
+        &:disabled,
+        &.已禁止交互 {
+            color: #0004;
+            border-color: transparent;
+            background-color: transparent;
+        }
+    }
+
+    .角标 {
+
+        &,
+        &.标准配色-红 {
+            border-radius: 1000px;
+            color: white;
+            background-color: red;
+            box-shadow: 1px 1px 0.2em rgba(#722, 0.319);
+        }
+
+        // &.标准配色-绿 {
+
+        // }
+
+        // &.标准配色-蓝 {
+
+        // }
+    }
+
+    .消息文本块 {
+        border-radius: 0.4em;
+
+        @supports (backdrop-filter: blur(32px)) {
+            backdrop-filter: blur(32px);
+
+            &.磨砂玻璃效果-弱 {
+                backdrop-filter: blur(8px);
+            }
+
+            &.磨砂玻璃效果-无 {
+                backdrop-filter: none;
+            }
+        }
+
+        em,
+        strong {
+            border-radius: 0.15em;
+        }
+
+        &,
+        &.标准配色-亮 {
+            @include 混叠_消息文本块的背景效果配置(white);
+
+            color: #000;
+            border-color: #222;
+
+            em,
+            strong {
+                text-shadow: 0 0 0.75px #0009;
+            }
+
+            em {
+                // color: #66e;
+                // background-color: #ddf;
+                background-color: #fd96;
+            }
+
+            strong {
+                // color: #f44;
+                // background-color: #fcc;
+                background-color: #f555;
+            }
+
+            .消息文本-可滚动的内容皿 {
+                @include 混叠_凡兼容webkit之浏览器的滚动条样式(black, 1.25);
+                scrollbar-width: thin;
+            }
+        }
+
+        &.标准配色-暗 {
+            @include 混叠_消息文本块的背景效果配置(black);
+
+            color: #ccc;
+            border-color: black;
+
+            em,
+            strong {
+                text-shadow: none;
+            }
+
+            $em与strong元素应采用类似荧光笔标注之效果: true;
+
+            em {
+                @if $em与strong元素应采用类似荧光笔标注之效果 {
+                    color: white;
+                    // background-color: #44b;
+                    background-color: #eb57;
+                } @else {
+                    color: #99e;
+                    background-color: transparent;
+                }
+            }
+
+            strong {
+                @if $em与strong元素应采用类似荧光笔标注之效果 {
+                    color: white;
+                    // background-color: #b44;
+                    background-color: #f338;
+                } @else {
+                    color: #f88;
+                    background-color: transparent;
+                }
+            }
+
+            .消息文本-可滚动的内容皿 {
+                @include 混叠_凡兼容webkit之浏览器的滚动条样式(white, 1.25);
+                // scrollbar-width: thin;
+            }
+        }
+    }
+}
+
+// 【基础】。
+// 如果 `吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹` 不是空白或 `&`，
+// 亦即故意将基础样式之定义套在根元素之内，
+// 则以防污染全局的样式定义。
+@if $吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹 != null and unquote($吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹) {
+    #{$吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹} {
+        @include 混叠_基础_仅着色与装饰();
+    }
+} @else {
+    @include 混叠_基础_仅着色与装饰();
+}

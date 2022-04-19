@@ -1,6 +1,6 @@
 MIXIN_webkit_scrollbar($BaseColor = black, $SizeScale = 1) {
     & {
-        // scrollbar-gutter: always both;
+        // scrollbar-gutter always both
 
         &::-webkit-scrollbar { // 是整个滚动条控件。
             border-radius (0.1em * $SizeScale)
@@ -19,8 +19,8 @@ MIXIN_webkit_scrollbar($BaseColor = black, $SizeScale = 1) {
         &::-webkit-scrollbar-track, // 是滚动条控件之各滑条主体。
         &::-webkit-scrollbar-track-piece { // 是滚动条控件之各滑条主体未被 handle 覆盖的部分。
             border-radius (1em * $SizeScale)
-            border-style: solid;
-            border-color: transparent
+            border-style solid
+            border-color transparent
             background-clip content-box
         }
 
@@ -35,8 +35,8 @@ MIXIN_webkit_scrollbar($BaseColor = black, $SizeScale = 1) {
         }
 
         &::-webkit-scrollbar-thumb { // 是滚动条控件之各滑条主体上可以拖动的滑块。
-            border-width: (0.25em * $SizeScale);
-            background-color: rgba($BaseColor, 0.45);
+            border-width (0.25em * $SizeScale)
+            background-color rgba($BaseColor, 0.45)
 
             &:hover {
                 background-color rgba($BaseColor, 1)
@@ -44,8 +44,8 @@ MIXIN_webkit_scrollbar($BaseColor = black, $SizeScale = 1) {
         }
 
         &::-webkit-scrollbar-track { // 是滚动条控件之各滑条主体。
-            border-width: (0.15em * $SizeScale);
-            background-color: rgba($BaseColor, 0.1);
+            border-width (0.15em * $SizeScale)
+            background-color rgba($BaseColor, 0.1)
             box-shadow inset 0 0 0 (0.05em * $SizeScale) rgba($BaseColor, 0.1)
 
             &:hover {
@@ -59,14 +59,14 @@ MIXIN_webkit_scrollbar($BaseColor = black, $SizeScale = 1) {
 
         &::-webkit-scrollbar-corner { // 是滚动条控件之水平与垂直滑条交会处的方块。
             display none
-            // border-width: (0.4em * $SizeScale);
+            // border-width (0.4em * $SizeScale)
             // background-color transparent // rgba($BaseColor, 0.15)
         }
 
-        &::-webkit-resizer { // 是滚动条控件之右下角用以改变区域尺寸的控件。如果一个区域可以改变尺寸（ 例如 textarea ），则出现该控件。
-            // border-width: (0.4em * $SizeScale);
-            // background-color rgba($BaseColor, 0.15)
-        }
+        // &::-webkit-resizer { // 是滚动条控件之右下角用以改变区域尺寸的控件。如果一个区域可以改变尺寸（ 例如 textarea ），则出现该控件。
+        //     border-width (0.4em * $SizeScale)
+        //     background-color rgba($BaseColor, 0.15)
+        // }
     }
 }
 
@@ -75,7 +75,7 @@ MIXIN_webkit_scrollbar($BaseColor = black, $SizeScale = 1) {
 
 
 MIXIN_transition_colors_and_shades() {
-    transition-property: outline-width, outline-color, outline-offset, visibility, opacity,  color, border, background-color, box-shadow, text-shadow;
-    transition-duration:        0.219s,        0.219s,         0.219s,    0.319s,  0.319s,  0.19s,  0.19s,            0.19s,       0.5s,      0.319s;
-    transition-timing-function: ease-out;
+    transition-property outline-width, outline-color, outline-offset, visibility, opacity,  color, border, background-color, box-shadow, text-shadow
+    transition-duration        0.219s,        0.219s,         0.219s,    0.319s,  0.319s,  0.19s,  0.19s,            0.19s,       0.5s,      0.319s
+    transition-timing-function ease-out
 }

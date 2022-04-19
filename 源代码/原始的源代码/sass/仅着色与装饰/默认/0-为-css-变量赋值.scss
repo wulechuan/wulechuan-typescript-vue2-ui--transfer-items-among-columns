@@ -4,7 +4,7 @@
 
 
 
-@mixin 为css变量赋值_针对着色与装饰() {
+@mixin 混叠_为css变量赋值_针对着色与装饰() {
     #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}: #795cfc;
     #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover}: #a38eff;
     #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_but_disabled_color_static}: #e1dcf9;
@@ -12,12 +12,10 @@
     #{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color}: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
 }
 
-@if variable-exists('吴乐川_任意两列间转移条目__标志性选择器__css变量根植点') {
-    #{$吴乐川_任意两列间转移条目__标志性选择器__css变量根植点} {
-        @include 为css变量赋值_针对着色与装饰();
-    }
-} @else {
-    body {
-        @include 为css变量赋值_针对着色与装饰();
-    }
+@if (not variable-exists('$吴乐川_任意两列间转移条目__标志性选择器__css变量根植点')) or ($吴乐川_任意两列间转移条目__标志性选择器__css变量根植点 == null) {
+    $吴乐川_任意两列间转移条目__标志性选择器__css变量根植点: html;
+}
+
+#{$吴乐川_任意两列间转移条目__标志性选择器__css变量根植点} {
+    @include 混叠_为css变量赋值_针对着色与装饰();
 }

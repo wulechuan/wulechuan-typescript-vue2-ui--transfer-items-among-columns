@@ -1,0 +1,449 @@
+@import '../../_通用变量集_/index.scss';
+
+
+
+
+
+@mixin 混叠_基础_仅尺寸与排版与行为() {
+
+    em,
+    strong {
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    p {
+        margin: 0.75em 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    article {
+        user-select: text;
+        line-height: 1.66;
+
+        em,
+        strong {
+            font-size: inherit;
+            padding: 0 0.1em 0.1em;
+            margin: 0 -0.1em;
+        }
+
+        ul,
+        ol,
+        dl {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0.5em;
+            margin-bottom: 1.5em;
+        }
+
+        ul, ol {
+            padding: 0 0 0 1.75em;
+        }
+
+        li, dd {
+            text-align: justify;
+        }
+
+        li {
+            margin: 1.25em 0;
+            
+            // li 上下的 padding 为零，可另 li 内的 p 的上下 margin 与 li 自身上下的 margin 重叠。
+            padding: 0 0.5em;
+        }
+    }
+
+    kbd {
+        font-size: 1em;
+        display: inline-block;
+        vertical-align: baseline;
+        line-height: 1;
+        min-height: 1em;
+        min-width: 0.5em;
+        font-style: normal;
+        border-style: solid;
+        letter-spacing: 0;
+
+        border-width: 1px;
+        margin: 0 0.3em;
+        padding: 0.15em 0.3em;
+
+        position: relative;
+        top: -0.1em;
+    }
+
+    .尽量不换行之短语 {
+        display: inline-block;
+    }
+
+    label.包裹着输入项 {
+        cursor: pointer;
+        outline-style: solid;
+        outline-width: 0;
+        outline-offset: 0;
+
+        &:focus-visible,
+        &:focus-within {
+            outline-width: var(#{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_width});
+        }
+    }
+
+    textarea,
+    input,
+    button {
+        font-size: inherit;
+        border-style: solid;
+        outline-style: solid;
+        outline-width: 0;
+        outline-offset: 0;
+
+        &:focus-visible {
+            outline-width: var(#{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_width});
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+
+    textarea,
+    input{
+        border-width: var(#{$吴乐川_任意两列间转移条目__css变量名__input_boxes_border_width});
+    }
+
+    input {
+        font-size: inherit;
+        box-sizing: border-box;
+        height: 2.2em;
+        padding: 0.25em 1.2em;
+        line-height: normal;
+
+        &[type="number"] {
+            text-align: right;
+            -moz-appearance: textfield;
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                // -webkit-appearance: none;
+                height: 2.2em;
+                margin: 0 -0.4em 0 0.4em;
+            }
+        }
+    }
+
+    input[type="button"],
+    button {
+        cursor: pointer;
+        border-width: var(#{$吴乐川_任意两列间转移条目__css变量名__buttons_border_width});
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        text-align: center;
+
+        line-height: 1.33;
+        padding: 0.33em 1.5em;
+        min-width: 8em;
+        border-radius: 1000px;
+
+        &.按钮-形状必须为正圆 {
+            width: 2.5em;
+            min-width: 2.5em;
+            max-width: 2.5em;
+            height: 2.5em;
+            min-height: 2.5em;
+            max-height: 2.5em;
+            padding: 0.2em;
+            line-height: normal;
+            border-radius: 2000px;
+        }
+
+        &.标准按钮-叉 {
+            border-radius: 2000px;
+
+            & { // Chrome 、 Edge 都能正常排版。
+                font-size: 0.9em;
+                min-width: 0;
+                width: 2.25em;
+                min-width: 2.25em;
+                max-width: 2.25em;
+                height: 2.25em;
+                min-height: 2.25em;
+                max-height: 2.25em;
+                padding: 0;
+                line-height: normal;
+
+                &::before {
+                    font-size: 1.8em;
+                    margin-top: 0.05em;
+                    content: '×';
+                }
+            }
+
+            @-moz-document url-prefix() { // 火狐浏览器的盒模型宽度计算与 chrome 不一致。
+
+                & {
+
+                    &::before {
+                        margin-top: -0.15em;
+                        font-size: 1.3em;
+                    }
+                }
+            }
+        }
+
+        &.按钮具备标准功能-关闭某物 {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: auto;
+            right: 0;
+            bottom: auto;
+            margin: -0.8em;
+        }
+    }
+
+    input[type="checkbox"] {
+        font-size: inherit;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+    }
+
+    label.包裹着输入项 input[type="checkbox"] {
+        margin-left: -0.2em;
+    }
+
+    .输入项,
+    .输入项配文 {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+    }
+
+    .输入项-勾选项 {
+
+        & {
+            opacity: 1;
+            width: 1.25em;
+            height: 1.25em;
+            flex: 0 0 1.25em;
+            position: relative;
+            margin: 0.15em 0.5em 0.15em 0;
+
+            // input[type="checkbox"] {
+            //     visibility: hidden; // 不能设为 hidden ， 因为那样会令父级的 label 无法获取焦点。
+            // }
+
+            .勾选项视觉假体 {
+                position: relative;
+                z-index: 5;
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                line-height: 100%;
+                text-align: center;
+                border-width: var(#{$吴乐川_任意两列间转移条目__css变量名__input_boxes_border_width});
+                border-style: solid;
+            }
+
+            .勾选项视觉假体 + input[type="checkbox"] {
+                display: block;
+                position: absolute;
+                z-index: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                opacity: 0;
+            }
+        }
+
+        &.已勾选 {
+
+            .勾选项视觉假体::before {
+                content: '✓';
+                font-weight: bolder;
+            }
+        }
+
+        &.已部分勾选 {
+
+            .勾选项视觉假体::before {
+                content: '';
+                display: block;
+                width: 0.65em;
+                height: 0.65em;
+                margin: 0.2em;
+            }
+        }
+
+        &.已禁止交互 {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    label.包裹着输入项 {
+
+        & {
+            padding: 0.25em 1em;
+            margin: 0.1em 0;
+            vertical-align: top;
+            display: inline-flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        &.独占一行 {
+            display: block;
+            padding: 1em;
+            margin: 0 0 1em 0;
+
+            .输入项配文-单行文字输入 {
+                margin: -0.25em 0 0.25em;
+            }
+        }
+
+        &:disabled,
+        &.已禁止交互 {
+            cursor: not-allowed;
+        }
+    }
+
+    label.包裹着输入项-单行文字输入 {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0.5em 1em;
+        margin-right: 1em;
+
+        .输入项配文-单行文字输入 {
+            margin-right: 0.5em;
+        }
+    }
+
+    label.包裹着输入项-勾选项 {
+
+        .输入项配文-勾选项 {
+            flex: 1 1 auto;
+        }
+
+        .输入项-勾选项 {
+            margin-left: -0.5em;
+        }
+    }
+
+    .功能单体 {
+
+        sub.角标,
+        sup.角标 {
+            font-style: normal;
+            font-size: 0.8em;
+
+            display: block;
+            box-sizing: border-box;
+            width: auto;
+            min-width: 1.8em;
+            height: 1.8em;
+            line-height: 1.4;
+            text-align: center;
+            padding: 0.2em 0.3em;
+            margin: -0.2em 0.2em;
+
+            position: absolute;
+            left: auto;
+            right: 0;
+            transform: translateX(50%);
+        }
+
+        sub.角标 {
+            top: auto;
+            bottom: 0;
+        }
+
+        sup.角标 {
+            top: 0;
+            bottom: auto;
+        }
+
+        sub.角标,
+        sup.角标 {
+
+            &.角标-位置应居左 {
+                left: 0;
+                right: auto;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    .功能单体-主体为按钮 {
+
+        input[type="button"],
+        button {
+            margin: 0;
+        }
+    }
+
+    .消息文本块 {
+        box-sizing: border-box;
+        margin: 0.25em;
+        padding: 0.5em;
+        border-width: 2px;
+        border-style: solid;
+        letter-spacing: 0.075em;
+        text-align: left;
+        position: relative;
+
+        .消息文本-可滚动的内容皿 {
+            user-select: text;
+            box-sizing: border-box;
+            height: 100%;
+            margin: 0;
+            overflow: auto;
+        }
+
+        &,
+        &.内容较简短 {
+
+            article {
+                padding: 0.25em 0.5em;
+            }
+        }
+
+        &.内容较长 {
+
+            article {
+                padding: 0.25em 1em 4.75em;
+            }
+        }
+    }
+}
+
+// 【基础】。
+// 如果 `吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹` 不是空白或 `null`，
+// 亦即故意将基础样式之定义套在根元素之内，
+// 则以防污染全局的样式定义。
+@if $吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹 != null and unquote($吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹) {
+    #{$吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹} {
+        @include 混叠_基础_仅尺寸与排版与行为();
+    }
+} @else {
+    @include 混叠_基础_仅尺寸与排版与行为();
+}

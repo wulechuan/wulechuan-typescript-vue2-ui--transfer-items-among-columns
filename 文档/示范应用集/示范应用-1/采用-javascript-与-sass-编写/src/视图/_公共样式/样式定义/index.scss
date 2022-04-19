@@ -1,11 +1,7 @@
 @import './sass-变量集';
 
-@import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-为-css-变量赋值.scss';
-
-#{$用以包裹整个应用之部分样式之选择器} {
-    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/styles/完整样式表/默认/0-基础';
-}
-
+@import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-为-css-变量赋值';
+@import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-基础';
 @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/styles/完整样式表/默认/1-单列';
 @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/styles/完整样式表/默认/1-两列之间之默认竖栏';
 @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/styles/完整样式表/默认/2-现成实用的双列';

@@ -1,7 +1,13 @@
 // Stylus 语言的变量名不允许采用汉字！
 
-// wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root                            = ''
-wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper                                = ''
+if !lookup('wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root') {
+    wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root = ''
+}
+
+if !lookup('wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper') {
+    wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper = ''
+}
+
 wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root_container                   = '.吴乐川-任意两列间转移条目-条目皿'
 wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root                             = '.吴乐川-任意两列间转移条目-条目根'
 wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base                      = '.吴乐川-任意两列间转移条目-条目之视觉根'
