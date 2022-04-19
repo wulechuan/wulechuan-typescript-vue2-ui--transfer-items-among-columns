@@ -126,7 +126,7 @@ export default class Wlc任意两列间转移条目_主表条目_订制形态 ex
 
 
 <style lang="stylus">
-@import '@/视图/_公共样式/样式定义/stylus-变量集'
+@import '@/视图/_公共样式/样式定义/本应用的-stylus-通用变量集'
 
 {app_styles_global_wrapper} {
 

@@ -384,10 +384,9 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
 
 
 <style lang="stylus">
-@require '@/视图/_公共样式/样式定义/stylus-变量集'
+@require '@/视图/_公共样式/样式定义/本应用的-stylus-通用变量集'
 
 {app_styles_global_wrapper} {
-    @require '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/_通用变量集_'
 
     .页面--示范页2-多余-2-列互通之形式 {
         {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} black

@@ -454,10 +454,9 @@ export default {
 
 
 <style lang="scss">
-@import '@/视图/_公共样式/样式定义/sass-变量集';
+@import '@/视图/_公共样式/样式定义/本应用的-sass-通用变量集';
 
 #{$用以包裹整个应用之部分样式之选择器} {
-    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/_通用变量集_/index.scss';
 
     .页面--示范页2-多余-2-列互通之形式 {
         #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}: black;
