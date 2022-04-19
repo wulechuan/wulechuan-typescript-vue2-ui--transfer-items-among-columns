@@ -4,18 +4,18 @@
 
 
 
-@mixin BLOCK__css_vars__set_values {
+@mixin 为css变量赋值_针对排版与关键行为() {
     #{$吴乐川_任意两列间转移条目__css变量名__input_boxes_border_width}: 2px;
-    #{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_width}: 'calc(2 * var(#{$吴乐川_任意两列间转移条目__css变量名__input_boxes_border_width}))';
+    #{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_width}: calc(2 * var(#{$吴乐川_任意两列间转移条目__css变量名__input_boxes_border_width}));
     #{$吴乐川_任意两列间转移条目__css变量名__buttons_border_width}: 3px;
 }
 
-@if variable-exists('吴乐川_任意两列间转移条目__标志性选择器__css_vars_carrier') {
-    #{$吴乐川_任意两列间转移条目__标志性选择器__css_vars_carrier} {
-        @include BLOCK__css_vars__set_values;
+@if variable-exists('吴乐川_任意两列间转移条目__标志性选择器__css变量根植点') {
+    #{$吴乐川_任意两列间转移条目__标志性选择器__css变量根植点} {
+        @include 为css变量赋值_针对排版与关键行为();
     }
 } @else {
     body {
-        @include BLOCK__css_vars__set_values;
+        @include 为css变量赋值_针对排版与关键行为();
     }
 }
