@@ -1,11 +1,11 @@
 @import '../../_通用变量集_/index.scss';
-@import './通用混叠代码块之集.scss';
+@import './通用代码块之集.scss';
 
 
 
 
 
-@mixin 混叠_消息文本块的背景效果配置($background_color_base_value: white) {
+@mixin 可照搬之代码块_消息文本块的背景效果配置($background_color_base_value: white) {
     background-color: rgba($background_color_base_value, 0.96);
     box-shadow: 0 0 0.4em rgba(black, 0.319);
 
@@ -29,7 +29,7 @@
 
 
 
-@mixin 混叠_基础_仅着色与装饰() {
+@mixin 可照搬之代码块_基础_仅着色与装饰() {
 
     kbd {
         font-family: 'Cascadia Code', 'PT Mono', 'consolas', 'Courier New', Courier, 'Microsoft Yahei UI', 'Microsoft Yahei', '微软雅黑', monospace;
@@ -56,7 +56,7 @@
     textarea,
     input,
     button {
-        @include 混叠_令与颜色和投影和透明度有关的属性具备过渡动画()
+        @include 可照搬之代码块_令与颜色和投影和透明度有关的属性具备过渡动画()
     }
 
     label.包裹着输入项 {
@@ -234,7 +234,7 @@
 
         &,
         &.标准配色-亮 {
-            @include 混叠_消息文本块的背景效果配置(white);
+            @include 可照搬之代码块_消息文本块的背景效果配置(white);
 
             color: #000;
             border-color: #222;
@@ -257,13 +257,13 @@
             }
 
             .消息文本-可滚动的内容皿 {
-                @include 混叠_凡兼容webkit之浏览器的滚动条样式(black, 1.25);
+                @include 可照搬之代码块_凡兼容webkit之浏览器的滚动条样式(black, 1.25);
                 scrollbar-width: thin;
             }
         }
 
         &.标准配色-暗 {
-            @include 混叠_消息文本块的背景效果配置(black);
+            @include 可照搬之代码块_消息文本块的背景效果配置(black);
 
             color: #ccc;
             border-color: black;
@@ -298,7 +298,7 @@
             }
 
             .消息文本-可滚动的内容皿 {
-                @include 混叠_凡兼容webkit之浏览器的滚动条样式(white, 1.25);
+                @include 可照搬之代码块_凡兼容webkit之浏览器的滚动条样式(white, 1.25);
                 // scrollbar-width: thin;
             }
         }
@@ -311,8 +311,8 @@
 // 则以防污染全局的样式定义。
 @if $吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹 != null and unquote($吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹) {
     #{$吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹} {
-        @include 混叠_基础_仅着色与装饰();
+        @include 可照搬之代码块_基础_仅着色与装饰();
     }
 } @else {
-    @include 混叠_基础_仅着色与装饰();
+    @include 可照搬之代码块_基础_仅着色与装饰();
 }

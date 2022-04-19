@@ -1,4 +1,4 @@
-@mixin 混叠_凡兼容webkit之浏览器的滚动条样式($BaseColor: black, $SizeScale: 1) {
+@mixin 可照搬之代码块_凡兼容webkit之浏览器的滚动条样式($BaseColor: black, $SizeScale: 1) {
     & {
         // scrollbar-gutter: always both;
 
@@ -74,7 +74,7 @@
 
 
 
-@mixin 混叠_令与颜色和投影和透明度有关的属性具备过渡动画() {
+@mixin 可照搬之代码块_令与颜色和投影和透明度有关的属性具备过渡动画() {
     transition-property: outline-width, outline-color, outline-offset, visibility, opacity,  color, border, background-color, box-shadow, text-shadow;
     transition-duration:        0.219s,        0.219s,         0.219s,    0.319s,  0.319s,  0.19s,  0.19s,            0.19s,       0.5s,      0.319s;
     transition-timing-function: ease-out;
