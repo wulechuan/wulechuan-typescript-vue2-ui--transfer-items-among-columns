@@ -384,6 +384,8 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
 
 
 <style lang="stylus">
+/* autoprefixer: off */
+
 @require '@/视图/_公共样式/样式定义/本应用的-stylus-通用变量集'
 
 {app_styles_global_wrapper} {

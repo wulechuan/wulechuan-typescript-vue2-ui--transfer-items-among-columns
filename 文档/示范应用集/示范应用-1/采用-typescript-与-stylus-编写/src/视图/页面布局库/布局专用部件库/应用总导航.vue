@@ -117,6 +117,8 @@ export default class App总导航 extends Vue {
 
 
 <style lang="stylus">
+/* autoprefixer: off */
+
 .应用总导航 {
     padding 0.75em 2.5em
     display flex

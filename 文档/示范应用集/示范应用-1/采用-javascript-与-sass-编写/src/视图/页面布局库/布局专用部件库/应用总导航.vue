@@ -122,6 +122,8 @@ export default {
 
 
 <style lang="scss">
+/* autoprefixer: off */
+
 .应用总导航 {
     padding: 0.75em 2.5em;
     display: flex;

@@ -38,6 +38,8 @@ export default {
 
 
 <style lang="scss">
+/* autoprefixer: off */
+
 #vue-应用根 {
     font-family: 'Microsoft YaHei', 'Microsoft YaHei UI', '微软雅黑', 'Segoe UI', 'Lucida Grande', Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;

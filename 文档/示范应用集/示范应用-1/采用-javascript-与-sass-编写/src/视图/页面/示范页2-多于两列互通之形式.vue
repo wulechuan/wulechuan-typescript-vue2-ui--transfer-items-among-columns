@@ -454,6 +454,8 @@ export default {
 
 
 <style lang="scss">
+/* autoprefixer: off */
+
 @import '@/视图/_公共样式/样式定义/本应用的-sass-通用变量集';
 
 #{$用以包裹整个应用之部分样式之选择器} {

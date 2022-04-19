@@ -191,6 +191,8 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
 
 
 <style lang="stylus">
+/* autoprefixer: off */
+
 .页面--示范页1-常见的双列互通之形式 {
     height 100%
     display flex

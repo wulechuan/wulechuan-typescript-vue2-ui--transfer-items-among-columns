@@ -202,6 +202,8 @@ export default {
 
 
 <style lang="scss">
+/* autoprefixer: off */
+
 .页面--示范页1-常见的双列互通之形式 {
     height: 100%;
     display: flex;
