@@ -126,7 +126,7 @@ export default {
     padding: 0.75em 2.5em;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
 
     color: white;
     background-color: #333;
