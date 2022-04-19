@@ -464,7 +464,7 @@ export default {
         #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover}: #444;
         #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_but_disabled_color_static}: #ccc;
         #{$吴乐川_任意两列间转移条目__css变量名__element_non_highlighting_color_hover}: #ddd;
-        #{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color}: 'var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static})';
+        #{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color}: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
 
         font-size: 18px;
         box-sizing: border-box;
