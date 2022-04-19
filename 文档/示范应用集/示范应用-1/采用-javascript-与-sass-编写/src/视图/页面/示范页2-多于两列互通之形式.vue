@@ -459,10 +459,10 @@ export default {
 #{$用以包裹整个应用之部分样式之选择器} {
 
     .页面--示范页2-多余-2-列互通之形式 {
-        #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}: black;
-        #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover}: #444;
-        #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_but_disabled_color_static}: #ccc;
-        #{$吴乐川_任意两列间转移条目__css变量名__element_non_highlighting_color_hover}: #ddd;
+        #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}: #008b8b;
+        #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover}: #1eb8b8;
+        #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_but_disabled_color_static}: #40c9c9;
+        #{$吴乐川_任意两列间转移条目__css变量名__element_non_highlighting_color_hover}: #baf2f2;
         #{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color}: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
 
         font-size: 18px;
