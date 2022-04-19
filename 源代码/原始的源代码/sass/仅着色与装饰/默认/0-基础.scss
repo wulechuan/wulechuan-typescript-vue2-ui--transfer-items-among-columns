@@ -5,21 +5,21 @@
 
 
 
-@mixin 可照搬之代码块_消息文本块的背景效果配置($background_color_base_value: white) {
-    background-color: rgba($background_color_base_value, 0.96);
+@mixin 可照搬之代码块_消息文本块的背景效果配置($消息文本块背景色之基调: white) {
+    background-color: rgba($消息文本块背景色之基调, 0.96);
     box-shadow: 0 0 0.4em rgba(black, 0.319);
 
     @supports (backdrop-filter: blur(32px)) {
-        background-color: rgba($background_color_base_value, 0.66);
+        background-color: rgba($消息文本块背景色之基调, 0.66);
         box-shadow: 0 0 0.4em rgba(black, 0.19);
 
         &.磨砂玻璃效果-弱 {
-            background-color: rgba($background_color_base_value, 0.91);
+            background-color: rgba($消息文本块背景色之基调, 0.91);
             box-shadow: 0 0 0.4em rgba(black, 0.219);
         }
 
         &.磨砂玻璃效果-无 {
-            background-color: rgba($background_color_base_value, 0.96);
+            background-color: rgba($消息文本块背景色之基调, 0.96);
             box-shadow: 0 0 0.4em rgba(black, 0.319);
         }
     }
