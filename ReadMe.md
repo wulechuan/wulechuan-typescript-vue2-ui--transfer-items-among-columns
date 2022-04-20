@@ -1,4 +1,4 @@
-# 采用 Vuejs 2.x 技术编写的界面控件：任意两列间转移条目
+# 采用 Vuejs 2.x 技术编写的界面部件<br>——任意两列间转移条目
 
 <link rel="stylesheet" href="./node_modules/@wulechuan/css-stylus-markdown-themes/源代码/发布的源代码/文章排版与配色方案集/层叠样式表/wulechuan-styles-for-html-via-markdown--vscode.default.min.css">
 
@@ -7,11 +7,6 @@
 >
 > 本人亦支持少数民族坚持采用自己民族的传统语言。仍须强调，凡中国人，皆应会用汉语、积极使用汉语，此乃中华各民族之大一统之必由。
 
-
-
-## Multilingual Editions of this Article
-
-- [English version of this ReadMe](./文档/说明书/ReadMe.en-US.md)
 
 
 
