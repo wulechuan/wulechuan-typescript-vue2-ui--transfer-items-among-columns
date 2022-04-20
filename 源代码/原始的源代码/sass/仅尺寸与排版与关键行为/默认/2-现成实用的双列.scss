@@ -1,0 +1,125 @@
+/* autoprefixer: off */
+
+@import '../../_通用变量集_';
+
+
+
+
+
+@mixin 可照搬之代码块__现成实用的双列_左右两列__仅尺寸与排版与行为() {
+    flex-shrink: 1;
+    flex-grow: 3;
+    flex-basis: auto;
+    width: 30em;
+}
+
+
+
+
+
+@mixin 可照搬之代码块__现成实用的双列_中央列__仅尺寸与排版与行为() {
+    flex-shrink: 3;
+    flex-grow: 1;
+    flex-basis: auto;
+    max-width: 20em;
+    min-width: 6em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+
+
+
+
+@mixin 可照搬之代码块_现成实用的双列_仅尺寸与排版与行为() {
+
+    // 【现成实用的双列】。
+    #{$吴乐川_任意两列间转移条目__标志性选择器__prebuilt_dual_columns__root} {
+        #{$吴乐川_任意两列间转移条目__css变量名__chief_blocks_border_width}: 2px;
+        // #{$吴乐川_任意两列间转移条目__css变量名__input_boxes_border_width}: 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width);
+
+        font-size: 18px;
+
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: 100%;
+
+        .总标题栏 {
+            flex: 0 0;
+        }
+
+        .底部内容栏 {
+            flex: 0 0;
+            padding: 0 1em;
+        }
+
+        .容纳着双列的中央主体 {
+            flex: 1 1;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            overflow: auto;
+
+            // 为了在出现滚动条的情形给主体内容四周留白。
+            padding: 1em;
+        }
+
+        #{$吴乐川_任意两列间转移条目__标志性选择器__single_list_column__root} {
+            @include 可照搬之代码块__现成实用的双列_左右两列__仅尺寸与排版与行为();
+
+            min-width: 20em;
+            min-height: 30em;
+        }
+
+        #{$吴乐川_任意两列间转移条目__标志性选择器__default_center_column_between_2_list_columns__root} {
+            @include 可照搬之代码块__现成实用的双列_中央列__仅尺寸与排版与行为();
+        }
+
+
+
+        .底部内容栏之默认内容 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 1em;
+            margin: 0 -1em;
+            height: 6em;
+
+            .功能块 {
+                @include 可照搬之代码块__现成实用的双列_左右两列__仅尺寸与排版与行为();
+
+                position: relative;
+                display: block;
+                text-align: center;
+            }
+
+            .用以影响柔性布局之中央占位块 {
+                @include 可照搬之代码块__现成实用的双列_中央列__仅尺寸与排版与行为();
+
+                box-sizing: border-box;
+                height: 100%;
+            }
+
+            .功能单体-主体为按钮 {
+                display: inline-block;
+                position: relative;
+
+                .迁移条目之按钮 {
+                    font-size: 1.25em;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+@if $吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹 != null {
+    #{$吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹} {
+        @include 可照搬之代码块_现成实用的双列_仅尺寸与排版与行为();
+    }
+} @else {
+    @include 可照搬之代码块_现成实用的双列_仅尺寸与排版与行为();
+}

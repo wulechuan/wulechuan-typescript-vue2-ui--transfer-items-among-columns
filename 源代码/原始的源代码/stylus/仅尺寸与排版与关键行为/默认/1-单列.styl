@@ -16,317 +16,320 @@
 
 
 
-// 【主表条目之视觉根】。
-{wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
+{wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper} {
 
-    &.默认形态 {
-        letter-spacing 0.1em
-        cursor pointer
-        display block
-        padding 0.3em 0.5em
-    }
-}
+    // 【主表条目之视觉根】。
+    {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
 
-
-
-
-
-// 【主表条目根】。
-{wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root} {
-    user-select none
-
-    &.已受迫禁止交互 {
-
-        // 【主表条目之视觉根】。
-        {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
-            cursor default
-        }
-    }
-
-    &.已禁止选择 {
-
-        // 【主表条目之视觉根】。
-        {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
-            cursor not-allowed
-        }
-    }
-}
-
-
-
-
-
-// 【主表条目皿】。
-{wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root_container} {
-    padding 0
-    margin 0.1em 0
-}
-
-
-
-
-
-// 【单列之说明书】。
-{wlc_transfer_items_among_columns__identifiable_selector__single_list_column_readme__root} {
-    position relative
-    perspective 15em
-
-    .条目列表说明书 {
-        height 40vh
-        max-height 50em
-        margin 0.3em
-        padding-top 2.5em
-        transform-origin center 0%
-        transform-style: preserve-3d
-
-        animation-duration 0.45s
-        animation-timing-function linear
-
-        // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
-        // animation-name wulechuan--transfer-items-among-columns--list-column-manual-panel--presents
-        animation-name unquote('吴乐川-任意两列间转移条目-动画--单列之说明书--出现')
-        @keyframes {@animation-name} {
-            0%   {
-                transform: rotateX(-27deg) translateY(180%) translateZ(-2.8em) scaleX(86%);
-                opacity: 0;
-            }
-
-            33%  {
-                transform: rotateX(-9deg) translateY(110%) translateZ(-1em) scaleX(86%);
-            }
-
-            60%  {
-                transform: rotateX(-2deg) translateY(27%) translateZ(0.1em) scaleX(94%);
-                opacity: 1;
-            }
-
-            83%  {
-                transform: rotateX(-0.5deg) translateY(5%) translateZ(0) scaleX(98%);
-            }
-
-            100% {
-                transform: none;
-            }
-        }
-
-        .标准按钮-叉 {
-            margin -0.6em -0.4em
-        }
-
-        .消息文本-可滚动的内容皿 {
-
-            article {
-                padding-left 0.5em
-                padding-right 0.5em
-            }
-        }
-    }
-}
-
-
-
-
-
-// 【单列】。
-{wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
-    display flex
-    overflow hidden
-    flex-direction column
-    box-sizing border-box
-    border-width 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width)
-    border-style solid
-
-    .列首 {
-        margin 0
-        padding 0
-        border-style solid
-        border-top-width 0
-        border-left-width 0
-        border-right-width 0
-        border-bottom-width 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width)
-    }
-
-    .列标题栏 {
-        position relative
-        padding 0.5em 1em
-        text-align center
-    }
-
-    .列标题栏之默认内容 {
-        margin -0.5em -1em
-        padding 0.5em 1em
-
-        h5 {
-            font-size 1.2em
-            font-weight 600
-            margin 0
+        &.默认形态 {
             letter-spacing 0.1em
-            // padding-left 0.1em
-        }
-    }
-
-    .功能块-条目过滤器 {
-        flex 0 0 2em
-        display block
-        padding 0.5em 0.75em
-    }
-
-    .条目过滤器-文本输入框 {
-        display block
-        width 100%
-    }
-
-    .功能块-全选或全部取消选中 {
-        padding 0.25em 1em
-        margin-top -0.5em
-
-        label.包裹着输入项 {
-            // display flex
-            width 15em
-            white-space nowrap
-            // margin-left auto
-            // margin-right auto
-        }
-    }
-
-    .功能块-条目统计 {
-        margin 0
-        padding 0.3em 0.75em
-
-        .字典式列表之条目 {
-            display flex
-            flex-direction row
-            flex-wrap wrap
-            max-width 24em
-        }
-
-        .字典式列表之条目 > dt,
-        .字典式列表之条目 > dd {
-            padding 0.25em
-
-            > span {
-                box-sizing border-box
-                display block
-                padding 0.2em 0.3em
-                height 1.6em
-                line-height 1.2
-            }
-        }
-
-        .字典式列表之条目 > dt {
-            flex 0 0 4em
+            cursor pointer
             display block
-            margin 0 -1em 0 0
-        }
-
-        .字典式列表之条目 > dd {
-            flex 1 1 auto
-            min-width 16em
-            margin 0 0 0 2em
-            display flex
-            flex-direction row
-
-            .括弧--左,
-            .括弧--右 {
-                line-height 1.2
-            }
-
-            .括弧--左 {
-                flex 1 0 auto
-                margin-left 0.5em
-                margin-right 0
-                text-align right
-
-                &:first-child {
-                    margin-left 0
-                }
-            }
-
-            .括弧--右 {
-                flex 0 0 auto
-                margin-left 0
-                text-align left
-                margin-right 1em
-
-                &:last-child {
-                    margin-right -1em
-                }
-            }
-
-            .值 {
-                z-index 10
-                flex 0 0 5em
-                margin 0
-                text-align right
-            }
-
-            .值-前缀,
-            .值-后缀 {
-                overflow hidden
-                white-space nowrap
-            }
-
-            .值-前缀 {
-                flex 0 2 auto
-                text-align right
-                margin-right 0.25em
-            }
-
-            .值-后缀 {
-                flex 0 0 auto
-                text-align left
-                margin-left 0.25em
-            }
-
-            .值 + .括弧--右 {
-                margin-left -0.15em
-            }
-
-            .值-后缀 + .括弧--右,
-            .括弧--左 + .值-前缀 {
-                margin-left -0.4em
-            }
+            padding 0.3em 0.5em
         }
     }
 
-    .功能块-条目列表皿 {
-        flex 1 1 auto
-        display flex
-        flex-direction column
-        overflow hidden
-        padding 0.1em
-    }
 
-    .条目列表 {
-        list-style none
-        padding 0
-        flex 1 1
-        height 100%
-        overflow-y scroll
-        padding 0 0 0 0.5em
-        margin 0
-    }
 
-    .功能块-条目列表说明书-控制栏 {
+
+
+    // 【主表条目根】。
+    {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root} {
         user-select none
 
-        position relative
-        padding 0.5em
-        text-align center
+        &.已受迫禁止交互 {
 
-        button {
-            font-size 0.8em
+            // 【主表条目之视觉根】。
+            {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
+                cursor default
+            }
         }
 
-        {wlc_transfer_items_among_columns__identifiable_selector__single_list_column_readme__root} {
-            z-index 50
-            position absolute
-            top auto
-            left 0
-            right 0
-            bottom 100%
+        &.已禁止选择 {
+
+            // 【主表条目之视觉根】。
+            {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
+                cursor not-allowed
+            }
+        }
+    }
+
+
+
+
+
+    // 【主表条目皿】。
+    {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root_container} {
+        padding 0
+        margin 0.1em 0
+    }
+
+
+
+
+
+    // 【单列之说明书】。
+    {wlc_transfer_items_among_columns__identifiable_selector__single_list_column_readme__root} {
+        position relative
+        perspective 15em
+
+        .条目列表说明书 {
+            height 40vh
+            max-height 50em
+            margin 0.3em
+            padding-top 2.5em
+            transform-origin center 0%
+            transform-style preserve-3d
+
+            animation-duration 0.45s
+            animation-timing-function linear
+
+            // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+            // animation-name wulechuan--transfer-items-among-columns--list-column-manual-panel--presents
+            animation-name unquote('吴乐川-任意两列间转移条目-动画--单列之说明书--出现')
+            @keyframes {@animation-name} {
+                0%   {
+                    transform: rotateX(-27deg) translateY(180%) translateZ(-2.8em) scaleX(86%);
+                    opacity: 0;
+                }
+
+                33%  {
+                    transform: rotateX(-9deg) translateY(110%) translateZ(-1em) scaleX(86%);
+                }
+
+                60%  {
+                    transform: rotateX(-2deg) translateY(27%) translateZ(0.1em) scaleX(94%);
+                    opacity: 1;
+                }
+
+                83%  {
+                    transform: rotateX(-0.5deg) translateY(5%) translateZ(0) scaleX(98%);
+                }
+
+                100% {
+                    transform: none;
+                }
+            }
+
+            .标准按钮-叉 {
+                margin 0.75em
+            }
+
+            .消息文本-可滚动的内容皿 {
+
+                article {
+                    padding-left 0.5em
+                    padding-right 0.5em
+                }
+            }
+        }
+    }
+
+
+
+
+
+    // 【单列】。
+    {wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
+        display flex
+        overflow hidden
+        flex-direction column
+        box-sizing border-box
+        border-width 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width)
+        border-style solid
+
+        .列首 {
             margin 0
+            padding 0
+            border-style solid
+            border-top-width 0
+            border-left-width 0
+            border-right-width 0
+            border-bottom-width 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width)
+        }
+
+        .列标题栏 {
+            position relative
+            padding 0.5em 1em
+            text-align center
+        }
+
+        .列标题栏之默认内容 {
+            margin -0.5em -1em
+            padding 0.5em 1em
+
+            h5 {
+                font-size 1.2em
+                font-weight 600
+                margin 0
+                letter-spacing 0.1em
+                // padding-left 0.1em
+            }
+        }
+
+        .功能块-条目过滤器 {
+            flex 0 0 2em
+            display block
+            padding 0.5em 0.75em
+        }
+
+        .条目过滤器-文本输入框 {
+            display block
+            width 100%
+        }
+
+        .功能块-全选或全部取消选中 {
+            padding 0.25em 1em
+            margin-top -0.5em
+
+            label.包裹着输入项 {
+                // display flex
+                width 15em
+                white-space nowrap
+                // margin-left auto
+                // margin-right auto
+            }
+        }
+
+        .功能块-条目统计 {
+            margin 0
+            padding 0.3em 0.75em
+
+            .字典式列表之条目 {
+                display flex
+                flex-direction row
+                flex-wrap wrap
+                max-width 24em
+            }
+
+            .字典式列表之条目 > dt,
+            .字典式列表之条目 > dd {
+                padding 0.25em
+
+                > span {
+                    box-sizing border-box
+                    display block
+                    padding 0.2em 0.3em
+                    height 1.6em
+                    line-height 1.2
+                }
+            }
+
+            .字典式列表之条目 > dt {
+                flex 0 0 4em
+                display block
+                margin 0 -1em 0 0
+            }
+
+            .字典式列表之条目 > dd {
+                flex 1 1 auto
+                min-width 16em
+                margin 0 0 0 2em
+                display flex
+                flex-direction row
+
+                .括弧--左,
+                .括弧--右 {
+                    line-height 1.2
+                }
+
+                .括弧--左 {
+                    flex 1 0 auto
+                    margin-left 0.5em
+                    margin-right 0
+                    text-align right
+
+                    &:first-child {
+                        margin-left 0
+                    }
+                }
+
+                .括弧--右 {
+                    flex 0 0 auto
+                    margin-left 0
+                    text-align left
+                    margin-right 1em
+
+                    &:last-child {
+                        margin-right -1em
+                    }
+                }
+
+                .值 {
+                    z-index 10
+                    flex 0 0 5em
+                    margin 0
+                    text-align right
+                }
+
+                .值-前缀,
+                .值-后缀 {
+                    overflow hidden
+                    white-space nowrap
+                }
+
+                .值-前缀 {
+                    flex 0 2 auto
+                    text-align right
+                    margin-right 0.25em
+                }
+
+                .值-后缀 {
+                    flex 0 0 auto
+                    text-align left
+                    margin-left 0.25em
+                }
+
+                .值 + .括弧--右 {
+                    margin-left -0.15em
+                }
+
+                .值-后缀 + .括弧--右,
+                .括弧--左 + .值-前缀 {
+                    margin-left -0.4em
+                }
+            }
+        }
+
+        .功能块-条目列表皿 {
+            flex 1 1 auto
+            display flex
+            flex-direction column
             overflow hidden
+            padding 0.1em
+        }
+
+        .条目列表 {
+            list-style none
+            padding 0
+            flex 1 1
+            height 100%
+            overflow-y scroll
+            padding 0 0 0 0.5em
+            margin 0
+        }
+
+        .功能块-条目列表说明书-控制栏 {
+            user-select none
+
+            position relative
+            padding 0.5em
+            text-align center
+
+            button {
+                font-size 0.8em
+            }
+
+            {wlc_transfer_items_among_columns__identifiable_selector__single_list_column_readme__root} {
+                z-index 50
+                position absolute
+                top auto
+                left 0
+                right 0
+                bottom 100%
+                margin 0
+                overflow hidden
+            }
         }
     }
 }

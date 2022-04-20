@@ -18,225 +18,228 @@
 
 
 
-// 【主表条目之视觉根】。
-{wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
+{wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper} {
 
-    MIXIN_transition_colors_and_shades()
+    // 【主表条目之视觉根】。
+    {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
 
-    & {
-        border-radius 0.2em
-        background-color transparent
+        MIXIN_transition_colors_and_shades()
 
-        &:hover {
-            background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover)
-        }
-    }
-
-    &.默认形态 {
-        // 暂无内容。
-    }
-}
-
-
-
-
-
-// 【主表条目根】。
-{wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root} {
-
-    &.已选中 {
-
-        // 【主表条目之视觉根】。
-        {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
-            color white
-            background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
-
-            &:hover {
-                background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover)
-            }
-        }
-    }
-
-    &.已受迫禁止交互 {
-
-        // 【主表条目之视觉根】。
-        {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
-
-            &,
-            &:hover {
-                color #999
-                background-color transparent
-            }
-        }
-    }
-
-    &.已选中.已受迫禁止交互 {
-
-        // 【主表条目之视觉根】。
-        {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
-
-            &,
-            &:hover {
-                color black
-                background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static)
-            }
-        }
-    }
-
-    &.已禁止选择 {
-
-        // 【主表条目之视觉根】。
-        {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
-
-            &,
-            &:hover {
-                color #e3e3e3
-                text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
-                background-color #00000003
-                background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);
-            }
-        }
-    }
-}
-
-
-
-
-
-// 【主表条目皿】。
-{wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root_container} {
-    background-color transparent
-}
-
-
-
-
-
-// 【单列之说明书】。
-{wlc_transfer_items_among_columns__identifiable_selector__single_list_column_readme__root} {
-    // 暂无内容。
-}
-
-
-
-
-
-// 【单列】。
-{wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
-
-    .列首 {
-        border-color inherit
-    }
-
-    .列标题栏之默认内容 {
-        color white
-        background-color rgba(black, 0.6)
-    }
-
-    .功能块-条目过滤器 {
-        border-color inherit
-    }
-
-    .条目过滤器-文本输入框 {
-        border-color inherit
-
-        &.应给予视觉强调以引导用户来此 {
-            animation-iteration-count infinite
-            animation-duration 1.5s
-
-            box-shadow '0 0 0 6px var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
-
-            // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
-            // animation-name wulechuan--transfer-items-among-columns--list-items-filtering-input-box--emphasizing--default
-            animation-name unquote('吴乐川-任意两列间转移条目-动画--单列-条目过滤器-文本输入框--视觉强调--默认形式')
-            @keyframes {@animation-name} {
-                0%, 100% { box-shadow: '0 0 0 0   var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static); }
-                40%, 60% { box-shadow: '0 0 0 6px var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static); }
-            }
-
-            &:focus,
-            &.给予的视觉强调应稍稍弱化 {
-                animation-name none
-                box-shadow none
-            }
-        }
-
-        &:disabled {
-            animation-name none
-            border-color rgba(black, 0.079)
-            background-color rgba(white, 0.319)
-        }
-    }
-
-    .功能块-条目统计 {
-        background-color rgba(black, 0.1)
-
-        .字典式列表之条目 > dt,
-        .字典式列表之条目 > dd {
-
-            > span {
-                border-radius 0.2em
-            }
-        }
-
-        .字典式列表之条目 > dt {
-            color #0007
-        }
-
-        .字典式列表之条目 > dd {
-            color black
-        }
-
-        .字典式列表之条目--所有条目之统计 .值 {
-            background-color rgba(black, 0.05)
-
-            // &.值--总数 {
-            // }
-
-            // &.值--列示数 {
-            // }
-        }
-
-        .字典式列表之条目--已选中条目之统计 .值 {
-            text-shadow none
-            color white
-
-            &.值--总数 {
-                background-color black
-            }
-
-            &.值--列示数 {
-                background-color rgba(black, 0.5)
-            }
-        }
-    }
-
-    .功能块-条目列表皿 {
-        box-shadow inset 0 0 0.25em rgba(black, 0.45)
-    }
-
-    .消息文本块.标准配色-暗.条目列表之提示语 {
-
-        .值 {
-            margin 0 0.2em
+        & {
+            border-radius 0.2em
             background-color transparent
 
-            &.值-期望列示之条目总数 {
-                color #f88
+            &:hover {
+                background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover)
             }
+        }
 
-            &.值-条目总数之限制数 {
-                color #ff8
+        &.默认形态 {
+            // 暂无内容。
+        }
+    }
+
+
+
+
+
+    // 【主表条目根】。
+    {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root} {
+
+        &.已选中 {
+
+            // 【主表条目之视觉根】。
+            {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
+                color white
+                background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+
+                &:hover {
+                    background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover)
+                }
+            }
+        }
+
+        &.已受迫禁止交互 {
+
+            // 【主表条目之视觉根】。
+            {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
+
+                &,
+                &:hover {
+                    color #999
+                    background-color transparent
+                }
+            }
+        }
+
+        &.已选中.已受迫禁止交互 {
+
+            // 【主表条目之视觉根】。
+            {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
+
+                &,
+                &:hover {
+                    color black
+                    background-color 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static)
+                }
+            }
+        }
+
+        &.已禁止选择 {
+
+            // 【主表条目之视觉根】。
+            {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__visual_base} {
+
+                &,
+                &:hover {
+                    color #e3e3e3
+                    text-shadow -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white
+                    background-color #00000003
+                    background-image repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);
+                }
             }
         }
     }
 
-    .条目列表 {
-        MIXIN_webkit_scrollbar(black, 1)
-        scrollbar-width thin
+
+
+
+
+    // 【主表条目皿】。
+    {wlc_transfer_items_among_columns__identifiable_selector__list_single_item__root_container} {
+        background-color transparent
     }
 
-    .功能块-条目列表说明书-控制栏 {
-        background-color #222
+
+
+
+
+    // 【单列之说明书】。
+    {wlc_transfer_items_among_columns__identifiable_selector__single_list_column_readme__root} {
+        // 暂无内容。
+    }
+
+
+
+
+
+    // 【单列】。
+    {wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
+
+        .列首 {
+            border-color inherit
+        }
+
+        .列标题栏之默认内容 {
+            color white
+            background-color rgba(black, 0.6)
+        }
+
+        .功能块-条目过滤器 {
+            border-color inherit
+        }
+
+        .条目过滤器-文本输入框 {
+            border-color inherit
+
+            &.应给予视觉强调以引导用户来此 {
+                animation-iteration-count infinite
+                animation-duration 1.5s
+
+                box-shadow '0 0 0 6px var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+
+                // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+                // animation-name wulechuan--transfer-items-among-columns--list-items-filtering-input-box--emphasizing--default
+                animation-name unquote('吴乐川-任意两列间转移条目-动画--单列-条目过滤器-文本输入框--视觉强调--默认形式')
+                @keyframes {@animation-name} {
+                    0%, 100% { box-shadow: '0 0 0 0   var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static); }
+                    40%, 60% { box-shadow: '0 0 0 6px var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static); }
+                }
+
+                &:focus,
+                &.给予的视觉强调应稍稍弱化 {
+                    animation-name none
+                    box-shadow none
+                }
+            }
+
+            &:disabled {
+                animation-name none
+                border-color rgba(black, 0.079)
+                background-color rgba(white, 0.319)
+            }
+        }
+
+        .功能块-条目统计 {
+            background-color rgba(black, 0.1)
+
+            .字典式列表之条目 > dt,
+            .字典式列表之条目 > dd {
+
+                > span {
+                    border-radius 0.2em
+                }
+            }
+
+            .字典式列表之条目 > dt {
+                color #0007
+            }
+
+            .字典式列表之条目 > dd {
+                color black
+            }
+
+            .字典式列表之条目--所有条目之统计 .值 {
+                background-color rgba(black, 0.05)
+
+                // &.值--总数 {
+                // }
+
+                // &.值--列示数 {
+                // }
+            }
+
+            .字典式列表之条目--已选中条目之统计 .值 {
+                text-shadow none
+                color white
+
+                &.值--总数 {
+                    background-color black
+                }
+
+                &.值--列示数 {
+                    background-color rgba(black, 0.5)
+                }
+            }
+        }
+
+        .功能块-条目列表皿 {
+            box-shadow inset 0 0 0.25em rgba(black, 0.45)
+        }
+
+        .消息文本块.标准配色-暗.条目列表之提示语 {
+
+            .值 {
+                margin 0 0.2em
+                background-color transparent
+
+                &.值-期望列示之条目总数 {
+                    color #f88
+                }
+
+                &.值-条目总数之限制数 {
+                    color #ff8
+                }
+            }
+        }
+
+        .条目列表 {
+            MIXIN_webkit_scrollbar(black, 1)
+            scrollbar-width thin
+        }
+
+        .功能块-条目列表说明书-控制栏 {
+            background-color #222
+        }
     }
 }

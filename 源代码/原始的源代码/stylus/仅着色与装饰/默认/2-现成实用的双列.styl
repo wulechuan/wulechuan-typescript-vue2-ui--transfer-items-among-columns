@@ -17,68 +17,71 @@
 
 
 
-// 【现成实用的双列】。
-{wlc_transfer_items_among_columns__identifiable_selector__prebuilt_dual_columns__root} {
-    color black
+{wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper} {
 
-    .容纳着双列的中央主体 {
-        MIXIN_webkit_scrollbar(black, 1)
-        scrollbar-width thin
-    }
+    // 【现成实用的双列】。
+    {wlc_transfer_items_among_columns__identifiable_selector__prebuilt_dual_columns__root} {
+        color black
 
-
-
-    // 【单列】。
-    {wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
-
-        &.标准双列模式下的甲列 {
-
-            .列首 {
-                background-color #fadecf
-            }
-
-            // .条目过滤器-文本输入框 {
-
-            //     &.应给予视觉强调以引导用户来此 {
-            //         border-color #f00
-
-            //         // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
-            //         // animation-name wulechuan--transfer-items-among-columns--list-items-filtering-input-box--emphasizing--column1
-            //         animation-name unquote('吴乐川-任意两列间转移条目-动画--单列-条目过滤器-文本输入框--视觉强调--甲列')
-            //         @keyframes {@animation-name} {
-            //             0%, 100% { border-color: #f00; }
-            //             40%, 60% { border-color: #fbb; }
-            //         }
-            //     }
-            // }
+        .容纳着双列的中央主体 {
+            MIXIN_webkit_scrollbar(black, 1)
+            scrollbar-width thin
         }
 
-        &.标准双列模式下的乙列 {
 
-            .列首 {
-                background-color #defade
+
+        // 【单列】。
+        {wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
+
+            &.标准双列模式下的甲列 {
+
+                .列首 {
+                    background-color #fadecf
+                }
+
+                // .条目过滤器-文本输入框 {
+
+                //     &.应给予视觉强调以引导用户来此 {
+                //         border-color #f00
+
+                //         // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+                //         // animation-name wulechuan--transfer-items-among-columns--list-items-filtering-input-box--emphasizing--column1
+                //         animation-name unquote('吴乐川-任意两列间转移条目-动画--单列-条目过滤器-文本输入框--视觉强调--甲列')
+                //         @keyframes {@animation-name} {
+                //             0%, 100% { border-color: #f00; }
+                //             40%, 60% { border-color: #fbb; }
+                //         }
+                //     }
+                // }
             }
 
-            // .条目过滤器-文本输入框 {
+            &.标准双列模式下的乙列 {
 
-            //     &.应给予视觉强调以引导用户来此 {
-            //         border-color #090
+                .列首 {
+                    background-color #defade
+                }
 
-            //         // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
-            //         // animation-name wulechuan--transfer-items-among-columns--list-items-filtering-input-box--emphasizing--column2
-            //         animation-name unquote('吴乐川-任意两列间转移条目-动画--单列-条目过滤器-文本输入框--视觉强调--乙列')
-            //         @keyframes {@animation-name} {
-            //             0%, 100% { border-color: #8d8; }
-            //             40%, 60% { border-color: #090; }
-            //         }
+                // .条目过滤器-文本输入框 {
 
-            //         &:focus,
-            //         &.给予的视觉强调应稍稍弱化 {
-            //             animation-name none
-            //             border-color inherit
-            //         }
-            //     }
-            // }
+                //     &.应给予视觉强调以引导用户来此 {
+                //         border-color #090
+
+                //         // Stylus 语言的关键帧动画名称不允许采用汉字！但借助 @属性名 之方法可以稳妥地采用汉字为 @keyframes 命名。
+                //         // animation-name wulechuan--transfer-items-among-columns--list-items-filtering-input-box--emphasizing--column2
+                //         animation-name unquote('吴乐川-任意两列间转移条目-动画--单列-条目过滤器-文本输入框--视觉强调--乙列')
+                //         @keyframes {@animation-name} {
+                //             0%, 100% { border-color: #8d8; }
+                //             40%, 60% { border-color: #090; }
+                //         }
+
+                //         &:focus,
+                //         &.给予的视觉强调应稍稍弱化 {
+                //             animation-name none
+                //             border-color inherit
+                //         }
+                //     }
+                // }
+            }
         }
     }
 }

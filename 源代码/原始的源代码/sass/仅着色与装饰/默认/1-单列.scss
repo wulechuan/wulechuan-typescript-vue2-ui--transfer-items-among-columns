@@ -1,0 +1,242 @@
+/* autoprefixer: off */
+
+@import '../../_通用变量集_';
+@import './通用代码块之集';
+
+
+
+
+
+@mixin 可照搬之代码块_单列及其附件_仅着色与装饰() {
+
+    // 【主表条目之视觉根】。
+    #{$吴乐川_任意两列间转移条目__标志性选择器__list_single_item__visual_base} {
+
+        @include 可照搬之代码块_令与颜色和投影和透明度有关的属性具备过渡动画();
+
+        & {
+            border-radius: 0.2em;
+            background-color: transparent;
+
+            &:hover {
+                background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_non_highlighting_color_hover});
+            }
+        }
+
+        // &.默认形态 {
+        // }
+    }
+
+
+
+
+
+    // 【主表条目根】。
+    #{$吴乐川_任意两列间转移条目__标志性选择器__list_single_item__root} {
+
+        &.已选中 {
+
+            // 【主表条目之视觉根】。
+            #{$吴乐川_任意两列间转移条目__标志性选择器__list_single_item__visual_base} {
+                color: white;
+                background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
+
+                &:hover {
+                    background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover});
+                }
+            }
+        }
+
+        &.已受迫禁止交互 {
+
+            // 【主表条目之视觉根】。
+            #{$吴乐川_任意两列间转移条目__标志性选择器__list_single_item__visual_base} {
+
+                &,
+                &:hover {
+                    color: #999;
+                    background-color: transparent;
+                }
+            }
+        }
+
+        &.已选中.已受迫禁止交互 {
+
+            // 【主表条目之视觉根】。
+            #{$吴乐川_任意两列间转移条目__标志性选择器__list_single_item__visual_base} {
+
+                &,
+                &:hover {
+                    color: black;
+                    background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_but_disabled_color_static});
+                }
+            }
+        }
+
+        &.已禁止选择 {
+
+            // 【主表条目之视觉根】。
+            #{$吴乐川_任意两列间转移条目__标志性选择器__list_single_item__visual_base} {
+
+                &,
+                &:hover {
+                    color: #e3e3e3;
+                    text-shadow: -1px -1px 0px rgba(black, 0.319), 1px 1px 0px white;
+                    background-color: #00000003;
+                    background-image: repeating-linear-gradient(-45deg, transparent 0.05em 0.46em, #00000007 0.51em 0.92em);;
+                }
+            }
+        }
+    }
+
+
+
+
+
+    // 【主表条目皿】。
+    #{$吴乐川_任意两列间转移条目__标志性选择器__list_single_item__root_container} {
+        background-color: transparent;
+    }
+
+
+
+
+
+    // 【单列之说明书】。
+    // #{$吴乐川_任意两列间转移条目__标志性选择器__single_list_column_readme__root} {
+    //     // 暂无内容。
+    // }
+
+
+
+
+
+    // 【单列】。
+    #{$吴乐川_任意两列间转移条目__标志性选择器__single_list_column__root} {
+
+        .列首 {
+            border-color: inherit;
+        }
+
+        .列标题栏之默认内容 {
+            color: white;
+            background-color: rgba(black, 0.6);
+        }
+
+        .功能块-条目过滤器 {
+            border-color: inherit;
+        }
+
+        .条目过滤器-文本输入框 {
+            border-color: inherit;
+
+            &.应给予视觉强调以引导用户来此 {
+                animation-iteration-count: infinite;
+                animation-duration: 1.5s;
+
+                box-shadow: 0 0 0 6px var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
+
+                // animation-name: wulechuan--transfer-items-among-columns--list-items-filtering-input-box--emphasizing--default
+                animation-name: 吴乐川-任意两列间转移条目-动画--单列-条目过滤器-文本输入框--视觉强调--默认形式;
+                // @keyframes wulechuan--transfer-items-among-columns--list-items-filtering-input-box--emphasizing--default {
+                @keyframes 吴乐川-任意两列间转移条目-动画--单列-条目过滤器-文本输入框--视觉强调--默认形式 {
+                    0%, 100% { box-shadow: 0 0 0 0   var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}); }
+                    40%, 60% { box-shadow: 0 0 0 6px var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}); }
+                }
+
+                &:focus,
+                &.给予的视觉强调应稍稍弱化 {
+                    animation-name: none;
+                    box-shadow: none;
+                }
+            }
+
+            &:disabled {
+                animation-name: none;
+                border-color: rgba(black, 0.079);
+                background-color: rgba(white, 0.319);
+            }
+        }
+
+        .功能块-条目统计 {
+            background-color: rgba(black, 0.1);
+
+            .字典式列表之条目 > dt,
+            .字典式列表之条目 > dd {
+
+                > span {
+                    border-radius: 0.2em;
+                }
+            }
+
+            .字典式列表之条目 > dt {
+                color: #0007;
+            }
+
+            .字典式列表之条目 > dd {
+                color: black;
+            }
+
+            .字典式列表之条目--所有条目之统计 .值 {
+                background-color: rgba(black, 0.05);
+
+                // &.值--总数 {
+                // }
+
+                // &.值--列示数 {
+                // }
+            }
+
+            .字典式列表之条目--已选中条目之统计 .值 {
+                text-shadow: none;
+                color: white;
+
+                &.值--总数 {
+                    background-color: black;
+                }
+
+                &.值--列示数 {
+                    background-color: rgba(black, 0.5);
+                }
+            }
+        }
+
+        .功能块-条目列表皿 {
+            box-shadow: inset 0 0 0.25em rgba(black, 0.45);
+        }
+
+        .消息文本块.标准配色-暗.条目列表之提示语 {
+
+            .值 {
+                margin: 0 0.2em;
+                background-color: transparent;
+
+                &.值-期望列示之条目总数 {
+                    color: #f88;
+                }
+
+                &.值-条目总数之限制数 {
+                    color: #ff8;
+                }
+            }
+        }
+
+        .条目列表 {
+            @include 可照搬之代码块_凡兼容webkit之浏览器的滚动条样式(black, 1);
+
+            scrollbar-width: thin;
+        }
+
+        .功能块-条目列表说明书-控制栏 {
+            background-color: #222;
+        }
+    }
+}
+
+@if $吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹 != null {
+    #{$吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹} {
+        @include 可照搬之代码块_单列及其附件_仅着色与装饰();
+    }
+} @else {
+    @include 可照搬之代码块_单列及其附件_仅着色与装饰();
+}

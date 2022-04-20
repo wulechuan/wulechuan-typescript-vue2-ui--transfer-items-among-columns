@@ -1,0 +1,70 @@
+/* autoprefixer: off */
+
+@import '../../_通用变量集_';
+
+
+
+
+
+@mixin 可照搬之代码块_两列之间之默认竖栏_仅尺寸与排版与行为() {
+
+    // 【两列之间之默认竖栏】。
+    #{$吴乐川_任意两列间转移条目__标志性选择器__default_center_column_between_2_list_columns__root} {
+        user-select: none;
+
+        box-sizing: border-box;
+        min-width: 6em;
+        padding: 3em 0.5em 3em;
+
+        border-style: solid;
+        border-width: var(#{$吴乐川_任意两列间转移条目__css变量名__chief_blocks_border_width});
+        border-left-width: 0;
+        border-right-width: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+
+        > .柔性部件配件 {
+            flex: 10 10 19em;
+            max-height: 19em;
+        }
+
+        hr.仅用于样式表缺失之情形 {
+            display: none;
+        }
+
+        button.按钮-形状必须为正圆 {
+            font-size: 1.25em;
+            margin: 0.75em auto;
+        }
+
+        .功能单体-主体为按钮 {
+            display: block;
+            margin: 0.75em auto;
+            position: relative;
+
+            .迁移条目之按钮 {
+                margin: 0;
+            }
+
+            .迁移条目之按钮--甲列至乙列.样式应做特别调整 {
+                padding-left: 0.35em;
+            }
+
+            .迁移条目之按钮--乙列至甲列.样式应做特别调整 {
+                padding-left: 0em;
+            }
+        }
+    }
+}
+
+@if $吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹 != null {
+    #{$吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹} {
+        @include 可照搬之代码块_两列之间之默认竖栏_仅尺寸与排版与行为();
+    }
+} @else {
+    @include 可照搬之代码块_两列之间之默认竖栏_仅尺寸与排版与行为();
+}

@@ -1,0 +1,29 @@
+/* autoprefixer: off */
+
+@import '../../_通用变量集_';
+@import './通用代码块之集';
+
+
+
+
+
+@mixin 可照搬之代码块_两列之间之默认竖栏_仅着色与装饰() {
+
+    // 【两列之间之默认竖栏】。
+    #{$吴乐川_任意两列间转移条目__标志性选择器__default_center_column_between_2_list_columns__root} {
+        @if true {
+            border-color: transparent;
+        } @else {
+            border-color: #333;
+            background-color: #999;
+        }
+    }
+}
+
+@if $吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹 != null {
+    #{$吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹} {
+        @include 可照搬之代码块_两列之间之默认竖栏_仅着色与装饰();
+    }
+} @else {
+    @include 可照搬之代码块_两列之间之默认竖栏_仅着色与装饰();
+}

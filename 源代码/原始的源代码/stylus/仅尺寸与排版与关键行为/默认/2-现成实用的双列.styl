@@ -16,100 +16,103 @@
 
 
 
-// 【现成实用的双列】。
-{wlc_transfer_items_among_columns__identifiable_selector__prebuilt_dual_columns__root} {
-    {wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width} 2px
-    // {wlc_transfer_items_among_columns__css_var_name__input_boxes_border_width} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width)
+{wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper} {
 
-    font-size 18px
+    // 【现成实用的双列】。
+    {wlc_transfer_items_among_columns__identifiable_selector__prebuilt_dual_columns__root} {
+        {wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width} 2px
+        // {wlc_transfer_items_among_columns__css_var_name__input_boxes_border_width} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width)
 
-    display flex
-    flex-direction column
-    box-sizing border-box
-    height 100%
+        font-size 18px
 
-    .总标题栏 {
-        flex 0 0
-    }
-
-    .底部内容栏 {
-        flex 0 0
-        padding 0 1em
-    }
-
-    .容纳着双列的中央主体 {
-        flex 1 1
         display flex
-        flex-direction row
-        align-items stretch
-        overflow auto
-        padding 1em // 为了在出现滚动条的情形给主体内容四周留白。
-    }
-
-    // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
-    BLOCK_left_and_right_columns_layout = @block {
-        flex-shrink 1
-        flex-grow 3
-        flex-basis auto
-        width 30em
-    }
-
-    // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
-    BLOCK_middle_column_layout = @block {
-        flex-shrink 3
-        flex-grow 1
-        flex-basis auto
-        max-width 20em
-        min-width 6em
-        padding-left 0.5em
-        padding-right 0.5em
-    }
-
-    {wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
-        {BLOCK_left_and_right_columns_layout}
-
-        min-width 20em
-        min-height 30em
-    }
-
-    {wlc_transfer_items_among_columns__identifiable_selector__default_center_column_between_2_list_columns__root} {
-        {BLOCK_middle_column_layout}
-    }
-
-
-
-    .底部内容栏之默认内容 {
-        display flex
-        flex-direction row
-        justify-content center
-        align-items center
+        flex-direction column
         box-sizing border-box
-        padding 1em
-        margin 0 -1em
-        height 6em
+        height 100%
 
-        .功能块 {
+        .总标题栏 {
+            flex 0 0
+        }
+
+        .底部内容栏 {
+            flex 0 0
+            padding 0 1em
+        }
+
+        .容纳着双列的中央主体 {
+            flex 1 1
+            display flex
+            flex-direction row
+            align-items stretch
+            overflow auto
+            padding 1em // 为了在出现滚动条的情形给主体内容四周留白。
+        }
+
+        // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
+        BLOCK_left_and_right_columns_layout = @block {
+            flex-shrink 1
+            flex-grow 3
+            flex-basis auto
+            width 30em
+        }
+
+        // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
+        BLOCK_middle_column_layout = @block {
+            flex-shrink 3
+            flex-grow 1
+            flex-basis auto
+            max-width 20em
+            min-width 6em
+            padding-left 0.5em
+            padding-right 0.5em
+        }
+
+        {wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
             {BLOCK_left_and_right_columns_layout}
 
-            position relative
-            display block
-            text-align center
+            min-width 20em
+            min-height 30em
         }
 
-        .用以影响柔性布局之中央占位块 {
+        {wlc_transfer_items_among_columns__identifiable_selector__default_center_column_between_2_list_columns__root} {
             {BLOCK_middle_column_layout}
-
-            box-sizing border-box
-            height 100%
         }
 
-        .功能单体-主体为按钮 {
-            display inline-block
-            position relative
 
-            .迁移条目之按钮 {
-                font-size 1.25em
-                margin 0
+
+        .底部内容栏之默认内容 {
+            display flex
+            flex-direction row
+            justify-content center
+            align-items center
+            box-sizing border-box
+            padding 1em
+            margin 0 -1em
+            height 6em
+
+            .功能块 {
+                {BLOCK_left_and_right_columns_layout}
+
+                position relative
+                display block
+                text-align center
+            }
+
+            .用以影响柔性布局之中央占位块 {
+                {BLOCK_middle_column_layout}
+
+                box-sizing border-box
+                height 100%
+            }
+
+            .功能单体-主体为按钮 {
+                display inline-block
+                position relative
+
+                .迁移条目之按钮 {
+                    font-size 1.25em
+                    margin 0
+                }
             }
         }
     }
