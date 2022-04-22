@@ -550,11 +550,19 @@ export default {
                 }
             }
 
-            &.甲 .列首 { background-color: #fcc; }
-            &.乙 .列首 { background-color: #ffc; }
-            &.丙 .列首 { background-color: #cfc; }
-            &.丁 .列首 { background-color: #cff; }
-            &.戊 .列首 { background-color: #ccf; }
+            &.甲 .列首 { background-color: #fdd; }
+            &.乙 .列首 { background-color: #ffd; }
+            &.丙 .列首 { background-color: #dfd; }
+            &.丁 .列首 { background-color: #dff; }
+            &.戊 .列首 { background-color: #ddf; }
+
+            &.甲 { // 故意另【甲】列之配色与众不同。
+                #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}: #f66;
+                #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover}: #f88;
+                #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_but_disabled_color_static}: #ecc;
+                #{$吴乐川_任意两列间转移条目__css变量名__element_non_highlighting_color_hover}: #fdd;
+                #{$吴乐川_任意两列间转移条目__css变量名__focusing_element_outline_color}: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
+            }
         }
 
         // .吴乐川-任意两列间转移条目-两列之间之默认竖栏 {

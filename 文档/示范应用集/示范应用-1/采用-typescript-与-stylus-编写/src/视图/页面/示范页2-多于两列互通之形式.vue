@@ -480,11 +480,19 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
                 }
             }
 
-            &.甲 .列首 { background-color: #fcc; }
-            &.乙 .列首 { background-color: #ffc; }
-            &.丙 .列首 { background-color: #cfc; }
-            &.丁 .列首 { background-color: #cff; }
-            &.戊 .列首 { background-color: #ccf; }
+            &.甲 .列首 { background-color: #fdd; }
+            &.乙 .列首 { background-color: #ffd; }
+            &.丙 .列首 { background-color: #dfd; }
+            &.丁 .列首 { background-color: #dff; }
+            &.戊 .列首 { background-color: #ddf; }
+
+            &.甲 { // 故意另【甲】列之配色与众不同。
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #f66
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #f88
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ecc
+                {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #fdd
+                {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+            }
         }
 
         .吴乐川-任意两列间转移条目-两列之间之默认竖栏 {
