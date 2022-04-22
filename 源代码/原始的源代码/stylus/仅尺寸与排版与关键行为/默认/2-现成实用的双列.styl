@@ -48,6 +48,8 @@
             padding 1em // 为了在出现滚动条的情形给主体内容四周留白。
         }
 
+
+
         // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
         BLOCK_left_and_right_columns_layout = @block {
             flex-shrink 1
@@ -67,6 +69,19 @@
             padding-right 0.5em
         }
 
+        // Stylus 语言的变量名不允许采用汉字！另，应为我坚持在样式类名中使用汉字，故 @extend 之做法无效，只能改用 @block 之做法。
+        BLOCK_middle_column_layout_narrow = @block {
+            flex-shrink 0
+            flex-grow 0
+            flex-basis 1em
+            max-width 1em
+            min-width 1em
+            padding-left 0em
+            padding-right 0em
+        }
+
+
+
         {wlc_transfer_items_among_columns__identifiable_selector__single_list_column__root} {
             {BLOCK_left_and_right_columns_layout}
 
@@ -76,6 +91,15 @@
 
         {wlc_transfer_items_among_columns__identifiable_selector__default_center_column_between_2_list_columns__root} {
             {BLOCK_middle_column_layout}
+        }
+
+
+
+        .用以影响柔性布局之中央占位块 {
+            {BLOCK_middle_column_layout}
+
+            box-sizing border-box
+            height 100%
         }
 
 
@@ -98,21 +122,21 @@
                 text-align center
             }
 
-            .用以影响柔性布局之中央占位块 {
-                {BLOCK_middle_column_layout}
-
-                box-sizing border-box
-                height 100%
-            }
-
             .功能单体-主体为按钮 {
                 display inline-block
                 position relative
+            }
 
-                .迁移条目之按钮 {
-                    font-size 1.25em
-                    margin 0
-                }
+            .迁移条目之按钮 {
+                font-size 1.25em
+                margin 0
+            }
+        }
+
+        &.无须中央列之功能 {
+
+            .用以影响柔性布局之中央占位块 {
+                {BLOCK_middle_column_layout_narrow}
             }
         }
     }

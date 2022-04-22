@@ -31,6 +31,20 @@
 
 
 
+@mixin 可照搬之代码块__现成实用的双列_中央列__仅尺寸与排版与行为_较窄() {
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 1em;
+    max-width: 1em;
+    min-width: 1em;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
+
+
+
+
 @mixin 可照搬之代码块_现成实用的双列_仅尺寸与排版与行为() {
 
     // 【现成实用的双列】。
@@ -78,6 +92,15 @@
 
 
 
+        .用以影响柔性布局之中央占位块 {
+            @include 可照搬之代码块__现成实用的双列_中央列__仅尺寸与排版与行为();
+
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+
+
         .底部内容栏之默认内容 {
             display: flex;
             flex-direction: row;
@@ -96,21 +119,21 @@
                 text-align: center;
             }
 
-            .用以影响柔性布局之中央占位块 {
-                @include 可照搬之代码块__现成实用的双列_中央列__仅尺寸与排版与行为();
-
-                box-sizing: border-box;
-                height: 100%;
-            }
-
             .功能单体-主体为按钮 {
                 display: inline-block;
                 position: relative;
+            }
 
-                .迁移条目之按钮 {
-                    font-size: 1.25em;
-                    margin: 0;
-                }
+            .迁移条目之按钮 {
+                font-size: 1.25em;
+                margin: 0;
+            }
+        }
+
+        &.无须中央列之功能 {
+
+            .用以影响柔性布局之中央占位块 {
+                @include 可照搬之代码块__现成实用的双列_中央列__仅尺寸与排版与行为_较窄();
             }
         }
     }

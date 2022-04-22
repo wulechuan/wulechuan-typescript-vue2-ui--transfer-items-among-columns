@@ -1,6 +1,6 @@
 <template>
-    <div class="吴乐川-任意两列间转移条目-现成实用的双列">
-        <header class="总标题栏">
+    <div class="吴乐川-任意两列间转移条目-现成实用的双列" :class="{ '无须中央列之功能': !!无须中央列之功能 }">
+        <header v-if="!无须总标题栏" class="总标题栏">
             <slot name="界面皿-总标题栏" v-bind="用于各界面皿之状态集"></slot>
         </header>
 
@@ -23,7 +23,8 @@
                 @内部某元素之视觉强调之状态已变动="甲列之数据集.当下正在通过视觉强调动画引导用户 = $event"
             ></Wlc任意两列间转移条目_单列>
 
-            <slot name="界面皿-中央列" v-bind="用于各界面皿之状态集">
+            <div v-if="无须中央列之功能" class="用以影响柔性布局之中央占位块"></div>
+            <slot v-else name="界面皿-中央列" v-bind="用于各界面皿之状态集">
                 <Wlc任意两列间转移条目_两列之间之竖栏_默认形态
                     :应全面禁止交互="应全面禁止交互"
                     :按钮上的措辞_将条目从甲列迁移至乙列="按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列"
@@ -32,7 +33,9 @@
                     :乙列当下选中的条目之总数="用于各界面皿之状态集.乙列当下选中的条目之总数"
                     @请求将甲列选中之条目迁移至乙列="将甲列选中的条目迁移至乙列()"
                     @请求将乙列选中之条目迁移至甲列="将乙列选中的条目迁移至甲列()"
-                ></Wlc任意两列间转移条目_两列之间之竖栏_默认形态>
+                >
+                    <template slot="界面皿-额外功能"><slot name="界面皿-中央列之额外功能"></slot></template>
+                </Wlc任意两列间转移条目_两列之间之竖栏_默认形态>
             </slot>
 
             <Wlc任意两列间转移条目_单列
@@ -54,7 +57,7 @@
             ></Wlc任意两列间转移条目_单列>
         </div>
 
-        <footer class="底部内容栏">
+        <footer v-if="!无须底部内容栏" class="底部内容栏">
             <slot name="界面皿-底部内容栏" v-bind="用于各界面皿之状态集">
                 <div class="底部内容栏之默认内容">
                     <div class="功能块 功能块--针对甲列">
@@ -149,6 +152,9 @@ export default class Wlc任意两列间转移条目_现成实用的双列 extend
 
 
     @Prop() public readonly 应全面禁止交互?: boolean
+    @Prop() public readonly 无须总标题栏?: boolean
+    @Prop() public readonly 无须中央列之功能?: boolean
+    @Prop() public readonly 无须底部内容栏?: boolean
 
     @Prop() public readonly 甲列之称谓?: string
     @Prop() public readonly 乙列之称谓?: string

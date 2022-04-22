@@ -353,6 +353,9 @@ declare namespace Wlc任意两列间转移条目 {
 
         // -------- 外来数据 --------------------------------
         public readonly 应全面禁止交互?: boolean
+        public readonly 无须总标题栏?: boolean
+        public readonly 无须中央列?: boolean
+        public readonly 无须底部内容栏?: boolean
 
         public readonly 甲列之称谓?: string
         public readonly 乙列之称谓?: string
@@ -424,6 +427,9 @@ declare namespace Wlc任意两列间转移条目 {
     namespace Wlc任意两列间转移条目_现成实用的双列 {
         type 泛范_实例可绑定之属性集<范_实际条目 extends 范_基础条目> = {
             应全面禁止交互?: boolean;
+            无须总标题栏?: boolean;
+            无须中央列之功能?: boolean;
+            无须底部内容栏?: boolean;
 
             甲列之称谓?: string;
             乙列之称谓?: string;
