@@ -56,7 +56,7 @@ import {
 
 
 export default {
-    name: 'Wlc任意两列间转移条目_主表条目_订制形态',
+    name: 'Wlc任意两列间转移条目_主列之条目_订制形态',
 
     props: {
         /** @type {范_任意两列间转移条目_内用格式之实际条目} */

@@ -151,7 +151,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Model, Watch } from 'vue-property-decorator'
 
-import Wlc任意两列间转移条目_主表条目_默认形态 from './吴乐川-任意两列间转移条目-条目之视觉根-默认形态.vue'
+import Wlc任意两列间转移条目_主列之条目_默认形态 from './吴乐川-任意两列间转移条目-条目-默认形态.vue'
 import Wlc任意两列间转移条目_单列之说明书 from './吴乐川-任意两列间转移条目-单列之说明书.vue'
 
 import {
@@ -398,7 +398,7 @@ export default class Wlc任意两列间转移条目_单列 extends Vue {
         if (vue部件之定义_订制的主表条目 && [ 'function', 'object' ].includes(typeof vue部件之定义_订制的主表条目)) {
             return vue部件之定义_订制的主表条目
         } else {
-            return Wlc任意两列间转移条目_主表条目_默认形态
+            return Wlc任意两列间转移条目_主列之条目_默认形态
         }
     }
 

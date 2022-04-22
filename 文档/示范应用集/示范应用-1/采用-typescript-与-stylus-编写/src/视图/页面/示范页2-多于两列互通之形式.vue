@@ -108,7 +108,7 @@ const {
 
 
 
-import Wlc任意两列间转移条目_主表条目之订制形态 from '@/视图/部件/wlc-任意两列间转移条目-主表条目-订制形态.vue'
+import Wlc任意两列间转移条目_主表条目之订制形态 from '@/视图/部件/wlc-任意两列间转移条目-主列之条目-订制形态.vue'
 
 import {
     一切可能的条目之列表,
@@ -391,10 +391,10 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
 {app_styles_global_wrapper} {
 
     .页面--示范页2-多余-2-列互通之形式 {
-        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} black
-        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #444
-        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ccc
-        {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #ddd
+        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #008b8b
+        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #1eb8b8
+        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #40c9c9
+        {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #baf2f2
         {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
 
         font-size 18px
