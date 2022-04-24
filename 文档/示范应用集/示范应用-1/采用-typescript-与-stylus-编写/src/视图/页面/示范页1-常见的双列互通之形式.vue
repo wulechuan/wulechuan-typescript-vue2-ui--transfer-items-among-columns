@@ -139,9 +139,9 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
         ]
 
         this.任意两列间转移条目功能.可成批自动绑定的属性 = {
-            无须总标题栏: false,
-            无须中央列之功能: false,
-            无须底部内容栏: false,
+            无需总标题栏: false,
+            无需中央列之功能: false,
+            无需底部内容栏: false,
 
             甲列之称谓: '在售的神兽',
             乙列之称谓: '准备下锅的神兽',
