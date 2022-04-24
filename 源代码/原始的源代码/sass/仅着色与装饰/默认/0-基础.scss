@@ -30,7 +30,7 @@
 
 
 @mixin 可照搬之代码块_基础_仅着色与装饰() {
-    /*! autoprefixer: off */
+    /* autoprefixer: off */
 
     kbd {
         font-family: 'Cascadia Code', 'PT Mono', 'consolas', 'Courier New', Courier, 'Microsoft Yahei UI', 'Microsoft Yahei', '微软雅黑', monospace;
@@ -133,7 +133,6 @@
     // input[type="checkbox"]:checked,
     .输入项-勾选项.已勾选 .勾选项视觉假体 {
         color: white;
-        // background-color: black;
         background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
         border-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
     }
@@ -144,6 +143,23 @@
         color: white;
         background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover});
         border-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover});
+    }
+
+    .输入项-勾选项.不可用:hover .勾选项视觉假体,
+    .输入项-勾选项.已禁止交互:hover .勾选项视觉假体,
+    label.包裹着输入项:hover .输入项-勾选项.不可用 .勾选项视觉假体,
+    label.包裹着输入项:hover .输入项-勾选项.已禁止交互 .勾选项视觉假体 {
+        color: currentColor;
+        border-color: currentColor;
+    }
+
+    .输入项-勾选项.不可用.已勾选:hover .勾选项视觉假体,
+    .输入项-勾选项.已禁止交互.已勾选:hover .勾选项视觉假体,
+    label.包裹着输入项:hover .输入项-勾选项.已勾选.不可用 .勾选项视觉假体,
+    label.包裹着输入项:hover .输入项-勾选项.已勾选.已禁止交互 .勾选项视觉假体 {
+        color: white;
+        background-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
+        border-color: var(#{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static});
     }
 
     .输入项-勾选项 {
@@ -186,8 +202,9 @@
             background-color: rgba(black, 0.079);
         }
 
-        &:disabled,
-        &.已禁止交互 {
+        &:disabled, // 对应资源之情况未给出。应尽量避免采用该信号，而改用明确的“样式类名”，例如“.不可用”。
+        &.已禁止交互, // 指虽然有对应资源拟受该勾选框操控，但该勾选框已禁止交互。
+        &.不可用 { // 指没有对应的资源受该勾选框操控。
             color: #0004;
             border-color: transparent;
             background-color: transparent;
