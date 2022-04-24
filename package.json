@@ -137,7 +137,7 @@
         "@typescript-eslint/parser": "^5.19.0",
         "@vue/eslint-config-typescript": "^10.0.0",
         "@wulechuan/cli-scripts--git-push": "^1.0.1",
-        "@wulechuan/css-stylus-markdown-themes": "^7.2.8",
+        "@wulechuan/css-stylus-markdown-themes": "^7.3.2",
         "@wulechuan/gulp-classical-task-cycle": "^0.3.0",
         "@wulechuan/vue2-sfc-from-typescript-to-javascript": "^0.3.0",
         "cssnano": "^5.1.7",
