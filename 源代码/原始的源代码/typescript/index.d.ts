@@ -341,6 +341,7 @@ declare namespace Wlc任意两列间转移条目 {
     class Wlc任意两列间转移条目_主表条目_默认形态 extends Vue {
         // -------- 外来数据 --------------------------------
         public readonly 条目?: 范_内用格式之条目
+        public readonly 所属列已禁止交互?: boolean
     }
 
 

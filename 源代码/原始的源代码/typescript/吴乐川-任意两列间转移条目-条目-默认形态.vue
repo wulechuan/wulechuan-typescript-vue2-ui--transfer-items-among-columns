@@ -22,5 +22,6 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 @Component({})
 export default class Wlc任意两列间转移条目_主列之条目_默认形态 extends Vue {
     @Prop() public readonly 条目?: Wlc任意两列间转移条目.范_内用格式之条目
+    @Prop() public readonly 所属列已禁止交互?: boolean
 }
 </script>

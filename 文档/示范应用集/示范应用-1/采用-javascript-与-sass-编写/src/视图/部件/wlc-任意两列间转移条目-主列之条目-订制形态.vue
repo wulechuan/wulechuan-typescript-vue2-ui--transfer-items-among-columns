@@ -64,6 +64,12 @@ export default {
             type: Object,
             default: null,
         },
+
+        /** @type {boolean} */
+        所属列已禁止交互: {
+            type: Boolean,
+            default: null,
+        },
     },
 
     data () {

@@ -58,6 +58,7 @@ type 范_界面元素之样式类名之配置 = Wlc任意两列间转移条目.�
 @Component({})
 export default class Wlc任意两列间转移条目_主列之条目_订制形态 extends Vue {
     @Prop() public 条目?: 范_任意两列间转移条目_内用格式之实际条目
+    @Prop() public 所属列已禁止交互?: boolean
 
 
 
