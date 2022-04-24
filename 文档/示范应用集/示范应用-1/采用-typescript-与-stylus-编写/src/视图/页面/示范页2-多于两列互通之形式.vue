@@ -368,6 +368,11 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
 
     private beforeMount (): void {
         this.初始化()
+
+        this.$nextTick().then(() => {
+            const { 各列数据之表 } = this.多列间转移条目功能之数据
+            各列数据之表[0].当下选中的所有条目之唯一标识之列表 = [ '建马', '騊駼', '比翼鸟', '青龙', '白虎', '朱雀' ]
+        })
     }
 
     private activated (): void {
