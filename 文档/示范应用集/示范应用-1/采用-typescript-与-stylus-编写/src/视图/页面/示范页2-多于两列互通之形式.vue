@@ -38,11 +38,12 @@
                 <Wlc任意两列间转移条目_两列之间之竖栏_默认形态
                     v-if="某列之列表编号 > 0"
                     :key="`操控列-${某列之列表编号}-${某列之列表编号 + 1}-（【${各列数据之表[某列之列表编号 - 1].可成批自动绑定的属性.本列之称谓}】-【${各列数据之表[某列之列表编号].可成批自动绑定的属性.本列之称谓}】）`"
+                    :class="`操控列-${各列数据之表[某列之列表编号 - 1].可成批自动绑定的属性.本列之称谓}-${各列数据之表[某列之列表编号].可成批自动绑定的属性.本列之称谓}`"
                     :应全面禁止交互="应全面禁止交互"
                     :甲列当下选中的条目之总数="各列数据之表[某列之列表编号 - 1].当下选中的所有条目之唯一标识之列表.length"
                     :乙列当下选中的条目之总数="各列数据之表[某列之列表编号 - 0].当下选中的所有条目之唯一标识之列表.length"
-                    @请求将甲列选中之条目迁移至乙列="每当点击某两列之间之某按钮后(某列之列表编号 - 1, '左至右')"
-                    @请求将乙列选中之条目迁移至甲列="每当点击某两列之间之某按钮后(某列之列表编号 - 1, '反过来')"
+                    @已点击按钮甲="每当点击某两列之间之某按钮后(某列之列表编号 - 1, '左至右')"
+                    @已点击按钮乙="每当点击某两列之间之某按钮后(某列之列表编号 - 1, '反过来')"
                 >
                     <template slot="界面皿-额外功能">
                         <button
@@ -286,7 +287,7 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
                     条目排序之函数: 各列条目排序之默认函数,
                     本列初始的用以过滤条目之配置: '',
                     当下另有他列优先于本列采取视觉强调引导用户操作之: false,
-                    不应创建底部栏目: false,
+                    无需底部的说明书功能区: false,
                     vue部件之定义_订制的主表条目: 故意要求该列之条目之形态为自定义形态 ? Wlc任意两列间转移条目_主表条目之订制形态 : null,
                 },
 
@@ -397,7 +398,6 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
         {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #baf2f2
         {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
 
-        font-size 18px
         box-sizing border-box
         height 100%
         display flex
@@ -485,14 +485,15 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
             &.丙 .列首 { background-color: #dfd; }
             &.丁 .列首 { background-color: #dff; }
             &.戊 .列首 { background-color: #ddf; }
+        }
 
-            &.甲 { // 故意另【甲】列之配色与众不同。
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #f66
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #f88
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ecc
-                {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #fdd
-                {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
-            }
+        .操控列-甲-乙 .迁移条目之按钮--乙列至甲列,
+        .吴乐川-任意两列间转移条目-单列.甲 { // 故意另【甲】列之配色与众不同。
+            {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #f66
+            {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #f88
+            {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ecc
+            {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #fdd
+            {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
         }
 
         .吴乐川-任意两列间转移条目-两列之间之默认竖栏 {

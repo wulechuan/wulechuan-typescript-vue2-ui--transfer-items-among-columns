@@ -137,7 +137,7 @@ declare namespace Wlc任意两列间转移条目 {
         public readonly 条目排序之函数?: 范_各列条目排序之函数
         public readonly 本列初始的用以过滤条目之配置?: string | RegExp
         public readonly 当下另有他列优先于本列采取视觉强调引导用户操作之?: boolean
-        public readonly 不应创建底部栏目?: boolean
+        public readonly 无需底部的说明书功能区?: boolean
         public readonly vue部件之定义_订制的主表条目?: null | 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串
         public readonly 应在控制台输出详尽的调试信息?: boolean
 
@@ -224,7 +224,7 @@ declare namespace Wlc任意两列间转移条目 {
                 条目排序之函数?: null | 范_各列条目排序之函数;
                 本列初始的用以过滤条目之配置?: null | string | RegExp;
                 当下另有他列优先于本列采取视觉强调引导用户操作之?: null | boolean;
-                不应创建底部栏目?: null | boolean;
+                无需底部的说明书功能区?: null | boolean;
                 vue部件之定义_订制的主表条目?: null | 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串;
                 应在控制台输出详尽的调试信息?: boolean;
             };
@@ -298,39 +298,39 @@ declare namespace Wlc任意两列间转移条目 {
     class Wlc任意两列间转移条目_两列之间之竖栏_默认形态 extends Vue {
         // -------- 外来数据 --------------------------------
         public readonly 应全面禁止交互?: boolean
-        public readonly 按钮上的措辞_将条目从甲列迁移至乙列?: string
-        public readonly 按钮上的措辞_将条目从乙列迁移至甲列?: string
+        public readonly 界面措辞_按钮甲?: string
+        public readonly 界面措辞_按钮乙?: string
         public readonly 甲列当下选中的条目之总数?: number
         public readonly 乙列当下选中的条目之总数?: number
 
         // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
         // -------- 衍生数据 --------------------------------
-        private get 按钮上的措辞_将条目从甲列迁移至乙列_最终采纳值 (): string
-        private get 按钮上的措辞_将条目从乙列迁移至甲列_最终采纳值 (): string
-        private get 将条目从甲列迁移至乙列_界面元素之样式类名之配置 (): 泛范_界面元素之样式类名之配置
-        private get 将条目从乙列迁移至甲列_界面元素之样式类名之配置 (): 泛范_界面元素之样式类名之配置
+        private get 界面措辞_按钮甲_最终采纳值 (): string
+        private get 界面措辞_按钮乙_最终采纳值 (): string
+        private get 界面元素之样式类名之配置_按钮甲 (): 泛范_界面元素之样式类名之配置
+        private get 界面元素之样式类名之配置_按钮乙 (): 泛范_界面元素之样式类名之配置
         private get 甲列当下选中的条目之总数_最终采纳值 (): number
         private get 乙列当下选中的条目之总数_最终采纳值 (): number
         private get 甲列当下有至少一条选中之条目 (): boolean
         private get 乙列当下有至少一条选中之条目 (): boolean
-        private get 应禁止甲按钮 (): boolean
-        private get 应禁止乙按钮 (): boolean
+        private get 应禁止按钮甲交互 (): boolean
+        private get 应禁止按钮乙交互 (): boolean
 
         // -------- 私有行为 -------------------------------
         // - - - - - - - - - - - - - - - - - - - - - - -
-        private 发布事件_请求将甲列选中之条目迁移至乙列 (): void
-        private 发布事件_请求将乙列选中之条目迁移至甲列 (): void
+        private 发布事件_已点击按钮甲 (): void
+        private 发布事件_已点击按钮乙 (): void
 
         // -------- 界面元素事件之处理程序 -------------------
-        private 每当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void
-        private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void
+        private 每当点击底部内容栏默认内容中的按钮甲之后 (): void
+        private 每当点击底部内容栏默认内容中的按钮乙之后 (): void
     }
 
     namespace Wlc任意两列间转移条目_两列之间之竖栏_默认形态 {
         type 范_事件名称 = (
-            | '请求将甲列选中之条目迁移至乙列'
-            | '请求将乙列选中之条目迁移至甲列'
+            | '已点击按钮甲'
+            | '已点击按钮乙'
         );
     }
 
@@ -362,13 +362,13 @@ declare namespace Wlc任意两列间转移条目 {
         public readonly 甲列之特征样式类名之配置?: 泛范_界面元素之样式类名之配置
         public readonly 乙列之特征样式类名之配置?: 泛范_界面元素之样式类名之配置
 
-        public readonly 按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列?: string
-        public readonly 按钮上的措辞_中央竖栏默认内容_将条目从乙列迁移至甲列?: string
-        public readonly 按钮上的措辞_底部内容栏默认内容_将条目从甲列迁移至乙列?: string
-        public readonly 按钮上的措辞_底部内容栏默认内容_将条目从乙列迁移至甲列?: string
-        public readonly 各列均不应创建底部栏目?: boolean
+        public readonly 界面措辞_中央竖栏_内建按钮甲?: string
+        public readonly 界面措辞_中央竖栏_内建按钮乙?: string
+        public readonly 界面措辞_底部内容栏默认内容_按钮甲?: string
+        public readonly 界面措辞_底部内容栏默认内容_按钮乙?: string
+        public readonly 各列均无需底部的说明书功能区?: boolean
 
-        public readonly 所有候选条目之列表?: 范_基础条目之列表
+        public readonly 双列全部条目之总列表?: 范_基础条目之列表
         public readonly 单列允许列示的条目数之上限?: number
         public readonly 各列新增条目之插入规则?: 范_各列新增条目之插入规则
         public readonly 各列条目排序之函数?: 范_各列条目排序之函数
@@ -400,11 +400,11 @@ declare namespace Wlc任意两列间转移条目 {
         private get 甲列之称谓_最终采纳值 (): string
         private get 乙列之称谓_最终采纳值 (): string
         private get 用于各界面皿之状态集 (): 范_状态汇总数据
-        private get 按钮上的措辞_底部内容栏默认内容_将条目从甲列迁移至乙列_最终采纳值 (): string
-        private get 按钮上的措辞_底部内容栏默认内容_将条目从乙列迁移至甲列_最终采纳值 (): string
+        private get 界面措辞_底部内容栏默认内容_按钮甲_最终采纳值 (): string
+        private get 界面措辞_底部内容栏默认内容_按钮乙_最终采纳值 (): string
 
         // -------- @Watch 数据变动之处理程序 ----------------
-        private 每当所有候选条目之列表变动后 (新值?: 范_基础条目之列表): void
+        private 每当双列全部条目之总列表变动后 (新值?: 范_基础条目之列表): void
         private 每当乙列所有条目之唯一标识之列表变动后 (新值?: 范_条目之唯一标识之列表): void
 
         // -------- 私有行为 -------------------------------
@@ -416,8 +416,8 @@ declare namespace Wlc任意两列间转移条目 {
         private 发布事件_已出错 (错误之记载或报文: Error | string): void
 
         // -------- 界面元素事件之处理程序 -------------------
-        private 每当点击用以将甲列选中之条目迁移至乙列之按钮后 (): void
-        private 每当点击用以将乙列选中之条目迁移至甲列之按钮后 (): void
+        private 每当点击底部内容栏默认内容中的按钮甲之后 (): void
+        private 每当点击底部内容栏默认内容中的按钮乙之后 (): void
         // private 每当键盘按键松开时 (键盘事件之记载: KeyboardEvent): void
 
         // -------- 生命周期钩子 ----------------------------
@@ -436,13 +436,13 @@ declare namespace Wlc任意两列间转移条目 {
             甲列之特征样式类名之配置?: 泛范_界面元素之样式类名之配置;
             乙列之特征样式类名之配置?: 泛范_界面元素之样式类名之配置;
 
-            按钮上的措辞_中央竖栏默认内容_将条目从甲列迁移至乙列?: string;
-            按钮上的措辞_中央竖栏默认内容_将条目从乙列迁移至甲列?: string;
-            按钮上的措辞_底部内容栏默认内容_将条目从甲列迁移至乙列?: string;
-            按钮上的措辞_底部内容栏默认内容_将条目从乙列迁移至甲列?: string;
-            各列均不应创建底部栏目?: boolean;
+            界面措辞_中央竖栏_内建按钮甲?: string;
+            界面措辞_中央竖栏_内建按钮乙?: string;
+            界面措辞_底部内容栏默认内容_按钮甲?: string;
+            界面措辞_底部内容栏默认内容_按钮乙?: string;
+            各列均无需底部的说明书功能区?: boolean;
 
-            所有候选条目之列表?: 范_实际条目[];
+            双列全部条目之总列表?: 范_实际条目[];
             单列允许列示的条目数之上限?: number;
             各列新增条目之插入规则?: 范_各列新增条目之插入规则;
             各列条目排序之函数?: 范_各列条目排序之函数;

@@ -129,7 +129,7 @@
             </ol>
         </div>
 
-        <div v-if="!不应创建底部栏目" class="功能块-条目列表说明书-控制栏">
+        <div v-if="!无需底部的说明书功能区" class="功能块-条目列表说明书-控制栏">
             <button @click.stop="每当列表操作说明书开关按钮点击时()">列表操作说明</button>
             <Wlc任意两列间转移条目_单列之说明书
                 v-model="应呈现列表操作说明书"
@@ -221,7 +221,7 @@ export default class Wlc任意两列间转移条目_单列 extends Vue {
     @Prop() public readonly 条目排序之函数?: 范_各列条目排序之函数
     @Prop() public readonly 本列初始的用以过滤条目之配置?: string | RegExp
     @Prop() public readonly 当下另有他列优先于本列采取视觉强调引导用户操作之?: boolean
-    @Prop() public readonly 不应创建底部栏目?: boolean
+    @Prop() public readonly 无需底部的说明书功能区?: boolean
     @Prop() public readonly vue部件之定义_订制的主表条目?: null | 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串
     @Prop() public readonly 应在控制台输出详尽的调试信息?: boolean
 
@@ -302,7 +302,7 @@ export default class Wlc任意两列间转移条目_单列 extends Vue {
     }
 
     private get 所有未禁止交互之条目之列表 (): 范_内用格式之条目之列表 {
-        return this.所有条目之列表_最终采纳值.filter(条目 => !条目.已禁止选择)
+        return this.所有条目之列表_最终采纳值.filter(内部实用条目 => !内部实用条目.已禁止选择)
     }
 
     private get 匹配当下过滤配置之所有条目之列表 (): 范_内用格式之条目之列表 {

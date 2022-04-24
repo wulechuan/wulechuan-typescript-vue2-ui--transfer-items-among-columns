@@ -50,12 +50,13 @@ export default class App根 extends Vue {}
     overflow auto
 
     > h2 {
-        font-size 16px
+        z-index 51
+        font-size 14px
         font-weight normal
-        margin 1em
+        margin 0 1.5em
         padding 1em
         line-height 1.5
-        border-radius 0.25em
+        border-radius 0 0 0.5em 0.5em
         display block
         text-align center
         width 15em
