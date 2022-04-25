@@ -32,8 +32,11 @@ const resolvePath = path.resolve
 
 
 const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭环用以处理和编译一组Vue文件({
-    descriptionOfCoreTask: '将所有由 TypeScript 写成的 .vue 文件转换成 JavaScript 版本',
+    descriptionOfCoreTask: '发布所有 .vue 文件的 JavaScript 版本',
     descriptionOfInputsOfCoreTask: '用 TypeScript 写成的 .vue 文件',
+    任务相关消息的特征颜色_字之颜色: 'black',
+    任务相关消息的特征颜色_底色: 'bgYellow',
+
     sourceGlobs: {
         rootFolderPath: './源代码/原始的源代码/typescript',
 
@@ -59,20 +62,16 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
 
     extraOptions: {
         vueFileConversionOptions: {
-            indentation: 输出诸文件中采用的缩进形式,
+            用于产生的Vue文件中各代码块的单级缩进空白: 输出诸文件中采用的缩进形式,
             tsconfig,
 
-            cssStylusCompilationOptions: {
+            cssStylus语言的编译配置项集: {
                 paths: [
                     resolvePath(__dirname, '../源代码/原始的源代码/stylus'),
                 ],
             },
 
-            // shouldNotTranspileTypescript: false,
-            // shouldNotCompilePug:          false,
-            // shouldNotCompileStylus:       false,
-            // shouldNotCompileSass:         false,
-            // shouldNotCompileLESS:         false,
+            产生的内容中不应包含任何Style标签: true,
         },
     },
 })
@@ -80,8 +79,10 @@ const 任务闭环之处理和编译所有的Vue文件 = 构建一个任务闭�
 
 
 const 任务闭环之将所有Vue文件以Typescript加Css的形式到发布到发布文件夹内 = 构建一个任务闭环用以处理和编译一组Vue文件({
-    descriptionOfCoreTask: '发布所有 .vue 文件的 TypeScript 加 CSS 的形式',
+    descriptionOfCoreTask: '发布所有 .vue 文件的 TypeScript 版本',
     descriptionOfInputsOfCoreTask: '用 TypeScript 写成的 .vue 文件',
+    任务相关消息的特征颜色_字之颜色: 'black',
+    任务相关消息的特征颜色_底色: 'bgBlue',
 
     sourceGlobs: {
         rootFolderPath: './源代码/原始的源代码/typescript',
@@ -107,20 +108,17 @@ const 任务闭环之将所有Vue文件以Typescript加Css的形式到发布到�
 
     extraOptions: {
         vueFileConversionOptions: {
-            indentation: 输出诸文件中采用的缩进形式,
+            用于产生的Vue文件中各代码块的单级缩进空白: 输出诸文件中采用的缩进形式,
             tsconfig,
 
-            cssStylusCompilationOptions: {
+            cssStylus语言的编译配置项集: {
                 paths: [
                     resolvePath(__dirname, '../源代码/原始的源代码/stylus'),
                 ],
             },
 
-            shouldNotTranspileTypescript: true,
-            // shouldNotCompilePug:         false,
-            // shouldNotCompileStylus:      false,
-            // shouldNotCompileSass:        false,
-            // shouldNotCompileLESS:        false,
+            产生的内容中不应包含任何Style标签: true,
+            不应编译TypeScript: true,
         },
     },
 })
