@@ -8,7 +8,7 @@
         "source": "源代码/原始的源代码",
         "dist": "源代码/发布的源代码",
         "test": "测试集",
-        "doc": "文档"
+        "doc": "文档集"
     },
     "types": "./源代码/发布的源代码/typescript/index.d.ts",
     "main": "./源代码/发布的源代码/typescript/index.ts",
