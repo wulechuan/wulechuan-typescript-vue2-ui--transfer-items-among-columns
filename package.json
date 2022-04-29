@@ -21,11 +21,11 @@
         "每当制作集得之版本之前": "npm  i    &&    npm  run  构建所有须发布的文件",
         "prepublishOnly": "npm  run  构建所有须发布的文件"
     },
-    "dependencies": {
-        "vue-property-decorator": "^9.1.2"
-    },
     "peerDependencies": {
         "vue": "^2.6.14"
+    },
+    "dependencies": {
+        "vue-property-decorator": "^9.1.2"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^5.21.0",
