@@ -1,5 +1,3 @@
-/* autoprefixer: off */
-
 // 某些情形下 @require 靠不住，应改用 @import 。
 // 例如：
 //     本 styl 文件（称甲）对某个 styl 文件（称丙）作 @require ，
@@ -22,6 +20,7 @@
 // 亦即故意将基础样式之定义套在根元素之内，
 // 则以防污染全局的样式定义。
 {wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper} {
+    /* autoprefixer: off */
 
     kbd {
         font-family 'Cascadia Code', 'PT Mono', 'consolas', 'Courier New', Courier, 'Microsoft Yahei UI', 'Microsoft Yahei', '微软雅黑', monospace

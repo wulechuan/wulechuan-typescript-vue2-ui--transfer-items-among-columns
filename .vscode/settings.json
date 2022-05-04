@@ -6,7 +6,11 @@
         "**/node_modules": true,
         "package-lock.json": true,
         ".markdownlint*": true,
-        "源代码/发布的源代码": true
+        "源代码/发布的源代码/typescript": true,
+        "源代码/发布的源代码/javascript": true,
+        "源代码/发布的源代码/styles": true,
+        "源代码/发布的源代码/sass": true,
+        "源代码/发布的源代码/stylus": true,
     },
     "search.exclude": {
         "**/node_modules": true,

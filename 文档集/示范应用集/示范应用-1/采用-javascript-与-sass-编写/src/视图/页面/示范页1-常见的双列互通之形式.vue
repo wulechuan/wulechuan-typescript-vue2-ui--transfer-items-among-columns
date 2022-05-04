@@ -50,7 +50,7 @@
 <script>
 import {
     Wlc任意两列间转移条目_现成实用的双列,
-} from '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/javascript'
+} from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 import Wlc任意两列间转移条目_主列之条目之订制形态_Vue类之配置 from '@/视图/部件/wlc-任意两列间转移条目-主列之条目-订制形态.vue'
 
