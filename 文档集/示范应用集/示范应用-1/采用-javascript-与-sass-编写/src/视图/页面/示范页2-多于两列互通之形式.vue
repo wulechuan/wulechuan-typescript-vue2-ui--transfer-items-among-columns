@@ -1,5 +1,5 @@
 <template>
-    <div class="页面 页面--示范页2-多余-2-列互通之形式">
+    <div class="页面 页面--示范页2-多于-2-列互通之形式">
         <div class="总标题栏">
             <h3>大家好！<span class="页面极窄时则隐藏">我是<span
                 class="尽量不换行之短语"
@@ -203,7 +203,7 @@ const 天干表 = '甲乙丙丁戊己庚辛壬癸'.split('')
 
 
 export default {
-    name: 'Page示范页2_多余2列互通之形式',
+    name: 'Page示范页2_多于2列互通之形式',
 
     components: {
         Wlc任意两列间转移条目_单列,
@@ -461,7 +461,7 @@ export default {
 
 #{$用以包裹整个应用之部分样式之选择器} {
 
-    .页面--示范页2-多余-2-列互通之形式 {
+    .页面--示范页2-多于-2-列互通之形式 {
         #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}: #008b8b;
         #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover}: #1eb8b8;
         #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_but_disabled_color_static}: #40c9c9;

@@ -1,5 +1,5 @@
 <template>
-    <div class="页面 页面--示范页2-多余-2-列互通之形式">
+    <div class="页面 页面--示范页2-多于-2-列互通之形式">
         <div class="总标题栏">
             <h3>大家好！<span class="页面极窄时则隐藏">我是<span
                 class="尽量不换行之短语"
@@ -204,7 +204,7 @@ const 天干表: string[] = '甲乙丙丁戊己庚辛壬癸'.split('')
         Wlc任意两列间转移条目_两列之间之竖栏_默认形态,
     },
 })
-export default class Page示范页2_多余2列互通之形式 extends Vue {
+export default class Page示范页2_多于2列互通之形式 extends Vue {
     private 应全面禁止交互 = false
 
     private 单列允许列示的条目数之上限: number | null = null
@@ -396,7 +396,7 @@ export default class Page示范页2_多余2列互通之形式 extends Vue {
 
 {app_styles_global_wrapper} {
 
-    .页面--示范页2-多余-2-列互通之形式 {
+    .页面--示范页2-多于-2-列互通之形式 {
         {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #008b8b
         {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #1eb8b8
         {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #40c9c9
