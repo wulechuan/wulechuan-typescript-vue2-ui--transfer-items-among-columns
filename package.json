@@ -1,8 +1,8 @@
 {
     "name": "@wulechuan/vue2-ui--transfer-items-among-columns",
+    "version": "1.0.0",
     "author": "吴乐川 <wulechuan@live.com>",
     "license": "WTFPL",
-    "version": "1.0.0",
     "description": "此为吴乐川的《任意两列间转移条目之界面部件》。典型的用法是将条目置于左右两列之一，并辅以按钮将条目转移到对列。",
     "main": "./源代码/发布的源代码/javascript/index.js",
     "types": "./源代码/发布的源代码/typescript/index.d.ts",
