@@ -64,18 +64,18 @@ export default class Wlc任意两列间转移条目_主列之条目_订制形态
 
 
 
-    private get 条目_最终采纳值 (): 范_任意两列间转移条目_内用格式之实际条目 {
+    public get 条目_最终采纳值 (): 范_任意两列间转移条目_内用格式之实际条目 {
         const 外界给出的值 = this.条目
         if (!外界给出的值) return this.构造临时的条目()
         return 外界给出的值
     }
 
-    private get 输入项之样式类名配置 (): 范_界面元素之样式类名之配置 {
+    public get 输入项之样式类名配置 (): 范_界面元素之样式类名之配置 {
         const 条目 = this.条目_最终采纳值
         return { '已勾选': 条目.已选中, '已禁止交互': 条目.已禁止选择 || !!this.所属列已禁止交互, '未选中': !条目.已选中 }
     }
 
-    private get 条目描述文本之诸段落之列表 (): string[] {
+    public get 条目描述文本之诸段落之列表 (): string[] {
         let 诸段落之列表: string[] = []
 
         const 原始数据 = this.条目_最终采纳值.数据
@@ -99,7 +99,7 @@ export default class Wlc任意两列间转移条目_主列之条目_订制形态
         return 诸段落之列表
     }
 
-    private get 条目描述文本之诸段落总字数较多 (): boolean {
+    public get 条目描述文本之诸段落总字数较多 (): boolean {
         const 总字符数: number = this.条目描述文本之诸段落之列表.reduce((字数, 某段落文本) => {
             return 字数 + 某段落文本.length
         }, 0)

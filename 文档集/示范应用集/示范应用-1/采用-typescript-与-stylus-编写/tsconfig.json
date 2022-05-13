@@ -35,5 +35,8 @@
         "src/**/*.vue",
         "tests/**/*.ts",
         "tests/**/*.tsx"
-    ]
+    ],
+    "vueCompilerOptions": {
+        "experimentalCompatMode": 2
+    },
 }

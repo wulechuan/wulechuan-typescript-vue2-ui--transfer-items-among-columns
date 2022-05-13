@@ -8,5 +8,8 @@
         "experimentalDecorators": true,
         "skipLibCheck": true,
         "esModuleInterop": true
+    },
+    "vueCompilerOptions": {
+        "experimentalCompatMode": 3
     }
 }

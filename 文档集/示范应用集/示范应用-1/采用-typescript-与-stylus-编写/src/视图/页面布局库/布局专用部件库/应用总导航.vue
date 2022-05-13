@@ -62,7 +62,7 @@ export default class App总导航 extends Vue {
 
 
 
-    private get 导航条目之列表_完整版 (): Array<范_导航内部实用条目> {
+    public get 导航条目之列表_完整版 (): Array<范_导航内部实用条目> {
         const 唯一标识防重复之辅助字典: {
             [不带计数后缀的唯一标识: string]: number;
         } = {}

@@ -105,11 +105,11 @@ const 一切可能条目之列表之修订版: 范_任意两列间转移条目_�
     },
 })
 export default class Page示范页1_常见的双列互通之形式 extends Vue {
-    private 应全面禁止交互 = false
+    public 应全面禁止交互 = false
 
-    private 单列允许列示的条目数之上限: number | null = 320
+    public 单列允许列示的条目数之上限: number | null = 320
 
-    private 任意两列间转移条目功能: 范_示范页_任意两列间转移条目功能配置集 = {
+    public 任意两列间转移条目功能: 范_示范页_任意两列间转移条目功能配置集 = {
         // 用于 v-model 双向绑定。
         当下已选购的条目之唯一标识之列表: [],
 
@@ -121,7 +121,7 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
 
 
 
-    private get 反复式开关按钮_全面禁止交互与否_措辞 (): string {
+    public get 反复式开关按钮_全面禁止交互与否_措辞 (): string {
         return this.应全面禁止交互 ? '全面允许交互' : '全面禁止交互'
     }
 
@@ -172,7 +172,7 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
         }
     }
 
-    private 当任意两列间转移条目功能出错时 (错误之记载: Error): void {
+    public 当任意两列间转移条目功能出错时 (错误之记载: Error): void {
         false && console.log(错误之记载)
     }
 

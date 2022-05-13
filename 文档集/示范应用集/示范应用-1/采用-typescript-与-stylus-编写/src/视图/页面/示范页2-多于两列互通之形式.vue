@@ -205,9 +205,9 @@ const 天干表: string[] = '甲乙丙丁戊己庚辛壬癸'.split('')
     },
 })
 export default class Page示范页2_多于2列互通之形式 extends Vue {
-    private 应全面禁止交互 = false
+    public 应全面禁止交互 = false
 
-    private 单列允许列示的条目数之上限: number | null = null
+    public 单列允许列示的条目数之上限: number | null = null
 
     private 多列间转移条目功能之数据: 范_多列间转移条目功能之数据 = {
         各列之公共数据: {
@@ -224,11 +224,11 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
 
 
 
-    private get 各列数据之表 (): 范_多列间转移条目功能_多列数据之列表 {
+    public get 各列数据之表 (): 范_多列间转移条目功能_多列数据之列表 {
         return this.多列间转移条目功能之数据.各列数据之表
     }
 
-    private get 反复式开关按钮_全面禁止交互与否_措辞 (): string {
+    public get 反复式开关按钮_全面禁止交互与否_措辞 (): string {
         return this.应全面禁止交互 ? '全面允许交互' : '全面禁止交互'
     }
 
@@ -302,7 +302,7 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
         多列间转移条目功能之数据.各列数据之表 = 各列数据之表
     }
 
-    private 求_当下另有他列优先于本列采取视觉强调引导用户操作之 (本列之列表编号: number): boolean {
+    public 求_当下另有他列优先于本列采取视觉强调引导用户操作之 (本列之列表编号: number): boolean {
         const { 当下各列采用视觉强调与否之信号表 } = this.多列间转移条目功能之数据.各列之公共数据
         const 当下另有他列优先于本列采取视觉强调: boolean = 当下各列采用视觉强调与否之信号表.slice(0, 本列之列表编号).some(某列之信号 => !!某列之信号)
         // console.debug(本列之列表编号, 当下另有他列优先于本列采取视觉强调, 当下各列采用视觉强调与否之信号表.slice(0, 本列之列表编号))
@@ -338,7 +338,7 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
 
 
 
-    private 每当点击某两列之间之某按钮后 (甲列之列表编号: number, 按钮之代号: '左至右' | '反过来'): void {
+    public 每当点击某两列之间之某按钮后 (甲列之列表编号: number, 按钮之代号: '左至右' | '反过来'): void {
         let 起列之列表编号: number
         let 迄列之列表编号: number
 
@@ -353,13 +353,17 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
         this.将某列选中之条目迁移至另一列(起列之列表编号, 迄列之列表编号)
     }
 
-    private 每当点击某两列之间之直接迁移至戊列之按钮后 (起列之列表编号: number): void {
+    public 每当点击某两列之间之直接迁移至戊列之按钮后 (起列之列表编号: number): void {
         this.将某列选中之条目迁移至另一列(起列之列表编号, 4)
     }
 
-    private 每当某列之视觉强调之状态变动后(某列之列表编号: number, 该列当下正启用某种视觉强调: boolean): void {
+    public 每当某列之视觉强调之状态变动后(某列之列表编号: number, 该列当下正启用某种视觉强调: boolean): void {
         // console.debug(this.多列间转移条目功能之数据.各列数据之表[某列之列表编号].可成批自动绑定的属性.本列之称谓, 该列当下正启用某种视觉强调)
         this.$set(this.多列间转移条目功能之数据.各列之公共数据.当下各列采用视觉强调与否之信号表, 某列之列表编号, 该列当下正启用某种视觉强调)
+    }
+
+    public 当任意两列间转移条目功能出错时 (错误之记载: Error): void {
+        false && console.log(错误之记载)
     }
 
 
