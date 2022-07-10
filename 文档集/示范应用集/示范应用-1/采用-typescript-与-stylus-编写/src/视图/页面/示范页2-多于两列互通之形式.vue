@@ -92,15 +92,18 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 import {
-    范_条目之唯一标识之列表,
-    范_各列新增条目之插入规则,
-    范_各列条目排序之函数,
-    范_内用格式之条目,
-
     Wlc任意两列间转移条目_单列,
     Wlc任意两列间转移条目_两列之间之竖栏_默认形态,
 
     Wlc任意两列间转移条目_专用工具集,
+} from '@wulechuan/vue2-ui--transfer-items-among-columns'
+
+import type {
+    范_条目之唯一标识之列表,
+    范_各列新增条目之插入规则,
+    范_各列条目排序之函数,
+    范_内用格式之条目,
+    范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串,
 } from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 const {
@@ -272,6 +275,11 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
                 副标题之文本 = `该列之所有条目${副标题之文本短语集.join('、')}`
             }
 
+            // 下方 “ as Vue.VueConstructor ” 不能省略。否则报错。
+            const vue部件之定义_订制的主表条目: null | 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串 = 故意要求该列之条目之形态为自定义形态
+                ? Wlc任意两列间转移条目_主表条目之订制形态 as Vue.VueConstructor
+                : null
+
             const 某单列之数据: 范_多列间转移条目功能_单列数据 = {
                 // 用于 v-model 双向绑定。
                 当下选中的所有条目之唯一标识之列表: [],
@@ -288,7 +296,7 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
                     本列初始的用以过滤条目之配置: '',
                     当下另有他列优先于本列采取视觉强调引导用户操作之: false,
                     无需底部的说明书功能区: false,
-                    vue部件之定义_订制的主表条目: 故意要求该列之条目之形态为自定义形态 ? Wlc任意两列间转移条目_主表条目之订制形态 : null,
+                    vue部件之定义_订制的主表条目,
                 },
 
                 其他数据: {

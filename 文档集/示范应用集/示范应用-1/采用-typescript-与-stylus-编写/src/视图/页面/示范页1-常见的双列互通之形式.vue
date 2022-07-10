@@ -50,9 +50,12 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 import {
-    范_条目之唯一标识之列表,
-
     Wlc任意两列间转移条目_现成实用的双列,
+} from '@wulechuan/vue2-ui--transfer-items-among-columns'
+
+import type {
+    范_条目之唯一标识之列表,
+    范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串,
 } from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 import Wlc任意两列间转移条目_主表条目之订制形态 from '@/视图/部件/wlc-任意两列间转移条目-主列之条目-订制形态.vue'
@@ -141,6 +144,9 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
             '化蛇', '赤鱬', '甪端', '朱厌', '鱼妇', '应龙',
         ]
 
+        // 下方 “ as Vue.VueConstructor ” 不能省略。否则报错。
+        const vue部件之定义_订制的主表条目: 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串 = Wlc任意两列间转移条目_主表条目之订制形态 as Vue.VueConstructor
+
         this.任意两列间转移条目功能.可成批自动绑定的属性 = {
             无需总标题栏: false,
             无需中央列之功能: false,
@@ -169,7 +175,7 @@ export default class Page示范页1_常见的双列互通之形式 extends Vue {
             甲列初始的用以过滤条目之配置: '', // '牛',
             乙列初始的用以过滤条目之配置: /.{9,}|[天龙白鸟]/,
 
-            vue部件之定义_订制的主表条目: Wlc任意两列间转移条目_主表条目之订制形态,
+            vue部件之定义_订制的主表条目,
 
             应在控制台输出详尽的调试信息: false,
         }
