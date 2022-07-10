@@ -3,7 +3,7 @@ import type Wlc任意两列间转移条目 from '@wulechuan/vue2-ui--transfer-it
 export interface 范_任意两列间转移条目_实际条目 extends Wlc任意两列间转移条目.范_基础条目 {
     数据?: {
         描述?: string | string[];
-        描述已呈现?: boolean;
+        描述内容块已展开故而描述呈现?: boolean;
     };
 }
 

@@ -6,7 +6,7 @@
 /**
  * @typedef {object} 范_任意两列间转移条目_实际条目之数据
  * @property {string | string[]} 描述
- * @property {boolean} 描述已呈现
+ * @property {boolean} 描述内容块已展开故而描述呈现
  */
 
 /**
