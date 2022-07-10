@@ -1,6 +1,7 @@
-/// <reference types="vue" />
-type VueConstructor = Vue.VueConstructor
-type VueConstructorOptions = Vue.ComponentOptions<Vue>
+/// <reference types="vue-property-decorator" />
+
+type Vue构造函数 = Vue.VueConstructor
+type Vue构造函数之配置项集 = Vue.ComponentOptions<Vue>
 
 
 
@@ -117,7 +118,7 @@ declare namespace Wlc任意两列间转移条目 {
 
     type 范_各列条目排序之函数 = (甲: 范_基础条目, 乙: 范_基础条目) => number;
 
-    type 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串 = VueConstructor | VueConstructorOptions
+    type 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串 = Vue | Vue构造函数 | Vue构造函数之配置项集
     type 范_Vue动态部件之Is属性可接受的数据_且可以是部件名称字符串 = 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串 | string;
 
 

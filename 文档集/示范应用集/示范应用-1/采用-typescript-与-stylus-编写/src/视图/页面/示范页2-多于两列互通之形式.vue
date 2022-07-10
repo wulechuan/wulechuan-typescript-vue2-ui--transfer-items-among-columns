@@ -89,7 +89,7 @@
 
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 import {
     范_条目之唯一标识之列表,
@@ -272,7 +272,7 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
                 副标题之文本 = `该列之所有条目${副标题之文本短语集.join('、')}`
             }
 
-            return {
+            const 某单列之数据: 范_多列间转移条目功能_单列数据 = {
                 // 用于 v-model 双向绑定。
                 当下选中的所有条目之唯一标识之列表: [],
 
@@ -295,6 +295,8 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
                     副标题之文本,
                 },
             }
+
+            return 某单列之数据
         })
 
         多列间转移条目功能之数据.各列之公共数据.当下各列采用视觉强调与否之信号表 = 用于规定列数的临时数组
