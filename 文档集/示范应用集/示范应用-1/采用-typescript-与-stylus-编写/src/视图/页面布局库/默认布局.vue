@@ -21,7 +21,7 @@
 
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 import 应用总导航 from './布局专用部件库/应用总导航.vue'
 
 

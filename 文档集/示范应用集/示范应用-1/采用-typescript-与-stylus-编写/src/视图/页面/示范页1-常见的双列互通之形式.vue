@@ -47,7 +47,7 @@
 
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
 
 import {
     范_条目之唯一标识之列表,
@@ -68,7 +68,10 @@ import {
 
 
 
-/* 本页专用的 “ 范（即通常所说的 ‘ 类型 ’ ）”。 */
+/**
+ * 本专用的“范”。
+ * 注：所谓“范”，即通常所说的“类型”。
+ */
 type 范_Wlc任意两列间转移条目之现成实用双列_实例可绑定之属性集 = Wlc任意两列间转移条目_现成实用的双列.泛范_实例可绑定之属性集<范_任意两列间转移条目_实际条目>;
 type 范_示范页_任意两列间转移条目功能配置集 = {
     当下已选购的条目之唯一标识之列表: 范_条目之唯一标识之列表;
