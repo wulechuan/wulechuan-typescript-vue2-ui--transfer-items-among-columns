@@ -95,13 +95,13 @@
 
     外国话所谓 component 。其它文章或材料多译为【组件】。但本工具集及相关文档坚持称【部件】。
 
-1. #### 【`条目在乙列`】与【`条目被选中`】
+1. #### 【`条目在乙列`】与【`条目被选中故而凸显`】
 
     于典型的“条目在两列之间自由转移”之功能，每当有条目从`左列`（或称`甲列`）转移到`右列`（或称`乙列`）时，通常我们可能采用“_选中_”、“_挑拣_”、“_挑选_”、“_选择_”等词来描述这一转移动作，及其结果。但考虑到在甲乙两列之任意一列中的条目，在参与转移之前，须先被标记为“_处于等待转移之状态_”。这一标记动作及其结果也可用“_选中_”、“_挑拣_”、“_挑选_”、“_选择_”等字眼来表达。于是，歧义出现。
 
     为消除上述歧义，本文约定：
 
-    -   当表达条目被标记为“**稍后可转移至另一列**”之状态时，我们说【`条目被选中`】；
+    -   当表达条目被标记为“**稍后可转移至另一列**”之状态时，我们说【`条目被选中故而凸显`】；
     -   当表达条目已转移到乙列时，我们说【`条目在乙列`】。
 
 1. #### 【`界面皿`】
@@ -128,7 +128,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
 
 #### 使用【`现成实用的双列`】部件
 
--   类 HTML 模板的写法示范
+1.  类 HTML 模板的写法示范
 
     ```html
     <div class="页面 页面--示范页3-遣将">
@@ -138,15 +138,17 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
 
             甲列之称谓="未出征的中华名帅名将"
             乙列之称谓="已出征的中华名帅名将"
+
             界面措辞_中央竖栏_内建按钮甲="出征"
             界面措辞_中央竖栏_内建按钮乙="凯旋"
             界面措辞_底部内容栏默认内容_按钮甲="出征"
             界面措辞_底部内容栏默认内容_按钮乙="凯旋"
 
             :应全面禁止交互="false"
-            :各列均无需底部的说明书功能区="false"
+
             :无需底部内容栏="false"
             :无需中央列之功能="true"
+            :各列均无需底部的说明书功能区="false"
         >
             <template v-slot:界面皿-总标题栏>
                 <h3>遣将</h3>
@@ -155,7 +157,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
     </div>
     ```
 
--   功能逻辑的写法示范
+1.  功能逻辑的写法示范
 
     -   采用 TypeScript 语言
 
@@ -172,7 +174,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
         } from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
         /**
-        * 本专用的“范”。
+        * 本页面专用的各种“范”。
         * 注：所谓“范”，即通常所说的“类型”。
         */
         type 范_中华名将_实际条目 = 范_基础条目 & {
@@ -272,7 +274,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
         /** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_基础条目} 范_基础条目 */
 
         /**
-        * 本专用的“范”。
+        * 本页面专用的各种“范”。
         * 注：所谓“范”，即通常所说的“类型”。
         */
 
@@ -380,15 +382,15 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
         }
         ```
 
--   样式
+1.  样式
 
-    你的 Vue 项目中的样式不妨暂分两类，或者说两大部分： 
-    
+    你的 Vue 项目中的样式不妨暂分两类，或者说两大部分：
+
     1.  为采用本工具集自带的样式而做的配置或准备工作。
     2.  其它样式。
 
     为令范例完整，本小节对上述两部分内容均有阐述。
-    
+
     > 若仅关心如何正确采用本工具集所提供的标准样式，则仅阅读第一部分即可。
 
 
@@ -488,24 +490,251 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
 
 #### 将【`单列`】与【`两列之间之默认竖栏`】部件灵活组合
 
--   类 HTML 模板的写法示范
+1.  类 HTML 模板的写法示范
 
     ```html
+    <template v-for="(某列, 某列之列表编号) in 各列数据之表">
 
+
+
+        <Wlc任意两列间转移条目_两列之间之竖栏_默认形态
+            v-if="某列之列表编号 > 0"
+
+            :key="`操控列-${某列之列表编号}-${某列之列表编号 + 1}`"
+
+            :甲列当下选中的条目之总数="各列数据之表[某列之列表编号 - 1].当下选中故而凸显的所有条目之唯一标识之列表.length"
+            :乙列当下选中的条目之总数="各列数据之表[某列之列表编号 - 0].当下选中故而凸显的所有条目之唯一标识之列表.length"
+
+            @已点击按钮甲="每当点击某两列之间之某按钮后(某列之列表编号 - 1, '左至右')"
+            @已点击按钮乙="每当点击某两列之间之某按钮后(某列之列表编号 - 1, '反过来')"
+        ></Wlc任意两列间转移条目_两列之间之竖栏_默认形态>
+
+
+
+        <Wlc任意两列间转移条目_单列
+            :key="`列-${某列之列表编号 + 1}`"
+            v-model="某列.当下选中故而凸显的所有条目之唯一标识之列表"
+            v-bind="某列.可成批自动绑定的属性"
+        ></Wlc任意两列间转移条目_单列>
+
+
+
+    </template>
     ```
 
--   功能逻辑的写法示范（采用 TypeScript 语言）
+1.  功能逻辑的写法示范
 
-    ```typescript
+    -   采用 TypeScript 语言
 
-    ```
+        ```typescript
+        import { Vue, Component } from 'vue-property-decorator'
+
+        import {
+            Wlc任意两列间转移条目_单列,
+            Wlc任意两列间转移条目_两列之间之竖栏_默认形态,
+
+            Wlc任意两列间转移条目_专用工具集,
+        } from '@wulechuan/vue2-ui--transfer-items-among-columns'
+
+        import type {
+            范_条目之唯一标识之列表,
+            范_内用格式之条目,
+        } from '@wulechuan/vue2-ui--transfer-items-among-columns'
+
+        const {
+            将某列选中的条目迁移至另一列: Wlc任意两列间转移条目_专用工具_将某列选中的条目迁移至另一列,
+        } = Wlc任意两列间转移条目_专用工具集
+
+
+
+        import Wlc任意两列间转移条目_主表条目之订制形态 from '@/视图/部件/wlc-任意两列间转移条目-主列之条目-订制形态.vue'
+
+        import {
+            一切可能的条目之列表,
+        } from '../../数据/示范页之数据库'
+
+        import type {
+            范_任意两列间转移条目_实际条目,
+        } from '../../数据/示范页之数据库'
+
+
+
+
+
+        /**
+        * 本页面专用的各种“范”。
+        * 注：所谓“范”，即通常所说的“类型”。
+        */
+        type 范_任意两列间转移条目_实际完整形式之条目 = 范_内用格式之条目 & 范_任意两列间转移条目_实际条目;
+        type 范_任意两列间转移条目_实际完整形式之条目之列表 = Array<范_任意两列间转移条目_实际完整形式之条目>;
+
+        type 范_多列间转移条目功能_单列数据 = Wlc任意两列间转移条目_单列.泛范_实例可绑定之属性集<范_任意两列间转移条目_实际完整形式之条目> & {
+            当下选中故而凸显的所有条目之唯一标识之列表: 范_条目之唯一标识之列表;
+
+            可成批自动绑定的属性: {
+                所有条目之列表: 范_任意两列间转移条目_实际完整形式之条目[];
+            };
+        };
+
+
+
+
+
+        const 一切可能的实用完整形式之条目之列表: 范_任意两列间转移条目_实际完整形式之条目之列表 = 一切可能的条目之列表.map((原始条目) => {
+            const 完整形式之条目: 范_任意两列间转移条目_实际完整形式之条目 = {
+                ...原始条目,
+                已选中: false,
+                已禁止选择: !!原始条目.已禁止选择, // 确保该布尔值存在。
+            }
+
+            if (!完整形式之条目.数据) { 完整形式之条目.数据 = {} }
+            完整形式之条目.数据.描述内容块已展开故而描述呈现 = false
+
+            return 完整形式之条目
+        })
+
+        const 天干表: string[] = '甲乙丙丁戊己庚辛壬癸'.split('')
+
+
+
+
+
+        @Component({
+            components: {
+                Wlc任意两列间转移条目_单列,
+                Wlc任意两列间转移条目_两列之间之竖栏_默认形态,
+            },
+        })
+        export default class Page示范页2_多于2列互通之形式 extends Vue {
+            private 各列数据之表: Array<范_多列间转移条目功能_单列数据> = []
+
+            public 每当点击某两列之间之某按钮后 (甲列之列表编号: number, 按钮之代号: '左至右' | '反过来'): void {
+                let 起列之列表编号: number
+                let 迄列之列表编号: number
+
+                if (按钮之代号 === '左至右') {
+                    起列之列表编号 = 甲列之列表编号
+                    迄列之列表编号 = 甲列之列表编号 + 1
+                } else{
+                    起列之列表编号 = 甲列之列表编号 + 1
+                    迄列之列表编号 = 甲列之列表编号
+                }
+
+                this.将某列选中之条目迁移至另一列(起列之列表编号, 迄列之列表编号)
+            }
+
+            private 将某列选中之条目迁移至另一列 (起列之列表编号: number, 迄列之列表编号: number): void {
+                const 起列之数据集 = this.各列数据之表[起列之列表编号]
+                const 迄列之数据集 = this.各列数据之表[迄列之列表编号]
+
+                const 迁移结果 = Wlc任意两列间转移条目_专用工具_将某列选中的条目迁移至另一列(
+                    起列之数据集.可成批自动绑定的属性.所有条目之列表,
+                    迄列之数据集.可成批自动绑定的属性.所有条目之列表
+                )
+                if (!迁移结果) { return }
+
+                const {
+                    迁移后起列所有条目之列表,
+                    迁移后迄列所有条目之列表,
+                } = 迁移结果
+
+                起列之数据集.可成批自动绑定的属性.所有条目之列表 = 迁移后起列所有条目之列表
+                迄列之数据集.可成批自动绑定的属性.所有条目之列表 = 迁移后迄列所有条目之列表
+            }
+
+            private 构建各列之数据 ({ 总计列数 }: { 总计列数: number; }): void {
+                const 用于规定列数的临时数组: Array<boolean> = new Array(总计列数).fill(false)
+
+                this.各列数据之表 = 用于规定列数的临时数组.map((无用的值, 列编号) => {
+                    const 本列之天干: string = 天干表[列编号]
+                    const 故意要求该列之条目总是排序: boolean = [ 2, 3, 4 ].includes(列编号)
+                    const 故意要求该列之条目之形态为自定义形态: boolean = [ 0, 2, 3 ].includes(列编号)
+
+                    const 某单列之数据: 范_多列间转移条目功能_单列数据 = {
+                        // 用于 v-model 双向绑定。
+                        当下选中故而凸显的所有条目之唯一标识之列表: [],
+
+                        // 用于 props 单向绑定。
+                        可成批自动绑定的属性: {
+                            本列之称谓: 本列之天干,
+                            本列之特征样式类名之配置: 本列之天干,
+                            所有条目之列表: 列编号 > 0 ? [] : 一切可能的实用完整形式之条目之列表,
+
+                            新增条目之插入规则: !故意要求该列之条目总是排序 ? null : '总是参与排序',
+                            条目排序之函数: !故意要求该列之条目总是排序 ? null : (甲, 乙) => 甲.在界面中的称谓.length - 乙.在界面中的称谓.length,
+
+                            // 下方 “ as Vue.VueConstructor ” 不能省略。否则报错。
+                            vue部件之定义_订制的主表条目: !故意要求该列之条目之形态为自定义形态 ? null : Wlc任意两列间转移条目_主表条目之订制形态 as Vue.VueConstructor,
+                        },
+                    }
+
+                    return 某单列之数据
+                })
+            }
+
+            private beforeMount (): void {
+                this.构建各列之数据({ 总计列数: 5 })
+                this.$nextTick().then(() => {
+                    this.各列数据之表[0].当下选中故而凸显的所有条目之唯一标识之列表 = [ '建马', '騊駼', '比翼鸟', '青龙', '白虎', '朱雀' ]
+                })
+            }
+        }
+        ```
 
 -   功能逻辑的写法示范（采用 JavaScript 语言）
 
-    ```js
+    -   采用 JavaScript 语言
 
-    ```
+        从略。
 
+
+1.  样式
+
+    -   采用 Stylus 语言
+
+        ```stylus
+        /* autoprefixer: off */
+
+        .页面--示范页2-多于-2-列互通之形式 {
+            flex 1 1 auto
+            box-sizing border-box
+            height 100%
+            display flex
+            flex-direction row
+            flex-wrap nowrap
+            padding 2em
+            overflow auto
+            margin 0 2em 2em
+
+            .吴乐川-任意两列间转移条目-单列 {
+                flex 0 0 24em
+
+                &.甲    .列首 { background-color: #fdd; }
+                &.乙    .列首 { background-color: #ffd; }
+                &.丙    .列首 { background-color: #dfd; }
+                &.丁    .列首 { background-color: #dff; }
+                &.戊    .列首 { background-color: #ddf; }
+            }
+
+            & {
+                // 定义各列通用的默认配色。下方的代码又令【甲】列具备独特的配色。
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #008b8b
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #1eb8b8
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #40c9c9
+                {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #baf2f2
+                {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+            }
+
+            .吴乐川-任意两列间转移条目-单列.甲, // 故意另【甲】列之配色与众不同。
+            .操控列-1-2    .迁移条目之按钮--乙列至甲列 { // 从【乙】列转移至【甲】列的按钮，也应采用独特的配色。
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #f66
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #f88
+                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ecc
+                {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #fdd
+                {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+            }
+        }
+        ```
 
 ### 应用编程接口（所谓 API）
 
@@ -516,7 +745,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
 ```typescript
 class Wlc任意两列间转移条目_单列 extends Vue {
     // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
-    public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    public readonly 当下选中故而凸显的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
     // -------- 外来数据（ 即外国话所谓 Props ） -----------
     public readonly 应全面禁止交互?: boolean

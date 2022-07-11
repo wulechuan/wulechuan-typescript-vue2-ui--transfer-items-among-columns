@@ -45,7 +45,7 @@ import type {
 } from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
 /**
- * 本专用的“范”。
+ * 本页面专用的各种“范”。
  * 注：所谓“范”，即通常所说的“类型”。
  */
 type 范_中华名将_实际条目 = 范_基础条目 & {

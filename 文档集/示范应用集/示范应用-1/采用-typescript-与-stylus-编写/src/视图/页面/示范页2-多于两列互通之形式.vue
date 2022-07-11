@@ -40,8 +40,8 @@
                     :key="`操控列-${某列之列表编号}-${某列之列表编号 + 1}-（【${各列数据之表[某列之列表编号 - 1].可成批自动绑定的属性.本列之称谓}】-【${各列数据之表[某列之列表编号].可成批自动绑定的属性.本列之称谓}】）`"
                     :class="`操控列-${各列数据之表[某列之列表编号 - 1].可成批自动绑定的属性.本列之称谓}-${各列数据之表[某列之列表编号].可成批自动绑定的属性.本列之称谓}`"
                     :应全面禁止交互="应全面禁止交互"
-                    :甲列当下选中的条目之总数="各列数据之表[某列之列表编号 - 1].当下选中的所有条目之唯一标识之列表.length"
-                    :乙列当下选中的条目之总数="各列数据之表[某列之列表编号 - 0].当下选中的所有条目之唯一标识之列表.length"
+                    :甲列当下选中的条目之总数="各列数据之表[某列之列表编号 - 1].当下选中故而凸显的所有条目之唯一标识之列表.length"
+                    :乙列当下选中的条目之总数="各列数据之表[某列之列表编号 - 0].当下选中故而凸显的所有条目之唯一标识之列表.length"
                     @已点击按钮甲="每当点击某两列之间之某按钮后(某列之列表编号 - 1, '左至右')"
                     @已点击按钮乙="每当点击某两列之间之某按钮后(某列之列表编号 - 1, '反过来')"
                 >
@@ -49,7 +49,7 @@
                         <button
                             v-if="某列之列表编号 < 各列数据之表.length - 1"
                             class="按钮-形状必须为正圆 直接迁移至戊列之按钮"
-                            :disabled="应全面禁止交互 || 各列数据之表[某列之列表编号 - 1].当下选中的所有条目之唯一标识之列表.length < 1"
+                            :disabled="应全面禁止交互 || 各列数据之表[某列之列表编号 - 1].当下选中故而凸显的所有条目之唯一标识之列表.length < 1"
                             @click="每当点击某两列之间之直接迁移至戊列之按钮后(某列之列表编号 - 1)"
                         >戊</button>
                     </template>
@@ -59,7 +59,7 @@
 
                 <Wlc任意两列间转移条目_单列
                     :key="`列-${某列之列表编号 + 1}-【${某列.可成批自动绑定的属性.本列之称谓}】`"
-                    v-model="某列.当下选中的所有条目之唯一标识之列表"
+                    v-model="某列.当下选中故而凸显的所有条目之唯一标识之列表"
                     v-bind="某列.可成批自动绑定的属性"
                     :应全面禁止交互="应全面禁止交互"
                     :允许列示的条目数之上限="单列允许列示的条目数之上限"
@@ -128,7 +128,7 @@ import type {
 
 
 /**
- * 本专用的“范”。
+ * 本页面专用的各种“范”。
  * 注：所谓“范”，即通常所说的“类型”。
  */
 type 范_任意两列间转移条目_实际完整形式之条目 = 范_内用格式之条目 & 范_任意两列间转移条目_实际条目;
@@ -146,7 +146,7 @@ type 范_多列间转移条目功能之数据 = {
 };
 
 type 范_多列间转移条目功能_单列数据 = Wlc任意两列间转移条目_单列.泛范_实例可绑定之属性集<范_任意两列间转移条目_实际完整形式之条目> & {
-    当下选中的所有条目之唯一标识之列表: 范_条目之唯一标识之列表;
+    当下选中故而凸显的所有条目之唯一标识之列表: 范_条目之唯一标识之列表;
 
     可成批自动绑定的属性: {
         所有条目之列表: 范_任意两列间转移条目_实际完整形式之条目[];
@@ -285,7 +285,7 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
 
             const 某单列之数据: 范_多列间转移条目功能_单列数据 = {
                 // 用于 v-model 双向绑定。
-                当下选中的所有条目之唯一标识之列表: [],
+                当下选中故而凸显的所有条目之唯一标识之列表: [],
 
                 // 用于 props 单向绑定。
                 可成批自动绑定的属性: {
@@ -325,7 +325,7 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
     private 应禁用两列之间之某按钮 (甲列之列表编号: number, 按钮之代号: '左至右' | '反过来'): boolean {
         const 应考察的列之列表编号: number = 按钮之代号 === '左至右' ? 甲列之列表编号 : 甲列之列表编号 + 1
         const 应考察的列之数据集 = this.各列数据之表[应考察的列之列表编号]
-        return 应考察的列之数据集.当下选中的所有条目之唯一标识之列表.length === 0
+        return 应考察的列之数据集.当下选中故而凸显的所有条目之唯一标识之列表.length === 0
     }
 
     private 将某列选中之条目迁移至另一列 (起列之列表编号: number, 迄列之列表编号: number): void {
@@ -388,7 +388,7 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
 
         this.$nextTick().then(() => {
             const { 各列数据之表 } = this.多列间转移条目功能之数据
-            各列数据之表[0].当下选中的所有条目之唯一标识之列表 = [ '建马', '騊駼', '比翼鸟', '青龙', '白虎', '朱雀' ]
+            各列数据之表[0].当下选中故而凸显的所有条目之唯一标识之列表 = [ '建马', '騊駼', '比翼鸟', '青龙', '白虎', '朱雀' ]
         })
     }
 
@@ -414,12 +414,6 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
 {app_styles_global_wrapper} {
 
     .页面--示范页2-多于-2-列互通之形式 {
-        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #008b8b
-        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #1eb8b8
-        {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #40c9c9
-        {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #baf2f2
-        {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
-
         box-sizing border-box
         height 100%
         display flex
@@ -509,8 +503,17 @@ export default class Page示范页2_多于2列互通之形式 extends Vue {
             &.戊 .列首 { background-color: #ddf; }
         }
 
-        .操控列-甲-乙 .迁移条目之按钮--乙列至甲列,
-        .吴乐川-任意两列间转移条目-单列.甲 { // 故意另【甲】列之配色与众不同。
+        & {
+            // 定义各列通用的默认配色。下方的代码又令【甲】列具备独特的配色。
+            {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #008b8b
+            {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #1eb8b8
+            {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #40c9c9
+            {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #baf2f2
+            {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+        }
+
+        .吴乐川-任意两列间转移条目-单列.甲, // 故意另【甲】列之配色与众不同。
+        .操控列-甲-乙 .迁移条目之按钮--乙列至甲列 { // 从【乙】列转移至【甲】列的按钮，也应采用独特的配色。
             {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #f66
             {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #f88
             {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ecc
