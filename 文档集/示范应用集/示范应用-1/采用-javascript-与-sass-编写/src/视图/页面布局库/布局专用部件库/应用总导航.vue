@@ -56,6 +56,11 @@ export default {
                     内部名称: '示范2：多于两列互通之形式',
                     路由之绝对路径: '/examples/2-multiple-columns',
                 },
+
+                {
+                    内部名称: '示范3：遣将',
+                    路由之绝对路径: '/examples/3-qian-jiang',
+                },
             ],
         }
     },

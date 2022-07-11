@@ -32,31 +32,32 @@
 
 
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-
+<script>
 import {
     Wlc任意两列间转移条目_现成实用的双列,
 } from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
-import type {
-    范_条目之唯一标识之列表,
-    范_基础条目,
-} from '@wulechuan/vue2-ui--transfer-items-among-columns'
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_条目之唯一标识之列表} 范_条目之唯一标识之列表 */
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_基础条目} 范_基础条目 */
 
 /**
  * 本专用的“范”。
  * 注：所谓“范”，即通常所说的“类型”。
  */
-type 范_中华名将_实际条目 = 范_基础条目 & {
-    数据: {
-        诞年: string;
-        排序数: number;
-        朝代或时期: string;
-    };
-};
 
-const 可任命的中华名将之列表: Array<范_中华名将_实际条目> = [
+/**
+ * @typedef {object} 范_中华名将_实际条目
+ * @property {范_基础条目['唯一标识']} 唯一标识
+ * @property {范_基础条目['在界面中的称谓']} 在界面中的称谓
+ * @property {范_基础条目['已禁止选择']} 已禁止选择
+ * @property {object} 数据
+ * @property {string} 数据.诞年
+ * @property {number} 数据.排序数
+ * @property {string} 数据.朝代或时期
+ */
+
+/** @type {Array<范_中华名将_实际条目>} */
+const 可任命的中华名将之列表 = [
     { 姓名: '妇好', 朝代或时期: '商', 诞年排序数: -1200 },
     { 姓名: '霍去病', 朝代或时期: '西汉', 诞年: -140 },
     { 姓名: '赵云', 朝代或时期: '东汉（三国）', 诞年排序数: 190 },
@@ -80,8 +81,11 @@ const 可任命的中华名将之列表: Array<范_中华名将_实际条目> = 
         朝代或时期,
     } = 某位将军的基本配置
 
-    let 排序数: number
-    let 诞年_采纳值: string
+    /** @type {number} */
+    let 排序数
+
+    /** @type {string} */
+    let 诞年_采纳值
 
     if (typeof 诞年排序数 === 'number') {
         排序数 = 诞年排序数
@@ -104,7 +108,8 @@ const 可任命的中华名将之列表: Array<范_中华名将_实际条目> = 
         诞年_采纳值 === '?' ? `诞年不详，约 ${排序数} 年。` : `诞于 ${诞年_采纳值} 年。`
     }`
 
-    const 某名将之条目: 范_中华名将_实际条目 = {
+    /** @type {范_中华名将_实际条目} */
+    const 某名将之条目 = {
         唯一标识,
         在界面中的称谓,
         已禁止选择: false,
@@ -123,17 +128,24 @@ const 可任命的中华名将之列表: Array<范_中华名将_实际条目> = 
 
 
 
-@Component({
+export default {
     components: {
         Wlc任意两列间转移条目_现成实用的双列,
     },
-})
-export default class Page示范页3_遣将 extends Vue {
-    private 已出征的将军之列表: 范_条目之唯一标识之列表 = [ '郑成功', '岳飞' ]
-    private 可任命的中华名将之列表: Array<范_中华名将_实际条目> = 可任命的中华名将之列表
-    private activated (): void {
+
+    data () {
+        return {
+            /** @type {范_条目之唯一标识之列表} */
+            已出征的将军之列表: [ '郑成功', '岳飞' ],
+
+            /** @type {Array<范_中华名将_实际条目>} */
+            可任命的中华名将之列表,
+        }
+    },
+
+    activated () {
         document.title = '两列间转移条目·例3：遣将（TypeScript）'
-    }
+    },
 }
 </script>
 
@@ -145,21 +157,21 @@ export default class Page示范页3_遣将 extends Vue {
 
 
 
-<style lang="stylus">
+<style lang="scss">
 /* autoprefixer: off */
 
 .页面--示范页3-遣将 {
-    height 100%
-    display flex
-    flex-direction column
-    justify-content center
-    align-items center
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     h3 {
-        font-size 2rem
-        text-align center
-        margin 0
-        padding 1rem
+        font-size: 2rem;
+        text-align: center;
+        margin: 0;
+        padding: 1rem;
     }
 }
 </style>

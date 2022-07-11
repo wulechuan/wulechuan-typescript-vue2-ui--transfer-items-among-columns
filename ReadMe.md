@@ -134,7 +134,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
     <div class="页面 页面--示范页3-遣将">
         <Wlc任意两列间转移条目_现成实用的双列
             v-model="已出征的将军之列表"
-            :双列全部条目之总列表="所有中华名将之列表"
+            :双列全部条目之总列表="可任命的中华名将之列表"
 
             甲列之称谓="未出征的中华名帅名将"
             乙列之称谓="已出征的中华名帅名将"
@@ -155,142 +155,336 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
     </div>
     ```
 
--   功能逻辑的写法示范（采用 TypeScript 语言）
+-   功能逻辑的写法示范
 
-    ```typescript
-    import { Vue, Component } from 'vue-property-decorator'
+    -   采用 TypeScript 语言
 
-    import {
-        Wlc任意两列间转移条目_现成实用的双列,
-    } from '@wulechuan/vue2-ui--transfer-items-among-columns'
+        ```typescript
+        import { Vue, Component } from 'vue-property-decorator'
 
-    import type {
-        范_条目之唯一标识之列表,
-        范_基础条目,
-    } from '@wulechuan/vue2-ui--transfer-items-among-columns'
+        import {
+            Wlc任意两列间转移条目_现成实用的双列,
+        } from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
-    /**
-    * 本专用的“范”。
-    * 注：所谓“范”，即通常所说的“类型”。
-    */
-    type 范_中华名将_实际条目 = 范_基础条目 & {
-        数据: {
-            诞年: string;
-            排序数: number;
-            朝代或时期: string;
-        };
-    };
+        import type {
+            范_条目之唯一标识之列表,
+            范_基础条目,
+        } from '@wulechuan/vue2-ui--transfer-items-among-columns'
 
-    const 所有中华名将之列表: Array<范_中华名将_实际条目> = [
-        { 姓名: '妇好', 朝代或时期: '商', 诞年排序数: -1200 },
-        { 姓名: '霍去病', 朝代或时期: '西汉', 诞年: -140 },
-        { 姓名: '赵云', 朝代或时期: '东汉（三国）', 诞年排序数: 190 },
-        { 姓名: '秦琼', 朝代或时期: '隋末唐初', 诞年排序数: 600 },
-        { 姓名: '王忠嗣', 朝代或时期: '唐', 诞年: 705 },
-        { 姓名: '杨业', 朝代或时期: '北宋', 诞年排序数: 930 },
-        { 姓名: '岳飞', 朝代或时期: '南宋', 诞年: 1103 },
-        { 姓名: '辛弃疾', 朝代或时期: '南宋', 诞年: 1140 },
-        { 姓名: '袁崇焕', 朝代或时期: '明末', 诞年: 1584 },
-        { 姓名: '郑成功', 朝代或时期: '明末清初', 诞年: 1624 },
-        { 姓名: '戚继光', 朝代或时期: '明', 诞年: 1528 },
-        { 姓名: '左宗棠', 朝代或时期: '清末', 诞年: 1812 },
-        { 姓名: '张自忠', 朝代或时期: '当代', 诞年: 1891 },
-        { 姓名: '刘伯承', 朝代或时期: '当代', 诞年: 1892 },
-        { 姓名: '彭德怀', 朝代或时期: '当代', 诞年: 1898 },
-    ].map(某位将军的基本配置 => {
-        const {
-            姓名,
-            诞年,
-            诞年排序数,
-            朝代或时期,
-        } = 某位将军的基本配置
-
-        let 排序数: number
-        let 诞年_采纳值: string
-
-        if (typeof 诞年排序数 === 'number') {
-            排序数 = 诞年排序数
-        } else if (typeof 诞年 === 'number') {
-            排序数 = 诞年
-        } else {
-            console.error('某位将军之配置未指明排序数。', { ...某位将军的基本配置 })
-            排序数 = 2022
-        }
-
-        if (typeof 诞年 === 'number') {
-            诞年_采纳值 = `${诞年}`
-        } else {
-            诞年_采纳值 = '?'
-        }
-
-        const 唯一标识 = 姓名
-
-        const 在界面中的称谓 = `〔${朝代或时期}〕${姓名}。${
-            诞年_采纳值 === '?' ? `诞年不详，约 ${排序数} 年。` : `诞于 ${诞年_采纳值} 年。`
-        }`
-
-        const 某名将之条目: 范_中华名将_实际条目 = {
-            唯一标识,
-            在界面中的称谓,
-            已禁止选择: false,
-
+        /**
+        * 本专用的“范”。
+        * 注：所谓“范”，即通常所说的“类型”。
+        */
+        type 范_中华名将_实际条目 = 范_基础条目 & {
             数据: {
-                排序数,
-                诞年: 诞年_采纳值,
+                诞年: string;
+                排序数: number;
+                朝代或时期: string;
+            };
+        };
+
+        const 可任命的中华名将之列表: Array<范_中华名将_实际条目> = [
+            { 姓名: '妇好', 朝代或时期: '商', 诞年排序数: -1200 },
+            { 姓名: '霍去病', 朝代或时期: '西汉', 诞年: -140 },
+            { 姓名: '赵云', 朝代或时期: '东汉（三国）', 诞年排序数: 190 },
+            { 姓名: '秦琼', 朝代或时期: '隋末唐初', 诞年排序数: 600 },
+            { 姓名: '王忠嗣', 朝代或时期: '唐', 诞年: 705 },
+            { 姓名: '杨业', 朝代或时期: '北宋', 诞年排序数: 930 },
+            { 姓名: '岳飞', 朝代或时期: '南宋', 诞年: 1103 },
+            { 姓名: '辛弃疾', 朝代或时期: '南宋', 诞年: 1140 },
+            { 姓名: '袁崇焕', 朝代或时期: '明末', 诞年: 1584 },
+            { 姓名: '郑成功', 朝代或时期: '明末清初', 诞年: 1624 },
+            { 姓名: '戚继光', 朝代或时期: '明', 诞年: 1528 },
+            { 姓名: '左宗棠', 朝代或时期: '清末', 诞年: 1812 },
+            { 姓名: '张自忠', 朝代或时期: '当代', 诞年: 1891 },
+            { 姓名: '刘伯承', 朝代或时期: '当代', 诞年: 1892 },
+            { 姓名: '彭德怀', 朝代或时期: '当代', 诞年: 1898 },
+        ].map(某位将军的基本配置 => {
+            const {
+                姓名,
+                诞年,
+                诞年排序数,
                 朝代或时期,
+            } = 某位将军的基本配置
+
+            let 排序数: number
+            let 诞年_采纳值: string
+
+            if (typeof 诞年排序数 === 'number') {
+                排序数 = 诞年排序数
+            } else if (typeof 诞年 === 'number') {
+                排序数 = 诞年
+            } else {
+                console.error('某位将军之配置未指明排序数。', { ...某位将军的基本配置 })
+                排序数 = 2022
+            }
+
+            if (typeof 诞年 === 'number') {
+                诞年_采纳值 = `${诞年}`
+            } else {
+                诞年_采纳值 = '?'
+            }
+
+            const 唯一标识 = 姓名
+
+            const 在界面中的称谓 = `〔${朝代或时期}〕${姓名}。${
+                诞年_采纳值 === '?' ? `诞年不详，约 ${排序数} 年。` : `诞于 ${诞年_采纳值} 年。`
+            }`
+
+            const 某名将之条目: 范_中华名将_实际条目 = {
+                唯一标识,
+                在界面中的称谓,
+                已禁止选择: false,
+
+                数据: {
+                    排序数,
+                    诞年: 诞年_采纳值,
+                    朝代或时期,
+                },
+            }
+
+            return 某名将之条目
+        }).sort((甲, 乙) => 甲.数据.排序数 - 乙.数据.排序数)
+
+
+
+
+
+        @Component({
+            components: {
+                Wlc任意两列间转移条目_现成实用的双列,
+            },
+        })
+        export default class Page示范页3_遣将 extends Vue {
+            private 已出征的将军之列表: 范_条目之唯一标识之列表 = [ '郑成功', '岳飞' ]
+            private 可任命的中华名将之列表: Array<范_中华名将_实际条目> = 可任命的中华名将之列表
+        }
+        ```
+
+    -   采用 JavaScript 语言
+
+        ```js
+        import {
+            Wlc任意两列间转移条目_现成实用的双列,
+        } from '@wulechuan/vue2-ui--transfer-items-among-columns'
+
+        /** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_条目之唯一标识之列表} 范_条目之唯一标识之列表 */
+        /** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_基础条目} 范_基础条目 */
+
+        /**
+        * 本专用的“范”。
+        * 注：所谓“范”，即通常所说的“类型”。
+        */
+
+        /**
+        * @typedef {object} 范_中华名将_实际条目
+        * @property {范_基础条目['唯一标识']} 唯一标识
+        * @property {范_基础条目['在界面中的称谓']} 在界面中的称谓
+        * @property {范_基础条目['已禁止选择']} 已禁止选择
+        * @property {object} 数据
+        * @property {string} 数据.诞年
+        * @property {number} 数据.排序数
+        * @property {string} 数据.朝代或时期
+        */
+
+        /** @type {Array<范_中华名将_实际条目>} */
+        const 可任命的中华名将之列表 = [
+            { 姓名: '妇好', 朝代或时期: '商', 诞年排序数: -1200 },
+            { 姓名: '霍去病', 朝代或时期: '西汉', 诞年: -140 },
+            { 姓名: '赵云', 朝代或时期: '东汉（三国）', 诞年排序数: 190 },
+            { 姓名: '秦琼', 朝代或时期: '隋末唐初', 诞年排序数: 600 },
+            { 姓名: '王忠嗣', 朝代或时期: '唐', 诞年: 705 },
+            { 姓名: '杨业', 朝代或时期: '北宋', 诞年排序数: 930 },
+            { 姓名: '岳飞', 朝代或时期: '南宋', 诞年: 1103 },
+            { 姓名: '辛弃疾', 朝代或时期: '南宋', 诞年: 1140 },
+            { 姓名: '袁崇焕', 朝代或时期: '明末', 诞年: 1584 },
+            { 姓名: '郑成功', 朝代或时期: '明末清初', 诞年: 1624 },
+            { 姓名: '戚继光', 朝代或时期: '明', 诞年: 1528 },
+            { 姓名: '左宗棠', 朝代或时期: '清末', 诞年: 1812 },
+            { 姓名: '张自忠', 朝代或时期: '当代', 诞年: 1891 },
+            { 姓名: '刘伯承', 朝代或时期: '当代', 诞年: 1892 },
+            { 姓名: '彭德怀', 朝代或时期: '当代', 诞年: 1898 },
+        ].map(某位将军的基本配置 => {
+            const {
+                姓名,
+                诞年,
+                诞年排序数,
+                朝代或时期,
+            } = 某位将军的基本配置
+
+            /** @type {number} */
+            let 排序数
+
+            /** @type {string} */
+            let 诞年_采纳值
+
+            if (typeof 诞年排序数 === 'number') {
+                排序数 = 诞年排序数
+            } else if (typeof 诞年 === 'number') {
+                排序数 = 诞年
+            } else {
+                console.error('某位将军之配置未指明排序数。', { ...某位将军的基本配置 })
+                排序数 = 2022
+            }
+
+            if (typeof 诞年 === 'number') {
+                诞年_采纳值 = `${诞年}`
+            } else {
+                诞年_采纳值 = '?'
+            }
+
+            const 唯一标识 = 姓名
+
+            const 在界面中的称谓 = `〔${朝代或时期}〕${姓名}。${
+                诞年_采纳值 === '?' ? `诞年不详，约 ${排序数} 年。` : `诞于 ${诞年_采纳值} 年。`
+            }`
+
+            /** @type {范_中华名将_实际条目} */
+            const 某名将之条目 = {
+                唯一标识,
+                在界面中的称谓,
+                已禁止选择: false,
+
+                数据: {
+                    排序数,
+                    诞年: 诞年_采纳值,
+                    朝代或时期,
+                },
+            }
+
+            return 某名将之条目
+        }).sort((甲, 乙) => 甲.数据.排序数 - 乙.数据.排序数)
+
+
+
+
+
+        export default {
+            components: {
+                Wlc任意两列间转移条目_现成实用的双列,
+            },
+
+            data () {
+                return {
+                    /** @type {范_条目之唯一标识之列表} */
+                    已出征的将军之列表: [ '郑成功', '岳飞' ],
+
+                    /** @type {Array<范_中华名将_实际条目>} */
+                    可任命的中华名将之列表,
+                }
+            },
+
+            activated () {
+                document.title = '两列间转移条目·例3：遣将（TypeScript）'
             },
         }
-
-        return 某名将之条目
-    }).sort((甲, 乙) => 甲.数据.排序数 - 乙.数据.排序数)
-
-
-
-
-
-    @Component({
-        components: {
-            Wlc任意两列间转移条目_现成实用的双列,
-        },
-    })
-    export default class Page示范页3_遣将 extends Vue {
-        private 已出征的将军之列表: 范_条目之唯一标识之列表 = [ '郑成功', '岳飞' ]
-        private 所有中华名将之列表: Array<范_中华名将_实际条目> = 所有中华名将之列表
-    }
-    ```
-
--   功能逻辑的写法示范（采用 JavaScript 语言）
-
-    ```js
-
-    ```
-
--   补充样式（采用 Stylus 语言）
-
-    1.  应在你的 Vue 项目的 `main.ts` 中一次性加载的标志样式。
-
-        ```stylus
-
         ```
 
-    2.  为本示范页专属的补充样式。
+-   样式
 
-        ```stylus
-        .页面--示范页3-遣将 {
-            height 100%
-            display flex
-            flex-direction column
-            justify-content center
-            align-items center
+    你的 Vue 项目中的样式不妨暂分两类，或者说两大部分： 
+    
+    1.  为采用本工具集自带的样式而做的配置或准备工作。
+    2.  其它样式。
 
-            h3 {
-                font-size 2rem
-                text-align center
-                margin 0
-                padding 1rem
+    为令范例完整，本小节对上述两部分内容均有阐述。
+    
+    > 若仅关心如何正确采用本工具集所提供的标准样式，则仅阅读第一部分即可。
+
+
+
+    1.  在你的 Vue 项目的 `main.ts` 或 `main.js` 中采用本工具集自带的标准样式（或者说默认样式、基础样式）。
+
+        在你的 Vue 项目中，可能在多处采用本工具集之各部件。**若不谨慎配置，则可能导致本工具集自带之样式在你的项目的最终编译得到的 css 文件中反复出现。 _反复出现显然是不可取的。_**
+
+        解决的办法是，在你的 Vue 项目的 `main.ts` 或 `main.js` 中一次性加载本工具集自带的所谓标准样式（亦可称默认样式）。 **仅此一处加载之，则可避免样式定义重复出现在最终打包的文件集中。**
+
+        ```js
+        import '@/视图/_公共样式/index.styl'
+        ```
+
+        或
+
+        ```js
+        import '@/视图/_公共样式/index.scss'
+        ```
+
+        -   采用 Stylus 语言
+
+            针对样式之准备工作，可分为两个大步骤：
+
+            1.  定义好“本 npm 工具集各部件所需的【全局 Stylus 变量】”。
+            1.  按需导入本 npm 工具集各部件的标准样式（或者说默认样式）。
+
+            以下是假定存在的 `@/视图/_公共样式/index.styl` 文件之内容全文。
+
+            > 注：因 Stylus 语言**不**允许变量名中使用汉字，故本工具集各 styl 文件中不得不采用外国字来设计变量名。
+
+            ```stylus
+            // Stylus 语言的变量名不允许采用汉字！
+
+            app_styles_global_wrapper = '#vue-应用根'
+
+            @require '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/_通用变量集_'
+
+            wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root = unquote(app_styles_global_wrapper)
+            wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper     = unquote(app_styles_global_wrapper)
+            wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper = unquote(app_styles_global_wrapper)
+
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/0-为-css-变量赋值.styl'
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/0-基础.styl'
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/1-单列.styl'
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/1-两列之间之默认竖栏.styl'
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/2-现成实用的双列.styl'
+            ```
+
+        -   采用 Scss 语言
+
+            针对样式之准备工作，可分为两个大步骤：
+
+            1.  定义好“本 npm 工具集各部件所需的【全局 Scss 变量】”。
+            1.  按需导入本 npm 工具集各部件的标准样式（或者说默认样式）。
+
+            以下是假定存在的 `@/视图/_公共样式/index.scss` 文件之内容全文。
+
+            > 注：因 SCSS 语言允许变量名中使用汉字，故本工具集 SCSS 文件中大量采用了汉字来设计变量名。
+
+            ```scss
+            $用以包裹整个应用之部分样式之选择器: '#vue-应用根';
+
+            @forward '../../../../node_modules/@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/_通用变量集_/index.scss' with (
+                $吴乐川_任意两列间转移条目__标志性选择器__css变量根植点: $用以包裹整个应用之部分样式之选择器,
+                $吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹: $用以包裹整个应用之部分样式之选择器,
+                $吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹: $用以包裹整个应用之部分样式之选择器,
+            );
+
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-为-css-变量赋值';
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-基础';
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-单列';
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-两列之间之默认竖栏';
+            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/2-现成实用的双列';
+            ```
+
+    1.  本示范页专属的样式。
+
+        -   采用 Stylus 语言
+
+            ```stylus
+            .页面--示范页3-遣将 {
+                height 100%
+                display flex
+                flex-direction column
+                justify-content center
+                align-items center
+
+                h3 {
+                    font-size 2rem
+                    text-align center
+                    margin 0
+                    padding 1rem
+                }
             }
-        }
-        ```
+            ```
 
 #### 将【`单列`】与【`两列之间之默认竖栏`】部件灵活组合
 
@@ -315,10 +509,147 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
 
 ### 应用编程接口（所谓 API）
 
+#### 【`单列`】部件之编程接口
 
-TypeScript
+下方用于描述接口之代码采用 TypeScript 语言撰写。且仅给出公开的内容或条目。完整的接口定义见 `源代码/发布的源代码/typescript/index.d.ts` 。
 
 ```typescript
+class Wlc任意两列间转移条目_单列 extends Vue {
+    // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
+    public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
+    // -------- 外来数据（ 即外国话所谓 Props ） -----------
+    public readonly 应全面禁止交互?: boolean
+    public readonly 本列之称谓?: string
+    public readonly 本列之特征样式类名之配置?: 泛范_界面元素之样式类名之配置
+    public readonly 允许列示的条目数之上限?: number | string
+    public readonly 所有条目之列表?: 范_内用格式之条目之列表
+    public readonly 新增条目之插入规则?: 范_各列新增条目之插入规则
+    public readonly 条目排序之函数?: 范_各列条目排序之函数
+    public readonly 本列初始的用以过滤条目之配置?: string | RegExp
+    public readonly 当下另有他列优先于本列采取视觉强调引导用户操作之?: boolean
+    public readonly 无需底部的说明书功能区?: boolean
+    public readonly vue部件之定义_订制的主表条目?: null | 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串
+    public readonly 应在控制台输出详尽的调试信息?: boolean
+}
+
+namespace Wlc任意两列间转移条目_单列 {
+    type 范_事件名称 = (
+        | '选中的条目已变动'
+        | '内部某元素之视觉强调之状态已变动'
+    );
+}
+```
+
+#### 【`单列之说明书`】部件之编程接口
+
+下方用于描述接口之代码采用 TypeScript 语言撰写。且仅给出公开的内容或条目。完整的接口定义见 `源代码/发布的源代码/typescript/index.d.ts` 。
+
+
+```typescript
+class Wlc任意两列间转移条目_单列之说明书 extends Vue {
+    // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
+    public readonly 当下正呈现着?: boolean
+
+    // -------- 外来数据（ 即外国话所谓 Props ） -----------
+    public readonly 采用的标准配色方案之名称?: 范_信息文本块_配色方案之名称
+    public readonly 采用的标准配色方案之磨砂玻璃效果之名称?: 范_信息文本块_标准配色方案之磨砂玻璃效果之名称
+}
+
+namespace Wlc任意两列间转移条目_单列之说明书 {
+    type 范_事件名称 = (
+        | '呈现状态期望变更'
+    );
+}
+```
+
+#### 【`两列之间之默认竖栏`】部件之编程接口
+
+下方用于描述接口之代码采用 TypeScript 语言撰写。且仅给出公开的内容或条目。完整的接口定义见 `源代码/发布的源代码/typescript/index.d.ts` 。
+
+
+```typescript
+class Wlc任意两列间转移条目_两列之间之竖栏_默认形态 extends Vue {
+    // -------- 外来数据（ 即外国话所谓 Props ） -----------
+    public readonly 应全面禁止交互?: boolean
+    public readonly 界面措辞_按钮甲?: string
+    public readonly 界面措辞_按钮乙?: string
+    public readonly 甲列当下选中的条目之总数?: number
+    public readonly 乙列当下选中的条目之总数?: number
+}
+
+namespace Wlc任意两列间转移条目_两列之间之竖栏_默认形态 {
+    type 范_事件名称 = (
+        | '已点击按钮甲'
+        | '已点击按钮乙'
+    );
+}
+```
+
+#### 【`条目-默认形态`】部件之编程接口
+
+下方用于描述接口之代码采用 TypeScript 语言撰写。且仅给出公开的内容或条目。完整的接口定义见 `源代码/发布的源代码/typescript/index.d.ts` 。
+
+
+```typescript
+class Wlc任意两列间转移条目_主表条目_默认形态 extends Vue {
+    // -------- 外来数据（ 即外国话所谓 Props ） -----------
+    public readonly 条目?: 范_内用格式之条目
+    public readonly 所属列已禁止交互?: boolean
+}
+```
+
+#### 【`现成实用的双列`】部件之编程接口
+
+下方用于描述接口之代码采用 TypeScript 语言撰写。且仅给出公开的内容或条目。完整的接口定义见 `源代码/发布的源代码/typescript/index.d.ts` 。
+
+
+```typescript
+class Wlc任意两列间转移条目_现成实用的双列 extends Vue {
+    // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
+    public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
+
+    // -------- 外来数据（ 即外国话所谓 Props ） -----------
+    public readonly 应全面禁止交互?: boolean
+    public readonly 无需总标题栏?: boolean
+    public readonly 无需中央列?: boolean
+    public readonly 无需底部内容栏?: boolean
+
+    public readonly 甲列之称谓?: string
+    public readonly 乙列之称谓?: string
+    public readonly 甲列之特征样式类名之配置?: 泛范_界面元素之样式类名之配置
+    public readonly 乙列之特征样式类名之配置?: 泛范_界面元素之样式类名之配置
+
+    public readonly 界面措辞_中央竖栏_内建按钮甲?: string
+    public readonly 界面措辞_中央竖栏_内建按钮乙?: string
+    public readonly 界面措辞_底部内容栏默认内容_按钮甲?: string
+    public readonly 界面措辞_底部内容栏默认内容_按钮乙?: string
+    public readonly 各列均无需底部的说明书功能区?: boolean
+
+    public readonly 双列全部条目之总列表?: 范_基础条目之列表
+    public readonly 单列允许列示的条目数之上限?: number
+    public readonly 各列新增条目之插入规则?: 范_各列新增条目之插入规则
+    public readonly 各列条目排序之函数?: 范_各列条目排序之函数
+
+    public readonly 甲列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    public readonly 乙列初始选中的条目之唯一标识之列表?: 范_条目之唯一标识之列表
+    public readonly 甲列初始的用以过滤条目之配置?: string | RegExp
+    public readonly 乙列初始的用以过滤条目之配置?: string | RegExp
+
+    public readonly vue部件之定义_订制的主表条目?: null | 范_Vue动态部件之Is属性可接受的数据_但不可为部件名称字符串
+
+    public readonly 应在控制台输出详尽的调试信息?: boolean
+
+    // -------- 公开行为 --------------------------------
+    public 将甲列选中的条目迁移至乙列 (调用者?: Vue): void
+    public 将乙列选中的条目迁移至甲列 (调用者?: Vue): void
+}
+
+namespace Wlc任意两列间转移条目_现成实用的双列 {
+    type 范_事件名称 = (
+        | '条目之分布已变动'
+        | '已出错'
+    );
+}
 ```
 

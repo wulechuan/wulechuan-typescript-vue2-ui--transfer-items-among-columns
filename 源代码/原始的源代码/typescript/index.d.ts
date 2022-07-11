@@ -129,7 +129,7 @@ declare namespace Wlc任意两列间转移条目 {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 当下选中的所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
-        // -------- 外来数据 --------------------------------
+        // -------- 外来数据（ 即外国话所谓 Props ） -----------
         public readonly 应全面禁止交互?: boolean
         public readonly 本列之称谓?: string
         public readonly 本列之特征样式类名之配置?: 泛范_界面元素之样式类名之配置
@@ -269,7 +269,7 @@ declare namespace Wlc任意两列间转移条目 {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 当下正呈现着?: boolean
 
-        // -------- 外来数据 --------------------------------
+        // -------- 外来数据（ 即外国话所谓 Props ） -----------
         public readonly 采用的标准配色方案之名称?: 范_信息文本块_配色方案之名称
         public readonly 采用的标准配色方案之磨砂玻璃效果之名称?: 范_信息文本块_标准配色方案之磨砂玻璃效果之名称
 
@@ -299,7 +299,7 @@ declare namespace Wlc任意两列间转移条目 {
 
 
     class Wlc任意两列间转移条目_两列之间之竖栏_默认形态 extends Vue {
-        // -------- 外来数据 --------------------------------
+        // -------- 外来数据（ 即外国话所谓 Props ） -----------
         public readonly 应全面禁止交互?: boolean
         public readonly 界面措辞_按钮甲?: string
         public readonly 界面措辞_按钮乙?: string
@@ -342,7 +342,7 @@ declare namespace Wlc任意两列间转移条目 {
 
 
     class Wlc任意两列间转移条目_主表条目_默认形态 extends Vue {
-        // -------- 外来数据 --------------------------------
+        // -------- 外来数据（ 即外国话所谓 Props ） -----------
         public readonly 条目?: 范_内用格式之条目
         public readonly 所属列已禁止交互?: boolean
     }
@@ -355,7 +355,7 @@ declare namespace Wlc任意两列间转移条目 {
         // -------- 自动接驳数据（ 即视为 v-model 的数据 ） ----
         public readonly 乙列所有条目之唯一标识之列表?: 范_条目之唯一标识之列表
 
-        // -------- 外来数据 --------------------------------
+        // -------- 外来数据（ 即外国话所谓 Props ） -----------
         public readonly 应全面禁止交互?: boolean
         public readonly 无需总标题栏?: boolean
         public readonly 无需中央列?: boolean
