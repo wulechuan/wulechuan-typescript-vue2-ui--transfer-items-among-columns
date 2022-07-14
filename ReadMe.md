@@ -128,12 +128,12 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
 
 #### 使用【`现成实用的双列`】部件
 
-运行状态的截图
+##### 运行状态的截图
 
 ![【吴乐川-任意两列间转移条目】工具集中【现成实用的双列】部件的使用示范的运行状态截图](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例3-图1.png)
 
 
-1.  类 HTML 模板的写法示范
+1. #####  类 HTML 模板的写法示范
 
     ```html
     <div class="页面 页面--示范页3-遣将">
@@ -162,7 +162,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
     </div>
     ```
 
-1.  功能逻辑的写法示范
+1.  ##### 功能逻辑的写法示范
 
     -   采用 TypeScript 语言
 
@@ -387,24 +387,22 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
         }
         ```
 
-1.  样式
+1.  ##### 使用【`现成实用的双列`】部件时样式的写法
 
-    你的 Vue 项目中的样式不妨暂分两类，或者说两大部分：
+    你的 Vuejs 项目中的样式不妨暂分两类，或者说两大部分：
 
     1.  为采用本工具集自带的样式而做的配置或准备工作。
     2.  其它样式。
 
-    为令范例完整，本小节对上述两部分内容均有阐述。
-
-    > 若仅关心如何正确采用本工具集所提供的标准样式，则仅阅读第一部分即可。
+    > 为令范例完整，本小节对上述两部分内容均有阐述，而不是仅仅阐述第一部分。若仅关心如何正确采用本工具集所提供的标准样式，则仅阅读第一部分即可。
 
 
 
-    1.  在你的 Vue 项目的 `main.ts` 或 `main.js` 中采用本工具集自带的标准样式（或者说默认样式、基础样式）。
+    1.  ###### 在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中采用本工具集自带的标准样式（或者说默认样式、基础样式）。
 
-        在你的 Vue 项目中，可能在多处采用本工具集之各部件。**若不谨慎配置，则可能导致本工具集自带之样式在你的项目的最终编译得到的 css 文件中反复出现。 _反复出现显然是不可取的。_**
+        在你的 Vuejs 项目中，可能在多处采用本工具集之各部件。**若不谨慎配置，则可能导致本工具集自带之样式在你的项目的最终编译得到的 css 文件中反复出现。 _反复出现显然是不可取的。_**
 
-        解决的办法是，在你的 Vue 项目的 `main.ts` 或 `main.js` 中一次性加载本工具集自带的所谓标准样式（亦可称默认样式）。 **仅此一处加载之，则可避免样式定义重复出现在最终打包的文件集中。**
+        解决的办法是，在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中一次性加载本工具集自带的所谓标准样式（亦可称默认样式）。 **仅此一处加载之，则可避免样式定义重复出现在最终打包的文件集中。**
 
         ```js
         import '@/视图/_公共样式/index.styl'
@@ -472,7 +470,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
             @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/2-现成实用的双列';
             ```
 
-    1.  本示范页专属的样式。
+    1.  ###### 本示范页专属的样式。
 
         -   采用 Stylus 语言
 
@@ -495,7 +493,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
 
 #### 将【`单列`】与【`两列之间之默认竖栏`】部件灵活组合
 
-1.  类 HTML 模板的写法示范
+1.  ##### 类 HTML 模板的写法示范
 
     ```html
     <template v-for="(某列, 某列之列表编号) in 各列数据之表">
@@ -527,7 +525,7 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
     </template>
     ```
 
-1.  功能逻辑的写法示范
+1.  ##### 功能逻辑的写法示范
 
     -   采用 TypeScript 语言
 
@@ -686,60 +684,76 @@ npm  i  @wulechuan/vue2-ui--transfer-items-among-columns
         }
         ```
 
--   功能逻辑的写法示范（采用 JavaScript 语言）
 
     -   采用 JavaScript 语言
 
         从略。
 
 
-1.  样式
+1.  ##### 将【`单列`】与【`两列之间之默认竖栏`】部件灵活组合时样式的写法
 
-    -   采用 Stylus 语言
 
-        ```stylus
-        /* autoprefixer: off */
+    你的 Vuejs 项目中的样式不妨暂分两类，或者说两大部分：
 
-        .页面--示范页2-多于-2-列互通之形式 {
-            flex 1 1 auto
-            box-sizing border-box
-            height 100%
-            display flex
-            flex-direction row
-            flex-wrap nowrap
-            padding 2em
-            overflow auto
-            margin 0 2em 2em
+    1.  为采用本工具集自带的样式而做的配置或准备工作。
+    2.  其它样式。
 
-            .吴乐川-任意两列间转移条目-单列 {
-                flex 0 0 24em
+    > 为令范例完整，本小节对上述两部分内容均有阐述，而不是仅仅阐述第一部分。若仅关心如何正确采用本工具集所提供的标准样式，则仅阅读第一部分即可。
 
-                &.甲    .列首 { background-color: #fdd; }
-                &.乙    .列首 { background-color: #ffd; }
-                &.丙    .列首 { background-color: #dfd; }
-                &.丁    .列首 { background-color: #dff; }
-                &.戊    .列首 { background-color: #ddf; }
+
+    1.  ###### 在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中采用本工具集自带的标准样式（或者说默认样式、基础样式）。
+
+        见本文的《[使用【`现成实用的双列`】部件时样式的写法](#使用现成实用的双列部件时样式的写法)》。
+
+
+
+    1.  ###### 本示范页专属的样式。
+
+        -   采用 Stylus 语言
+
+            ```stylus
+            /* autoprefixer: off */
+
+            .页面--示范页2-多于-2-列互通之形式 {
+                flex 1 1 auto
+                box-sizing border-box
+                height 100%
+                display flex
+                flex-direction row
+                flex-wrap nowrap
+                padding 2em
+                overflow auto
+                margin 0 2em 2em
+
+                .吴乐川-任意两列间转移条目-单列 {
+                    flex 0 0 24em
+
+                    &.甲    .列首 { background-color: #fdd; }
+                    &.乙    .列首 { background-color: #ffd; }
+                    &.丙    .列首 { background-color: #dfd; }
+                    &.丁    .列首 { background-color: #dff; }
+                    &.戊    .列首 { background-color: #ddf; }
+                }
+
+                & {
+                    // 定义各列通用的默认配色。下方的代码又令【甲】列具备独特的配色。
+                    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #008b8b
+                    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #1eb8b8
+                    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #40c9c9
+                    {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #baf2f2
+                    {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+                }
+
+                .吴乐川-任意两列间转移条目-单列.甲, // 故意另【甲】列之配色与众不同。
+                .操控列-1-2    .迁移条目之按钮--乙列至甲列 { // 从【乙】列转移至【甲】列的按钮，也应采用独特的配色。
+                    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #f66
+                    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #f88
+                    {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ecc
+                    {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #fdd
+                    {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
+                }
             }
-
-            & {
-                // 定义各列通用的默认配色。下方的代码又令【甲】列具备独特的配色。
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #008b8b
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #1eb8b8
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #40c9c9
-                {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #baf2f2
-                {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
-            }
-
-            .吴乐川-任意两列间转移条目-单列.甲, // 故意另【甲】列之配色与众不同。
-            .操控列-1-2    .迁移条目之按钮--乙列至甲列 { // 从【乙】列转移至【甲】列的按钮，也应采用独特的配色。
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static} #f66
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_hover} #f88
-                {wlc_transfer_items_among_columns__css_var_name__element_highlighting_but_disabled_color_static} #ecc
-                {wlc_transfer_items_among_columns__css_var_name__element_non_highlighting_color_hover} #fdd
-                {wlc_transfer_items_among_columns__css_var_name__focusing_element_outline_color} 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__element_highlighting_color_static)
-            }
-        }
-        ```
+            ```
 
 ### 应用编程接口（所谓 API）
 
