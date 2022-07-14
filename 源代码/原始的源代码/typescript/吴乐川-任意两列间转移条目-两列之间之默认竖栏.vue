@@ -9,7 +9,7 @@
                 class="按钮-形状必须为正圆 迁移条目之按钮 迁移条目之按钮--甲列至乙列"
                 :class="界面元素之样式类名之配置_按钮甲"
                 :disabled="应禁止按钮甲交互"
-                @click="每当点击底部内容栏默认内容中的按钮甲之后()"
+                @click="每当点击底部内容栏默认内容中的按钮甲之后($event)"
             >{{ 界面措辞_按钮甲_最终采纳值 }}</button>
 
             <sup
@@ -23,7 +23,7 @@
                 class="按钮-形状必须为正圆 迁移条目之按钮 迁移条目之按钮--乙列至甲列"
                 :class="界面元素之样式类名之配置_按钮乙"
                 :disabled="应禁止按钮乙交互"
-                @click="每当点击底部内容栏默认内容中的按钮乙之后()"
+                @click="每当点击底部内容栏默认内容中的按钮乙之后($event)"
             >{{ 界面措辞_按钮乙_最终采纳值 }}</button>
 
             <sup
@@ -32,7 +32,7 @@
             >{{ 乙列当下选中的条目之总数_最终采纳值 }}</sup>
         </div>
 
-        <slot name="界面皿-额外功能"></slot>
+        <slot name="界面皿-增补之功能"></slot>
 
         <hr class="仅用于样式表缺失之情形" />
     </div>
@@ -142,24 +142,24 @@ export default class Wlc任意两列间转移条目_两列之间之竖栏_默认
 
 
 
-    private 发布事件_已点击按钮甲 (): void {
-        this.$emit('已点击按钮甲')
+    private 发布事件_已点击按钮甲 ($event: any): void {
+        this.$emit('已点击按钮甲', $event)
     }
 
-    private 发布事件_已点击按钮乙 (): void {
-        this.$emit('已点击按钮乙')
+    private 发布事件_已点击按钮乙 ($event: any): void {
+        this.$emit('已点击按钮乙', $event)
     }
 
 
 
 
 
-    private 每当点击底部内容栏默认内容中的按钮甲之后 (): void {
-        this.发布事件_已点击按钮甲()
+    private 每当点击底部内容栏默认内容中的按钮甲之后 ($event: any): void {
+        this.发布事件_已点击按钮甲($event)
     }
 
-    private 每当点击底部内容栏默认内容中的按钮乙之后 (): void {
-        this.发布事件_已点击按钮乙()
+    private 每当点击底部内容栏默认内容中的按钮乙之后 ($event: any): void {
+        this.发布事件_已点击按钮乙($event)
     }
 }
 </script>
