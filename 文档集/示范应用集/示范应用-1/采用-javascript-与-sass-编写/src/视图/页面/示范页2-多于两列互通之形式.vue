@@ -560,7 +560,7 @@ export default {
         }
 
         & {
-            // 定义各列通用的默认配色。下方的代码又令【甲】列具备独特的配色。
+            // 定义各列通用的默认配色。又，后续另有几行代码令【甲】列具备独特的配色。
             #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_static}: #008b8b;
             #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_color_hover}: #1eb8b8;
             #{$吴乐川_任意两列间转移条目__css变量名__element_highlighting_but_disabled_color_static}: #40c9c9;
