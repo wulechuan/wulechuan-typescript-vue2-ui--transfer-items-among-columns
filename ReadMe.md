@@ -525,95 +525,8 @@ interface 范_基础条目 {
 
     1.  ###### 在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中采用本工具集自带的标准样式
 
-        在你的 Vuejs 项目中，可能在多处采用本工具集之各部件。**若不谨慎配置，则可能导致本工具集自带之样式在你的项目的最终编译得到的 css 文件中反复出现。 _反复出现显然是不可取的。_**
-
-        解决之道是在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中一次性加载本工具集自带的所谓标准样式（亦可称默认样式）。 **仅此一处加载之，则可避免样式定义重复出现在最终打包的文件集中。**
-
-        例：
-
-        ```js
-        import '@/公共样式/index.styl'
-        ```
-
-        或
-
-        ```js
-        import '@/公共样式/index.scss'
-        ```
-
-        -   采用 Stylus 语言
-
-            单单针对样式之准备工作，又可分为两个大步骤：
-
-            1.  定义好“本 npm 工具集各部件所需的【Stylus 全局变量】”。其中：
-
-                -   变量 `app_styles_global_wrapper` 取值可以为空（`''`）， **但不可省略** 。
-                -   变量 `wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root` 可省略。
-                -   变量 `wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper` 可省略。
-                -   变量 `wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper` 可省略。
-
-            1.  按需导入本 npm 工具集各部件的标准样式（或者说默认样式）。
-
-            以下是假定存在的 `@/公共样式/index.styl` 文件之内容全文。
-
-            > 注：因 Stylus 语言**不**允许变量名中使用汉字，故本工具集各 styl 文件中不得不采用外国字来设计变量名。
-
-            ```stylus
-            // Stylus 语言的变量名不允许采用汉字！
-
-            app_styles_global_wrapper = '#vue-应用根'
-
-            @require '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/_通用变量集_'
-
-            wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root = unquote(app_styles_global_wrapper)
-            wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper     = unquote(app_styles_global_wrapper)
-            wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper = unquote(app_styles_global_wrapper)
-
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/0-为-css-变量赋值.styl'
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/0-基础.styl'
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/1-单列.styl'
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/1-两列之间之默认竖栏.styl'
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/2-现成实用的双列.styl'
-            ```
-
-        -   采用 Scss 语言
-
-            单单针对样式之准备工作，又可分为两个大步骤：
-
-            1.  定义好“本 npm 工具集各部件所需的【Scss 全局变量】”。受益于 Scss 语言的特点，各【 Scss 全局变量】均有默认值，故该步骤可省略。
-
-            1.  按需导入本 npm 工具集各部件的标准样式（或者说默认样式）。
-
-            以下是假定存在的 `@/公共样式/index.scss` 文件之内容全文。
-
-            > 注：因 SCSS 语言允许变量名中使用汉字，故本工具集 scss 文件中大量采用了汉字来设计变量名。
-
-            ```scss
-            $用以包裹整个应用之部分样式之选择器: '#vue-应用根';
-
-            @forward '../../../../node_modules/@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/_通用变量集_/index.scss' with (
-                $吴乐川_任意两列间转移条目__标志性选择器__css变量根植点: $用以包裹整个应用之部分样式之选择器,
-                $吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹: $用以包裹整个应用之部分样式之选择器,
-                $吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹: $用以包裹整个应用之部分样式之选择器,
-            );
-
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-为-css-变量赋值';
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-基础';
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-单列';
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-两列之间之默认竖栏';
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/2-现成实用的双列';
-            ```
-
-            因第 1 步骤可以完全省略，故更简略的写法如下：
-
-            ```scss
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-为-css-变量赋值';
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-基础';
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-单列';
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-两列之间之默认竖栏';
-            @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/2-现成实用的双列';
-            ```
-
+        见本文的《[本工具集内建的层叠样式表的用法](#本工具集内建的层叠样式表的用法)》部分。尤其是其中《[使用本工具集内建的层叠样式表的编码步骤](#使用本工具集内建的层叠样式表的编码步骤)》一节。
+        
     1.  ###### 设计其它样式
 
         此例中，所谓其它样式即是本示范页专属的样式。
@@ -858,7 +771,7 @@ interface 范_基础条目 {
 
     1. ###### 为了采用本工具集自带的样式而做的配置或准备工作。
 
-        同本文的《[使用【`现成实用的双列`】部件时样式的写法](#使用现成实用的双列部件时样式的写法)》中的第 1 部分。
+        见本文的《[本工具集内建的层叠样式表的用法](#本工具集内建的层叠样式表的用法)》部分。尤其是其中《[使用本工具集内建的层叠样式表的编码步骤](#使用本工具集内建的层叠样式表的编码步骤)》一节。
 
     1. ###### 设计其它样式。
 
@@ -1557,6 +1470,168 @@ namespace Wlc任意两列间转移条目_现成实用的双列 {
     从略。
 
 
+
+#### 本工具集内建的层叠样式表的用法
+
+##### 综述
+
+###### 防止重复加载重复编译
+
+本工具集提供了两套独立的层叠样式表代码。一套采用 Stylus 语言编写，另一套采用 Scss 语言编写。两套样式产生最终的观感完全相同。实用时，任选一套即可，不必也不应同时采用二者。
+
+在你的 Vuejs 项目中，可能在多处采用本工具集之各部件。**若不谨慎配置，则可能导致本工具集自带之样式在你的项目的最终编译得到的 css 文件中反复出现。 _反复出现显然是不可取的。_** 解决之道是在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中一次性加载本工具集自带的所谓标准样式（亦可称默认样式）。 **仅此一处加载之，则可避免样式定义重复出现在最终打包的文件集中。**
+
+因此，不论采用那套样式，均应在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中设法引用它们，而不应在采用本工具集的各个 .vue 文件中分别引用它们。
+
+
+###### 开发者可按需加载样式表的各个部分
+
+本工具集的所有样式表代码均分为两大类：
+
+1.  【仅尺寸与排版与关键行为】的部分。
+
+    包含除下文【仅着色与装饰】所涉的一切样式属性。典型的例如： `display` 、 `font-size` 、 `margin` 、 `padding` 、 `border-width` 、 `width` 、 `height` 、 `line-height` 、 `user-select` ……
+
+1.  【仅着色与装饰】的部分。仅包含：
+
+    -   `font-family`
+    -   `font-weight`
+    -   `border-radius`
+    -   `opacity`
+    -   `color` 、 `border-color` 、 `background-color` 、 `outline-color`
+    -   `background-image`
+    -   `box-shadow` 、 `text-shadow`
+
+不难料想，如果设计师对本工具集默认的配色不满意，开发者可以仅采用第 1 类内建样式表。并借鉴第 2 类内建样式表来重写与配色有关的样式规则集。
+
+###### CSS 变量
+
+本工具集各部件采用了若干 CSS 变量，汇总如下：
+
+-   `--吴乐川-任意两列间转移条目--主要布局块-边线粗度`
+-   `--吴乐川-任意两列间转移条目--获得交互焦点之元素-边线粗度`
+-   `--吴乐川-任意两列间转移条目--文字输入框-边线粗度`
+-   `--吴乐川-任意两列间转移条目--按钮-边线粗度`
+-   `--吴乐川-任意两列间转移条目--高亮元素标准色-静置时`
+-   `--吴乐川-任意两列间转移条目--高亮元素标准色-鼠标悬停时`
+-   `--吴乐川-任意两列间转移条目--高亮元素标准色-禁止交互时`
+-   `--吴乐川-任意两列间转移条目--非高亮元素标准色-鼠标悬停时`
+-   `--吴乐川-任意两列间转移条目--获得交互焦点之元素-视觉强调之包边之颜色`
+
+众所周知，CSS 变量可在文档对象树中层层继承。因此说“这些 CSS 变量附着在某 CSS 选择器上”不妥，而应说“这些 CSS 变量根值于某 CSS 选择器上”。本工具集的所有 CSS 变量根植在这样的 CSS 选择器上：
+
+-   于 Stylus 语言，该根植点的 CSS 选择器由变量 `wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root` 给出。**无默认值！**
+-   于 Scss 语言，该根植点的 CSS 选择器由变量 `$吴乐川_任意两列间转移条目__标志性选择器__css变量根植点` 给出。**默认取 `body` 。**
+
+##### 使用本工具集内建的层叠样式表的编码步骤
+
+
+-   采用 Stylus 语言
+
+    可分为两个大步骤。
+
+    1.  导入样式文件
+        
+        假定样式代码存在于 `@/公共样式/index.styl` 文件内。
+
+        在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中加入如下语句：
+
+        ```js
+        import '@/公共样式/index.styl'
+        ```
+
+    1.  在上述假定的文件中书写代码，以正确配置并采用本工具集内建的样式。此步骤又可进一步分为 2 个步骤：
+
+        1.  定义好“本 npm 工具集各部件所需的【Stylus 全局变量】”。其中：
+
+            -   变量 `app_styles_global_wrapper` **不可省略** 。又，虽然该变量取值可以为空（`''`），但须注意调整 Scss 代码，以确保不令 `wlc_transfer_...__css_vars_injection_root` 也为空。
+
+            -   变量 `wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root` **不可省略** 。虽然该变量取值为空（`''`）时，编译不会报错，但不应这样做！因为取空将导致该选择器不存在，进而导致 CSS 变量无从根植。
+
+            -   变量 `wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper` 可省略。
+
+            -   变量 `wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper` 可省略。
+
+        1.  按需导入本 npm 工具集各部件的标准样式（或者说默认样式）。
+
+
+    请看示例。
+
+    以下是假定存在的 `@/公共样式/index.styl` 文件之内容全文。通常情形下，除了第一句 “`app_styles_global_wrapper = '#vue-应用根'`” 外，原封不动照搬即可。
+
+    > 注：因 Stylus 语言**不**允许变量名中使用汉字，故在各 styl 文件中不得不采用外国字来设计变量名。
+
+
+    ```stylus
+    // Stylus 语言的变量名不允许采用汉字！
+
+    app_styles_global_wrapper = '#vue-应用根'
+
+    @require '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/_通用变量集_'
+
+    wlc_transfer_items_among_columns__identifiable_selector__css_vars_injection_root = unquote(app_styles_global_wrapper)
+    wlc_transfer_items_among_columns__identifiable_selector__base_styles_wrapper     = unquote(app_styles_global_wrapper)
+    wlc_transfer_items_among_columns__identifiable_selector__dedicate_styles_wrapper = unquote(app_styles_global_wrapper)
+
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/0-为-css-变量赋值.styl'
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/0-基础.styl'
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/1-单列.styl'
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/1-两列之间之默认竖栏.styl'
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/stylus/完整样式表/默认/2-现成实用的双列.styl'
+    ```
+
+-   采用 Scss 语言
+
+    可分为两个大步骤。
+
+    1.  导入样式文件
+        
+        假定样式代码存在于 `@/公共样式/index.scss` 文件内。
+
+        在你的 Vuejs 项目的 `main.ts` 或 `main.js` 中加入如下语句：
+
+        ```js
+        import '@/公共样式/index.scss'
+        ```
+
+
+    1.  在上述假定的文件中书写代码，以正确配置并采用本工具集内建的样式。此步骤又可进一步分为 2 个步骤：
+
+        1.  定义好“本 npm 工具集各部件所需的【Scss 全局变量】”。受益于 Scss 语言的特点，各【 Scss 全局变量】均有默认值，故该步骤可省略。
+
+        1.  按需导入本 npm 工具集各部件的标准样式（或者说默认样式）。
+
+    请看示例。
+
+    以下是假定存在的 `@/公共样式/index.scss` 文件之内容全文。通常情形下，除了第一句 “`$用以包裹整个应用之部分样式之选择器 = '#vue-应用根'`” 外，原封不动照搬即可。
+
+    > 注：因 Scss 语言允许变量名中使用汉字，故在各 Scss 文件中大量采用了汉字来设计变量名。
+
+    ```scss
+    $用以包裹整个应用之部分样式之选择器: '#vue-应用根';
+
+    @forward '../../../../node_modules/@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/_通用变量集_/index.scss' with (
+        $吴乐川_任意两列间转移条目__标志性选择器__css变量根植点: $用以包裹整个应用之部分样式之选择器,
+        $吴乐川_任意两列间转移条目__标志性选择器__基础样式之外层包裹: $用以包裹整个应用之部分样式之选择器,
+        $吴乐川_任意两列间转移条目__标志性选择器__本部件专属样式之外层包裹: $用以包裹整个应用之部分样式之选择器,
+    );
+
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-为-css-变量赋值';
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-基础';
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-单列';
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-两列之间之默认竖栏';
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/2-现成实用的双列';
+    ```
+
+    又，采用 Scss 语言编码时，第 1 步骤可以完全省略，故更简略的写法如下：
+
+    ```scss
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-为-css-变量赋值';
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/0-基础';
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-单列';
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/1-两列之间之默认竖栏';
+    @import '@wulechuan/vue2-ui--transfer-items-among-columns/源代码/发布的源代码/sass/完整样式表/默认/2-现成实用的双列';
+    ```
 
 
 -----
