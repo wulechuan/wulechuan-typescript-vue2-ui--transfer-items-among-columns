@@ -47,9 +47,11 @@ import {
 
 /**
  * @typedef {object} 范_中华名将_实际条目
+ *
  * @property {范_基础条目['唯一标识']} 唯一标识
  * @property {范_基础条目['在界面中的称谓']} 在界面中的称谓
  * @property {范_基础条目['已禁止选择']} 已禁止选择
+ * @property {范_基础条目['已选中']} 已选中
  * @property {object} 数据
  * @property {string} 数据.诞年
  * @property {number} 数据.排序数

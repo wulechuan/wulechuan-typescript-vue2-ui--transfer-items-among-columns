@@ -119,10 +119,10 @@ import {
 
 /** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_各列新增条目之插入规则} 范_各列新增条目之插入规则 */
 /** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_各列条目排序之函数} 范_各列条目排序之函数 */
-/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_内用格式之条目} 范_内用格式之条目 */
+/** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns').范_基础条目} 范_基础条目 */
 
 /**
- * @typedef {范_内用格式之条目 & 范_任意两列间转移条目_实际条目} 范_任意两列间转移条目_实际完整形式之条目
+ * @typedef {范_基础条目 & 范_任意两列间转移条目_实际条目} 范_任意两列间转移条目_实际完整形式之条目
  */
 
 /**

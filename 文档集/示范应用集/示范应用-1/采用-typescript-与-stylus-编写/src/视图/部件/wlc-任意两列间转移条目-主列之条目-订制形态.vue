@@ -1,5 +1,5 @@
 <template>
-    <div class="条目根-在该范例中的订制形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述内容块已展开故而描述呈现 }">
+    <div class="条目根-在该范例中的订制形态" :class="{ '描述内容块已展开': 条目_最终采纳值.数据.描述内容块已展开故而描述呈现 }">
         <div class="吴乐川-任意两列间转移条目-条目之视觉根">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
@@ -48,7 +48,6 @@ import type {
 
 
 
-type 范_任意两列间转移条目_内用格式之实际条目 = Wlc任意两列间转移条目.范_内用格式之条目 & 范_任意两列间转移条目_实际条目;
 type 范_界面元素之样式类名之配置 = Wlc任意两列间转移条目.泛范_界面元素之样式类名之配置<string>;
 
 
@@ -57,16 +56,16 @@ type 范_界面元素之样式类名之配置 = Wlc任意两列间转移条目.�
 
 @Component({})
 export default class Wlc任意两列间转移条目_主列之条目_订制形态 extends Vue {
-    @Prop() public 条目?: 范_任意两列间转移条目_内用格式之实际条目
+    @Prop() public 条目?: 范_任意两列间转移条目_实际条目
     @Prop() public 所属列已禁止交互?: boolean
 
 
 
 
 
-    public get 条目_最终采纳值 (): 范_任意两列间转移条目_内用格式之实际条目 {
+    public get 条目_最终采纳值 (): 范_任意两列间转移条目_实际条目 {
         const 外界给出的值 = this.条目
-        if (!外界给出的值) return this.构造临时的条目()
+        if (!外界给出的值) return this.构造临时的条目以滥竽充数()
         return 外界给出的值
     }
 
@@ -83,7 +82,7 @@ export default class Wlc任意两列间转移条目_主列之条目_订制形态
             const 原始值 = 原始数据.描述
             if (Array.isArray(原始值)) {
                 诸段落之列表 = 原始值
-            } else {
+            } else if (typeof 原始值 === 'string') {
                 诸段落之列表 = [ 原始值 ]
             }
 
@@ -111,7 +110,7 @@ export default class Wlc任意两列间转移条目_主列之条目_订制形态
 
 
 
-    private 构造临时的条目 (): 范_任意两列间转移条目_内用格式之实际条目 {
+    private 构造临时的条目以滥竽充数 (): 范_任意两列间转移条目_实际条目 {
         const 称谓: string = Math.random().toFixed(10)
         return { 唯一标识: 称谓, 在界面中的称谓: 称谓, 已禁止选择: true, 已选中: false, 数据: {} }
     }
@@ -173,7 +172,7 @@ export default class Wlc任意两列间转移条目_主列之条目_订制形态
         }
 
         &:hover,
-        &.详情内容块正呈现着 {
+        &.描述内容块已展开 {
 
             .详情内容块开关按钮 {
                 // visibility visible
@@ -181,7 +180,7 @@ export default class Wlc任意两列间转移条目_主列之条目_订制形态
             }
         }
 
-        &.详情内容块正呈现着 {
+        &.描述内容块已展开 {
             background-color #ddd
             box-shadow inset 0 0 0.2em 0 rgba(black, 0.319)
             // margin-top 0.5em

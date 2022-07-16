@@ -1,5 +1,5 @@
 <template>
-    <div class="条目根-在该范例中的订制形态" :class="{ '详情内容块正呈现着': 条目_最终采纳值.数据.描述内容块已展开故而描述呈现 }">
+    <div class="条目根-在该范例中的订制形态" :class="{ '描述内容块已展开': 条目_最终采纳值.数据.描述内容块已展开故而描述呈现 }">
         <div class="吴乐川-任意两列间转移条目-条目之视觉根">
             <span class="输入项 输入项-勾选项" :class="输入项之样式类名配置">
                 <span class="勾选项视觉假体"></span>
@@ -46,9 +46,6 @@ import {
 
 
 /** @typedef {import('@wulechuan/vue2-ui--transfer-items-among-columns')} Wlc任意两列间转移条目 */
-
-/** @typedef {Wlc任意两列间转移条目.范_内用格式之条目 & 范_任意两列间转移条目_实际条目} 范_任意两列间转移条目_内用格式之实际条目 */
-
 /** @typedef {Wlc任意两列间转移条目.泛范_界面元素之样式类名之配置<string>} 范_界面元素之样式类名之配置 */
 
 
@@ -59,7 +56,7 @@ export default {
     name: 'Wlc任意两列间转移条目_主列之条目_订制形态',
 
     props: {
-        /** @type {范_任意两列间转移条目_内用格式之实际条目} */
+        /** @type {范_任意两列间转移条目_实际条目} */
         条目: {
             type: Object,
             default: null,
@@ -78,11 +75,11 @@ export default {
 
     computed: {
         /**
-         * @returns {范_任意两列间转移条目_内用格式之实际条目}
+         * @returns {范_任意两列间转移条目_实际条目}
          */
         条目_最终采纳值 () {
             const 外界给出的值 = this.条目
-            if (!外界给出的值) return this.构造临时的条目()
+            if (!外界给出的值) return this.构造临时的条目以滥竽充数()
             return 外界给出的值
         },
 
@@ -90,7 +87,7 @@ export default {
          * @returns {范_界面元素之样式类名之配置}
          */
         输入项之样式类名配置 () {
-            /** @type {范_任意两列间转移条目_内用格式之实际条目} */
+            /** @type {范_任意两列间转移条目_实际条目} */
             const 条目 = this.条目_最终采纳值
             return { '已勾选': 条目.已选中, '已禁止交互': 条目.已禁止选择 || !!this.所属列已禁止交互, '未选中': !条目.已选中 }
         },
@@ -102,7 +99,7 @@ export default {
             /** @type {string[]} */
             let 诸段落之列表 = []
 
-            /** @type {范_任意两列间转移条目_内用格式之实际条目} */
+            /** @type {范_任意两列间转移条目_实际条目} */
             const 条目_最终采纳值 = this.条目_最终采纳值
 
             /** @type {范_任意两列间转移条目_实际条目之数据} */
@@ -111,7 +108,7 @@ export default {
                 const 原始值 = 原始数据.描述
                 if (Array.isArray(原始值)) {
                     诸段落之列表 = 原始值
-                } else {
+                } else if (typeof 原始值 === 'string') {
                     诸段落之列表 = [ 原始值 ]
                 }
 
@@ -149,9 +146,9 @@ export default {
 
     methods: {
         /**
-         * @returns {范_任意两列间转移条目_内用格式之实际条目}
+         * @returns {范_任意两列间转移条目_实际条目}
          */
-        构造临时的条目 () {
+        构造临时的条目以滥竽充数 () {
             /** @type {string} */
             const 称谓 = Math.random().toFixed(10)
             return { 唯一标识: 称谓, 在界面中的称谓: 称谓, 已禁止选择: true, 已选中: false, 数据: {} }
@@ -215,7 +212,7 @@ export default {
         }
 
         &:hover,
-        &.详情内容块正呈现着 {
+        &.描述内容块已展开 {
 
             .详情内容块开关按钮 {
                 // visibility visible
@@ -223,7 +220,7 @@ export default {
             }
         }
 
-        &.详情内容块正呈现着 {
+        &.描述内容块已展开 {
             background-color: #ddd;
             box-shadow: inset 0 0 0.2em 0 rgba(black, 0.319);
             // margin-top: 0.5em;

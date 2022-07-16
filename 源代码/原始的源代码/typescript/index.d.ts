@@ -17,17 +17,17 @@ declare module '@wulechuan/vue2-ui--transfer-items-among-columns' {
 
 declare namespace Wlc任意两列间转移条目 {
     namespace Wlc任意两列间转移条目_专用工具集 {
-        function 将某列选中的条目迁移至另一列(迁移前起列所有条目之列表?: 范_内用格式之条目之列表, 迁移前迄列所有条目之列表?: 范_内用格式之条目之列表): null | {
-            迁移后起列所有条目之列表: 范_内用格式之条目之列表;
-            迁移后迄列所有条目之列表: 范_内用格式之条目之列表;
+        function 将某列选中的条目迁移至另一列 (迁移前起列所有条目之列表?: 范_基础条目之列表, 迁移前迄列所有条目之列表?: 范_基础条目之列表): null | {
+            迁移后起列所有条目之列表: 范_基础条目之列表;
+            迁移后迄列所有条目之列表: 范_基础条目之列表;
         };
     }
 
     namespace 辅助工具集 {
-        function 求可靠的数字(原始值: any): number;
-        function 求可靠的文本(原始值: any, 默认值: string, 原始值为空白字符串视为有效?: boolean): string;
-        function 尽可能将用户输入的文本视为正则表达式并用以过滤列表<范_列表之条目 = any>(原始列表: 范_列表之条目[], 用户输入的匹配词: string, 从某条目获得用以匹配之文本: (条目: 范_列表之条目) => string): 范_列表之条目[];
-        function 将变量值稳妥地映射成规定的样式类名<范_允许映射得出的规定样式类名 = string>({ 当下给出的变量值, 用以将变量至映射至样式类名的字典, 默认的样式类名 }?: {
+        function 求可靠的数字 (原始值: any): number;
+        function 求可靠的文本 (原始值: any, 默认值: string, 原始值为空白字符串视为有效?: boolean): string;
+        function 尽可能将用户输入的文本视为正则表达式并用以过滤列表 <范_列表之条目 = any>(原始列表: 范_列表之条目[], 用户输入的匹配词: string, 从某条目获得用以匹配之文本: (条目: 范_列表之条目) => string): 范_列表之条目[];
+        function 将变量值稳妥地映射成规定的样式类名 <范_允许映射得出的规定样式类名 = string>({ 当下给出的变量值, 用以将变量至映射至样式类名的字典, 默认的样式类名 }?: {
             当下给出的变量值?: any;
             默认的样式类名?: 范_允许映射得出的规定样式类名;
             用以将变量至映射至样式类名的字典?: {
@@ -60,7 +60,7 @@ declare namespace Wlc任意两列间转移条目 {
         | '无'
     );
 
-    type 泛范_界面元素之样式类名之配置<string或类名枚举 = string> = null | string或类名枚举 | Array<null | string或类名枚举> | {
+    type 泛范_界面元素之样式类名之配置<string_或_样式类名之枚举 = string> = null | string_或_样式类名之枚举 | Array<null | string_或_样式类名之枚举> | {
         [cssClassName: string]: boolean | null | undefined;
     };
 
@@ -83,6 +83,7 @@ declare namespace Wlc任意两列间转移条目 {
         唯一标识: 范_条目之唯一标识;
         在界面中的称谓: string;
         已禁止选择?: boolean;
+        已选中?: boolean;
         数据?: any;
     }
 
