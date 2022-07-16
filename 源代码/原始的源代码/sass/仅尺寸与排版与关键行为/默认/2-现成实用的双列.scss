@@ -2,10 +2,10 @@
 //     /* autoprefixer: off */
 // 不应放在文件【根作用域】中。
 // 这是因为，本项目中的诸 .scss 文件，均可能由外界逐个挑选采用。
-// 故而，在外界的某 .scss 文件中，会顺次导入本项目的若干各 .scss 文件。
+// 故而，在外界的某 .scss 文件中，会顺次导入本项目的若干 .scss 文件。
 // 此时，如果本项目的每个 .scss 文件根均带有 autoprefixer 开关，不论其取值为 on 或 off
 // 那么 SCSS 编译器都会任务最终拼合的那个外界的 .scss 文件中，
-// 其【根作用域】中出现过多个 autoprefixer 开关项。
+// 其【根作用域】中出现多个 autoprefixer 开关项。
 // 进而， SCSS 编译器会在命令行窗口中不厌其烦的打印警告信息。
 // 妥协的做法如下：
 //     逐个在每个“非根”作用域中添加 autoprefixer 开关项。
@@ -64,10 +64,11 @@
 
 
 @mixin 可照搬之代码块_现成实用的双列_仅尺寸与排版与行为() {
-    /* autoprefixer: off */
 
     // 【现成实用的双列】。
     #{$吴乐川_任意两列间转移条目__标志性选择器__prebuilt_dual_columns__root} {
+        /* autoprefixer: off */
+
         #{$吴乐川_任意两列间转移条目__css变量名__chief_blocks_border_width}: 2px;
         // #{$吴乐川_任意两列间转移条目__css变量名__input_boxes_border_width}: 'var(%s)' % unquote(wlc_transfer_items_among_columns__css_var_name__chief_blocks_border_width);
 
