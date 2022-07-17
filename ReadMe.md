@@ -50,8 +50,8 @@
 
 上图亦存放在以下地点：
 
-- [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE1-edge.png)
-- [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE1-edge.png)
+- [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE1-edge.png)
+- [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE1-edge.png)
 
 ### 冗长版
 
@@ -91,22 +91,22 @@
 
     上图亦存放在以下地点：
 
-    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
-    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
+    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
+    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
 
 -   《示例2-图1-edge》 ![采用本工具集搭建的复杂范例：多列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例2-图1-edge.png)
 
     上图亦存放在以下地点：
 
-    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE1-edge.png)
-    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE1-edge.png)
+    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE1-edge.png)
+    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE1-edge.png)
 
 -   《示例2-图2-配文》 ![采用本工具集搭建的复杂范例：多列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例2-图2-配文.png)
 
     上图亦存放在以下地点：
 
-    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
-    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
+    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
+    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
 
 
 ----
@@ -1555,8 +1555,8 @@ namespace Wlc任意两列间转移条目_现成实用的双列 {
 
 上图亦存放在以下地点：
 
--   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B3-%E5%9B%BE1.png)
--   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B3-%E5%9B%BE1.png)
+-   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B3-%E5%9B%BE1.png)
+-   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/blob/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B3-%E5%9B%BE1.png)
 
 ###### CSS 变量
 
