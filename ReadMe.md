@@ -43,15 +43,19 @@
 
 ### 言简意赅版
 
-本工具集之主旨是提供一种【界面部件】，其外观、功用均类似于“饿了吗”之【[`穿梭框`](https://element.eleme.cn/#/zh-CN/component/transfer)】（外国话所谓“Transfer”）。请使用本工具集中名为【`现成实用的双列`】的部件。
+本工具集之主旨是提供一种【界面部件】，其外观、功用均类似于“饿了吗”之【[`穿梭框`](https://element.eleme.cn/#/zh-CN/component/transfer)】（外国话所谓“Transfer”）。请使用本工具集中名为【`现成实用的双列`】的部件。本工具之典型形态如下图所示。
 
 
 ![本工具集之典型实用之形态：双列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例1-图1-edge.png)
 
+上图亦存放在以下地点：
+
+- [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE1-edge.png)
+- [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE1-edge.png)
 
 ### 冗长版
 
-粗略地说，本工具集旨在提供一种【界面部件】（外国话所谓“UX Component”），其外观、功用均类似于“饿了吗”之【[`穿梭框`](https://element.eleme.cn/#/zh-CN/component/transfer)】（外国话所谓“Transfer”）。本工具之典型形态如下图所示。
+粗略地说，本工具集旨在提供一种【界面部件】（外国话所谓“UX Component”），其外观、功用均类似于“饿了吗”之【[`穿梭框`](https://element.eleme.cn/#/zh-CN/component/transfer)】（外国话所谓“Transfer”）。
 
 
 但本工具提供的界面部件不止一个，而是一组。这些部件全部采用 Vuejs 2.x 技术做成。这些部件或为包含关系，或为平级关系，配合联动，更为灵活。上图中的典型形态即是采用若干部件拼搭而得的。
@@ -83,12 +87,26 @@
 
 参阅下图若干。
 
-![解析本工具集之典型实用之形态：双列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例1-图2-配文.png)
+-   《示例1-图2-配文》 ![解析本工具集之典型实用之形态：双列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例1-图2-配文.png)
 
-![采用本工具集搭建的复杂范例：多列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例2-图1-edge.png)
+    上图亦存放在以下地点：
 
-![采用本工具集搭建的复杂范例：多列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例2-图2-配文.png)
+    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
+    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B1-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
 
+-   《示例2-图1-edge》 ![采用本工具集搭建的复杂范例：多列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例2-图1-edge.png)
+
+    上图亦存放在以下地点：
+
+    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE1-edge.png)
+    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE1-edge.png)
+
+-   《示例2-图2-配文》 ![采用本工具集搭建的复杂范例：多列间条目互通](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-示例2-图2-配文.png)
+
+    上图亦存放在以下地点：
+
+    -   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
+    -   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B2-%E5%9B%BE2-%E9%85%8D%E6%96%87.png)
 
 
 ----
@@ -1533,6 +1551,12 @@ namespace Wlc任意两列间转移条目_现成实用的双列 {
 参见下图——《样式表源文件之文件夹结构》。
 
 ![样式表源文件之文件夹结构](./文档集/说明书/插图集/吴乐川-任意两列间转移条目-样式表源文件之文件夹结构.png)
+
+
+上图亦存放在以下地点：
+
+-   [码云](https://gitee.com/nanchang-wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B3-%E5%9B%BE1.png)
+-   [集得中心（即 GitHub）](https://github.com/wulechuan/wulechuan-typescript-vue2-ui--transfer-items-among-columns/raw/master/%E6%96%87%E6%A1%A3%E9%9B%86/%E8%AF%B4%E6%98%8E%E4%B9%A6/%E6%8F%92%E5%9B%BE%E9%9B%86/%E5%90%B4%E4%B9%90%E5%B7%9D-%E4%BB%BB%E6%84%8F%E4%B8%A4%E5%88%97%E9%97%B4%E8%BD%AC%E7%A7%BB%E6%9D%A1%E7%9B%AE-%E7%A4%BA%E4%BE%8B3-%E5%9B%BE1.png)
 
 ###### CSS 变量
 
